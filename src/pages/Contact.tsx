@@ -4,12 +4,14 @@ import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { GetInTouchForm } from '../components/GetInTouchForm';
 import {
-  MapPin,
   Phone,
-  MessageSquare,
   Mail,
+  MapPin,
   Clock,
+  MessageSquare,
   ShieldCheck,
+  CheckCircle2,
+  Calendar,
 } from 'lucide-react';
 
 export const Contact: React.FC = () => {
@@ -23,51 +25,42 @@ export const Contact: React.FC = () => {
         canonicalPath="/contact"
       />
 
-      {/* Hero / Header Section (Thrifty Theme Dark) */}
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-16 sm:pb-20 border-b border-white/10 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#181B1F]/60 via-[#181B1F]/90 to-[#181B1F] pointer-events-none" />
-
+      {/* Hero / Header Section (Approved Light Theme) */}
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-6">
-          <Breadcrumbs items={[{ label: common.nav.contact }]} variant="dark" />
+          <Breadcrumbs items={[{ label: common.nav.contact }]} />
 
-          <div className="max-w-3xl space-y-4 pt-2">
+          <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <Phone className="w-4 h-4 text-orange" />
-              <span>DIRECT WORKSHOP HOTLINE • RFC CODE NO. 261 —</span>
+              <span>DIRECT WORKSHOP HOTLINE • RFC CODE NO. 261</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-purewhite leading-tight tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
               {contact.title}
             </h1>
 
-            <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
               {contact.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">Mundka Hub</span>
-              <span className="text-[11px] text-white/70">Opp. Metro Pillar 536</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Mundka Hub</span>
+              <span className="text-[11px] text-secondary">Opp. Metro Pillar 536</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">Paschim Vihar</span>
-              <span className="text-[11px] text-white/70">Gole DDA Market</span>
+              <span className="text-[11px] text-secondary">Gole DDA Market</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">WhatsApp</span>
-              <span className="text-[11px] text-white/70">+91 79828 24255</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">WhatsApp</span>
+              <span className="text-[11px] text-secondary">+91 79828 24255</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">10:30 - 19:00</span>
-              <span className="text-[11px] text-white/70">Wed Closed</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">10:30 - 19:00</span>
+              <span className="text-[11px] text-secondary">Wed Closed</span>
             </div>
           </div>
         </div>
@@ -181,9 +174,9 @@ export const Contact: React.FC = () => {
 
             {/* Direct Assistance Box */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="p-6 rounded-2xl bg-charcoal text-purewhite space-y-4">
+              <div className="p-6 rounded-2xl bg-[#1E2126] text-purewhite space-y-4">
                 <span className="badge-tech text-orange bg-orange-light text-[10px] uppercase font-bold">
-                  Direct Escalation
+                  Direct Technical Help
                 </span>
                 <h3 className="font-heading font-bold text-lg text-purewhite">
                   Need Immediate Technical Advice?
@@ -220,16 +213,16 @@ export const Contact: React.FC = () => {
                 </h4>
                 <div className="space-y-1.5 text-xs text-secondary">
                   <div className="flex justify-between py-1 border-b border-lightgrey/60">
-                    <span>Monday – Tuesday:</span>
-                    <span className="font-semibold text-charcoal">10:30 AM – 07:00 PM</span>
+                    <span>Monday - Tuesday:</span>
+                    <span className="font-semibold text-charcoal">10:30 AM - 07:00 PM</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-lightgrey/60 text-red-600 font-medium">
                     <span>Wednesday:</span>
                     <span>Weekly Closed</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-lightgrey/60">
-                    <span>Thursday – Sunday:</span>
-                    <span className="font-semibold text-charcoal">10:30 AM – 07:00 PM</span>
+                    <span>Thursday - Sunday:</span>
+                    <span className="font-semibold text-charcoal">10:30 AM - 07:00 PM</span>
                   </div>
                 </div>
               </div>

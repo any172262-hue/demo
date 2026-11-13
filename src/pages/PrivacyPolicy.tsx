@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { ShieldCheck, Lock, Eye, FileText } from 'lucide-react';
+import { ShieldCheck, Lock, Eye, FileText, Calendar } from 'lucide-react';
 
 export const PrivacyPolicy: React.FC = () => {
   const { language, pages, common } = useLanguage();
@@ -15,20 +15,24 @@ export const PrivacyPolicy: React.FC = () => {
         canonicalPath="/privacy-policy"
       />
 
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-14 border-b border-white/10 overflow-hidden">
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-4">
-          <Breadcrumbs items={[{ label: pages.legal.privacyTitle }]} variant="dark" />
-          <div className="max-w-3xl space-y-3 pt-2">
+          <Breadcrumbs items={[{ label: pages.legal.privacyTitle }]} />
+          <div className="max-w-3xl space-y-3 pt-1">
             <span className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange" />
-              <span>DATA GOVERNANCE & COMPLIANCE —</span>
+              <span>DATA GOVERNANCE & COMPLIANCE</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-purewhite">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-charcoal tracking-tight">
               {pages.legal.privacyTitle}
             </h1>
-            <p className="text-sm text-white/80 leading-relaxed">
+            <p className="text-sm sm:text-base text-secondary leading-relaxed">
               Car's Energy Co. is committed to protecting your personal information and ensuring technical transparency across all automotive services.
             </p>
+            <div className="pt-1 text-xs text-secondary flex items-center gap-2">
+              <Calendar className="w-3.5 h-3.5 text-orange" />
+              <span>Last updated: November 2026</span>
+            </div>
           </div>
         </div>
       </section>
@@ -40,7 +44,7 @@ export const PrivacyPolicy: React.FC = () => {
               1. Information We Collect
             </h2>
             <p>
-              When you submit an appointment enquiry or contact form through our website, we collect your name, mobile phone number, email address (optional), vehicle make, model, year, and service requirements. We do not collect unnecessary private information, financial card credentials, or biometric data through this website.
+              When you submit an appointment enquiry or contact form through our website, we collect your name, mobile phone number, vehicle model, address, and service requirements. We do not collect unnecessary private information, financial card credentials, or biometric data through this website.
             </p>
           </div>
 

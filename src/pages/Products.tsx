@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { productsData, ProductItem } from '../data/productsData';
+import { productsData } from '../data/productsData';
 import {
   ShieldCheck,
   CheckCircle2,
   Calendar,
   Phone,
-  PackageCheck,
-  Filter,
   ArrowRight,
-  ShieldAlert,
+  PackageCheck,
+  Wrench,
+  Fuel,
 } from 'lucide-react';
 
 export const Products: React.FC = () => {
   const { language, pages, common } = useLanguage();
   const [filter, setFilter] = useState<'all' | 'kit' | 'cylinder' | 'component'>('all');
 
-  const filteredProducts = productsData.filter((p) => {
+  const filteredProducts = productsData.filter((prod) => {
     if (filter === 'all') return true;
-    return p.category === filter;
+    return prod.category === filter;
   });
 
   return (
@@ -32,52 +32,43 @@ export const Products: React.FC = () => {
         canonicalPath="/products"
       />
 
-      {/* Hero / Header Section (Thrifty Theme Dark) */}
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-16 sm:pb-20 border-b border-white/10 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#181B1F]/60 via-[#181B1F]/90 to-[#181B1F] pointer-events-none" />
-
+      {/* Hero / Header Section (Approved Light Theme) */}
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-6">
-          <Breadcrumbs items={[{ label: pages.products.title }]} variant="dark" />
+          <Breadcrumbs items={[{ label: pages.products.title }]} />
 
-          <div className="max-w-3xl space-y-4 pt-2">
+          <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange" />
-              <span>AUTHENTIC OEM HARDWARE • 100% PESO COMPLIANT —</span>
+              <span>AUTHENTIC OEM HARDWARE • 100% PESO COMPLIANT</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-purewhite leading-tight tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
               {pages.products.title}
             </h1>
 
-            <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
               {pages.products.subtitle}
             </p>
           </div>
 
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">100% Genuine</span>
-              <span className="text-[11px] text-white/70">Factory Serial Verified</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">100% Genuine</span>
+              <span className="text-[11px] text-secondary">Factory Serial Verified</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">PESO Certified</span>
-              <span className="text-[11px] text-white/70">Safety Directives</span>
+              <span className="text-[11px] text-secondary">Safety Directives</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">Top Brands</span>
-              <span className="text-[11px] text-white/70">Motozen, Lovato, Tomasetto</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Top Brands</span>
+              <span className="text-[11px] text-secondary">Motozen, Lovato, Tomasetto</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">Warranty Backed</span>
-              <span className="text-[11px] text-white/70">Authorized Fitment</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Warranty Backed</span>
+              <span className="text-[11px] text-secondary">Authorized Fitment</span>
             </div>
           </div>
         </div>
@@ -86,7 +77,7 @@ export const Products: React.FC = () => {
       {/* Authenticity Assurance Notice */}
       <section className="py-6 bg-purewhite border-b border-lightgrey">
         <div className="section-container">
-          <div className="p-4 bg-[#EEF1F6] border border-[#DFE3E8] rounded-2xl flex items-start gap-3">
+          <div className="p-4 bg-[#EEF1F6] border border-[#DFE3E8] rounded-xl flex items-start gap-3">
             <ShieldCheck className="w-5 h-5 text-orange shrink-0 mt-0.5" />
             <p className="text-xs text-charcoal leading-relaxed">
               <strong className="text-orange">Official Distributor Guarantee:</strong> {pages.products.authenticityNotice}
@@ -101,7 +92,7 @@ export const Products: React.FC = () => {
           <button
             type="button"
             onClick={() => setFilter('all')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
+            className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
               filter === 'all'
                 ? 'bg-charcoal text-purewhite shadow-md'
                 : 'bg-purewhite text-secondary hover:text-charcoal border border-lightgrey'
@@ -112,7 +103,7 @@ export const Products: React.FC = () => {
           <button
             type="button"
             onClick={() => setFilter('kit')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
+            className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
               filter === 'kit'
                 ? 'bg-charcoal text-purewhite shadow-md'
                 : 'bg-purewhite text-secondary hover:text-charcoal border border-lightgrey'
@@ -123,7 +114,7 @@ export const Products: React.FC = () => {
           <button
             type="button"
             onClick={() => setFilter('cylinder')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
+            className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
               filter === 'cylinder'
                 ? 'bg-charcoal text-purewhite shadow-md'
                 : 'bg-purewhite text-secondary hover:text-charcoal border border-lightgrey'
@@ -134,7 +125,7 @@ export const Products: React.FC = () => {
           <button
             type="button"
             onClick={() => setFilter('component')}
-            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
+            className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
               filter === 'component'
                 ? 'bg-charcoal text-purewhite shadow-md'
                 : 'bg-purewhite text-secondary hover:text-charcoal border border-lightgrey'
@@ -152,7 +143,7 @@ export const Products: React.FC = () => {
             {filteredProducts.map((prod) => (
               <div
                 key={prod.id}
-                className="bg-purewhite rounded-2xl border border-[#DFE3E8] shadow-premium p-6 sm:p-7 flex flex-col justify-between hover:shadow-hover hover:-translate-y-1 transition-all duration-300 group"
+                className="bg-purewhite rounded-2xl border border-[#DFE3E8] shadow-subtle p-6 sm:p-7 flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 group"
               >
                 <div>
                   {/* Product Photography */}
@@ -160,13 +151,13 @@ export const Products: React.FC = () => {
                     <img
                       src={prod.imageUrl}
                       alt={prod.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
-                    <span className="absolute top-3 left-3 bg-[#181B1F]/90 backdrop-blur-md text-purewhite text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/15 font-mono">
+                    <span className="absolute top-3 left-3 bg-[#1E2126]/90 backdrop-blur-md text-purewhite text-[10px] font-bold px-2.5 py-1 rounded-md border border-white/15 font-mono">
                       {prod.origin}
                     </span>
-                    <span className="absolute top-3 right-3 bg-emerald-600/95 backdrop-blur-md text-purewhite text-[10px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                    <span className="absolute top-3 right-3 bg-emerald-600/95 backdrop-blur-md text-purewhite text-[10px] font-semibold px-2.5 py-1 rounded-md flex items-center gap-1 shadow-sm">
                       <CheckCircle2 className="w-3 h-3 text-purewhite" />
                       {prod.status}
                     </span>
@@ -187,7 +178,7 @@ export const Products: React.FC = () => {
                     <ul className="space-y-1.5 text-xs text-secondary">
                       {(language === 'as' ? prod.featuresAs : prod.featuresEn).map((f, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-orange mt-1.5 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-sm bg-orange mt-1.5 shrink-0" />
                           <span>{f}</span>
                         </li>
                       ))}
@@ -201,7 +192,7 @@ export const Products: React.FC = () => {
                   </div>
                   <Link
                     to="/book-appointment"
-                    className="w-full py-2.5 rounded-full bg-orange hover:bg-orange-hover text-purewhite text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-subtle hover:scale-105 transition-all"
+                    className="w-full py-2.5 rounded-lg bg-orange hover:bg-orange-hover text-purewhite text-xs font-heading font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-subtle active:scale-[0.99] transition-all"
                   >
                     <span>Enquire for Installation</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -213,13 +204,13 @@ export const Products: React.FC = () => {
         </div>
       </section>
 
-      {/* Distribution Enquiries Banner (Thrifty Theme Dark) */}
-      <section className="py-16 sm:py-20 bg-[#181B1F] text-purewhite border-t border-white/10">
+      {/* Distribution Enquiries Banner */}
+      <section className="py-16 sm:py-20 bg-purewhite border-t border-lightgrey">
         <div className="section-container">
-          <div className="p-8 sm:p-10 rounded-2xl bg-[#222730] border border-white/10 text-purewhite flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+          <div className="p-8 sm:p-10 rounded-2xl bg-[#1E2126] border border-white/10 text-purewhite flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
             <div className="space-y-2">
               <span className="text-orange text-xs font-bold uppercase tracking-wider">
-                B2B TRADE DESK —
+                B2B TRADE DESK
               </span>
               <h3 className="font-heading font-bold text-xl sm:text-2xl text-purewhite">
                 Looking for Wholesale B2B Distribution?
@@ -230,7 +221,7 @@ export const Products: React.FC = () => {
             </div>
             <Link
               to="/contact"
-              className="bg-orange hover:bg-orange-hover text-purewhite font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full shadow-lg hover:scale-105 transition-all flex items-center gap-2 shrink-0"
+              className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-lg active:scale-[0.99] transition-all flex items-center gap-2 shrink-0"
             >
               <PackageCheck className="w-4 h-4" />
               <span>Contact Distribution Desk</span>

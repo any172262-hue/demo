@@ -31,7 +31,7 @@ The security architecture of **Car's Energy Co.** is engineered to safeguard cus
   - Wildcard `*` origins are rejected for state-changing POST requests.
 - **Payload Size Restrictions:** Body parsers enforce a strict `20kb` payload ceiling to prevent memory-exhaustion DoS attacks.
 - **Privacy-Conscious Audit Logging:** Server logs mask customer contact numbers (e.g., `98******10`), preventing full PII exposure in server telemetry.
-- **No Customer Accounts:** In accordance with prompt guidelines, there is no customer login, user account database, or password hashing pipeline—eliminating account takeover and credential stuffing attack surfaces entirely.
+- **No Customer Accounts:** In accordance with prompt guidelines, there is no customer login, user account database, or password hashing pipeline - eliminating account takeover and credential stuffing attack surfaces entirely.
 
 ---
 

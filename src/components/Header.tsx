@@ -72,59 +72,59 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full transition-all duration-300">
-      {/* 1. Top Industrial Announcement & Hotline Bar (Frosted Dark Glass) */}
-      <div className="bg-[#0E1116]/95 backdrop-blur-md text-offwhite/85 text-[11px] font-medium py-1.5 px-4 border-b border-white/10">
+      {/* 1. Top Industrial Announcement & Hotline Bar (Approved Light Theme) */}
+      <div className="bg-[#F5F5F2] text-charcoal text-[11px] font-medium py-1.5 px-4 border-b border-lightgrey">
         <div className="section-container flex items-center justify-between gap-2">
           {/* Left: Certification & Working Hours */}
           <div className="flex items-center gap-3 sm:gap-4 overflow-hidden">
-            <span className="inline-flex items-center gap-1.5 text-orange font-semibold tracking-wide whitespace-nowrap">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-              <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+            <span className="inline-flex items-center gap-1.5 text-charcoal font-semibold tracking-wide whitespace-nowrap">
+              <span className="w-2 h-2 rounded-sm bg-emerald-600 shrink-0" />
+              <ShieldCheck className="w-3.5 h-3.5 text-orange shrink-0" />
               <span className="truncate">{common.rfcCode}</span>
             </span>
-            <span className="hidden md:inline text-white/30">•</span>
-            <span className="hidden md:inline-flex items-center gap-1.5 text-white/75 whitespace-nowrap">
+            <span className="hidden md:inline text-secondary/40">•</span>
+            <span className="hidden md:inline-flex items-center gap-1.5 text-secondary whitespace-nowrap">
               <Clock className="w-3 h-3 text-orange shrink-0" />
               <span>{common.contactBar.timing}</span>
             </span>
           </div>
 
           {/* Right: Phone, WhatsApp, and Language Switcher */}
-          <div className="flex items-center gap-3 sm:gap-5 shrink-0 text-white/80">
+          <div className="flex items-center gap-3 sm:gap-5 shrink-0 text-charcoal">
             <a
               href="tel:+919212218180"
               className="inline-flex items-center gap-1.5 hover:text-orange transition-colors group whitespace-nowrap"
               title="Call Car's Energy Workshop"
             >
               <Phone className="w-3 h-3 text-orange transition-transform duration-200 group-hover:scale-110" />
-              <span className="font-semibold text-purewhite group-hover:text-orange">
+              <span className="font-semibold text-charcoal group-hover:text-orange">
                 +91 92122 18180
               </span>
             </a>
 
-            <span className="text-white/20 hidden sm:inline">|</span>
+            <span className="text-secondary/40 hidden sm:inline">|</span>
 
             <a
               href="https://wa.me/917982824255"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 hover:text-emerald-400 transition-colors whitespace-nowrap"
+              className="hidden sm:inline-flex items-center gap-1.5 text-emerald-800 hover:text-emerald-600 transition-colors whitespace-nowrap font-semibold"
               title="WhatsApp Direct Consultation"
             >
-              <MessageSquare className="w-3 h-3 text-emerald-400 shrink-0" />
+              <MessageSquare className="w-3 h-3 text-emerald-600 shrink-0" />
               <span>WhatsApp</span>
             </a>
 
-            {/* Premium Bilingual Switcher Pill */}
-            <div className="ml-1 pl-2 sm:pl-3 border-l border-white/15 flex items-center">
-              <div className="bg-white/10 backdrop-blur-md rounded-full p-0.5 border border-white/15 flex items-center shadow-inner">
+            {/* Bilingual Switcher (Subtly Rounded, No Pills) */}
+            <div className="ml-1 pl-2 sm:pl-3 border-l border-lightgrey flex items-center">
+              <div className="bg-purewhite rounded-md p-0.5 border border-bordergrey flex items-center shadow-subtle">
                 <button
                   type="button"
                   onClick={() => setLanguage('en')}
-                  className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase transition-all duration-200 ${
+                  className={`px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase transition-all duration-200 ${
                     language === 'en'
                       ? 'bg-orange text-purewhite shadow-sm'
-                      : 'text-white/70 hover:text-purewhite'
+                      : 'text-secondary hover:text-charcoal'
                   }`}
                   aria-label="Switch to English"
                 >
@@ -133,10 +133,10 @@ export const Header: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setLanguage('as')}
-                  className={`px-3 py-0.5 rounded-full text-[10px] font-bold transition-all duration-200 ${
+                  className={`px-3 py-0.5 rounded-md text-[10px] font-bold transition-all duration-200 ${
                     language === 'as'
                       ? 'bg-orange text-purewhite shadow-sm'
-                      : 'text-white/70 hover:text-purewhite'
+                      : 'text-secondary hover:text-charcoal'
                   }`}
                   aria-label="Switch to Assamese"
                 >
@@ -148,39 +148,39 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* 2. Main Navigation Bar (Properly Managed Frosted Glass Effect) */}
+      {/* 2. Main Navigation Bar (Approved Light Premium Theme) */}
       <div
         className={`transition-all duration-300 ${
-          scrolled ? 'nav-glass-scrolled py-2.5' : 'nav-glass-dark py-3'
+          scrolled ? 'nav-light-scrolled py-2.5' : 'nav-light py-3'
         }`}
       >
         <div className="section-container flex items-center justify-between gap-3 xl:gap-6">
           {/* Logo Branding */}
           <Link to="/" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group select-none">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#222730]/90 backdrop-blur-md flex items-center justify-center text-orange border border-white/15 group-hover:border-orange/60 group-hover:bg-[#2C333E] transition-all duration-300 shadow-md shrink-0">
-              <span className="font-heading font-black text-lg sm:text-xl text-orange tracking-tight">D</span>
-              <span className="font-heading font-bold text-xs text-purewhite -ml-0.5">P</span>
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-orange-light flex items-center justify-center text-orange border border-orange/20 group-hover:border-orange transition-all duration-200 shadow-sm shrink-0">
+              <span className="font-heading font-black text-lg sm:text-xl text-orange tracking-tight">C</span>
+              <span className="font-heading font-bold text-xs text-charcoal -ml-0.5">E</span>
             </div>
             <div className="shrink-0">
-              <span className="block font-heading font-extrabold text-base sm:text-lg text-purewhite tracking-tight leading-none whitespace-nowrap">
-                DEMO <span className="text-orange">PAGE</span>
+              <span className="block font-heading font-extrabold text-base sm:text-lg text-charcoal tracking-tight leading-none whitespace-nowrap">
+                CAR'S ENERGY <span className="text-orange">CO.</span>
               </span>
-              <span className="text-[10px] text-white/60 font-medium tracking-wide mt-1 whitespace-nowrap hidden xl:block">
+              <span className="text-[10px] text-secondary font-medium tracking-wide mt-1 whitespace-nowrap hidden xl:block">
                 {common.companyTagline}
               </span>
             </div>
           </Link>
 
-          {/* Desktop Right Side: Frosted Glass Nav Links + Divider + Thrifty Orange Pill CTA */}
+          {/* Desktop Navigation Links + Rectangular Button CTA */}
           <div className="hidden lg:flex items-center justify-end gap-1.5 xl:gap-3 shrink-0">
-            <nav className="flex items-center gap-0.5 xl:gap-1 2xl:gap-1.5">
+            <nav className="flex items-center gap-0.5 xl:gap-1">
               {/* Home */}
               <Link
                 to="/"
-                className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-all duration-200 ${
+                className={`px-3 py-2 rounded-lg text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-colors ${
                   isActive('/') && location.pathname === '/'
-                    ? 'nav-pill-active font-bold'
-                    : 'nav-pill-inactive'
+                    ? 'nav-link-active font-bold'
+                    : 'nav-link-inactive'
                 }`}
               >
                 <span>{common.nav.home}</span>
@@ -189,16 +189,16 @@ export const Header: React.FC = () => {
               {/* About */}
               <Link
                 to="/about"
-                className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-all duration-200 ${
+                className={`px-3 py-2 rounded-lg text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-colors ${
                   isActive('/about')
-                    ? 'nav-pill-active font-bold'
-                    : 'nav-pill-inactive'
+                    ? 'nav-link-active font-bold'
+                    : 'nav-link-inactive'
                 }`}
               >
                 <span>{common.nav.about}</span>
               </Link>
 
-              {/* Services with Animated Frosted Dropdown */}
+              {/* Services with Light Dropdown */}
               <div
                 className="relative"
                 onMouseEnter={handleServicesEnter}
@@ -206,25 +206,25 @@ export const Header: React.FC = () => {
               >
                 <Link
                   to="/services"
-                  className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-1 ${
+                  className={`px-3 py-2 rounded-lg text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-colors flex items-center gap-1 ${
                     isActive('/services')
-                      ? 'nav-pill-active font-bold'
-                      : 'nav-pill-inactive'
+                      ? 'nav-link-active font-bold'
+                      : 'nav-link-inactive'
                   }`}
                 >
                   <span>{common.nav.services}</span>
                   <ChevronDown
                     className={`w-3 h-3 transition-transform duration-200 ${
-                      servicesDropdownOpen ? 'rotate-180 text-orange' : 'text-white/60'
+                      servicesDropdownOpen ? 'rotate-180 text-orange' : 'text-secondary'
                     }`}
                   />
                 </Link>
 
-                {/* Animated Services Mega-Dropdown (Frosted Dark Glass) */}
+                {/* Animated Services Mega-Dropdown (Light Theme) */}
                 {servicesDropdownOpen && (
-                  <div className="absolute top-full left-0 w-[340px] nav-glass-dropdown rounded-2xl p-3 mt-2 animate-slide-up z-50 shadow-2xl">
-                    <div className="px-3 py-2 border-b border-white/10 mb-2 flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-white/70 uppercase tracking-wider flex items-center gap-1.5">
+                  <div className="absolute top-full left-0 w-[340px] nav-dropdown-light rounded-xl p-3 mt-1.5 z-50 animate-slide-up shadow-premium">
+                    <div className="px-3 py-2 border-b border-lightgrey mb-2 flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-secondary uppercase tracking-wider flex items-center gap-1.5">
                         <Wrench className="w-3.5 h-3.5 text-orange" />
                         {common.nav.allServices}
                       </span>
@@ -242,12 +242,12 @@ export const Header: React.FC = () => {
                         <Link
                           key={svc.slug}
                           to={`/services/${svc.slug}`}
-                          className="group/item flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-all duration-200"
+                          className="group/item flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
                         >
-                          <span className="truncate group-hover/item:translate-x-1 transition-transform duration-200">
+                          <span className="truncate group-hover/item:translate-x-0.5 transition-transform">
                             {language === 'as' ? svc.titleAs : svc.titleEn}
                           </span>
-                          <span className="text-[10px] text-white/60 font-medium bg-white/10 group-hover/item:bg-orange group-hover/item:text-purewhite px-2 py-0.5 rounded-md ml-2 shrink-0 transition-colors">
+                          <span className="text-[10px] text-secondary font-medium bg-lightgrey group-hover/item:bg-orange group-hover/item:text-purewhite px-2 py-0.5 rounded-md ml-2 shrink-0 transition-colors">
                             {language === 'as' ? svc.badgeAs : svc.badgeEn}
                           </span>
                         </Link>
@@ -260,10 +260,10 @@ export const Header: React.FC = () => {
               {/* Products & Brands */}
               <Link
                 to="/products"
-                className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-all duration-200 ${
+                className={`px-3 py-2 rounded-lg text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-colors ${
                   isActive('/products')
-                    ? 'nav-pill-active font-bold'
-                    : 'nav-pill-inactive'
+                    ? 'nav-link-active font-bold'
+                    : 'nav-link-inactive'
                 }`}
               >
                 <span>Products<span className="hidden xl:inline"> & Brands</span></span>
@@ -277,32 +277,32 @@ export const Header: React.FC = () => {
               >
                 <button
                   type="button"
-                  className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-1 ${
+                  className={`px-3 py-2 rounded-lg text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-colors flex items-center gap-1 cursor-pointer ${
                     isActive('/gallery') || isActive('/videos')
-                      ? 'nav-pill-active font-bold'
-                      : 'nav-pill-inactive'
+                      ? 'nav-link-active font-bold'
+                      : 'nav-link-inactive'
                   }`}
                 >
                   <span>{common.nav.gallery}</span>
                   <ChevronDown
                     className={`w-3 h-3 transition-transform duration-200 ${
-                      galleryDropdownOpen ? 'rotate-180 text-orange' : 'text-white/60'
+                      galleryDropdownOpen ? 'rotate-180 text-orange' : 'text-secondary'
                     }`}
                   />
                 </button>
 
                 {galleryDropdownOpen && (
-                  <div className="absolute top-full left-0 w-52 nav-glass-dropdown rounded-2xl p-2 mt-2 animate-slide-up z-50 shadow-2xl">
+                  <div className="absolute top-full left-0 w-52 nav-dropdown-light rounded-xl p-2 mt-1.5 z-50 animate-slide-up shadow-premium">
                     <Link
                       to="/gallery"
-                      className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+                      className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
                     >
                       <Camera className="w-4 h-4 text-orange shrink-0" />
                       <span>{common.nav.workshopGallery}</span>
                     </Link>
                     <Link
                       to="/videos"
-                      className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+                      className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
                     >
                       <Video className="w-4 h-4 text-orange shrink-0" />
                       <span>{common.nav.videoGallery}</span>
@@ -314,10 +314,10 @@ export const Header: React.FC = () => {
               {/* Testimonials */}
               <Link
                 to="/testimonials"
-                className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-all duration-200 ${
+                className={`px-3 py-2 rounded-lg text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-colors ${
                   isActive('/testimonials')
-                    ? 'nav-pill-active font-bold'
-                    : 'nav-pill-inactive'
+                    ? 'nav-link-active font-bold'
+                    : 'nav-link-inactive'
                 }`}
               >
                 <span>{common.nav.testimonials}</span>
@@ -326,10 +326,10 @@ export const Header: React.FC = () => {
               {/* FAQs */}
               <Link
                 to="/faqs"
-                className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-all duration-200 ${
+                className={`px-3 py-2 rounded-lg text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-colors ${
                   isActive('/faqs')
-                    ? 'nav-pill-active font-bold'
-                    : 'nav-pill-inactive'
+                    ? 'nav-link-active font-bold'
+                    : 'nav-link-inactive'
                 }`}
               >
                 <span>{common.nav.faqs}</span>
@@ -338,23 +338,23 @@ export const Header: React.FC = () => {
               {/* Contact */}
               <Link
                 to="/contact"
-                className={`px-2.5 xl:px-3 py-1.5 rounded-full text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-all duration-200 ${
+                className={`px-3 py-2 rounded-lg text-xs xl:text-[13px] font-semibold whitespace-nowrap transition-colors ${
                   isActive('/contact')
-                    ? 'nav-pill-active font-bold'
-                    : 'nav-pill-inactive'
+                    ? 'nav-link-active font-bold'
+                    : 'nav-link-inactive'
                 }`}
               >
                 <span>{common.nav.contact}</span>
               </Link>
             </nav>
 
-            {/* Subtle Glass Vertical Divider */}
-            <div className="h-5 w-px bg-white/15 shrink-0 hidden xl:block mx-1" />
+            {/* Subtle Divider */}
+            <div className="h-5 w-px bg-lightgrey shrink-0 hidden xl:block mx-1" />
 
-            {/* Thrifty Signature Bright Orange Pill CTA Button */}
+            {/* Professional Rectangular Button CTA (No Pills) */}
             <Link
               to="/book-appointment"
-              className="h-9 xl:h-10 px-4 xl:px-5 rounded-full bg-gradient-to-r from-orange to-[#FF7A1A] hover:from-[#E06410] hover:to-orange text-purewhite text-xs font-bold uppercase tracking-wider shadow-[0_4px_14px_rgba(244,119,33,0.35)] hover:shadow-[0_6px_20px_rgba(244,119,33,0.55)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap shrink-0"
+              className="btn-primary text-xs uppercase tracking-wider whitespace-nowrap shrink-0"
             >
               <Calendar className="w-3.5 h-3.5 shrink-0" />
               <span>Book Appointment</span>
@@ -365,7 +365,7 @@ export const Header: React.FC = () => {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-purewhite hover:bg-white/10 transition-colors focus:outline-none"
+            className="lg:hidden p-2 rounded-lg text-charcoal hover:bg-lightgrey transition-colors focus:outline-none"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -373,25 +373,25 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. Mobile Navigation Drawer (Frosted Dark Glass) */}
+      {/* 3. Mobile Navigation Drawer (Approved Light Theme) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden nav-glass-dropdown border-b border-white/15 px-4 pt-3 pb-6 max-h-[85vh] overflow-y-auto animate-slide-up shadow-2xl text-white">
+        <div className="lg:hidden bg-purewhite border-b border-lightgrey px-4 pt-3 pb-6 max-h-[85vh] overflow-y-auto animate-slide-up shadow-premium text-charcoal">
           <div className="space-y-1 mb-4">
             <Link
               to="/"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.home}
             </Link>
             <Link
               to="/about"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.about}
             </Link>
             <Link
               to="/services"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.services}
             </Link>
@@ -400,7 +400,7 @@ export const Header: React.FC = () => {
                 <Link
                   key={s.slug}
                   to={`/services/${s.slug}`}
-                  className="block py-1 text-xs text-white/70 hover:text-orange transition-colors"
+                  className="block py-1 text-xs text-secondary hover:text-orange transition-colors"
                 >
                   {language === 'as' ? s.titleAs : s.titleEn}
                 </Link>
@@ -411,61 +411,61 @@ export const Header: React.FC = () => {
             </div>
             <Link
               to="/products"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.products}
             </Link>
             <Link
               to="/gallery"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.workshopGallery}
             </Link>
             <Link
               to="/videos"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.videoGallery}
             </Link>
             <Link
               to="/testimonials"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.testimonials}
             </Link>
             <Link
               to="/faqs"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.faqs}
             </Link>
             <Link
               to="/contact"
-              className="block px-3 py-2.5 rounded-xl text-sm font-semibold text-white/90 hover:bg-white/10 hover:text-orange transition-colors"
+              className="block px-3 py-2.5 rounded-lg text-sm font-semibold text-charcoal hover:bg-orange-light hover:text-orange transition-colors"
             >
               {common.nav.contact}
             </Link>
           </div>
 
-          <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
+          <div className="pt-4 border-t border-lightgrey flex flex-col gap-3">
             <Link
               to="/book-appointment"
-              className="w-full justify-center py-3 text-xs uppercase tracking-wider rounded-full bg-gradient-to-r from-orange to-[#FF7A1A] text-purewhite font-bold flex items-center gap-2 shadow-lg"
+              className="btn-primary w-full justify-center text-xs uppercase tracking-wider"
             >
               <Calendar className="w-4 h-4" />
               <span>{common.buttons.bookNow}</span>
             </Link>
 
-            <div className="flex items-center justify-between pt-2 px-1 text-xs text-white/70">
+            <div className="flex items-center justify-between pt-2 px-1 text-xs text-secondary">
               <span className="font-medium">{common.language.switcherLabel}:</span>
-              <div className="flex items-center gap-1.5 bg-white/10 p-1 rounded-full">
+              <div className="flex items-center gap-1.5 bg-lightgrey p-1 rounded-md">
                 <button
                   type="button"
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                  className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${
                     language === 'en'
                       ? 'bg-orange text-purewhite shadow-sm'
-                      : 'text-white/80 hover:text-orange'
+                      : 'text-secondary hover:text-orange'
                   }`}
                 >
                   English
@@ -473,10 +473,10 @@ export const Header: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setLanguage('as')}
-                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                  className={`px-3 py-1 rounded-md text-xs font-bold transition-all ${
                     language === 'as'
                       ? 'bg-orange text-purewhite shadow-sm'
-                      : 'text-white/80 hover:text-orange'
+                      : 'text-secondary hover:text-orange'
                   }`}
                 >
                   অসমীয়া

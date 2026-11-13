@@ -31,63 +31,51 @@ export const About: React.FC = () => {
         canonicalPath="/about"
       />
 
-      {/* Hero / Header Section (Thrifty Theme Dark Aesthetic) */}
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-16 sm:pb-20 border-b border-white/10 overflow-hidden">
-        {/* Subtle Ambient Background Vignette */}
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#181B1F]/60 via-[#181B1F]/90 to-[#181B1F] pointer-events-none" />
-
+      {/* Hero / Header Section (Approved Light Theme) */}
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-6">
-          {/* Integrated Dark Breadcrumb */}
-          <Breadcrumbs items={[{ label: pages.about.title }]} variant="dark" />
+          <Breadcrumbs items={[{ label: pages.about.title }]} />
 
-          <div className="max-w-3xl space-y-4 pt-2">
-            {/* Thrifty Eyebrow with Dash */}
+          <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange" />
-              <span>{pages.about.foundedLabel} • RFC CODE NO. 261 —</span>
+              <span>{pages.about.foundedLabel} • RFC CODE NO. 261</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-purewhite leading-tight tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
               {pages.about.title}
             </h1>
 
-            <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
               {pages.about.subtitle}
             </p>
           </div>
 
           {/* 4 Quick Verification Metric Chips */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-xl sm:text-2xl text-purewhite">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-xl sm:text-2xl text-charcoal">
                 26+ Years
               </span>
-              <span className="text-[11px] text-white/70">Continuous Leadership (Est. 1998)</span>
+              <span className="text-[11px] text-secondary">Continuous Leadership (Est. 1998)</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 backdrop-blur-sm">
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-xl sm:text-2xl text-orange">
                 RFC #261
               </span>
-              <span className="text-[11px] text-white/70">Govt. Approved Retrofitment Code</span>
+              <span className="text-[11px] text-secondary">Govt. Approved Retrofitment Code</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-xl sm:text-2xl text-purewhite">
-                15,000+
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-xl sm:text-2xl text-charcoal">
+                10+ Brands
               </span>
-              <span className="text-[11px] text-white/70">Certified Safe Conversions</span>
+              <span className="text-[11px] text-secondary">Approved Conversion Hardware</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-xl sm:text-2xl text-purewhite">
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-xl sm:text-2xl text-charcoal">
                 2 Hubs
               </span>
-              <span className="text-[11px] text-white/70">Mundka & Paschim Vihar</span>
+              <span className="text-[11px] text-secondary">Mundka & Paschim Vihar</span>
             </div>
           </div>
         </div>
@@ -100,14 +88,14 @@ export const About: React.FC = () => {
             {/* Left Column: Mission Content */}
             <div className="lg:col-span-7 space-y-6">
               <div className="space-y-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-light text-orange">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-orange-light text-orange">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   Government Approved RFC No. 261
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
                   {pages.about.missionTitle}
                 </h2>
-                <div className="w-12 h-1 bg-orange rounded-full" />
+                <div className="w-12 h-1 bg-orange rounded" />
               </div>
 
               <p className="text-sm text-secondary leading-relaxed">
@@ -168,7 +156,7 @@ export const About: React.FC = () => {
                     className="w-full aspect-[4/3] object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute top-3 left-3 bg-[#181B1F]/90 backdrop-blur-md text-purewhite text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-white/15">
+                  <div className="absolute top-3 left-3 bg-[#1E2126]/90 backdrop-blur-md text-purewhite text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border border-white/15">
                     Mundka Main Technical Bay
                   </div>
                 </div>
@@ -206,13 +194,13 @@ export const About: React.FC = () => {
       <section className="py-16 sm:py-20 bg-purewhite border-b border-lightgrey">
         <div className="section-container">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-light text-orange mb-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-orange-light text-orange mb-3">
               Our Principles
             </span>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
               {pages.about.valuesTitle}
             </h2>
-            <div className="w-12 h-1 bg-orange rounded-full mx-auto my-3" />
+            <div className="w-12 h-1 bg-orange rounded mx-auto my-3" />
             <p className="text-xs sm:text-sm text-secondary">
               Precision engineering, certified safety compliance, and complete pricing transparency.
             </p>
@@ -249,13 +237,13 @@ export const About: React.FC = () => {
       <section className="py-16 sm:py-20 bg-offwhite border-b border-lightgrey">
         <div className="section-container">
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-light text-orange mb-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-orange-light text-orange mb-3">
               Infrastructure
             </span>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
               {pages.about.workshopsTitle}
             </h2>
-            <div className="w-12 h-1 bg-orange rounded-full mx-auto my-3" />
+            <div className="w-12 h-1 bg-orange rounded mx-auto my-3" />
             <p className="text-xs sm:text-sm text-secondary mt-1">
               {pages.about.workshopsIntro}
             </p>
@@ -286,12 +274,12 @@ export const About: React.FC = () => {
                   <div className="flex items-start gap-2.5">
                     <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
                     <span className="text-charcoal font-medium">
-                      215 & 216/5, Ground Floor, Opp. Pillar 536, Rohtak Road, Mundka, New Delhi – 110041
+                      215 & 216/5, Ground Floor, Opp. Pillar 536, Rohtak Road, Mundka, New Delhi - 110041
                     </span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Clock className="w-4 h-4 text-orange shrink-0" />
-                    <span>10:30 AM – 07:00 PM (Wednesday Closed)</span>
+                    <span>10:30 AM - 07:00 PM (Wednesday Closed)</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Phone className="w-4 h-4 text-orange shrink-0" />
@@ -305,7 +293,7 @@ export const About: React.FC = () => {
               <div className="pt-6 mt-6 border-t border-lightgrey flex flex-wrap items-center gap-3">
                 <Link
                   to="/book-appointment"
-                  className="bg-orange hover:bg-orange-hover text-purewhite font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-subtle hover:scale-105 transition-all flex items-center gap-1.5"
+                  className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg shadow-subtle active:scale-[0.99] transition-all flex items-center gap-1.5"
                 >
                   <Calendar className="w-3.5 h-3.5" />
                   <span>Book Slot at Mundka</span>
@@ -314,7 +302,7 @@ export const About: React.FC = () => {
                   href="https://maps.google.com/?q=Car's+Energy+Co+Mundka+Delhi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border border-charcoal text-charcoal hover:bg-charcoal hover:text-purewhite font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-full transition-all"
+                  className="border border-charcoal text-charcoal hover:bg-charcoal hover:text-purewhite font-heading font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg transition-all"
                 >
                   Get Directions
                 </a>
@@ -345,12 +333,12 @@ export const About: React.FC = () => {
                   <div className="flex items-start gap-2.5">
                     <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
                     <span className="text-charcoal font-medium">
-                      Shop No. 21, C.S.C. A-4, Gole DDA Market, Paschim Vihar, New Delhi – 110063
+                      Shop No. 21, C.S.C. A-4, Gole DDA Market, Paschim Vihar, New Delhi - 110063
                     </span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Clock className="w-4 h-4 text-orange shrink-0" />
-                    <span>10:30 AM – 02:00 PM (Wednesday Closed)</span>
+                    <span>10:30 AM - 02:00 PM (Wednesday Closed)</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Phone className="w-4 h-4 text-orange shrink-0" />
@@ -364,7 +352,7 @@ export const About: React.FC = () => {
               <div className="pt-6 mt-6 border-t border-lightgrey flex flex-wrap items-center gap-3">
                 <Link
                   to="/book-appointment"
-                  className="bg-orange hover:bg-orange-hover text-purewhite font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full shadow-subtle hover:scale-105 transition-all flex items-center gap-1.5"
+                  className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg shadow-subtle active:scale-[0.99] transition-all flex items-center gap-1.5"
                 >
                   <Calendar className="w-3.5 h-3.5" />
                   <span>Book Slot at Paschim Vihar</span>
@@ -373,7 +361,7 @@ export const About: React.FC = () => {
                   href="https://maps.google.com/?q=Paschim+Vihar+DDA+Market+Delhi"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border border-charcoal text-charcoal hover:bg-charcoal hover:text-purewhite font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-full transition-all"
+                  className="border border-charcoal text-charcoal hover:bg-charcoal hover:text-purewhite font-heading font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg transition-all"
                 >
                   Get Directions
                 </a>
@@ -383,38 +371,41 @@ export const About: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 4: Thrifty Theme Dark CTA Banner */}
-      <section className="py-16 sm:py-20 bg-[#181B1F] text-purewhite border-t border-white/10">
-        <div className="section-container text-center max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
-            <span>EXPERIENCE PRECISION CNG ENGINEERING —</span>
-          </div>
+      {/* SECTION 4: Inspection Scheduling Banner */}
+      <section className="py-16 sm:py-20 bg-purewhite border-t border-lightgrey">
+        <div className="section-container">
+          <div className="bg-[#1E2126] rounded-2xl p-8 sm:p-12 text-purewhite text-center max-w-4xl mx-auto space-y-6 shadow-xl">
+            <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
+              <ShieldCheck className="w-4 h-4 text-orange" />
+              <span>EXPERIENCE PRECISION CNG ENGINEERING</span>
+            </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-purewhite leading-tight">
-            Schedule a Technical Pre-Inspection for Your Vehicle
-          </h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-purewhite leading-tight">
+              Schedule a Technical Pre-Inspection for Your Vehicle
+            </h2>
 
-          <div className="w-12 h-1 bg-orange rounded-full mx-auto" />
+            <div className="w-12 h-1 bg-orange rounded mx-auto" />
 
-          <p className="text-xs sm:text-sm text-white/80 leading-relaxed max-w-xl mx-auto">
-            Bring your car to either of our authorized workshops or book an appointment online for a comprehensive OBD-II diagnostic and engine compression check.
-          </p>
+            <p className="text-xs sm:text-sm text-white/80 leading-relaxed max-w-xl mx-auto">
+              Bring your car to either of our authorized workshops or book an appointment online for a comprehensive OBD-II diagnostic and engine compression check.
+            </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Link
-              to="/book-appointment"
-              className="bg-orange hover:bg-orange-hover text-purewhite font-bold text-xs sm:text-sm uppercase tracking-wider px-8 py-3.5 rounded-full shadow-xl hover:shadow-orange/30 hover:scale-105 active:scale-100 transition-all duration-200 flex items-center gap-2"
-            >
-              <Calendar className="w-4 h-4" />
-              <span>Book Appointment</span>
-            </Link>
-            <Link
-              to="/services"
-              className="bg-purewhite hover:bg-lightgrey text-charcoal font-bold text-xs sm:text-sm uppercase tracking-wider px-8 py-3.5 rounded-full shadow-lg hover:scale-105 active:scale-100 transition-all duration-200 flex items-center gap-2"
-            >
-              <span>Explore All Services</span>
-              <ChevronRight className="w-4 h-4 text-orange" />
-            </Link>
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+              <Link
+                to="/book-appointment"
+                className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-lg shadow-xl hover:shadow-orange/30 active:scale-[0.99] transition-all flex items-center gap-2"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>Book Appointment</span>
+              </Link>
+              <Link
+                to="/services"
+                className="bg-purewhite hover:bg-lightgrey text-charcoal font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-lg shadow-lg active:scale-[0.99] transition-all flex items-center gap-2"
+              >
+                <span>Explore All Services</span>
+                <ChevronRight className="w-4 h-4 text-orange" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -4,27 +4,27 @@ import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { servicesData } from '../data/servicesData';
-import { ChevronRight, ExternalLink } from 'lucide-react';
+import { productsData } from '../data/productsData';
+import { ChevronRight, ExternalLink, ShieldCheck } from 'lucide-react';
 
 export const SitemapPage: React.FC = () => {
   const { language, pages, common } = useLanguage();
 
   const mainPages = [
-    { title: common.nav.home, path: '/', desc: 'Automotive engineering overview, business profile, and core capabilities.' },
-    { title: common.nav.about, path: '/about', desc: 'Company history since 1998, engineering mission, RFC 261 authorization.' },
-    { title: common.nav.services, path: '/services', desc: 'Directory of all 10 specialized automotive alternative fuel services.' },
-    { title: common.nav.products, path: '/products', desc: 'Authorized hardware brands: Lovato, Motozen, Gastech, Mijo, STAG, PESO cylinders.' },
-    { title: common.nav.workshopGallery, path: '/gallery', desc: 'Photographic documentation of workshop bays, fitments, and testing.' },
-    { title: common.nav.videoGallery, path: '/videos', desc: 'Technical video walkthroughs of sequential kit calibrations.' },
-    { title: common.nav.testimonials, path: '/testimonials', desc: 'Verified reviews and feedback from real vehicle owners.' },
-    { title: common.nav.faqs, path: '/faqs', desc: 'Searchable answers on mileage, safety, warranties, and RTO testing.' },
-    { title: common.nav.contact, path: '/contact', desc: 'Locations in Mundka and Paschim Vihar, workshop hours, and contact details.' },
-    { title: common.nav.bookAppointment, path: '/book-appointment', desc: 'Online appointment enquiry form for priority bay scheduling.' },
-  ];
-
-  const legalPages = [
-    { title: common.footer.privacy, path: '/privacy-policy', desc: 'Data privacy principles and encryption standards.' },
-    { title: common.footer.terms, path: '/terms-and-conditions', desc: 'Service guidelines, pre-inspection requirements, and warranty terms.' },
+    { name: common.nav.home, path: '/' },
+    { name: common.nav.about, path: '/about' },
+    { name: common.nav.services, path: '/services' },
+    { name: common.nav.products, path: '/products' },
+    { name: common.nav.gallery, path: '/gallery' },
+    { name: common.nav.videoGallery, path: '/videos' },
+    { name: common.nav.testimonials, path: '/testimonials' },
+    { name: common.nav.faqs, path: '/faqs' },
+    { name: common.nav.contact, path: '/contact' },
+    { name: 'Get In Touch', path: '/get-in-touch' },
+    { name: common.nav.bookAppointment, path: '/book-appointment' },
+    { name: pages.legal.privacyTitle, path: '/privacy-policy' },
+    { name: pages.legal.termsTitle, path: '/terms-and-conditions' },
+    { name: pages.legal.sitemapTitle, path: '/sitemap' },
   ];
 
   return (
@@ -35,17 +35,18 @@ export const SitemapPage: React.FC = () => {
         canonicalPath="/sitemap"
       />
 
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-14 border-b border-white/10 overflow-hidden">
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-4">
-          <Breadcrumbs items={[{ label: pages.legal.sitemapTitle }]} variant="dark" />
-          <div className="max-w-3xl space-y-3 pt-2">
+          <Breadcrumbs items={[{ label: pages.legal.sitemapTitle }]} />
+          <div className="max-w-3xl space-y-3 pt-1">
             <span className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
-              <span>INDEX & DIRECTORY ARCHITECTURE —</span>
+              <ShieldCheck className="w-4 h-4 text-orange" />
+              <span>INDEX & DIRECTORY ARCHITECTURE</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-purewhite">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-charcoal tracking-tight">
               {pages.legal.sitemapTitle}
             </h1>
-            <p className="text-sm text-white/80 leading-relaxed">
+            <p className="text-sm sm:text-base text-secondary leading-relaxed">
               {pages.legal.sitemapSubtitle}
             </p>
           </div>
@@ -68,20 +69,22 @@ export const SitemapPage: React.FC = () => {
                 >
                   <ChevronRight className="w-4 h-4 text-orange shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-heading font-bold text-sm text-charcoal block">
-                      {p.title}
+                    <span className="font-heading font-bold text-xs text-charcoal block">
+                      {p.name}
                     </span>
-                    <span className="text-xs text-secondary">{p.desc}</span>
+                    <span className="font-mono text-[11px] text-secondary">
+                      {p.path}
+                    </span>
                   </div>
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Individual Service Pages */}
+          {/* Specialized Services */}
           <div className="space-y-4">
             <h2 className="text-lg font-heading font-bold text-charcoal border-b border-lightgrey pb-2">
-              All 10 Specialized Service Pages
+              All 10 Specialized Engineering Services
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {servicesData.map((s) => (
@@ -92,11 +95,11 @@ export const SitemapPage: React.FC = () => {
                 >
                   <ChevronRight className="w-4 h-4 text-orange shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-heading font-bold text-sm text-charcoal block">
+                    <span className="font-heading font-bold text-xs text-charcoal block">
                       {language === 'as' ? s.titleAs : s.titleEn}
                     </span>
-                    <span className="text-xs text-secondary">
-                      {language === 'as' ? s.shortDescAs : s.shortDescEn}
+                    <span className="font-mono text-[11px] text-secondary">
+                      /services/{s.slug}
                     </span>
                   </div>
                 </Link>
@@ -104,43 +107,33 @@ export const SitemapPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Legal Pages */}
+          {/* Products & Conversion Kits */}
           <div className="space-y-4">
             <h2 className="text-lg font-heading font-bold text-charcoal border-b border-lightgrey pb-2">
-              Legal & Compliance Documents
+              Approved CNG Hardware & Brands
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {legalPages.map((l) => (
-                <Link
-                  key={l.path}
-                  to={l.path}
-                  className="p-4 rounded-xl border border-lightgrey hover:border-orange hover:bg-orange-subtle transition-colors flex items-start gap-3"
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {productsData.map((prod) => (
+                <div
+                  key={prod.id}
+                  className="p-4 rounded-xl border border-lightgrey bg-offwhite/40 space-y-1"
                 >
-                  <ChevronRight className="w-4 h-4 text-orange shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-heading font-bold text-sm text-charcoal block">
-                      {l.title}
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono bg-lightgrey px-1.5 py-0.5 rounded text-secondary">
+                      {prod.origin}
                     </span>
-                    <span className="text-xs text-secondary">{l.desc}</span>
+                    <span className="text-[10px] text-emerald-700 font-semibold">
+                      {prod.status}
+                    </span>
                   </div>
-                </Link>
-              ))}
-              <a
-                href="/sitemap.xml"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-xl border border-lightgrey hover:border-orange hover:bg-orange-subtle transition-colors flex items-start gap-3"
-              >
-                <ExternalLink className="w-4 h-4 text-orange shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-heading font-bold text-sm text-charcoal block">
-                    XML Sitemap File (sitemap.xml)
-                  </span>
-                  <span className="text-xs text-secondary">
-                    Raw XML format index for search engine crawler indexing.
-                  </span>
+                  <h3 className="font-heading font-bold text-xs text-charcoal">
+                    {prod.name}
+                  </h3>
+                  <p className="text-[11px] text-secondary line-clamp-2">
+                    {language === 'as' ? prod.descriptionAs : prod.descriptionEn}
+                  </p>
                 </div>
-              </a>
+              ))}
             </div>
           </div>
         </div>

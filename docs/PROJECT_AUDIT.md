@@ -10,16 +10,16 @@
 The archive contains a React/TypeScript/Vite application, an Express API, locale dictionaries, page components, service/product/gallery/FAQ data, existing documentation, tests, a built `dist/` directory and `node_modules/`.
 
 The source includes:
-- `src/App.tsx` — route configuration and shared layout.
-- `src/pages/` — page-level components.
-- `src/components/` — shared navigation, footer, forms, cards, SEO and gallery components.
-- `src/context/LanguageContext.tsx` — language state.
-- `src/locales/en/` and `src/locales/as/` — translation dictionaries.
-- `src/data/` — service, product, FAQ, gallery and testimonial content.
-- `server/index.js` — Express API.
-- `server/data/enquiries.json` — local enquiry data file.
-- `test/` — automated test files.
-- `docs/` — existing implementation and operational guides.
+- `src/App.tsx` - route configuration and shared layout.
+- `src/pages/` - page-level components.
+- `src/components/` - shared navigation, footer, forms, cards, SEO and gallery components.
+- `src/context/LanguageContext.tsx` - language state.
+- `src/locales/en/` and `src/locales/as/` - translation dictionaries.
+- `src/data/` - service, product, FAQ, gallery and testimonial content.
+- `server/index.js` - Express API.
+- `server/data/enquiries.json` - local enquiry data file.
+- `test/` - automated test files.
+- `docs/` - existing implementation and operational guides.
 
 ## 2. Positive findings
 

@@ -1,5 +1,5 @@
 # Implementation Plan
-## Car's Energy Co. — Website Completion and Production Readiness
+## Car's Energy Co. - Website Completion and Production Readiness
 
 - **Version:** 1.0
 - **Planning basis:** Uploaded source archive inspection
@@ -42,7 +42,7 @@ Known gaps/risks to address:
 
 ## 3. Phased implementation
 
-### Phase 0 — Project baseline and safety
+### Phase 0 - Project baseline and safety
 **Tasks**
 - Create a clean working branch or backup.
 - Inspect package scripts, routes, source, assets and environment files.
@@ -60,7 +60,7 @@ Known gaps/risks to address:
 - Project can be installed/built/tested, or known baseline failures are documented.
 - No real customer data or secrets are copied into the working branch.
 
-### Phase 1 — Product and content sign-off
+### Phase 1 - Product and content sign-off
 **Tasks**
 - Confirm company name and approved logo.
 - Confirm official phone, WhatsApp, email, workshop addresses and hours.
@@ -77,7 +77,7 @@ Known gaps/risks to address:
 **Exit criteria**
 - No unsupported claim is required for launch.
 
-### Phase 2 — Design system and visual alignment
+### Phase 2 - Design system and visual alignment
 **Tasks**
 - Audit every route for dark-first sections and inconsistent styling.
 - Apply light theme to header, nav, hero, page banners, cards, forms and footer.
@@ -97,7 +97,7 @@ Known gaps/risks to address:
 - All routes match the approved light visual direction.
 - Balanced motion and reduced-motion support work.
 
-### Phase 3 — Content, routes and localisation
+### Phase 3 - Content, routes and localisation
 **Tasks**
 - Review all route definitions and sitemap.
 - Check each page has real, useful content.
@@ -115,7 +115,7 @@ Known gaps/risks to address:
 **Exit criteria**
 - No missing customer-facing translations or broken internal routes.
 
-### Phase 4 — Enquiry backend and data persistence
+### Phase 4 - Enquiry backend and data persistence
 **Tasks**
 - Choose a production datastore and hosting plan.
 - Define enquiry schema and retention policy.
@@ -142,7 +142,7 @@ Known gaps/risks to address:
 - Backup restore is tested.
 - Staff workflow is clear.
 
-### Phase 5 — SEO, accessibility and performance
+### Phase 5 - SEO, accessibility and performance
 **Tasks**
 - Validate title, description and canonical for every route.
 - Validate sitemap and robots.
@@ -163,7 +163,7 @@ Known gaps/risks to address:
 - No critical accessibility or SEO blockers.
 - Performance issues are documented and prioritised.
 
-### Phase 6 — Testing and release candidate
+### Phase 6 - Testing and release candidate
 **Tasks**
 - Run TypeScript build.
 - Run lint.
@@ -186,7 +186,7 @@ Known gaps/risks to address:
 - No known critical security issue.
 - Business owner signs off content.
 
-### Phase 7 — Production deployment and handover
+### Phase 7 - Production deployment and handover
 **Tasks**
 - Configure production environment and secrets.
 - Deploy API and frontend.

@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { faqsData, FAQItem } from '../data/faqsData';
+import { faqsData } from '../data/faqsData';
 import {
+  HelpCircle,
   ChevronDown,
   Search,
-  HelpCircle,
   Phone,
   MessageSquare,
-  Calendar,
+  ShieldCheck,
+  CheckCircle2,
 } from 'lucide-react';
 
 export const FAQs: React.FC = () => {
@@ -41,51 +42,42 @@ export const FAQs: React.FC = () => {
         canonicalPath="/faqs"
       />
 
-      {/* Hero / Header Section (Thrifty Theme Dark) */}
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-16 sm:pb-20 border-b border-white/10 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#181B1F]/60 via-[#181B1F]/90 to-[#181B1F] pointer-events-none" />
-
+      {/* Hero / Header Section (Approved Light Theme) */}
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-6">
-          <Breadcrumbs items={[{ label: pages.faqs.title }]} variant="dark" />
+          <Breadcrumbs items={[{ label: pages.faqs.title }]} />
 
-          <div className="max-w-3xl space-y-4 pt-2">
+          <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <HelpCircle className="w-4 h-4 text-orange" />
-              <span>TRANSPARENT TECHNICAL ADVICE • RFC CODE NO. 261 —</span>
+              <span>TRANSPARENT TECHNICAL ADVICE • RFC CODE NO. 261</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-purewhite leading-tight tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
               {pages.faqs.title}
             </h1>
 
-            <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
               {pages.faqs.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">12 Verified</span>
-              <span className="text-[11px] text-white/70">Expert Answers</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">12 Verified</span>
+              <span className="text-[11px] text-secondary">Expert Answers</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">RTO Rules</span>
-              <span className="text-[11px] text-white/70">CMVR Compliance</span>
+              <span className="text-[11px] text-secondary">CMVR Compliance</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">Hydro-Test</span>
-              <span className="text-[11px] text-white/70">3-Year Protocols</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Hydro-Test</span>
+              <span className="text-[11px] text-secondary">3-Year Protocols</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">Warranty</span>
-              <span className="text-[11px] text-white/70">Kit Protection</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Warranty</span>
+              <span className="text-[11px] text-secondary">Kit Protection</span>
             </div>
           </div>
         </div>
@@ -220,7 +212,7 @@ export const FAQs: React.FC = () => {
           </div>
 
           {/* Still have questions? Help card */}
-          <div className="mt-12 p-8 rounded-2xl bg-charcoal text-purewhite flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="mt-12 p-8 rounded-2xl bg-[#1E2126] text-purewhite flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
             <div className="space-y-1 text-center sm:text-left">
               <h3 className="font-heading font-bold text-lg text-purewhite">
                 Have a specific question about your vehicle model?

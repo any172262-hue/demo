@@ -1,5 +1,5 @@
 # Technical Requirements Document (TRD)
-## Car's Energy Co. — Web Application
+## Car's Energy Co. - Web Application
 
 - **Status:** Engineering baseline; production decisions require approval
 - **Version:** 1.0

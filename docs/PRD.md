@@ -1,5 +1,5 @@
 # Product Requirements Document (PRD)
-## Car's Energy Co. — Bilingual Automotive Services Website
+## Car's Energy Co. - Bilingual Automotive Services Website
 
 - **Document status:** Draft for stakeholder review
 - **Product:** Car's Energy Co. public corporate website
@@ -98,26 +98,26 @@ The sitemap and route tests should be kept in sync when routes are added or remo
 
 ## 8. Functional requirements
 
-### FR-01 — Navigation
+### FR-01 - Navigation
 - Provide consistent desktop and mobile navigation.
 - Navigation must expose the main site areas and clear contact/appointment actions.
 - Mobile navigation must be keyboard accessible and close after route selection.
 - Active page state must be visible.
 
-### FR-02 — Bilingual content
+### FR-02 - Bilingual content
 - English is the default language.
 - Assamese is available from a visible language control.
 - All navigation, page content, service information, forms, validation messages, FAQs and footer content must be translated.
 - Switching language must preserve the current route where a translation exists.
 - Language preference may persist locally; do not store sensitive personal data in browser storage.
 
-### FR-03 — Service discovery
+### FR-03 - Service discovery
 - Show a readable services overview.
 - Each service detail must explain purpose, intended audience, process and practical considerations.
 - Avoid unsupported legal, technical, savings or safety claims.
 - Provide clear contact/appointment next steps.
 
-### FR-04 — Appointment enquiry
+### FR-04 - Appointment enquiry
 - Collect only information needed to respond to the enquiry.
 - Validate fields in the browser and again on the server.
 - Show loading, validation, success and failure states.
@@ -125,27 +125,27 @@ The sitemap and route tests should be kept in sync when routes are added or remo
 - Return a reference identifier and clear next steps.
 - Do not imply real-time slot availability unless a scheduling system is implemented.
 
-### FR-05 — General contact enquiry
+### FR-05 - General contact enquiry
 - Provide a short contact form and direct contact options.
 - Validate and store the enquiry using the same privacy and security standards as appointment enquiries.
 
-### FR-06 — Contact options
+### FR-06 - Contact options
 - Use correct `tel:` links.
 - Use correctly formatted WhatsApp links.
 - Provide verified workshop address, hours and map links.
 - Clearly identify which contact details belong to which workshop.
 
-### FR-07 — Gallery and video
+### FR-07 - Gallery and video
 - Images must have useful alternative text.
 - Gallery lightbox must support keyboard and touch interaction.
 - Videos should load efficiently and must not autoplay with sound.
 
-### FR-08 — SEO
+### FR-08 - SEO
 - Each indexable page must have a meaningful title and description.
 - Canonical URLs, sitemap, robots instructions and relevant structured data must be correct.
 - Content must be crawlable and not depend entirely on client-only interactions.
 
-### FR-09 — Accessibility
+### FR-09 - Accessibility
 - Use semantic HTML, visible focus states, form labels and accessible error messages.
 - Respect reduced-motion preferences.
 - Maintain readable contrast and touch target sizes.

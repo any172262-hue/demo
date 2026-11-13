@@ -322,7 +322,7 @@ export const servicesData: ServiceDetail[] = [
     shortDescAs: "চৰকাৰী PESO নিৰ্দেশনা অনুসৰি হাইড্ৰ'ষ্টেটিক চাপ পৰীক্ষা আৰু নিৰাপত্তা প্ৰমাণপত্ৰ।",
     badgeEn: "PESO Mandated Testing",
     badgeAs: "PESO বাধ্যতামূলক পৰীক্ষা",
-    whatItIsEn: "Under the Gas Cylinders Rules (Petroleum and Explosives Safety Organization — PESO), every automotive CNG cylinder must undergo hydrostatic pressure testing every 3 years. The procedure subjects the cylinder to 1.5 times its working pressure (330 bar) inside a water jacket to measure elastic expansion, verify structural integrity, and detect metal fatigue.",
+    whatItIsEn: "Under the Gas Cylinders Rules (Petroleum and Explosives Safety Organization - PESO), every automotive CNG cylinder must undergo hydrostatic pressure testing every 3 years. The procedure subjects the cylinder to 1.5 times its working pressure (330 bar) inside a water jacket to measure elastic expansion, verify structural integrity, and detect metal fatigue.",
     whatItIsAs: "পেট্ৰ'লিয়াম এণ্ড এক্সপ্ল'ছিভছ ছেফটি অৰ্গেনাইজেচন (PESO) ৰ নিয়ম অনুসৰি প্ৰতি ৩ বছৰৰ মূৰে মূৰে বাহনৰ চিএনজি চিলিণ্ডাৰৰ হাইড্ৰ'ষ্টেটিক পৰীক্ষা কৰোৱাটো আইনগতভাৱে বাধ্যতামূলক। ইয়াত চিলিণ্ডাৰটোক পানীৰ ভিতৰত ৩৩০ বাৰ উচ্চ চাপত পৰীক্ষা কৰি ইয়াৰ নিৰাপত্তা আৰু স্থায়িত্ব নিশ্চিত কৰা হয়।",
     whoNeedsItEn: [
       "Vehicles where 3 years have elapsed since the date of initial cylinder manufacturing or last hydro-test.",

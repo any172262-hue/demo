@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
           {/* Col 2: Specialized Services */}
           <div>
             <h3 className="font-heading font-bold text-sm text-purewhite uppercase tracking-wider mb-4 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange"></span>
+              <span className="w-1.5 h-1.5 rounded-sm bg-orange"></span>
               {common.footer.servicesTitle}
             </h3>
             <ul className="space-y-2 text-xs">
@@ -82,7 +82,7 @@ export const Footer: React.FC = () => {
           {/* Col 3: Quick Navigation */}
           <div>
             <h3 className="font-heading font-bold text-sm text-purewhite uppercase tracking-wider mb-4 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange"></span>
+              <span className="w-1.5 h-1.5 rounded-sm bg-orange"></span>
               {common.footer.quickLinks}
             </h3>
             <ul className="space-y-2 text-xs">
@@ -137,7 +137,7 @@ export const Footer: React.FC = () => {
           {/* Col 4: Facility Locations & Contacts */}
           <div className="space-y-4 text-xs">
             <h3 className="font-heading font-bold text-sm text-purewhite uppercase tracking-wider mb-4 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange"></span>
+              <span className="w-1.5 h-1.5 rounded-sm bg-orange"></span>
               {common.footer.contactInfo}
             </h3>
 

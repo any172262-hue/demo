@@ -80,37 +80,27 @@ export const ServiceDetailPage: React.FC = () => {
         schema={serviceSchema}
       />
 
-      {/* Header Banner (Thrifty Theme Dark) */}
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-14 border-b border-white/10 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#181B1F]/60 via-[#181B1F]/90 to-[#181B1F] pointer-events-none" />
-
+      {/* Header Banner (Approved Light Theme) */}
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-4">
           <Breadcrumbs
             items={[
               { label: common.nav.services, path: '/services' },
               { label: title },
             ]}
-            variant="dark"
           />
 
-          <div className="max-w-3xl space-y-3 pt-2">
+          <div className="max-w-3xl space-y-3 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange" />
-              <span>{badge} • RFC CODE NO. 261 —</span>
+              <span>{badge} • RFC CODE NO. 261</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-purewhite tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-charcoal tracking-tight">
               {title}
             </h1>
 
-            <p className="text-sm sm:text-base text-white/80 leading-relaxed max-w-2xl">
+            <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">
               {language === 'as' ? service.shortDescAs : service.shortDescEn}
             </p>
           </div>
@@ -141,7 +131,7 @@ export const ServiceDetailPage: React.FC = () => {
               {/* 1. What the Service Is */}
               <div className="space-y-4">
                 <h2 className="text-xl sm:text-2xl font-heading font-bold text-charcoal flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-orange"></span>
+                  <span className="w-2 h-2 rounded bg-orange"></span>
                   {services.serviceOverview.whatItIs}
                 </h2>
                 <p className="text-xs sm:text-sm text-secondary leading-relaxed">
@@ -175,7 +165,7 @@ export const ServiceDetailPage: React.FC = () => {
               {/* 3. Who May Need It */}
               <div className="space-y-4">
                 <h2 className="text-xl sm:text-2xl font-heading font-bold text-charcoal flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-orange"></span>
+                  <span className="w-2 h-2 rounded bg-orange"></span>
                   {services.serviceOverview.whoNeedsIt}
                 </h2>
                 <div className="space-y-2">
@@ -194,7 +184,7 @@ export const ServiceDetailPage: React.FC = () => {
               {/* 4. Technical Workflow / Process */}
               <div className="space-y-6">
                 <h2 className="text-xl sm:text-2xl font-heading font-bold text-charcoal flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-orange"></span>
+                  <span className="w-2 h-2 rounded bg-orange"></span>
                   {services.serviceOverview.process}
                 </h2>
                 <div className="space-y-4">
@@ -222,7 +212,7 @@ export const ServiceDetailPage: React.FC = () => {
               {/* 5. Key Considerations */}
               <div className="space-y-4">
                 <h2 className="text-xl sm:text-2xl font-heading font-bold text-charcoal flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-orange"></span>
+                  <span className="w-2 h-2 rounded bg-orange"></span>
                   {services.serviceOverview.considerations}
                 </h2>
                 <div className="p-5 bg-amber-50/60 border border-amber-200/80 rounded-xl space-y-3">

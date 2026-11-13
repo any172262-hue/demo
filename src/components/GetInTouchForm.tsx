@@ -147,7 +147,7 @@ export const GetInTouchForm: React.FC = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-extrabold text-charcoal tracking-tight">
           {t.title}
         </h2>
-        <div className="w-12 h-1 bg-orange rounded-full mx-auto mt-2" />
+        <div className="w-12 h-1 bg-orange rounded mx-auto mt-2" />
       </div>
 
       {/* Success Notification */}
@@ -170,7 +170,7 @@ export const GetInTouchForm: React.FC = () => {
           <div className="pt-2 flex flex-wrap gap-2 text-xs">
             <a
               href="tel:+919212218180"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-700 text-purewhite font-bold hover:bg-emerald-800 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-700 text-purewhite font-bold hover:bg-emerald-800 transition-colors"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>+91 92122 18180</span>
@@ -179,7 +179,7 @@ export const GetInTouchForm: React.FC = () => {
               href="https://wa.me/917982824255"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-600 text-purewhite font-bold hover:bg-emerald-700 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 text-purewhite font-bold hover:bg-emerald-700 transition-colors"
             >
               <MessageSquare className="w-3.5 h-3.5" />
               <span>WhatsApp</span>

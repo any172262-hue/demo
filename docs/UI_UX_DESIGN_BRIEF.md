@@ -1,5 +1,5 @@
 # UI/UX Design Brief
-## Car's Energy Co. — Bright Premium Automotive Technology
+## Car's Energy Co. - Bright Premium Automotive Technology
 
 - **Design status:** Approved direction; detailed visual QA required
 - **Theme:** Light
@@ -124,7 +124,7 @@ The dark colour is a supporting colour, not the dominant page theme. Do not make
 - Language access.
 - Social links only where official URLs are verified.
 
-## 7. Motion specification — balanced
+## 7. Motion specification - balanced
 
 Use motion to clarify state and add polish, not to entertain at the expense of usability.
 

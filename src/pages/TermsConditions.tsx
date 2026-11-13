@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { ShieldCheck, Calendar } from 'lucide-react';
 
 export const TermsConditions: React.FC = () => {
   const { language, pages, common } = useLanguage();
@@ -14,19 +15,24 @@ export const TermsConditions: React.FC = () => {
         canonicalPath="/terms-and-conditions"
       />
 
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-14 border-b border-white/10 overflow-hidden">
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-4">
-          <Breadcrumbs items={[{ label: pages.legal.termsTitle }]} variant="dark" />
-          <div className="max-w-3xl space-y-3 pt-2">
+          <Breadcrumbs items={[{ label: pages.legal.termsTitle }]} />
+          <div className="max-w-3xl space-y-3 pt-1">
             <span className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
-              <span>LEGAL DIRECTIVES & CMVR COMPLIANCE —</span>
+              <ShieldCheck className="w-4 h-4 text-orange" />
+              <span>LEGAL DIRECTIVES & CMVR COMPLIANCE</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-purewhite">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-charcoal tracking-tight">
               {pages.legal.termsTitle}
             </h1>
-            <p className="text-sm text-white/80 leading-relaxed">
+            <p className="text-sm sm:text-base text-secondary leading-relaxed">
               General commercial terms and engineering standards governing retrofitment, testing, and servicing contracts with Car's Energy Co.
             </p>
+            <div className="pt-1 text-xs text-secondary flex items-center gap-2">
+              <Calendar className="w-3.5 h-3.5 text-orange" />
+              <span>Last updated: November 2026</span>
+            </div>
           </div>
         </div>
       </section>

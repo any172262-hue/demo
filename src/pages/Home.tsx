@@ -65,8 +65,8 @@ const heroSlides = [
     tag: 'RFC Bay #261',
     titleEn: 'Transport Dept. Authorized RFC Code No. 261',
     titleAs: 'পৰিবহণ বিভাগৰ অনুমোদিত আৰএফচি কেন্দ্ৰ নং ২৬১',
-    descEn: 'Over 26 years of continuous engineering integrity and 15,000+ certified conversions across Delhi-NCR since 1998.',
-    descAs: '২৬ বছৰৰ পেছাদাৰী অভিজ্ঞতা আৰু দিল্লী-এনচিআৰত ১৫,০০০+ সুৰক্ষিত বাহন ৰূপান্তৰ।',
+    descEn: 'Transport Department authorized retrofitment center RFC No. 261 operating since 1998 across Delhi-NCR with certified technicians.',
+    descAs: '১৯৯৮ চনৰ পৰা পৰিবহণ বিভাগৰ অনুমোদিত আৰএফচি কেন্দ্ৰ নং ২৬১ হিচাপে দিল্লী-এনচিআৰত নিৰ্ভৰযোগ্য কাৰিকৰী সেৱা।',
   },
 ];
 
@@ -114,140 +114,175 @@ export const Home: React.FC = () => {
         canonicalPath="/"
       />
 
-      {/* SECTION B: Premium Automotive Hero with 4-Slide CNG Carousel (Super Smooth & Parallax Scroll) */}
-      <section className="relative bg-[#111317] text-purewhite pt-10 sm:pt-14 pb-32 sm:pb-40 overflow-hidden border-b border-white/10 select-none">
-        {/* 4-Slide Background Images with Super Smooth Parallax & Seamless Crossfade */}
-        <div
-          className="absolute inset-0 overflow-hidden pointer-events-none will-change-transform"
-          style={{
-            transform: `translate3d(0, ${Math.min(scrollY * 0.32, 160)}px, 0)`,
-          }}
-        >
-          {heroSlides.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out will-change-[opacity,transform] ${
-                index === currentSlide ? 'opacity-45' : 'opacity-0'
-              }`}
-            >
-              <img
-                src={slide.imageUrl}
-                alt={slide.titleEn}
-                className={`w-full h-full object-cover transition-transform duration-[7000ms] ease-out ${
-                  index === currentSlide ? 'scale-105' : 'scale-100'
-                }`}
-              />
+      {/* SECTION B: Bright Premium Light-Themed Hero (Editorial Layout with 3s Smooth Crossfade Showcase) */}
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-10 sm:pt-14 pb-14 sm:pb-18 border-b border-lightgrey overflow-hidden">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Column: Business Clarity & Value (7 cols) */}
+            <div className="lg:col-span-7 space-y-6">
+              {/* Eyebrow Badge (Subtly Rounded, No Pills) */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-light text-orange border border-orange/25 text-xs font-bold uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4 text-orange shrink-0" />
+                <span>RFC Code No. 261 • Govt. Certified Retrofitment Facility</span>
+              </div>
+
+              {/* Bold Editorial Headline in Charcoal with Orange Accent */}
+              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
+                Precision CNG Engineering &{' '}
+                <span className="text-orange block sm:inline">Certified Automotive Retrofitting</span>
+              </h1>
+
+              {/* Informative, authentic introduction */}
+              <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
+                {language === 'as'
+                  ? '১৯৯৮ চনৰ পৰা দিল্লী-এনচিআৰত অনুমোদিত ছিকুৱেনচিয়েল চিএনজি কিট সংস্থাপন, ডিজিটেল ইচিইউ কেলিব্ৰেচন, আৰু চৰকাৰী ৩৩০-বাৰ চিলিণ্ডাৰ হাইড্ৰ’-টেষ্টিং সেৱা।'
+                  : 'Established in 1998, Car’s Energy Co. provides certified sequential CNG system fitment, digital ECU tuning, statutory cylinder safety testing, and RTO endorsement across Delhi-NCR.'}
+              </p>
+
+              {/* Rectangular / Subtly Rounded Action Buttons (h-12, rounded-lg, No Pills) */}
+              <div className="flex flex-wrap items-center gap-3.5 pt-1">
+                <Link
+                  to="/book-appointment"
+                  className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-md hover:shadow-orange/30 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>{home.hero.ctaAppointment}</span>
+                </Link>
+
+                <Link
+                  to="/services"
+                  className="bg-purewhite hover:bg-lightgrey text-charcoal border border-bordergrey font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-subtle hover:border-charcoal/20 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
+                >
+                  <span>{home.hero.ctaServices}</span>
+                  <ChevronRight className="w-4 h-4 text-orange" />
+                </Link>
+              </div>
+
+              {/* Direct Workshop Hotline & Addresses */}
+              <div className="pt-2 border-t border-lightgrey/80 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-secondary">
+                <a
+                  href="tel:+919212218180"
+                  className="inline-flex items-center gap-1.5 font-bold text-charcoal hover:text-orange transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5 text-orange" />
+                  <span>+91 92122 18180</span>
+                </a>
+
+                <a
+                  href="https://wa.me/917982824255"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-bold text-emerald-700 hover:text-emerald-800 transition-colors"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>WhatsApp Direct</span>
+                </a>
+
+                <span className="hidden sm:inline-flex items-center gap-1 text-secondary font-medium">
+                  <MapPin className="w-3.5 h-3.5 text-orange shrink-0" />
+                  <span>Mundka & Paschim Vihar</span>
+                </span>
+              </div>
             </div>
-          ))}
 
-          {/* Cinematic Dual Vignette & Dark Overlay for Maximum Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#111317]/85 via-[#111317]/70 to-[#111317]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#111317]/60 to-[#111317]" />
-        </div>
+            {/* Right Column: High-Res Automotive Engineering Showcase with 3s Smooth Crossfade (5 cols) */}
+            <div className="lg:col-span-5">
+              <div className="bg-purewhite rounded-2xl border border-lightgrey p-3 shadow-premium space-y-3">
+                {/* Visual Window */}
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-charcoaldark select-none">
+                  {heroSlides.map((slide, index) => (
+                    <div
+                      key={slide.id}
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                        index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                      }`}
+                    >
+                      <img
+                        src={slide.imageUrl}
+                        alt={slide.titleEn}
+                        className="w-full h-full object-cover"
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-charcoaldark/80 via-transparent to-transparent" />
+                    </div>
+                  ))}
 
-        {/* Carousel Arrow Navigation (Desktop/Tablet) */}
-        <button
-          type="button"
-          onClick={prevSlide}
-          className="hidden sm:flex absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-orange text-purewhite border border-white/20 backdrop-blur-md items-center justify-center transition-all duration-200 shadow-xl hover:scale-110 active:scale-95"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
+                  {/* Active Capability Tag */}
+                  <div className="absolute top-3 left-3 z-20">
+                    <span className="bg-charcoaldark/90 text-purewhite text-[11px] font-bold px-3 py-1 rounded-md border border-white/20 backdrop-blur-sm">
+                      {heroSlides[currentSlide].tag}
+                    </span>
+                  </div>
 
-        <button
-          type="button"
-          onClick={nextSlide}
-          className="hidden sm:flex absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 hover:bg-orange text-purewhite border border-white/20 backdrop-blur-md items-center justify-center transition-all duration-200 shadow-xl hover:scale-110 active:scale-95"
-          aria-label="Next slide"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
+                  {/* Manual Arrow Controls */}
+                  <div className="absolute top-3 right-3 z-20 flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={prevSlide}
+                      className="w-7 h-7 rounded-md bg-charcoaldark/80 hover:bg-orange text-purewhite flex items-center justify-center transition-colors border border-white/20 backdrop-blur-sm"
+                      aria-label="Previous slide"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={nextSlide}
+                      className="w-7 h-7 rounded-md bg-charcoaldark/80 hover:bg-orange text-purewhite flex items-center justify-center transition-colors border border-white/20 backdrop-blur-sm"
+                      aria-label="Next slide"
+                    >
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
 
-        {/* Main Hero Content */}
-        <div className="section-container relative z-10 text-center max-w-4xl mx-auto space-y-6">
-          {/* Eyebrow with Active Slide Category Tag */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-orange text-xs font-bold uppercase tracking-wider shadow-inner">
-            <ShieldCheck className="w-4 h-4 text-orange shrink-0" />
-            <span>RFC Code No. 261 • Govt. Certified Retrofitment Facility —</span>
-          </div>
+                  {/* Caption Overlay */}
+                  <div className="absolute bottom-3 left-3 right-3 z-20 text-purewhite">
+                    <h3 className="font-heading font-bold text-xs sm:text-sm line-clamp-1">
+                      {language === 'as'
+                        ? heroSlides[currentSlide].titleAs
+                        : heroSlides[currentSlide].titleEn}
+                    </h3>
+                    <p className="text-[11px] text-white/80 line-clamp-1 mt-0.5">
+                      {language === 'as'
+                        ? heroSlides[currentSlide].descAs
+                        : heroSlides[currentSlide].descEn}
+                    </p>
+                  </div>
+                </div>
 
-          {/* Bold Headline with Thrifty Orange Highlight */}
-          <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-purewhite leading-tight tracking-tight">
-            Precision CNG Engineering &{' '}
-            <span className="text-orange block sm:inline">Certified Retrofitting</span>
-          </h1>
-
-          {/* Stable Hero Description (Smooth and distraction-free) */}
-          <p className="text-white/85 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-            {language === 'as'
-              ? '১৯৯৮ চনৰ পৰা দিল্লী-এনচিআৰত নিৰ্ভৰযোগ্য চিএনজি ৰূপান্তৰ, কম্পিউটাৰাইজড ইচিইউ টিউনিং আৰু চিলিণ্ডাৰ হাইড্ৰ’-টেষ্টিং সেৱা।'
-              : 'Certified sequential CNG systems, digital ECU calibration, and statutory cylinder hydro-testing. Delhi-NCR’s premier government-approved retrofitment center since 1998.'}
-          </p>
-
-          {/* Thrifty Dual Pill Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-            <Link
-              to="/services"
-              className="bg-purewhite hover:bg-lightgrey text-charcoal font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-full shadow-lg transition-all duration-200 hover:scale-105 active:scale-100 flex items-center gap-2"
-            >
-              <span>{home.hero.ctaServices}</span>
-              <ChevronRight className="w-4 h-4 text-orange" />
-            </Link>
-            <Link
-              to="/book-appointment"
-              className="bg-orange hover:bg-orange-hover text-purewhite font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-full shadow-xl hover:shadow-orange/30 transition-all duration-200 hover:scale-105 active:scale-100 flex items-center gap-2"
-            >
-              <Calendar className="w-4 h-4" />
-              <span>{home.hero.ctaAppointment}</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Animated Scroll Down Indicator (Fades gracefully on scroll) */}
-        <div
-          className={`absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 transition-all duration-300 pointer-events-auto ${
-            scrollY > 60 ? 'opacity-0 translate-y-3 pointer-events-none' : 'opacity-90 translate-y-0'
-          }`}
-        >
-          <button
-            type="button"
-            onClick={() => {
-              const el = document.getElementById('features-section');
-              if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                window.scrollTo({ top: window.innerHeight * 0.75, behavior: 'smooth' });
-              }
-            }}
-            className="group flex flex-col items-center gap-1.5 text-white/70 hover:text-orange transition-colors cursor-pointer"
-            aria-label="Scroll down to explore"
-          >
-            <span className="text-[10px] font-bold tracking-widest uppercase text-white/60 group-hover:text-orange transition-colors">
-              Scroll to Explore
-            </span>
-            <div className="w-5 h-8 rounded-full border border-white/30 group-hover:border-orange flex items-start justify-center p-1 backdrop-blur-sm bg-white/5 transition-colors shadow-lg">
-              <div className="w-1 h-2 rounded-full bg-orange animate-bounce" />
+                {/* Progress Indicators & Quick Jump Tabs */}
+                <div className="grid grid-cols-4 gap-1.5 pt-1">
+                  {heroSlides.map((slide, index) => (
+                    <button
+                      key={slide.id}
+                      type="button"
+                      onClick={() => setCurrentSlide(index)}
+                      className={`py-1.5 px-2 rounded-md text-[10px] font-bold text-center transition-all ${
+                        index === currentSlide
+                          ? 'bg-orange text-purewhite shadow-sm'
+                          : 'bg-lightgrey/60 text-secondary hover:bg-lightgrey hover:text-charcoal'
+                      }`}
+                    >
+                      0{slide.id} {slide.tag.split(' ')[0]}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-            <ChevronDown className="w-3.5 h-3.5 text-orange -mt-0.5 animate-pulse" />
-          </button>
+          </div>
         </div>
       </section>
 
-      {/* SECTION B2: Thrifty Floating Feature Cards (Overlapping Hero with Smooth Scroll Entry) */}
-      <section
-        id="features-section"
-        className="relative z-20 -mt-16 sm:-mt-20 pb-12 transition-transform duration-300"
-      >
+      {/* SECTION B2: 3 Core Engineering Pillars (Light Theme, Rectangular Buttons) */}
+      <section id="features-section" className="py-14 bg-purewhite border-b border-lightgrey">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 1 */}
-            <div className="bg-purewhite rounded-2xl shadow-premium border border-lightgrey p-8 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-purewhite rounded-xl shadow-subtle border border-lightgrey p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
               <div>
-                <div className="w-14 h-14 rounded-full bg-orange-light text-orange mx-auto flex items-center justify-center mb-5 shadow-sm">
-                  <Wrench className="w-6 h-6 text-orange" />
+                <div className="w-12 h-12 rounded-lg bg-orange-light text-orange mx-auto flex items-center justify-center mb-4">
+                  <Wrench className="w-5 h-5 text-orange" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-charcoal mb-2.5">
+                <h3 className="font-heading font-bold text-base text-charcoal mb-2">
                   Sequential CNG Systems
                 </h3>
                 <p className="text-xs text-secondary leading-relaxed mb-6">
@@ -259,21 +294,21 @@ export const Home: React.FC = () => {
               <div>
                 <Link
                   to="/services/cng-kit-installation"
-                  className="inline-flex items-center gap-1.5 border border-orange text-orange hover:bg-orange hover:text-purewhite px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 border border-bordergrey hover:border-orange text-charcoal hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 >
                   <span>{common.buttons.learnMore}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
                 </Link>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-purewhite rounded-2xl shadow-premium border border-lightgrey p-8 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-purewhite rounded-xl shadow-subtle border border-lightgrey p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
               <div>
-                <div className="w-14 h-14 rounded-full bg-orange-light text-orange mx-auto flex items-center justify-center mb-5 shadow-sm">
-                  <Cpu className="w-6 h-6 text-orange" />
+                <div className="w-12 h-12 rounded-lg bg-orange-light text-orange mx-auto flex items-center justify-center mb-4">
+                  <Cpu className="w-5 h-5 text-orange" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-charcoal mb-2.5">
+                <h3 className="font-heading font-bold text-base text-charcoal mb-2">
                   ECU Tuning & Calibration
                 </h3>
                 <p className="text-xs text-secondary leading-relaxed mb-6">
@@ -285,21 +320,21 @@ export const Home: React.FC = () => {
               <div>
                 <Link
                   to="/services/ecu-tuning-calibration"
-                  className="inline-flex items-center gap-1.5 border border-orange text-orange hover:bg-orange hover:text-purewhite px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 border border-bordergrey hover:border-orange text-charcoal hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 >
                   <span>{common.buttons.learnMore}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
                 </Link>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-purewhite rounded-2xl shadow-premium border border-lightgrey p-8 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-purewhite rounded-xl shadow-subtle border border-lightgrey p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
               <div>
-                <div className="w-14 h-14 rounded-full bg-orange-light text-orange mx-auto flex items-center justify-center mb-5 shadow-sm">
-                  <ShieldCheck className="w-6 h-6 text-orange" />
+                <div className="w-12 h-12 rounded-lg bg-orange-light text-orange mx-auto flex items-center justify-center mb-4">
+                  <ShieldCheck className="w-5 h-5 text-orange" />
                 </div>
-                <h3 className="font-heading font-bold text-lg text-charcoal mb-2.5">
+                <h3 className="font-heading font-bold text-base text-charcoal mb-2">
                   Cylinder Hydro Testing
                 </h3>
                 <p className="text-xs text-secondary leading-relaxed mb-6">
@@ -311,10 +346,10 @@ export const Home: React.FC = () => {
               <div>
                 <Link
                   to="/services/cylinder-hydro-testing"
-                  className="inline-flex items-center gap-1.5 border border-orange text-orange hover:bg-orange hover:text-purewhite px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 border border-bordergrey hover:border-orange text-charcoal hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 >
                   <span>{common.buttons.learnMore}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
                 </Link>
               </div>
             </div>
@@ -326,7 +361,7 @@ export const Home: React.FC = () => {
       <section className="py-12 bg-purewhite border-b border-lightgrey">
         <div className="section-container text-center">
           <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
-            Business Statistics —
+            Business Statistics -
           </span>
           <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal mb-8">
             Grow with <span className="text-orange">Certified Fuel Engineering</span>
@@ -403,12 +438,12 @@ export const Home: React.FC = () => {
         <div className="section-container">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
-              Automotive Engineering —
+              Automotive Engineering -
             </span>
             <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
               Our <span className="text-orange">Specialized Services</span>
             </h2>
-            <div className="w-12 h-1 bg-orange rounded-full mx-auto my-3" />
+            <div className="w-12 h-1 bg-orange rounded mx-auto my-3" />
             <p className="text-xs sm:text-sm text-secondary mt-2">
               {home.servicesSection.description}
             </p>
@@ -423,7 +458,7 @@ export const Home: React.FC = () => {
           <div className="text-center mt-10">
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 bg-orange hover:bg-orange-hover text-purewhite font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-full shadow-lg hover:shadow-orange/20 transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-lg shadow-md hover:shadow-orange/20 transition-all active:scale-[0.99]"
             >
               <span>{common.buttons.exploreServices}</span>
               <ArrowRight className="w-4 h-4" />
@@ -657,7 +692,7 @@ export const Home: React.FC = () => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-orange text-purewhite flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 rounded-xl bg-orange text-purewhite flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
                         <Play className="w-5 h-5 fill-current ml-0.5" />
                       </div>
                     </div>
@@ -691,53 +726,70 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION J: Thrifty Theme Dark Testimonials Showcase */}
+      {/* SECTION J: Authentic Customer Feedback & Technical Assurance (Light Theme, Zero Fake Claims) */}
       <section className="py-16 bg-purewhite border-b border-lightgrey">
         <div className="section-container">
-          <div className="bg-[#181B1F] rounded-3xl p-8 sm:p-12 text-purewhite relative shadow-2xl overflow-hidden">
-            <div className="text-center max-w-2xl mx-auto mb-8">
-              <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
-                Customer Testimonials —
+          <div className="bg-[#F5F5F2] rounded-2xl border border-lightgrey p-8 sm:p-12">
+            <div className="max-w-3xl mx-auto text-center space-y-4">
+              <span className="text-orange text-xs font-bold uppercase tracking-wider block">
+                Customer Feedback & Technical Standards -
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-purewhite">
-                Trusted by <span className="text-orange">Vehicle Owners Across Delhi-NCR</span>
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+                Transparent Engineering, <span className="text-orange">Zero Compromise</span>
               </h2>
-            </div>
+              <p className="text-xs sm:text-sm text-secondary leading-relaxed max-w-2xl mx-auto">
+                {language === 'as'
+                  ? 'কাৰ্ছ এনাৰ্জীয়ে কোনো কৃত্ৰিম পৰ্যালোচনা প্ৰকাশ নকৰে। আমাৰ প্ৰতিটো সেৱা চৰকাৰী PESO আৰু CMVR মানদণ্ড অনুসৰি পৰীক্ষা কৰা হয়।'
+                  : 'We publish only authentic, verified customer experiences. Every installation is backed by official RTO documentation, PESO hydrostatic compliance certificates, and real-time computerized diagnostic sheets.'}
+              </p>
 
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              {/* Star Rating */}
-              <div className="flex items-center justify-center gap-1.5 text-amber-400">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current" />
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
+                <div className="bg-purewhite p-5 rounded-xl border border-lightgrey space-y-2">
+                  <div className="w-8 h-8 rounded-lg bg-orange-light text-orange flex items-center justify-center font-bold text-xs">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-heading font-bold text-xs text-charcoal">Government RFC #261</h4>
+                  <p className="text-[11px] text-secondary leading-relaxed">
+                    Official Transport Department license for passenger and commercial vehicle conversions.
+                  </p>
+                </div>
+
+                <div className="bg-purewhite p-5 rounded-xl border border-lightgrey space-y-2">
+                  <div className="w-8 h-8 rounded-lg bg-orange-light text-orange flex items-center justify-center font-bold text-xs">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-heading font-bold text-xs text-charcoal">PESO Hydro Testing</h4>
+                  <p className="text-[11px] text-secondary leading-relaxed">
+                    In-house 330-bar pressure testing facility with statutory test certificates.
+                  </p>
+                </div>
+
+                <div className="bg-purewhite p-5 rounded-xl border border-lightgrey space-y-2">
+                  <div className="w-8 h-8 rounded-lg bg-orange-light text-orange flex items-center justify-center font-bold text-xs">
+                    <Award className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-heading font-bold text-xs text-charcoal">Direct Brand Spares</h4>
+                  <p className="text-[11px] text-secondary leading-relaxed">
+                    Genuine Italian and Indian sequential kits with manufacturer warranty backing.
+                  </p>
+                </div>
               </div>
 
-              {/* Big Featured Quote */}
-              <blockquote className="text-base sm:text-lg text-white/90 font-medium italic leading-relaxed">
-                "{language === 'as' ? testimonialsData[0].quoteAs : testimonialsData[0].quoteEn}"
-              </blockquote>
-
-              <div className="space-y-1">
-                <span className="font-heading font-bold text-sm text-purewhite block">
-                  {testimonialsData[0].name}
-                </span>
-                <span className="text-xs text-orange font-semibold block">
-                  {testimonialsData[0].vehicle} • {testimonialsData[0].location}
-                </span>
-                <span className="inline-flex items-center gap-1 text-[11px] text-emerald-400 font-medium pt-1">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  Verified Retrofitment Customer
-                </span>
-              </div>
-
-              {/* More Testimonials Link */}
-              <div className="pt-4">
+              <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   to="/testimonials"
-                  className="inline-flex items-center gap-2 border border-white/20 hover:border-orange text-purewhite hover:text-orange px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all"
+                  className="bg-purewhite hover:bg-lightgrey text-charcoal border border-bordergrey px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow-subtle inline-flex items-center gap-2"
                 >
-                  <span>{common.buttons.viewAll} Reviews ({testimonialsData.length})</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>Customer Feedback Policy</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
+                </Link>
+
+                <Link
+                  to="/get-in-touch"
+                  className="bg-orange hover:bg-orange-hover text-purewhite px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow-md inline-flex items-center gap-2"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>Submit Service Feedback</span>
                 </Link>
               </div>
             </div>
@@ -751,12 +803,12 @@ export const Home: React.FC = () => {
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
-                {home.faqsSection.sectionTag} —
+                {home.faqsSection.sectionTag} -
               </span>
               <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
                 Frequently Asked <span className="text-orange">Questions</span>
               </h2>
-              <div className="w-10 h-1 bg-orange rounded-full mx-auto my-3" />
+              <div className="w-10 h-1 bg-orange rounded mx-auto my-3" />
               <p className="text-xs sm:text-sm text-secondary mt-1">
                 {home.faqsSection.description}
               </p>
@@ -803,25 +855,25 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION K2: Thrifty Theme Dark Callout Banner ("Choose the Best") */}
+      {/* SECTION K2: Verification Callout Banner */}
       <section className="py-14 bg-purewhite border-b border-lightgrey">
         <div className="section-container">
-          <div className="bg-[#181B1F] rounded-3xl p-8 sm:p-12 text-purewhite flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+          <div className="bg-[#1E2126] rounded-2xl p-8 sm:p-12 text-purewhite flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
             <div className="space-y-3 max-w-xl">
               <span className="text-orange text-xs font-bold uppercase tracking-wider block">
-                Why Choose Car's Energy Co. —
+                Why Choose Car's Energy Co. -
               </span>
               <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-purewhite">
                 Government Certified RFC Retrofitting Since 1998
               </h3>
               <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
-                Take advantage of verified sequential gas propulsion technology, computerized ECU dyno-tuning, and authentic RTO endorsement backed by 26+ years of specialized engineering.
+                Take advantage of verified sequential gas propulsion technology, computerized ECU calibration, and authentic RTO endorsement backed by 26+ years of specialized engineering.
               </p>
             </div>
             <div className="shrink-0">
               <Link
                 to="/book-appointment"
-                className="bg-orange hover:bg-orange-hover text-purewhite font-bold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-full shadow-xl hover:shadow-orange/30 hover:scale-105 active:scale-100 transition-all flex items-center gap-2"
+                className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-lg shadow-xl hover:shadow-orange/30 active:scale-[0.99] transition-all flex items-center gap-2"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Book Technical Inspection</span>
@@ -891,7 +943,7 @@ export const Home: React.FC = () => {
               </h3>
               <p className="text-xs text-secondary leading-relaxed flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
-                <span>215 & 216/5, Ground Floor, Opposite Metro Pillar Number 536, Mundka, Udyog Nagar (Kaleva Sweets Wali Gali), New Delhi – 110041</span>
+                <span>215 & 216/5, Ground Floor, Opposite Metro Pillar Number 536, Mundka, Udyog Nagar (Kaleva Sweets Wali Gali), New Delhi - 110041</span>
               </p>
               <div className="flex flex-wrap items-center gap-4 text-xs pt-2">
                 <a href="tel:+919212218180" className="inline-flex items-center gap-1.5 font-bold text-charcoal hover:text-orange">
@@ -916,7 +968,7 @@ export const Home: React.FC = () => {
               </h3>
               <p className="text-xs text-secondary leading-relaxed flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
-                <span>Shop No. 21, C.S.C. A-4, Gole D.D.A. Market, Rohtak Road, Paschim Vihar, New Delhi – 110063</span>
+                <span>Shop No. 21, C.S.C. A-4, Gole D.D.A. Market, Rohtak Road, Paschim Vihar, New Delhi - 110063</span>
               </p>
               <div className="flex flex-wrap items-center gap-4 text-xs pt-2">
                 <a href="tel:+919212218180" className="inline-flex items-center gap-1.5 font-bold text-charcoal hover:text-orange">
@@ -925,7 +977,7 @@ export const Home: React.FC = () => {
                 </a>
                 <span className="text-secondary text-xs flex items-center gap-1">
                   <Clock className="w-3.5 h-3.5" />
-                  <span>10:30 AM – 02:00 PM (Wed Closed)</span>
+                  <span>10:30 AM - 02:00 PM (Wed Closed)</span>
                 </span>
               </div>
             </div>

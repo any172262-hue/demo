@@ -29,7 +29,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
     serviceRequired: defaultService,
     preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
     preferredDate: '',
-    preferredTime: 'Morning (10:30 AM – 01:00 PM)',
+    preferredTime: 'Morning (10:30 AM - 01:00 PM)',
     additionalMessage: '',
     honeypot: '',
     privacyConsent: true,
@@ -68,9 +68,9 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
   ];
 
   const timeOptions = [
-    'Morning (10:30 AM – 01:00 PM)',
-    'Afternoon (01:00 PM – 04:00 PM)',
-    'Evening (04:00 PM – 07:00 PM)',
+    'Morning (10:30 AM - 01:00 PM)',
+    'Afternoon (01:00 PM - 04:00 PM)',
+    'Evening (04:00 PM - 07:00 PM)',
   ];
 
   const handleChange = (
@@ -153,7 +153,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
           serviceRequired: '',
           preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
           preferredDate: '',
-          preferredTime: 'Morning (10:30 AM – 01:00 PM)',
+          preferredTime: 'Morning (10:30 AM - 01:00 PM)',
           additionalMessage: '',
           honeypot: '',
           privacyConsent: true,

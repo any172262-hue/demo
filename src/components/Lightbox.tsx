@@ -55,7 +55,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
+          className="absolute top-4 right-4 z-10 p-2 rounded-lg bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
           aria-label="Close image preview"
         >
           <X className="w-5 h-5" />
@@ -66,7 +66,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
           <button
             type="button"
             onClick={onPrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-full bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-lg bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -77,7 +77,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
           <button
             type="button"
             onClick={onNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-full bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-lg bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />

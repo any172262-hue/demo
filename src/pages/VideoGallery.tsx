@@ -3,7 +3,13 @@ import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { videoGalleryData, VideoItem } from '../data/galleryData';
-import { Play, Clock, Youtube, ShieldCheck } from 'lucide-react';
+import {
+  Youtube,
+  Play,
+  Clock,
+  ShieldCheck,
+  CheckCircle2,
+} from 'lucide-react';
 
 export const VideoGallery: React.FC = () => {
   const { language, pages, common } = useLanguage();
@@ -17,51 +23,42 @@ export const VideoGallery: React.FC = () => {
         canonicalPath="/videos"
       />
 
-      {/* Hero / Header Section (Thrifty Theme Dark) */}
-      <section className="relative bg-[#181B1F] text-purewhite pt-8 pb-16 sm:pb-20 border-b border-white/10 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=80')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#181B1F]/60 via-[#181B1F]/90 to-[#181B1F] pointer-events-none" />
-
+      {/* Hero / Header Section (Approved Light Theme) */}
+      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
         <div className="section-container relative z-10 space-y-6">
-          <Breadcrumbs items={[{ label: pages.videos.title }]} variant="dark" />
+          <Breadcrumbs items={[{ label: pages.videos.title }]} />
 
-          <div className="max-w-3xl space-y-4 pt-2">
+          <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <Youtube className="w-4 h-4 text-orange" />
-              <span>TECHNICAL DEMONSTRATIONS • WORKSHOP VIDEO ARCHIVE —</span>
+              <span>TECHNICAL DEMONSTRATIONS • WORKSHOP VIDEO ARCHIVE</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-purewhite leading-tight tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
               {pages.videos.title}
             </h1>
 
-            <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
               {pages.videos.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">Full HD</span>
-              <span className="text-[11px] text-white/70">Workshop Demonstrations</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Full HD</span>
+              <span className="text-[11px] text-secondary">Workshop Demonstrations</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">330 Bar</span>
-              <span className="text-[11px] text-white/70">Hydro-Test Footage</span>
+              <span className="text-[11px] text-secondary">Hydro-Test Footage</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">Live Dyno</span>
-              <span className="text-[11px] text-white/70">OBD-II Fuel Mapping</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Live Dyno</span>
+              <span className="text-[11px] text-secondary">OBD-II Fuel Mapping</span>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-purewhite">Zero Lag</span>
-              <span className="text-[11px] text-white/70">Sequential Performance</span>
+            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Calibration</span>
+              <span className="text-[11px] text-secondary">Sequential Performance</span>
             </div>
           </div>
         </div>
@@ -73,7 +70,7 @@ export const VideoGallery: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Featured Video Player Box */}
             <div className="lg:col-span-8 space-y-4">
-              <div className="relative aspect-video bg-charcoaldark rounded-2xl overflow-hidden shadow-premium border border-lightgrey">
+              <div className="relative aspect-video bg-charcoaldark rounded-2xl overflow-hidden shadow-subtle border border-lightgrey">
                 <iframe
                   className="w-full h-full"
                   src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?rel=0`}
@@ -127,7 +124,7 @@ export const VideoGallery: React.FC = () => {
                         loading="lazy"
                       />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-6 h-6 rounded-full bg-orange text-purewhite flex items-center justify-center">
+                        <div className="w-6 h-6 rounded-md bg-orange text-purewhite flex items-center justify-center">
                           <Play className="w-3 h-3 fill-current ml-0.5" />
                         </div>
                       </div>

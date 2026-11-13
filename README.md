@@ -1,4 +1,4 @@
-# Car's Energy Co. — Original Premium Automotive Corporate Website
+# Car's Energy Co. - Original Premium Automotive Corporate Website
 
 ![Car's Energy Co.](https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80)
 
@@ -105,14 +105,14 @@ Executes all 9 automated test suites verifying routes, locales, services, anti-s
 ## 5. Technical Documentation Index
 
 Detailed engineering guides are located in the [`docs/`](./docs) folder:
-- [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md) — Directory layout and component architecture.
-- [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) — Color tokens, typography, and UI component standards.
-- [docs/SECURITY.md](./docs/SECURITY.md) — Cybersecurity controls, Helmet headers, rate limiting, and spam protection.
-- [docs/TRANSLATIONS.md](./docs/TRANSLATIONS.md) — English and Assamese bilingual architecture and expansion guide.
-- [docs/CONTENT_MANAGEMENT.md](./docs/CONTENT_MANAGEMENT.md) — How to update services, products, FAQs, and media.
-- [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) — Unified Express deployment, PM2, and Nginx reverse proxy configs.
-- [docs/TESTING.md](./docs/TESTING.md) — Automated testing suites and QA verification checklist.
-- [docs/SEO.md](./docs/SEO.md) — JSON-LD structured data schemas, XML sitemap, and canonical URL structure.
+- [docs/PROJECT_STRUCTURE.md](./docs/PROJECT_STRUCTURE.md) - Directory layout and component architecture.
+- [docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md) - Color tokens, typography, and UI component standards.
+- [docs/SECURITY.md](./docs/SECURITY.md) - Cybersecurity controls, Helmet headers, rate limiting, and spam protection.
+- [docs/TRANSLATIONS.md](./docs/TRANSLATIONS.md) - English and Assamese bilingual architecture and expansion guide.
+- [docs/CONTENT_MANAGEMENT.md](./docs/CONTENT_MANAGEMENT.md) - How to update services, products, FAQs, and media.
+- [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) - Unified Express deployment, PM2, and Nginx reverse proxy configs.
+- [docs/TESTING.md](./docs/TESTING.md) - Automated testing suites and QA verification checklist.
+- [docs/SEO.md](./docs/SEO.md) - JSON-LD structured data schemas, XML sitemap, and canonical URL structure.
 
 ---
 

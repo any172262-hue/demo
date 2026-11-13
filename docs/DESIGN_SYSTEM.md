@@ -1,8 +1,8 @@
-# Bright Premium Automotive Technology — Design System
+# Bright Premium Automotive Technology - Design System
 
 ## 1. Visual Philosophy
 
-The design system for **Car's Energy Co.** adheres strictly to the **Bright Premium Automotive Technology** style. The visual identity reflects industrial precision, mechanical integrity, and modern clean engineering—steering completely away from template tropes, oversized dark hero slogans, or gratuitous glassmorphic effects.
+The design system for **Car's Energy Co.** adheres strictly to the **Bright Premium Automotive Technology** style. The visual identity reflects industrial precision, mechanical integrity, and modern clean engineering - steering completely away from template tropes, oversized dark hero slogans, or gratuitous glassmorphic effects.
 
 ---
 
