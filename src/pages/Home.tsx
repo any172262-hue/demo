@@ -104,9 +104,36 @@ export const Home: React.FC = () => {
         canonicalPath="/"
       />
 
-      {/* SECTION B: Bright Premium Light-Themed Hero (Editorial Layout with 3s Smooth Crossfade Showcase) */}
-      <section className="relative bg-[#F5F5F2] dark:bg-darkbg text-charcoal dark:text-darktext pt-10 sm:pt-14 pb-14 sm:pb-18 border-b border-lightgrey dark:border-darkborder overflow-hidden transition-colors">
-        <div className="section-container">
+      {/* SECTION B: Bright Premium Light-Themed Hero with Full-Bleed Background Carousel / Slideshow */}
+      <section className="relative min-h-[560px] lg:min-h-[620px] text-charcoal dark:text-darktext pt-10 sm:pt-14 pb-14 sm:pb-18 border-b border-lightgrey dark:border-darkborder overflow-hidden transition-colors">
+        {/* Full-Bleed Automotive Engineering Background Carousel / Slideshow */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+          {heroSlides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+              } transition-all duration-1000`}
+            >
+              <img
+                src={slide.imageUrl}
+                alt={slide.titleEn}
+                className="w-full h-full object-cover object-center"
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
+            </div>
+          ))}
+
+          {/* Directional High-Contrast Editorial Gradient Overlay */}
+          {/* Preserves 100% WCAG AAA contrast for text on the left while showcasing the automotive background on the right */}
+          <div className="absolute inset-0 hero-editorial-overlay transition-colors duration-500" />
+
+          {/* Subtle vertical gradients blending smoothly with header and section borders */}
+          <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-[#F5F5F2]/80 dark:from-[#121417]/80 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F5F5F2] dark:from-[#121417] to-transparent" />
+        </div>
+
+        <div className="section-container relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Business Clarity & Value (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
@@ -177,7 +204,7 @@ export const Home: React.FC = () => {
 
             {/* Right Column: High-Res Automotive Engineering Showcase with 3s Smooth Crossfade (5 cols) */}
             <div className="lg:col-span-5">
-              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-3 shadow-premium space-y-3 transition-colors">
+              <div className="bg-purewhite/95 dark:bg-darksurface/95 backdrop-blur-md rounded-2xl border border-lightgrey/80 dark:border-darkborder p-3 sm:p-4 shadow-premium space-y-3 transition-colors">
                 {/* Visual Window */}
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-charcoaldark select-none">
                   {heroSlides.map((slide, index) => (
