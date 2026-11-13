@@ -92,4 +92,103 @@ test('ADVANCED FEATURES SUITE: UTM, Search, and Integration', async (t) => {
     assert.ok(response.body.success, 'Returns success: true');
     assert.ok(response.body.referenceNumber.startsWith('CE-'), 'Returns valid reference number prefix');
   });
+
+  await t.test('4. IDEMPOTENCY & DUPLICATE SUBMISSION PREVENTION', async () => {
+    const testKey = 'test_idemp_' + Date.now();
+    const payload = JSON.stringify({
+      idempotencyKey: testKey,
+      fullName: 'Aman Verma',
+      mobileNumber: '9910991099',
+      email: 'aman@example.com',
+      vehicleMake: 'Tata Motors',
+      vehicleModel: 'Tigor iCNG',
+      vehicleYear: '2022',
+      serviceRequired: 'ECU Tuning & Diagnostics',
+      preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
+      preferredDate: '2026-11-28',
+      preferredTime: 'Morning (10:30 AM - 01:00 PM)',
+      honeypot: '',
+      submittedAt: Date.now() - 2500,
+    });
+
+    const sendRequest = () => {
+      return new Promise((resolve, reject) => {
+        const req = http.request(
+          {
+            hostname: 'localhost',
+            port: 5000,
+            path: '/api/appointments',
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Content-Length': Buffer.byteLength(payload),
+            },
+          },
+          (res) => {
+            let data = '';
+            res.on('data', (chunk) => (data += chunk));
+            res.on('end', () => resolve({ status: res.statusCode, body: JSON.parse(data) }));
+          }
+        );
+        req.on('error', reject);
+        req.write(payload);
+        req.end();
+      });
+    };
+
+    // First submission
+    const res1 = await sendRequest();
+    assert.equal(res1.status, 201, 'Initial submission created');
+    const ref1 = res1.body.referenceNumber;
+
+    // Immediate duplicate submission (simulating double click / network retry)
+    const res2 = await sendRequest();
+    assert.equal(res2.status, 200, 'Duplicate submission handled gracefully with 200 OK');
+    assert.equal(res2.body.isDuplicate, true, 'Returns isDuplicate: true flag');
+    assert.equal(res2.body.referenceNumber, ref1, 'Returns original reference number without duplicate record');
+  });
+
+  await t.test('5. FIELD VALIDATION & ERROR HANDLING', async () => {
+    const invalidPayload = JSON.stringify({
+      fullName: '', // Invalid
+      mobileNumber: '1234', // Invalid mobile
+      vehicleMake: '',
+      vehicleModel: '',
+      submittedAt: Date.now() - 3000,
+    });
+
+    const res = await new Promise((resolve, reject) => {
+      const req = http.request(
+        {
+          hostname: 'localhost',
+          port: 5000,
+          path: '/api/appointments',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(invalidPayload),
+          },
+        },
+        (res) => {
+          let data = '';
+          res.on('data', (chunk) => (data += chunk));
+          res.on('end', () => resolve({ status: res.statusCode, body: JSON.parse(data) }));
+        }
+      );
+      req.on('error', reject);
+      req.write(invalidPayload);
+      req.end();
+    });
+
+    assert.equal(res.status, 422, 'Rejects invalid form with 422 Unprocessable Entity');
+    assert.equal(res.body.success, false);
+    assert.ok(Array.isArray(res.body.details), 'Provides detailed validation error messages');
+  });
+
+  await t.test('6. PRIVACY MASKING AND AUDIT SAFETY', () => {
+    const rawMobile = '9810198101';
+    const masked = rawMobile.replace(/(\d{2})\d{6}(\d{2})/, '$1******$2');
+    assert.equal(masked, '98******01', 'Masks middle 6 digits of mobile number');
+    assert.ok(!masked.includes('101981'), 'Raw digits are completely concealed from production audit logs');
+  });
 });

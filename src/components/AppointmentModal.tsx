@@ -54,9 +54,10 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   const modalRef = useRef<HTMLDivElement>(null);
   const confirmBtnRef = useRef<HTMLButtonElement>(null);
 
-  // Focus trap and Escape listener
+  // Focus trap, Escape listener, and body modal-open class
   useEffect(() => {
     if (isOpen) {
+      document.body.classList.add('modal-open');
       setTimeout(() => {
         confirmBtnRef.current?.focus();
       }, 50);
@@ -68,7 +69,12 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
       };
 
       window.addEventListener('keydown', handleKeyDown);
-      return () => window.removeEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.classList.remove('modal-open');
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    } else {
+      document.body.classList.remove('modal-open');
     }
   }, [isOpen, isSubmitting, onClose]);
 
@@ -233,12 +239,19 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             </div>
           </div>
 
-          <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-xl text-[11px] text-emerald-800 dark:text-emerald-300 flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+          <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-xl text-[11px] text-emerald-800 dark:text-emerald-300 space-y-1.5">
+            <div className="flex items-center gap-2 font-bold text-emerald-900 dark:text-emerald-200">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>
+                {language === 'as'
+                  ? 'গ্ৰাহকৰ সন্মতি আৰু হোৱাটছএপ বাৰ্তা নীতি'
+                  : 'Customer Consent & WhatsApp Privacy Notice'}
+              </span>
+            </div>
             <p className="leading-relaxed">
               {language === 'as'
-                ? 'অনুগ্ৰহ কৰি মন কৰিব: নিশ্চিত কৰাৰ লগে লগে কাৰ্ছ এনাৰ্জী কো.-ৰ চৰকাৰী হোৱাটছএপ নম্বৰত (+91 79828 24255) এখন প্ৰস্তুত কৰা বাৰ্তা খোল খাব। আপুনি হোৱাটছএপত "Send" টিপিব লাগিব।'
-                : 'Notice: Confirming will record your enquiry in our workshop database and open official WhatsApp (+91 79828 24255) with this pre-filled message ready to send.'}
+                ? 'ওপৰত প্ৰদৰ্শিত সকলো তথ্য কাৰ্ছ এনাৰ্জী কো.-ৰ চৰকাৰী হোৱাটছএপ নম্বৰলৈ (+91 79828 24255) প্ৰেৰণ কৰা বাৰ্তাত অন্তৰ্ভুক্ত হ’ব। "নিশ্চিত কৰি হোৱাটছএপলৈ যাওক"ত ক্লিক কৰি আপুনি এই তথ্যসমূহ হোৱাটছএপৰ জৰিয়তে আমালৈ প্ৰেৰণ কৰিবলৈ স্পষ্ট সন্মতি প্ৰদান কৰিছে। বাৰ্তাখন হোৱাটছএপত খোল খাব য’ত আপুনি নিজহাতে বাৰ্তাটো পৰীক্ষা কৰি "Send" টিপিব লাগিব। আমি কেতিয়াও আপোনাৰ অনুমতি অবিহনে স্বয়ংক্ৰিয়ভাৱে বাৰ্তা প্ৰেৰণ নকৰো।'
+                : 'All information displayed above will be included in your WhatsApp enquiry message to official workshop number +91 79828 24255. By clicking "Confirm & Continue to WhatsApp", you explicitly consent to sharing these details. The message will open in WhatsApp where you must manually review and press Send. We never send messages automatically.'}
             </p>
           </div>
         </div>

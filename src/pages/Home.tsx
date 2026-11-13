@@ -382,12 +382,12 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION B3: Thrifty Business Statistics Slate Cards */}
-      <section className="py-12 bg-purewhite border-b border-lightgrey">
+      <section className="py-12 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container text-center">
           <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
             Business Statistics -
           </span>
-          <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal mb-8">
+          <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal dark:text-purewhite mb-8">
             Grow with <span className="text-orange">Certified Fuel Engineering</span>
           </h2>
 
@@ -395,12 +395,12 @@ export const Home: React.FC = () => {
             {home.hero.stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="bg-[#EEF1F6] border border-[#DFE3E8] rounded-2xl p-6 text-center hover:border-orange/50 transition-colors shadow-subtle"
+                className="bg-[#EEF1F6] dark:bg-darkcard border border-[#DFE3E8] dark:border-darkborder rounded-2xl p-6 text-center hover:border-orange/50 transition-colors shadow-subtle"
               >
-                <span className="block font-heading font-black text-3xl sm:text-4xl text-charcoal mb-1">
+                <span className="block font-heading font-black text-3xl sm:text-4xl text-charcoal dark:text-purewhite mb-1">
                   {stat.value}
                 </span>
-                <span className="block text-xs font-semibold text-secondary">
+                <span className="block text-xs font-semibold text-secondary dark:text-darkmuted">
                   {stat.label}
                 </span>
               </div>
@@ -410,23 +410,23 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION C: Company Overview */}
-      <section className="py-16 bg-purewhite border-b border-lightgrey">
+      <section className="py-16 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6 space-y-5">
-              <span className="badge-tech text-secondary uppercase tracking-wider text-xs">
+              <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs">
                 {home.overview.sectionTag}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
                 {home.overview.title}
               </h2>
-              <p className="text-sm font-semibold text-charcoal leading-relaxed">
+              <p className="text-sm font-semibold text-charcoal dark:text-darktext leading-relaxed">
                 {home.overview.lead}
               </p>
-              <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
                 {home.overview.p1}
               </p>
-              <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
                 {home.overview.p2}
               </p>
 
@@ -442,12 +442,12 @@ export const Home: React.FC = () => {
               {home.overview.highlights.map((h, i) => (
                 <div
                   key={i}
-                  className="p-5 rounded-xl border border-lightgrey bg-offwhite/50 space-y-2 hover:border-orange/30 transition-colors"
+                  className="p-5 rounded-xl border border-lightgrey dark:border-darkborder bg-offwhite/50 dark:bg-darkcard space-y-2 hover:border-orange/30 transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-orange-light flex items-center justify-center text-orange">
+                  <div className="w-8 h-8 rounded-lg bg-orange-light dark:bg-orange/20 flex items-center justify-center text-orange">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
-                  <h4 className="font-heading font-bold text-xs text-charcoal leading-snug">
+                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-darktext leading-snug">
                     {h}
                   </h4>
                 </div>
@@ -458,17 +458,17 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION D: Thrifty Theme Services Showcase */}
-      <section className="py-16 bg-offwhite border-b border-lightgrey">
+      <section className="py-16 bg-offwhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
               Automotive Engineering -
             </span>
-            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
               Our <span className="text-orange">Specialized Services</span>
             </h2>
             <div className="w-12 h-1 bg-orange rounded mx-auto my-3" />
-            <p className="text-xs sm:text-sm text-secondary mt-2">
+            <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-2">
               {home.servicesSection.description}
             </p>
           </div>
@@ -492,16 +492,16 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION E: Why Choose Us */}
-      <section className="py-16 bg-purewhite border-b border-lightgrey">
+      <section className="py-16 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="max-w-2xl mb-12">
-            <span className="badge-tech text-secondary uppercase tracking-wider text-xs mb-2">
+            <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs mb-2">
               {home.whyChooseUs.sectionTag}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
               {home.whyChooseUs.title}
             </h2>
-            <p className="text-xs sm:text-sm text-secondary mt-1">
+            <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
               {home.whyChooseUs.description}
             </p>
           </div>
@@ -510,15 +510,15 @@ export const Home: React.FC = () => {
             {home.whyChooseUs.cards.map((card, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-xl border border-lightgrey bg-offwhite/40 hover:bg-purewhite hover:shadow-subtle hover:border-orange/30 transition-all duration-200"
+                className="p-6 rounded-xl border border-lightgrey dark:border-darkborder bg-offwhite/40 dark:bg-darkcard hover:bg-purewhite dark:hover:bg-darksurface hover:shadow-subtle hover:border-orange/30 transition-all duration-200"
               >
-                <div className="w-10 h-10 rounded-lg bg-orange-light text-orange flex items-center justify-center font-heading font-bold text-sm mb-4">
+                <div className="w-10 h-10 rounded-lg bg-orange-light dark:bg-orange/20 text-orange flex items-center justify-center font-heading font-bold text-sm mb-4">
                   0{idx + 1}
                 </div>
-                <h3 className="font-heading font-bold text-sm text-charcoal mb-2">
+                <h3 className="font-heading font-bold text-sm text-charcoal dark:text-purewhite mb-2">
                   {card.title}
                 </h3>
-                <p className="text-xs text-secondary leading-relaxed">
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
                   {card.description}
                 </p>
               </div>
@@ -528,16 +528,16 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION F: How It Works */}
-      <section className="py-16 bg-offwhite border-b border-lightgrey">
+      <section className="py-16 bg-offwhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="badge-tech text-secondary uppercase tracking-wider text-xs mb-2">
+            <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs mb-2">
               {home.howItWorks.sectionTag}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
               {home.howItWorks.title}
             </h2>
-            <p className="text-xs sm:text-sm text-secondary mt-1">
+            <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
               {home.howItWorks.description}
             </p>
           </div>
@@ -546,15 +546,15 @@ export const Home: React.FC = () => {
             {home.howItWorks.steps.map((st, idx) => (
               <div
                 key={idx}
-                className="bg-purewhite p-6 rounded-xl border border-lightgrey relative overflow-hidden shadow-subtle"
+                className="bg-purewhite dark:bg-darkcard p-6 rounded-xl border border-lightgrey dark:border-darkborder relative overflow-hidden shadow-subtle"
               >
                 <span className="font-heading font-black text-3xl text-orange/20 block mb-2">
                   {st.step}
                 </span>
-                <h3 className="font-heading font-bold text-sm text-charcoal mb-2">
+                <h3 className="font-heading font-bold text-sm text-charcoal dark:text-purewhite mb-2">
                   {st.title}
                 </h3>
-                <p className="text-xs text-secondary leading-relaxed">
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
                   {st.description}
                 </p>
               </div>
@@ -564,17 +564,17 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION G: Partner Brands & Products */}
-      <section className="py-16 bg-purewhite border-b border-lightgrey">
+      <section className="py-16 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="badge-tech text-secondary uppercase tracking-wider text-xs mb-2">
+              <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs mb-2">
                 {home.brandsSection.sectionTag}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
                 {home.brandsSection.title}
               </h2>
-              <p className="text-xs sm:text-sm text-secondary mt-1">
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
                 {home.brandsSection.description}
               </p>
             </div>
@@ -588,27 +588,27 @@ export const Home: React.FC = () => {
             {productsData.slice(0, 3).map((prod) => (
               <div
                 key={prod.id}
-                className="card-premium p-6 flex flex-col justify-between"
+                className="card-premium dark:bg-darkcard dark:border-darkborder p-6 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between text-xs text-secondary mb-3">
-                    <span className="font-mono text-[10px] bg-lightgrey px-2 py-0.5 rounded">
+                  <div className="flex items-center justify-between text-xs text-secondary dark:text-darkmuted mb-3">
+                    <span className="font-mono text-[10px] bg-lightgrey dark:bg-darkborder px-2 py-0.5 rounded">
                       {prod.origin}
                     </span>
-                    <span className="text-emerald-700 font-semibold text-[10px]">
+                    <span className="text-emerald-700 dark:text-emerald-400 font-semibold text-[10px]">
                       {prod.status}
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-bold text-base text-charcoal mb-2">
+                  <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite mb-2">
                     {prod.name}
                   </h3>
 
-                  <p className="text-xs text-secondary leading-relaxed mb-4">
+                  <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-4">
                     {language === 'as' ? prod.descriptionAs : prod.descriptionEn}
                   </p>
 
-                  <ul className="space-y-1.5 text-xs text-secondary mb-4">
+                  <ul className="space-y-1.5 text-xs text-secondary dark:text-darkmuted mb-4">
                     {(language === 'as' ? prod.featuresAs : prod.featuresEn).slice(0, 3).map((f, i) => (
                       <li key={i} className="flex items-start gap-1.5">
                         <CheckCircle2 className="w-3.5 h-3.5 text-orange shrink-0 mt-0.5" />
@@ -618,7 +618,7 @@ export const Home: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="pt-4 border-t border-lightgrey/60 text-[11px] text-secondary">
+                <div className="pt-4 border-t border-lightgrey/60 dark:border-darkborder text-[11px] text-secondary dark:text-darkmuted">
                   <strong>Compatibility:</strong> {prod.compatibility}
                 </div>
               </div>
@@ -628,17 +628,17 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION H: Workshop Photographic Documentation */}
-      <section className="py-16 bg-offwhite border-b border-lightgrey">
+      <section className="py-16 bg-offwhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="badge-tech text-secondary uppercase tracking-wider text-xs mb-2">
+              <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs mb-2">
                 {home.galleryPreview.sectionTag}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
                 {home.galleryPreview.title}
               </h2>
-              <p className="text-xs sm:text-sm text-secondary mt-1">
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
                 {home.galleryPreview.description}
               </p>
             </div>
@@ -653,7 +653,7 @@ export const Home: React.FC = () => {
               <div
                 key={item.id}
                 onClick={() => setActiveLightboxIndex(idx)}
-                className="card-premium overflow-hidden group cursor-pointer"
+                className="card-premium dark:bg-darkcard dark:border-darkborder overflow-hidden group cursor-pointer"
               >
                 <div className="aspect-[4/3] overflow-hidden relative">
                   <img
@@ -666,11 +666,11 @@ export const Home: React.FC = () => {
                     {item.tag}
                   </span>
                 </div>
-                <div className="p-4 bg-purewhite border-t border-lightgrey">
-                  <h4 className="font-heading font-bold text-xs text-charcoal group-hover:text-orange transition-colors">
+                <div className="p-4 bg-purewhite dark:bg-darkcard border-t border-lightgrey dark:border-darkborder">
+                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-darktext group-hover:text-orange transition-colors">
                     {language === 'as' ? item.titleAs : item.titleEn}
                   </h4>
-                  <p className="text-[11px] text-secondary mt-1 line-clamp-2">
+                  <p className="text-[11px] text-secondary dark:text-darkmuted mt-1 line-clamp-2">
                     {language === 'as' ? item.descAs : item.descEn}
                   </p>
                 </div>
@@ -681,17 +681,17 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION I: Video Gallery Preview */}
-      <section className="py-16 bg-purewhite border-b border-lightgrey">
+      <section className="py-16 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="badge-tech text-secondary uppercase tracking-wider text-xs mb-2">
+              <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs mb-2">
                 {home.videosPreview.sectionTag}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
                 {home.videosPreview.title}
               </h2>
-              <p className="text-xs sm:text-sm text-secondary mt-1">
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
                 {home.videosPreview.description}
               </p>
             </div>
@@ -705,7 +705,7 @@ export const Home: React.FC = () => {
             {videoGalleryData.map((vid) => (
               <div
                 key={vid.id}
-                className="card-premium overflow-hidden flex flex-col justify-between"
+                className="card-premium dark:bg-darkcard dark:border-darkborder overflow-hidden flex flex-col justify-between"
               >
                 <div>
                   <div className="relative aspect-video bg-charcoaldark overflow-hidden">
@@ -726,10 +726,10 @@ export const Home: React.FC = () => {
                   </div>
 
                   <div className="p-4">
-                    <h4 className="font-heading font-bold text-xs text-charcoal mb-2">
+                    <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite mb-2">
                       {language === 'as' ? vid.titleAs : vid.titleEn}
                     </h4>
-                    <p className="text-[11px] text-secondary leading-relaxed">
+                    <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                       {language === 'as' ? vid.descriptionAs : vid.descriptionEn}
                     </p>
                   </div>
@@ -751,49 +751,49 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION J: Authentic Customer Feedback & Technical Assurance (Light Theme, Zero Fake Claims) */}
-      <section className="py-16 bg-purewhite border-b border-lightgrey">
+      <section className="py-16 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
-          <div className="bg-[#F5F5F2] rounded-2xl border border-lightgrey p-8 sm:p-12">
+          <div className="bg-[#F5F5F2] dark:bg-darkcard rounded-2xl border border-lightgrey dark:border-darkborder p-8 sm:p-12">
             <div className="max-w-3xl mx-auto text-center space-y-4">
               <span className="text-orange text-xs font-bold uppercase tracking-wider block">
                 Customer Feedback & Technical Standards -
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
                 Transparent Engineering, <span className="text-orange">Zero Compromise</span>
               </h2>
-              <p className="text-xs sm:text-sm text-secondary leading-relaxed max-w-2xl mx-auto">
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed max-w-2xl mx-auto">
                 {language === 'as'
                   ? 'কাৰ্ছ এনাৰ্জীয়ে কোনো কৃত্ৰিম পৰ্যালোচনা প্ৰকাশ নকৰে। আমাৰ প্ৰতিটো সেৱা চৰকাৰী PESO আৰু CMVR মানদণ্ড অনুসৰি পৰীক্ষা কৰা হয়।'
                   : 'We publish only authentic, verified customer experiences. Every installation is backed by official RTO documentation, PESO hydrostatic compliance certificates, and real-time computerized diagnostic sheets.'}
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
-                <div className="bg-purewhite p-5 rounded-xl border border-lightgrey space-y-2">
-                  <div className="w-8 h-8 rounded-lg bg-orange-light text-orange flex items-center justify-center font-bold text-xs">
+                <div className="bg-purewhite dark:bg-darksurface p-5 rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
+                  <div className="w-8 h-8 rounded-lg bg-orange-light dark:bg-orange/20 text-orange flex items-center justify-center font-bold text-xs">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
-                  <h4 className="font-heading font-bold text-xs text-charcoal">Government RFC #261</h4>
-                  <p className="text-[11px] text-secondary leading-relaxed">
+                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Government RFC #261</h4>
+                  <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                     Official Transport Department license for passenger and commercial vehicle conversions.
                   </p>
                 </div>
 
-                <div className="bg-purewhite p-5 rounded-xl border border-lightgrey space-y-2">
-                  <div className="w-8 h-8 rounded-lg bg-orange-light text-orange flex items-center justify-center font-bold text-xs">
+                <div className="bg-purewhite dark:bg-darksurface p-5 rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
+                  <div className="w-8 h-8 rounded-lg bg-orange-light dark:bg-orange/20 text-orange flex items-center justify-center font-bold text-xs">
                     <CheckCircle2 className="w-4 h-4" />
                   </div>
-                  <h4 className="font-heading font-bold text-xs text-charcoal">PESO Hydro Testing</h4>
-                  <p className="text-[11px] text-secondary leading-relaxed">
+                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">PESO Hydro Testing</h4>
+                  <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                     In-house 330-bar pressure testing facility with statutory test certificates.
                   </p>
                 </div>
 
-                <div className="bg-purewhite p-5 rounded-xl border border-lightgrey space-y-2">
-                  <div className="w-8 h-8 rounded-lg bg-orange-light text-orange flex items-center justify-center font-bold text-xs">
+                <div className="bg-purewhite dark:bg-darksurface p-5 rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
+                  <div className="w-8 h-8 rounded-lg bg-orange-light dark:bg-orange/20 text-orange flex items-center justify-center font-bold text-xs">
                     <Award className="w-4 h-4" />
                   </div>
-                  <h4 className="font-heading font-bold text-xs text-charcoal">Direct Brand Spares</h4>
-                  <p className="text-[11px] text-secondary leading-relaxed">
+                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Direct Brand Spares</h4>
+                  <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                     Genuine Italian and Indian sequential kits with manufacturer warranty backing.
                   </p>
                 </div>
@@ -802,7 +802,7 @@ export const Home: React.FC = () => {
               <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
                 <Link
                   to="/testimonials"
-                  className="bg-purewhite hover:bg-lightgrey text-charcoal border border-bordergrey px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow-subtle inline-flex items-center gap-2"
+                  className="bg-purewhite dark:bg-darksurface hover:bg-lightgrey dark:hover:bg-darkborder text-charcoal dark:text-darktext border border-bordergrey dark:border-darkborder px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow-subtle inline-flex items-center gap-2"
                 >
                   <span>Customer Feedback Policy</span>
                   <ArrowRight className="w-3.5 h-3.5 text-orange" />
@@ -822,18 +822,18 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION K: Frequently Asked Questions (Accordion) */}
-      <section className="py-16 bg-offwhite border-b border-lightgrey">
+      <section className="py-16 bg-offwhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
                 {home.faqsSection.sectionTag} -
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
                 Frequently Asked <span className="text-orange">Questions</span>
               </h2>
               <div className="w-10 h-1 bg-orange rounded mx-auto my-3" />
-              <p className="text-xs sm:text-sm text-secondary mt-1">
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
                 {home.faqsSection.description}
               </p>
             </div>
@@ -844,23 +844,23 @@ export const Home: React.FC = () => {
                 return (
                   <div
                     key={faq.id}
-                    className="rounded-2xl border border-lightgrey overflow-hidden bg-purewhite shadow-subtle transition-colors"
+                    className="rounded-2xl border border-lightgrey dark:border-darkborder overflow-hidden bg-purewhite dark:bg-darkcard shadow-subtle transition-colors"
                   >
                     <button
                       type="button"
                       onClick={() => toggleFaq(faq.id)}
-                      className="w-full py-4 px-5 text-left flex items-center justify-between gap-4 font-heading font-bold text-xs sm:text-sm text-charcoal hover:text-orange transition-colors"
+                      className="w-full py-4 px-5 text-left flex items-center justify-between gap-4 font-heading font-bold text-xs sm:text-sm text-charcoal dark:text-darktext hover:text-orange transition-colors"
                     >
                       <span>{language === 'as' ? faq.questionAs : faq.questionEn}</span>
                       <ChevronDown
                         className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180 text-orange' : 'text-secondary'
+                          isOpen ? 'rotate-180 text-orange' : 'text-secondary dark:text-darkmuted'
                         }`}
                       />
                     </button>
 
                     {isOpen && (
-                      <div className="px-5 pb-5 pt-1 text-xs text-secondary leading-relaxed border-t border-lightgrey/40 animate-slide-up">
+                      <div className="px-5 pb-5 pt-1 text-xs text-secondary dark:text-darkmuted leading-relaxed border-t border-lightgrey/40 dark:border-darkborder animate-slide-up">
                         {language === 'as' ? faq.answerAs : faq.answerEn}
                       </div>
                     )}
@@ -880,7 +880,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION K2: Verification Callout Banner */}
-      <section className="py-14 bg-purewhite border-b border-lightgrey">
+      <section className="py-14 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="bg-[#1E2126] rounded-2xl p-8 sm:p-12 text-purewhite flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
             <div className="space-y-3 max-w-xl">
@@ -908,37 +908,37 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION L: Appointment Enquiry */}
-      <section id="appointment-section" className="py-16 bg-offwhite border-b border-lightgrey">
+      <section id="appointment-section" className="py-16 bg-offwhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-6">
-              <span className="badge-tech text-secondary uppercase tracking-wider text-xs">
+              <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs">
                 {home.quickAppointment.sectionTag}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal">
+              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
                 {home.quickAppointment.title}
               </h2>
-              <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
                 {home.quickAppointment.description}
               </p>
 
               <div className="space-y-4 pt-2">
-                <div className="p-4 bg-purewhite rounded-xl border border-lightgrey space-y-2">
-                  <span className="font-heading font-bold text-xs text-charcoal flex items-center gap-2">
+                <div className="p-4 bg-purewhite dark:bg-darkcard rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
+                  <span className="font-heading font-bold text-xs text-charcoal dark:text-purewhite flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-orange" />
                     Government Certified Fitment (RFC 261)
                   </span>
-                  <p className="text-[11px] text-secondary leading-relaxed">
+                  <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                     All installations comply with CMVR guidelines and include legitimate RTO documentation support.
                   </p>
                 </div>
 
-                <div className="p-4 bg-purewhite rounded-xl border border-lightgrey space-y-2">
-                  <span className="font-heading font-bold text-xs text-charcoal flex items-center gap-2">
+                <div className="p-4 bg-purewhite dark:bg-darkcard rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
+                  <span className="font-heading font-bold text-xs text-charcoal dark:text-purewhite flex items-center gap-2">
                     <Clock className="w-4 h-4 text-orange" />
                     Swift 1-Day Fitment Turnaround
                   </span>
-                  <p className="text-[11px] text-secondary leading-relaxed">
+                  <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                     Most standard 4-cylinder sequential kit installations are completed within 4 to 6 hours on appointment.
                   </p>
                 </div>
@@ -953,54 +953,58 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION M: Contact & Map Section */}
-      <section className="py-16 bg-purewhite">
+      <section className="py-16 bg-purewhite dark:bg-darksurface transition-colors">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Mundka Facility Box */}
-            <div className="p-6 sm:p-8 rounded-2xl border border-lightgrey bg-offwhite/50 space-y-4">
+            <div className="p-6 sm:p-8 rounded-2xl border border-lightgrey dark:border-darkborder bg-offwhite/50 dark:bg-darkcard space-y-4">
               <div className="flex items-center justify-between">
                 <span className="badge-orange text-[10px]">Primary Installation Hub</span>
-                <span className="text-xs font-semibold text-secondary">Mundka, Delhi</span>
+                <span className="text-xs font-semibold text-secondary dark:text-darkmuted">Mundka, Delhi</span>
               </div>
-              <h3 className="font-heading font-bold text-lg text-charcoal">
+              <h3 className="font-heading font-bold text-lg text-charcoal dark:text-purewhite">
                 Mundka Primary Retrofitment Facility
               </h3>
-              <p className="text-xs text-secondary leading-relaxed flex items-start gap-2">
+              <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
                 <span>215 & 216/5, Ground Floor, Opposite Metro Pillar Number 536, Mundka, Udyog Nagar (Kaleva Sweets Wali Gali), New Delhi - 110041</span>
               </p>
               <div className="flex flex-wrap items-center gap-4 text-xs pt-2">
-                <a href="tel:+919212218180" className="inline-flex items-center gap-1.5 font-bold text-charcoal hover:text-orange">
+                <a href="tel:+919212218180" className="inline-flex items-center gap-1.5 font-bold text-charcoal dark:text-darktext hover:text-orange">
                   <Phone className="w-3.5 h-3.5 text-orange" />
                   <span>+91 92122 18180</span>
                 </a>
-                <a href="https://wa.me/917982824255" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold text-emerald-700 hover:text-emerald-800">
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                <a href="https://wa.me/917982824255" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800">
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                   <span>+91 79828 24255</span>
                 </a>
               </div>
             </div>
 
             {/* Paschim Vihar Facility Box */}
-            <div className="p-6 sm:p-8 rounded-2xl border border-lightgrey bg-offwhite/50 space-y-4">
+            <div className="p-6 sm:p-8 rounded-2xl border border-lightgrey dark:border-darkborder bg-offwhite/50 dark:bg-darkcard space-y-4">
               <div className="flex items-center justify-between">
                 <span className="badge-tech text-[10px]">Express Service Center</span>
-                <span className="text-xs font-semibold text-secondary">Paschim Vihar, Delhi</span>
+                <span className="text-xs font-semibold text-secondary dark:text-darkmuted">Paschim Vihar, Delhi</span>
               </div>
-              <h3 className="font-heading font-bold text-lg text-charcoal">
+              <h3 className="font-heading font-bold text-lg text-charcoal dark:text-purewhite">
                 Paschim Vihar Express Center
               </h3>
-              <p className="text-xs text-secondary leading-relaxed flex items-start gap-2">
+              <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
                 <span>Shop No. 21, C.S.C. A-4, Gole D.D.A. Market, Rohtak Road, Paschim Vihar, New Delhi - 110063</span>
               </p>
               <div className="flex flex-wrap items-center gap-4 text-xs pt-2">
-                <a href="tel:+919212218180" className="inline-flex items-center gap-1.5 font-bold text-charcoal hover:text-orange">
+                <a href="tel:+919212218180" className="inline-flex items-center gap-1.5 font-bold text-charcoal dark:text-darktext hover:text-orange">
                   <Phone className="w-3.5 h-3.5 text-orange" />
                   <span>+91 92122 18180</span>
                 </a>
-                <span className="text-secondary text-xs flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5" />
+                <a href="https://wa.me/917982824255" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800">
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                  <span>+91 79828 24255</span>
+                </a>
+                <span className="text-secondary dark:text-darkmuted text-xs flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5 text-orange" />
                   <span>10:30 AM - 02:00 PM (Wed Closed)</span>
                 </span>
               </div>

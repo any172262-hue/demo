@@ -25,11 +25,11 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-lg bg-charcoal flex items-center justify-center text-orange border border-charcoallight">
-                <span className="font-heading font-black text-lg text-orange">D</span>
-                <span className="font-heading font-bold text-xs text-purewhite -ml-0.5">P</span>
+                <span className="font-heading font-black text-lg text-orange">C</span>
+                <span className="font-heading font-bold text-xs text-purewhite -ml-0.5">E</span>
               </div>
               <span className="font-heading font-extrabold text-lg text-purewhite tracking-tight">
-                DEMO <span className="text-orange">PAGE</span>
+                CAR'S ENERGY <span className="text-orange">CO.</span>
               </span>
             </div>
 

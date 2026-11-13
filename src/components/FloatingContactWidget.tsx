@@ -42,7 +42,7 @@ export const FloatingContactWidget: React.FC = () => {
   return (
     <div
       ref={widgetRef}
-      className="fixed bottom-6 right-5 sm:right-6 z-40 flex flex-col items-end"
+      className="floating-control fixed bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end"
       aria-label="Direct Workshop Contact Options"
     >
       {/* Expandable Menu Options */}

@@ -32,8 +32,8 @@ export const Products: React.FC = () => {
         canonicalPath="/products"
       />
 
-      {/* Hero / Header Section (Approved Light Theme) */}
-      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
+      {/* Hero / Header Section (Approved Light Theme & Dark Theme) */}
+      <section className="relative bg-[#F5F5F2] dark:bg-darkbg text-charcoal dark:text-darktext pt-8 pb-14 sm:pb-16 border-b border-lightgrey dark:border-darkborder overflow-hidden transition-colors">
         <div className="section-container relative z-10 space-y-6">
           <Breadcrumbs items={[{ label: pages.products.title }]} />
 
@@ -43,43 +43,43 @@ export const Products: React.FC = () => {
               <span>AUTHENTIC OEM HARDWARE • 100% PESO COMPLIANT</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
               {pages.products.title}
             </h1>
 
-            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
               {pages.products.subtitle}
             </p>
           </div>
 
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">100% Genuine</span>
-              <span className="text-[11px] text-secondary">Factory Serial Verified</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">100% Genuine</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Factory Serial Verified</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">PESO Certified</span>
-              <span className="text-[11px] text-secondary">Safety Directives</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Safety Directives</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Top Brands</span>
-              <span className="text-[11px] text-secondary">Motozen, Lovato, Tomasetto</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Top Brands</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Motozen, Lovato, Tomasetto</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">Warranty Backed</span>
-              <span className="text-[11px] text-secondary">Authorized Fitment</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Warranty Backed</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Authorized Fitment</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Authenticity Assurance Notice */}
-      <section className="py-6 bg-purewhite border-b border-lightgrey">
+      <section className="py-6 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
-          <div className="p-4 bg-[#EEF1F6] border border-[#DFE3E8] rounded-xl flex items-start gap-3">
+          <div className="p-4 bg-[#EEF1F6] dark:bg-darkcard border border-[#DFE3E8] dark:border-darkborder rounded-xl flex items-start gap-3">
             <ShieldCheck className="w-5 h-5 text-orange shrink-0 mt-0.5" />
-            <p className="text-xs text-charcoal leading-relaxed">
+            <p className="text-xs text-charcoal dark:text-darktext leading-relaxed">
               <strong className="text-orange">Official Distributor Guarantee:</strong> {pages.products.authenticityNotice}
             </p>
           </div>
@@ -87,15 +87,15 @@ export const Products: React.FC = () => {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-6 bg-offwhite border-b border-lightgrey">
+      <section className="py-6 bg-offwhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container flex flex-wrap items-center gap-2.5">
           <button
             type="button"
             onClick={() => setFilter('all')}
             className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
               filter === 'all'
-                ? 'bg-charcoal text-purewhite shadow-md'
-                : 'bg-purewhite text-secondary hover:text-charcoal border border-lightgrey'
+                ? 'bg-charcoal dark:bg-orange text-purewhite shadow-md'
+                : 'bg-purewhite dark:bg-darkcard text-secondary dark:text-darkmuted hover:text-charcoal dark:hover:text-purewhite border border-lightgrey dark:border-darkborder'
             }`}
           >
             {pages.products.filterAll}
@@ -105,8 +105,8 @@ export const Products: React.FC = () => {
             onClick={() => setFilter('kit')}
             className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
               filter === 'kit'
-                ? 'bg-charcoal text-purewhite shadow-md'
-                : 'bg-purewhite text-secondary hover:text-charcoal border border-lightgrey'
+                ? 'bg-charcoal dark:bg-orange text-purewhite shadow-md'
+                : 'bg-purewhite dark:bg-darkcard text-secondary dark:text-darkmuted hover:text-charcoal dark:hover:text-purewhite border border-lightgrey dark:border-darkborder'
             }`}
           >
             {pages.products.filterKits}
@@ -116,8 +116,8 @@ export const Products: React.FC = () => {
             onClick={() => setFilter('cylinder')}
             className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
               filter === 'cylinder'
-                ? 'bg-charcoal text-purewhite shadow-md'
-                : 'bg-purewhite text-secondary hover:text-charcoal border border-lightgrey'
+                ? 'bg-charcoal dark:bg-orange text-purewhite shadow-md'
+                : 'bg-purewhite dark:bg-darkcard text-secondary dark:text-darkmuted hover:text-charcoal dark:hover:text-purewhite border border-lightgrey dark:border-darkborder'
             }`}
           >
             {pages.products.filterCylinders}
@@ -127,8 +127,8 @@ export const Products: React.FC = () => {
             onClick={() => setFilter('component')}
             className={`px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
               filter === 'component'
-                ? 'bg-charcoal text-purewhite shadow-md'
-                : 'bg-purewhite text-secondary hover:text-charcoal border border-lightgrey'
+                ? 'bg-charcoal dark:bg-orange text-purewhite shadow-md'
+                : 'bg-purewhite dark:bg-darkcard text-secondary dark:text-darkmuted hover:text-charcoal dark:hover:text-purewhite border border-lightgrey dark:border-darkborder'
             }`}
           >
             {pages.products.filterComponents}
@@ -137,13 +137,13 @@ export const Products: React.FC = () => {
       </section>
 
       {/* Products Grid (Properly Managed Card Positioning & Heights) */}
-      <section className="py-16 sm:py-20 bg-purewhite">
+      <section className="py-16 sm:py-20 bg-purewhite dark:bg-darksurface transition-colors">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((prod) => (
               <div
                 key={prod.id}
-                className="bg-purewhite rounded-2xl border border-[#DFE3E8] shadow-subtle p-6 sm:p-7 flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 group"
+                className="bg-purewhite dark:bg-darkcard rounded-2xl border border-[#DFE3E8] dark:border-darkborder shadow-subtle p-6 sm:p-7 flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200 group"
               >
                 <div>
                   {/* Product Photography */}
@@ -163,19 +163,19 @@ export const Products: React.FC = () => {
                     </span>
                   </div>
 
-                  <h3 className="font-heading font-bold text-lg text-charcoal mb-2.5 group-hover:text-orange transition-colors">
+                  <h3 className="font-heading font-bold text-lg text-charcoal dark:text-purewhite mb-2.5 group-hover:text-orange transition-colors">
                     {prod.name}
                   </h3>
 
-                  <p className="text-xs text-secondary leading-relaxed mb-6">
+                  <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-6">
                     {language === 'as' ? prod.descriptionAs : prod.descriptionEn}
                   </p>
 
                   <div className="space-y-2 mb-6">
-                    <span className="text-[11px] font-bold text-charcoal uppercase tracking-wider block">
+                    <span className="text-[11px] font-bold text-charcoal dark:text-purewhite uppercase tracking-wider block">
                       Engineering Highlights:
                     </span>
-                    <ul className="space-y-1.5 text-xs text-secondary">
+                    <ul className="space-y-1.5 text-xs text-secondary dark:text-darkmuted">
                       {(language === 'as' ? prod.featuresAs : prod.featuresEn).map((f, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span className="w-1.5 h-1.5 rounded-sm bg-orange mt-1.5 shrink-0" />
@@ -186,9 +186,9 @@ export const Products: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-5 border-t border-lightgrey space-y-4">
-                  <div className="text-[11px] text-secondary">
-                    <span className="font-semibold text-charcoal">Compatibility:</span> {prod.compatibility}
+                <div className="pt-5 border-t border-lightgrey dark:border-darkborder space-y-4">
+                  <div className="text-[11px] text-secondary dark:text-darkmuted">
+                    <span className="font-semibold text-charcoal dark:text-purewhite">Compatibility:</span> {prod.compatibility}
                   </div>
                   <Link
                     to="/book-appointment"
@@ -205,7 +205,7 @@ export const Products: React.FC = () => {
       </section>
 
       {/* Distribution Enquiries Banner */}
-      <section className="py-16 sm:py-20 bg-purewhite border-t border-lightgrey">
+      <section className="py-16 sm:py-20 bg-purewhite dark:bg-darkbg border-t border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="p-8 sm:p-10 rounded-2xl bg-[#1E2126] border border-white/10 text-purewhite flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
             <div className="space-y-2">

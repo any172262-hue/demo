@@ -17,6 +17,8 @@ import {
   MapPin,
   ExternalLink,
   RefreshCw,
+  Copy,
+  Check,
 } from 'lucide-react';
 
 interface AppointmentFormProps {
@@ -43,14 +45,16 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
   });
 
   const [formStartTime] = useState(Date.now());
+  const [idempotencyKey] = useState(() => 'ce_idemp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9));
   const [utmData, setUtmData] = useState<UtmData | null>(null);
+  const [copiedMessage, setCopiedMessage] = useState(false);
 
   // Form State Machine
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isReviewOpen, setIsReviewOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [handoffState, setHandoffState] = useState<{
-    status: 'idle' | 'preparing' | 'opened' | 'failed' | 'submitted';
+    status: 'idle' | 'preparing' | 'opened' | 'failed' | 'backend_offline' | 'submitted';
     referenceNumber?: string;
     whatsappUrl?: string;
     errorMessage?: string;
@@ -215,15 +219,26 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
     return messageLines.join('\n');
   };
 
+  // Helper to copy prepared message
+  const handleCopyMessage = () => {
+    const refId = handoffState.referenceNumber || `CE-${new Date().getFullYear()}-ENQ`;
+    const text = buildWhatsAppMessage(refId);
+    navigator.clipboard.writeText(text);
+    setCopiedMessage(true);
+    setTimeout(() => setCopiedMessage(false), 3000);
+  };
+
   // Confirm in Modal -> Submit to Backend API and Handoff to WhatsApp
   const handleConfirmAndHandoff = async () => {
+    if (isSubmitting) return; // Prevent double-clicks
     setIsSubmitting(true);
     setHandoffState({ status: 'preparing' });
 
     try {
-      // 1. Submit to Backend API
+      // 1. Submit to Backend API with Idempotency Key
       const payload = {
         ...formData,
+        idempotencyKey,
         submittedAt: formStartTime,
         utm: utmData,
       };
@@ -261,6 +276,8 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
           }));
         }
       } else {
+        // Backend returned error - do not pretend it succeeded
+        setIsReviewOpen(false);
         setIsSubmitting(false);
         setHandoffState({
           status: 'failed',
@@ -268,13 +285,22 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
         });
       }
     } catch {
+      // Server offline or network connection lost - do not pretend enquiry was recorded
+      const offlineRef = `CE-OFFLINE-${Math.floor(1000 + Math.random() * 9000)}`;
+      const whatsappText = buildWhatsAppMessage(offlineRef);
+      const encodedText = encodeURIComponent(whatsappText);
+      const whatsappUrl = `https://wa.me/917982824255?text=${encodedText}`;
+
+      setIsReviewOpen(false);
       setIsSubmitting(false);
       setHandoffState({
-        status: 'failed',
+        status: 'backend_offline',
+        referenceNumber: offlineRef,
+        whatsappUrl,
         errorMessage:
           language === 'as'
-            ? 'চাৰ্ভাৰ সংযোগত সমস্যা হৈছে। অনুগ্ৰহ কৰি তলত দিয়া নম্বৰত পোনে পোনে যোগাযোগ কৰক।'
-            : 'Unable to connect to workshop server. Please call or WhatsApp our technical advisor directly.',
+            ? 'চাৰ্ভাৰ সংযোগত সমস্যা হৈছে (অনুসন্ধান পঞ্জীয়ন হোৱা নাই)। আপুনি পোনে পোনে আমাৰ চৰকাৰী হোৱাটছএপত বাৰ্তা প্ৰেৰণ কৰিব পাৰে।'
+            : 'Unable to connect to workshop database. Your enquiry has not been stored yet. You can still send your details directly via official WhatsApp or call our workshop.',
       });
     }
   };
@@ -320,18 +346,26 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
             <div className="space-y-2">
               <h4 className="font-heading font-bold text-base text-emerald-900 dark:text-emerald-200">
                 {language === 'as'
-                  ? 'অনুসন্ধান বাৰ্তা হোৱাটছএপত সাজু কৰা হৈছে'
+                  ? 'হোৱাটছএপত আপোনাৰ অনুসন্ধান বাৰ্তা প্ৰস্তুত কৰা হৈছে'
                   : 'Your enquiry message is ready in WhatsApp'}
               </h4>
-              <p className="text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed">
+              <p className="text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed font-semibold">
                 {language === 'as'
-                  ? 'আপোনাৰ অনুৰোধ আমাৰ ডাটাবেচত সফলতাৰে সংৰক্ষণ কৰা হৈছে (Ref: ' +
-                    handoffState.referenceNumber +
-                    ')। অনুগ্ৰহ কৰি হোৱাটছএপত বাৰ্তাটো পৰীক্ষা কৰক আৰু "Send" টিপক।'
-                  : 'Your appointment enquiry is registered in our workshop database. Please review the pre-filled message in WhatsApp and press Send.'}
+                  ? 'অনুগ্ৰহ কৰি ইয়াক পৰ্যালোচনা কৰক আৰু আমালৈ প্ৰেৰণ কৰিবলৈ Send টিপক।'
+                  : 'Please review it and press Send to share it with us.'}
               </p>
-              <div className="inline-block bg-white dark:bg-darkcard border border-emerald-300 dark:border-emerald-800 rounded px-3 py-1.5 text-xs font-mono font-bold text-emerald-900 dark:text-emerald-300">
-                Reference ID: {handoffState.referenceNumber}
+              <div className="p-3 bg-white/80 dark:bg-darkcard/80 border border-emerald-200 dark:border-emerald-800/60 rounded-lg text-xs space-y-1.5">
+                <div className="font-mono font-bold text-emerald-900 dark:text-emerald-200 flex flex-wrap items-center justify-between gap-2">
+                  <span>Enquiry Ref ID: {handoffState.referenceNumber}</span>
+                  <span className="text-[10px] bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200 px-2 py-0.5 rounded font-sans">
+                    Enquiry Logged in Database
+                  </span>
+                </div>
+                <p className="text-[11px] text-emerald-700 dark:text-emerald-400 leading-relaxed">
+                  {language === 'as'
+                    ? 'মন কৰিব: হোৱাটছএপ খোল খোৱাৰ অৰ্থ এইটো নহয় যে এপইণ্টমেণ্ট নিশ্চিত হৈছে। কাৰিকৰী পৰামৰ্শদাতাই বাহনৰ প্ৰয়োজনীয়তা পৰীক্ষা কৰি স্লট নিশ্চিত কৰাৰ পিছতহে এপইণ্টমেণ্ট নিশ্চিত হ’ব।'
+                    : 'Important: Opening WhatsApp does NOT mean the enquiry was sent or confirmed. An appointment is confirmed only after our technical advisor reviews your vehicle details and confirms slot allocation.'}
+                </p>
               </div>
             </div>
           </div>
@@ -354,12 +388,69 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
 
             <button
               type="button"
+              onClick={() => handleCopyMessage()}
+              className="px-4 py-2.5 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-white dark:bg-darkcard text-emerald-900 dark:text-emerald-200 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 text-xs font-bold transition-colors inline-flex items-center gap-1.5"
+            >
+              {copiedMessage ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-emerald-600" />}
+              <span>{copiedMessage ? (language === 'as' ? 'কপি কৰা হ’ল!' : 'Message Copied!') : (language === 'as' ? 'বাৰ্তা কপি কৰক' : 'Copy Prepared Message')}</span>
+            </button>
+
+            <button
+              type="button"
               onClick={handleResetForm}
               className="px-4 py-2.5 rounded-lg border border-bordergrey dark:border-darkborder text-charcoal dark:text-darktext hover:bg-lightgrey dark:hover:bg-darkcard text-xs font-bold transition-colors inline-flex items-center gap-1.5"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>{language === 'as' ? 'নতুন বুকিং কৰক' : 'Submit Another Enquiry'}</span>
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* BACKEND OFFLINE / STORAGE UNAVAILABLE STATE (Do not pretend recorded) */}
+      {handoffState.status === 'backend_offline' && (
+        <div className="mb-6 p-5 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/40 rounded-xl text-xs text-amber-900 dark:text-amber-200 space-y-3 animate-fade-in">
+          <div className="flex items-start gap-2.5">
+            <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+            <div className="space-y-1">
+              <h5 className="font-heading font-bold text-sm text-amber-900 dark:text-amber-100">
+                {language === 'as' ? 'চাৰ্ভাৰ সংযোগত সমস্যা (অনুসন্ধান ডাটাবেচত সংৰক্ষণ হোৱা নাই)' : 'Backend Storage Unavailable (Enquiry Not Yet Saved)'}
+              </h5>
+              <p className="leading-relaxed text-amber-800 dark:text-amber-300">
+                {language === 'as'
+                  ? 'কাৰিকৰী সংযোগৰ সমস্যাৰ বাবে আমি আপোনাৰ অনুসন্ধান কৰ্মশালাৰ ডাটাবেচত সংৰক্ষণ কৰিব নোৱাৰিলোঁ। আপোনাৰ অনুসন্ধান এতিয়াও ৰেকৰ্ড হোৱা নাই। আপুনি পোনে পোনে আমাৰ চৰকাৰী হোৱাটছএপ (+91 79828 24255) যোগে বাৰ্তা প্ৰেৰণ কৰিব পাৰে বা কৰ্মশালাত ফোন কৰিব পাৰে।'
+                  : 'Due to a temporary server connection issue, your enquiry could not be saved to our workshop database and has NOT been recorded yet. You can still send your details directly via official WhatsApp (+91 79828 24255), copy your prepared message, or call our workshop advisor directly.'}
+              </p>
+            </div>
+          </div>
+          <div className="pt-2 flex flex-wrap gap-2.5">
+            {handoffState.whatsappUrl && (
+              <a
+                href={handoffState.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-purewhite font-bold inline-flex items-center gap-1.5 shadow-sm"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>{language === 'as' ? 'হোৱাটছএপত পোনপটীয়া প্ৰেৰণ' : 'Send via WhatsApp Direct (+91 79828 24255)'}</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
+            <button
+              type="button"
+              onClick={() => handleCopyMessage()}
+              className="px-4 py-2.5 rounded-lg border border-amber-300 dark:border-amber-700 bg-white dark:bg-darkcard text-amber-900 dark:text-amber-200 hover:bg-amber-100 font-bold inline-flex items-center gap-1.5"
+            >
+              {copiedMessage ? <Check className="w-3.5 h-3.5 text-amber-700" /> : <Copy className="w-3.5 h-3.5 text-amber-700" />}
+              <span>{copiedMessage ? (language === 'as' ? 'কপি কৰা হ’ল!' : 'Message Copied!') : (language === 'as' ? 'বাৰ্তা কপি কৰক' : 'Copy Prepared Message')}</span>
+            </button>
+            <a
+              href="tel:+919212218180"
+              className="px-4 py-2.5 rounded-lg bg-charcoal dark:bg-darkcard text-purewhite font-bold inline-flex items-center gap-1.5"
+            >
+              <Phone className="w-3.5 h-3.5 text-orange" />
+              <span>{language === 'as' ? 'ফোন কৰক (+91 92122 18180)' : 'Call Workshop Hotline (+91 92122 18180)'}</span>
+            </a>
           </div>
         </div>
       )}
@@ -770,23 +861,52 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
             </p>
           )}
 
+          {/* Privacy Information Disclosure & Link to Privacy Policy */}
+          <div className="p-3.5 rounded-lg bg-offwhite dark:bg-darkbg border border-lightgrey dark:border-darkborder text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
+            <span className="font-semibold text-charcoal dark:text-darktext">
+              {language === 'as' ? 'গোপনীয়তা সুৰক্ষা:' : 'Privacy Protection:'}{' '}
+            </span>
+            {language === 'as'
+              ? 'পৰিবহণ বিভাগৰ RFC ক’ড নং ২৬১-ৰ অধীনত, কাৰ্ছ এনাৰ্জী কো.-এ কেৱল চিএনজি সংস্থাপনৰ যোগ্যতা নিৰ্ধাৰণ আৰু কৰ্মশালাৰ বে’ আবণ্টনৰ বাবেহে আপোনাৰ তথ্য সংগ্ৰহ কৰে। আমি কেতিয়াও আপোনাৰ ব্যক্তিগত তথ্য বিক্ৰী নকৰো বা ব্ৰাউজাৰ ষ্ট’ৰেজত সংৰক্ষণ নকৰো। অধিক তথ্যৰ বাবে আমাৰ '
+              : 'Under Transport Dept. RFC Code No. 261, we collect vehicle details and mobile number solely to assess CNG compatibility and allocate inspection slots. We never sell your data, use third-party ad tracking scripts, or store personal details in browser storage. Read our '}
+            <a
+              href="/privacy-policy"
+              className="text-orange hover:underline font-semibold"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {language === 'as' ? 'গোপনীয়তা নীতি' : 'Privacy Policy'}
+            </a>
+            .
+          </div>
+
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-3.5 px-6 rounded-lg bg-orange hover:bg-orange-hover active:scale-[0.99] text-purewhite font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-orange/30 flex items-center justify-center gap-2"
+              disabled={isSubmitting}
+              className="w-full py-3.5 px-6 rounded-lg bg-orange hover:bg-orange-hover active:scale-[0.99] text-purewhite font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-orange/30 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <Calendar className="w-4 h-4" />
-              <span>
-                {language === 'as'
-                  ? 'তথ্য পৰীক্ষা কৰি হোৱাটছএপত বুক কৰক'
-                  : 'Review & Continue to WhatsApp Booking'}
-              </span>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>{language === 'as' ? 'প্ৰক্ৰিয়াকৰণ কৰি থকা হৈছে...' : 'Processing...'}</span>
+                </>
+              ) : (
+                <>
+                  <Calendar className="w-4 h-4" />
+                  <span>
+                    {language === 'as'
+                      ? 'তথ্য পৰীক্ষা কৰি হোৱাটছএপত বুক কৰক'
+                      : 'Review & Continue to WhatsApp Booking'}
+                  </span>
+                </>
+              )}
             </button>
           </div>
 
           <p className="text-[11px] text-center text-secondary dark:text-darkmuted">
             {language === 'as'
-              ? 'চৰকাৰী অনুমোদিত RFC ক’ড নং ২৬১ • কোনো ভুৱা বুকিং নাই'
+              ? 'চৰকাৰী অনুমোদিত RFC ক’ড নং ২৬১ • কোনো ভুৱা বুকিং নাই • হোৱাটছএপ (+91 79828 24255)'
               : 'Govt. Approved Retrofitting Center (RFC Code No. 261) • Official WhatsApp (+91 79828 24255)'}
           </p>
         </div>

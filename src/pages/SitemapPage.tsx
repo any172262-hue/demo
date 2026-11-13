@@ -35,7 +35,7 @@ export const SitemapPage: React.FC = () => {
         canonicalPath="/sitemap"
       />
 
-      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
+      <section className="relative bg-[#F5F5F2] dark:bg-darkbg text-charcoal dark:text-darktext pt-8 pb-14 sm:pb-16 border-b border-lightgrey dark:border-darkborder overflow-hidden">
         <div className="section-container relative z-10 space-y-4">
           <Breadcrumbs items={[{ label: pages.legal.sitemapTitle }]} />
           <div className="max-w-3xl space-y-3 pt-1">
@@ -43,21 +43,21 @@ export const SitemapPage: React.FC = () => {
               <ShieldCheck className="w-4 h-4 text-orange" />
               <span>INDEX & DIRECTORY ARCHITECTURE</span>
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-charcoal tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-charcoal dark:text-purewhite tracking-tight">
               {pages.legal.sitemapTitle}
             </h1>
-            <p className="text-sm sm:text-base text-secondary leading-relaxed">
+            <p className="text-sm sm:text-base text-secondary dark:text-darkmuted leading-relaxed">
               {pages.legal.sitemapSubtitle}
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-purewhite">
+      <section className="py-16 bg-purewhite dark:bg-darksurface">
         <div className="section-container max-w-5xl space-y-12">
           {/* Main Pages */}
           <div className="space-y-4">
-            <h2 className="text-lg font-heading font-bold text-charcoal border-b border-lightgrey pb-2">
+            <h2 className="text-lg font-heading font-bold text-charcoal dark:text-purewhite border-b border-lightgrey dark:border-darkborder pb-2">
               Primary Navigation Pages
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -65,14 +65,14 @@ export const SitemapPage: React.FC = () => {
                 <Link
                   key={p.path}
                   to={p.path}
-                  className="p-4 rounded-xl border border-lightgrey hover:border-orange hover:bg-orange-subtle transition-colors flex items-start gap-3"
+                  className="p-4 rounded-xl border border-lightgrey dark:border-darkborder bg-purewhite dark:bg-darkcard hover:border-orange hover:bg-orange-subtle dark:hover:bg-orange/10 transition-colors flex items-start gap-3"
                 >
                   <ChevronRight className="w-4 h-4 text-orange shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-heading font-bold text-xs text-charcoal block">
+                    <span className="font-heading font-bold text-xs text-charcoal dark:text-purewhite block">
                       {p.name}
                     </span>
-                    <span className="font-mono text-[11px] text-secondary">
+                    <span className="font-mono text-[11px] text-secondary dark:text-darkmuted">
                       {p.path}
                     </span>
                   </div>
@@ -83,7 +83,7 @@ export const SitemapPage: React.FC = () => {
 
           {/* Specialized Services */}
           <div className="space-y-4">
-            <h2 className="text-lg font-heading font-bold text-charcoal border-b border-lightgrey pb-2">
+            <h2 className="text-lg font-heading font-bold text-charcoal dark:text-purewhite border-b border-lightgrey dark:border-darkborder pb-2">
               All 10 Specialized Engineering Services
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -91,14 +91,14 @@ export const SitemapPage: React.FC = () => {
                 <Link
                   key={s.slug}
                   to={`/services/${s.slug}`}
-                  className="p-4 rounded-xl border border-lightgrey hover:border-orange hover:bg-orange-subtle transition-colors flex items-start gap-3"
+                  className="p-4 rounded-xl border border-lightgrey dark:border-darkborder bg-purewhite dark:bg-darkcard hover:border-orange hover:bg-orange-subtle dark:hover:bg-orange/10 transition-colors flex items-start gap-3"
                 >
                   <ChevronRight className="w-4 h-4 text-orange shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-heading font-bold text-xs text-charcoal block">
+                    <span className="font-heading font-bold text-xs text-charcoal dark:text-purewhite block">
                       {language === 'as' ? s.titleAs : s.titleEn}
                     </span>
-                    <span className="font-mono text-[11px] text-secondary">
+                    <span className="font-mono text-[11px] text-secondary dark:text-darkmuted">
                       /services/{s.slug}
                     </span>
                   </div>
@@ -109,27 +109,27 @@ export const SitemapPage: React.FC = () => {
 
           {/* Products & Conversion Kits */}
           <div className="space-y-4">
-            <h2 className="text-lg font-heading font-bold text-charcoal border-b border-lightgrey pb-2">
+            <h2 className="text-lg font-heading font-bold text-charcoal dark:text-purewhite border-b border-lightgrey dark:border-darkborder pb-2">
               Approved CNG Hardware & Brands
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {productsData.map((prod) => (
                 <div
                   key={prod.id}
-                  className="p-4 rounded-xl border border-lightgrey bg-offwhite/40 space-y-1"
+                  className="p-4 rounded-xl border border-lightgrey dark:border-darkborder bg-offwhite/40 dark:bg-darkcard space-y-1"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono bg-lightgrey px-1.5 py-0.5 rounded text-secondary">
+                    <span className="text-[10px] font-mono bg-lightgrey dark:bg-darkbg px-1.5 py-0.5 rounded text-secondary dark:text-darkmuted">
                       {prod.origin}
                     </span>
-                    <span className="text-[10px] text-emerald-700 font-semibold">
+                    <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-semibold">
                       {prod.status}
                     </span>
                   </div>
-                  <h3 className="font-heading font-bold text-xs text-charcoal">
+                  <h3 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">
                     {prod.name}
                   </h3>
-                  <p className="text-[11px] text-secondary line-clamp-2">
+                  <p className="text-[11px] text-secondary dark:text-darkmuted line-clamp-2">
                     {language === 'as' ? prod.descriptionAs : prod.descriptionEn}
                   </p>
                 </div>

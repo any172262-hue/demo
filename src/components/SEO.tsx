@@ -20,7 +20,7 @@ export const SEO: React.FC<SEOProps> = ({
   const { language } = useLanguage();
   const siteUrl = 'https://carsenergy.co.in';
   const fullCanonical = `${siteUrl}${canonicalPath}`;
-  const fullTitle = `${title} | Demo Page`;
+  const fullTitle = `${title} | Car's Energy Co.`;
 
   // Default LocalBusiness Schema
   const defaultSchema = {

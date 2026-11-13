@@ -42,8 +42,8 @@ export const ServicesOverview: React.FC = () => {
         canonicalPath="/services"
       />
 
-      {/* Hero / Header Section (Approved Light Theme) */}
-      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
+      {/* Hero / Header Section (Approved Light Theme & Dark Theme) */}
+      <section className="relative bg-[#F5F5F2] dark:bg-darkbg text-charcoal dark:text-darktext pt-8 pb-14 sm:pb-16 border-b border-lightgrey dark:border-darkborder overflow-hidden transition-colors">
         <div className="section-container relative z-10 space-y-6">
           <Breadcrumbs items={[{ label: common.nav.services }]} />
 
@@ -53,41 +53,41 @@ export const ServicesOverview: React.FC = () => {
               <span>CERTIFIED CNG PROPULSION • 10 SPECIALIZED SERVICES</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
               {services.pageTitle}
             </h1>
 
-            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
               {services.pageSubtitle}
             </p>
           </div>
 
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">10 Services</span>
-              <span className="text-[11px] text-secondary">End-to-End Solutions</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">10 Services</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">End-to-End Solutions</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">RFC #261</span>
-              <span className="text-[11px] text-secondary">Govt. Approved</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Govt. Approved</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">OBD-II Sync</span>
-              <span className="text-[11px] text-secondary">Digital Tuning</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">OBD-II Sync</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Digital Tuning</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">330 Bar</span>
-              <span className="text-[11px] text-secondary">Hydro-Testing Bay</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">330 Bar</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Hydro-Testing Bay</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Filter / Search Bar */}
-      <section className="py-6 bg-purewhite border-b border-lightgrey">
+      <section className="py-6 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs font-semibold text-charcoal flex items-center gap-2">
+          <div className="text-xs font-semibold text-charcoal dark:text-purewhite flex items-center gap-2">
             <Filter className="w-4 h-4 text-orange" />
             <span>
               Showing <span className="text-orange font-bold">{filteredServices.length}</span> of {servicesData.length} specialized engineering services
@@ -95,20 +95,20 @@ export const ServicesOverview: React.FC = () => {
           </div>
 
           <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 text-secondary absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-secondary dark:text-darkmuted absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={language === 'as' ? 'সেৱা সন্ধান কৰক...' : 'Search services (e.g. tuning, hydro, kit)...'}
-              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-lg border border-lightgrey focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none bg-offwhite/60 transition-all"
+              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-lg border border-lightgrey dark:border-darkborder focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none bg-offwhite/60 dark:bg-darkcard text-charcoal dark:text-purewhite transition-all"
             />
           </div>
         </div>
       </section>
 
       {/* Service Cards Grid (Properly Managed Spacing and Alignment) */}
-      <section className="py-16 sm:py-20 bg-offwhite">
+      <section className="py-16 sm:py-20 bg-offwhite dark:bg-darkbg transition-colors">
         <div className="section-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredServices.map((service) => (
@@ -117,14 +117,14 @@ export const ServicesOverview: React.FC = () => {
           </div>
 
           {filteredServices.length === 0 && (
-            <div className="text-center py-16 bg-purewhite rounded-2xl border border-lightgrey max-w-lg mx-auto">
-              <p className="text-sm text-secondary">
+            <div className="text-center py-16 bg-purewhite dark:bg-darkcard rounded-2xl border border-lightgrey dark:border-darkborder max-w-lg mx-auto">
+              <p className="text-sm text-secondary dark:text-darkmuted">
                 No matching services found for "{searchQuery}".
               </p>
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="mt-4 px-6 py-2.5 rounded-lg border border-charcoal text-charcoal hover:bg-charcoal hover:text-purewhite text-xs font-bold uppercase tracking-wider transition-all"
+                className="mt-4 px-6 py-2.5 rounded-lg border border-charcoal dark:border-darkborder text-charcoal dark:text-darktext hover:bg-charcoal hover:text-purewhite text-xs font-bold uppercase tracking-wider transition-all"
               >
                 Reset Search Filter
               </button>
@@ -134,7 +134,7 @@ export const ServicesOverview: React.FC = () => {
       </section>
 
       {/* Direct Technical Consultation CTA Banner */}
-      <section className="py-16 sm:py-20 bg-purewhite border-t border-lightgrey">
+      <section className="py-16 sm:py-20 bg-purewhite dark:bg-darksurface border-t border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="bg-[#1E2126] rounded-2xl p-8 sm:p-12 text-purewhite text-center max-w-3xl mx-auto space-y-6 shadow-xl">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">

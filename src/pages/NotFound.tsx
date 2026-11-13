@@ -14,9 +14,9 @@ export const NotFound: React.FC = () => {
         description={pages.notFound.subtitle}
       />
 
-      <section className="min-h-[70vh] flex items-center justify-center py-20 bg-offwhite">
+      <section className="min-h-[70vh] flex items-center justify-center py-20 bg-offwhite dark:bg-darkbg text-charcoal dark:text-darktext">
         <div className="section-container max-w-xl text-center space-y-6">
-          <div className="w-20 h-20 rounded-2xl bg-orange-light text-orange flex items-center justify-center mx-auto shadow-subtle">
+          <div className="w-20 h-20 rounded-2xl bg-orange-light dark:bg-orange/20 text-orange flex items-center justify-center mx-auto shadow-subtle">
             <AlertOctagon className="w-10 h-10" />
           </div>
 
@@ -24,10 +24,10 @@ export const NotFound: React.FC = () => {
             <span className="font-mono text-sm font-bold text-orange tracking-wider uppercase">
               Error 404
             </span>
-            <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-charcoal">
+            <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-charcoal dark:text-purewhite">
               {pages.notFound.title}
             </h1>
-            <p className="text-sm text-secondary leading-relaxed">
+            <p className="text-sm text-secondary dark:text-darkmuted leading-relaxed">
               {pages.notFound.subtitle}
             </p>
           </div>

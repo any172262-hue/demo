@@ -59,26 +59,26 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         </span>
 
         {/* Technical Icon Inset */}
-        <div className="absolute -bottom-4 right-4 w-10 h-10 rounded-xl bg-purewhite border border-lightgrey shadow-md flex items-center justify-center text-charcoal group-hover:bg-orange group-hover:text-purewhite transition-colors duration-300">
+        <div className="absolute -bottom-4 right-4 w-10 h-10 rounded-xl bg-purewhite dark:bg-darksurface border border-lightgrey dark:border-darkborder shadow-md flex items-center justify-center text-charcoal dark:text-purewhite group-hover:bg-orange group-hover:text-purewhite transition-colors duration-300">
           <IconComponent className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
         </div>
       </div>
 
       <div className="p-5 sm:p-6 flex flex-col justify-between flex-grow">
         <div>
-          <h3 className="font-heading font-bold text-base text-charcoal group-hover:text-orange transition-colors mb-2 mt-1">
+          <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite group-hover:text-orange transition-colors mb-2 mt-1">
             {title}
           </h3>
 
-          <p className="text-xs text-secondary leading-relaxed mb-6">
+          <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-6">
             {shortDesc}
           </p>
         </div>
 
-        <div className="pt-4 border-t border-lightgrey/70 flex items-center justify-between">
+        <div className="pt-4 border-t border-lightgrey/70 dark:border-darkborder flex items-center justify-between">
           <Link
             to={`/services/${service.slug}`}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal group-hover:text-orange transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal dark:text-darktext group-hover:text-orange transition-colors"
           >
             <span>{common.buttons.viewDetails}</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1 text-orange" />

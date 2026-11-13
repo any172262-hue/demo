@@ -26,8 +26,8 @@ export const Testimonials: React.FC = () => {
         canonicalPath="/testimonials"
       />
 
-      {/* Hero / Header Section (Approved Light Theme) */}
-      <section className="relative bg-[#F5F5F2] text-charcoal pt-8 pb-14 sm:pb-16 border-b border-lightgrey overflow-hidden">
+      {/* Hero / Header Section (Approved Light & Dark Theme) */}
+      <section className="relative bg-[#F5F5F2] dark:bg-darkbg text-charcoal dark:text-darktext pt-8 pb-14 sm:pb-16 border-b border-lightgrey dark:border-darkborder overflow-hidden">
         <div className="section-container relative z-10 space-y-6">
           <Breadcrumbs items={[{ label: language === 'as' ? 'গ্ৰাহকৰ মতামত' : 'Customer Feedback' }]} />
 
@@ -37,11 +37,11 @@ export const Testimonials: React.FC = () => {
               <span>QUALITY ASSURANCE • RFC CODE NO. 261</span>
             </div>
 
-            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
               {language === 'as' ? 'গ্ৰাহকৰ মতামত আৰু কাৰিকৰী মানদণ্ড' : 'Customer Feedback & Technical Standards'}
             </h1>
 
-            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
+            <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
               {language === 'as'
                 ? 'কাৰ্ছ এনাৰ্জীয়ে কোনো কৃত্ৰিম পৰ্যালোচনা প্ৰকাশ নকৰে। আমাৰ প্ৰতিটো সেৱা চৰকাৰী PESO আৰু CMVR মানদণ্ড অনুসৰি পৰীক্ষা কৰা হয়।'
                 : 'At Car’s Energy Co., we publish only genuine, verified feedback. Learn how we maintain engineering integrity and how vehicle owners can submit authentic reviews.'}
@@ -50,67 +50,67 @@ export const Testimonials: React.FC = () => {
 
           {/* 4 Verified Credential Chips */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">26+ Years</span>
-              <span className="text-[11px] text-secondary">Established 1998</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">26+ Years</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Established 1998</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">RFC #261</span>
-              <span className="text-[11px] text-secondary">Transport Dept. Approved</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Transport Dept. Approved</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">2 Centers</span>
-              <span className="text-[11px] text-secondary">Mundka & Paschim Vihar</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">2 Centers</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Mundka & Paschim Vihar</span>
             </div>
-            <div className="bg-purewhite border border-lightgrey rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal">PESO Bay</span>
-              <span className="text-[11px] text-secondary">330-Bar Hydro Testing</span>
+            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">PESO Bay</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">330-Bar Hydro Testing</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Main Feedback Policy Section */}
-      <section className="py-16 bg-offwhite border-b border-lightgrey">
+      <section className="py-16 bg-offwhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             {/* Left 7 Columns: Our Authenticity Commitment */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="bg-purewhite rounded-2xl border border-lightgrey p-7 sm:p-9 shadow-subtle space-y-5">
+              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-7 sm:p-9 shadow-subtle space-y-5">
                 <span className="badge-orange text-xs">Our Authenticity Commitment</span>
-                <h2 className="text-2xl font-heading font-extrabold text-charcoal">
+                <h2 className="text-2xl font-heading font-extrabold text-charcoal dark:text-purewhite">
                   Zero Fake Reviews. 100% Technical Evidence.
                 </h2>
-                <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+                <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
                   In compliance with our strict corporate quality guidelines, Car’s Energy Co. does not invent testimonials, customer review counts, or star ratings. Instead, every vehicle conversion or service performed at our Mundka and Paschim Vihar workshops is documented through physical inspection records and statutory certificates.
                 </p>
 
                 <div className="space-y-3 pt-2">
-                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite border border-lightgrey/80">
+                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite dark:bg-darkcard border border-lightgrey/80 dark:border-darkborder">
                     <FileCheck className="w-5 h-5 text-orange shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-heading font-bold text-xs text-charcoal">Diagnostic Verification</h4>
-                      <p className="text-[11px] text-secondary leading-relaxed">
+                      <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Diagnostic Verification</h4>
+                      <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                         Every sequential kit installation receives a computerized OBD-II sensor health check and digital fuel mapping test before handover.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite border border-lightgrey/80">
+                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite dark:bg-darkcard border border-lightgrey/80 dark:border-darkborder">
                     <ShieldCheck className="w-5 h-5 text-orange shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-heading font-bold text-xs text-charcoal">Statutory PESO Compliance</h4>
-                      <p className="text-[11px] text-secondary leading-relaxed">
+                      <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Statutory PESO Compliance</h4>
+                      <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                         Hydro-testing is conducted using high-precision water jacket displacement rigs and stamped with authorized inspector credentials.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite border border-lightgrey/80">
+                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite dark:bg-darkcard border border-lightgrey/80 dark:border-darkborder">
                     <Award className="w-5 h-5 text-orange shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-heading font-bold text-xs text-charcoal">Direct Manufacturer Backing</h4>
-                      <p className="text-[11px] text-secondary leading-relaxed">
+                      <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Direct Manufacturer Backing</h4>
+                      <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
                         Authorized distributor support for Lovato, Motozen, Gastech Italy, Mijo, and STAG genuine spare parts and warranty.
                       </p>
                     </div>
@@ -119,12 +119,12 @@ export const Testimonials: React.FC = () => {
               </div>
 
               {/* How to Leave Genuine Google Feedback */}
-              <div className="bg-purewhite rounded-2xl border border-lightgrey p-7 sm:p-9 shadow-subtle space-y-4">
+              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-7 sm:p-9 shadow-subtle space-y-4">
                 <span className="badge-tech text-xs">Public Feedback</span>
-                <h3 className="text-lg font-heading font-bold text-charcoal">
+                <h3 className="text-lg font-heading font-bold text-charcoal dark:text-purewhite">
                   How Customers Share Real Feedback
                 </h3>
-                <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+                <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
                   We encourage all vehicle owners who have availed CNG kit installation, cylinder testing, or ECU tuning to share their honest feedback on our official Google Business Profile or submit direct feedback to our technical desk.
                 </p>
                 <div className="pt-2 flex flex-wrap gap-3">
@@ -139,7 +139,7 @@ export const Testimonials: React.FC = () => {
                   </a>
                   <a
                     href="tel:+919212218180"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-bordergrey hover:border-orange text-charcoal hover:text-orange font-heading font-bold text-xs uppercase tracking-wider transition-all"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-bordergrey dark:border-darkborder hover:border-orange text-charcoal dark:text-darktext hover:text-orange font-heading font-bold text-xs uppercase tracking-wider transition-all"
                   >
                     <Phone className="w-4 h-4 text-orange" />
                     <span>Call Desk (+91 92122 18180)</span>
@@ -150,12 +150,12 @@ export const Testimonials: React.FC = () => {
 
             {/* Right 5 Columns: Submit Service Feedback Card */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="bg-purewhite rounded-2xl border border-lightgrey p-7 shadow-premium space-y-5">
+              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-7 shadow-premium space-y-5">
                 <span className="badge-orange text-xs">Direct Technical Desk</span>
-                <h3 className="text-lg font-heading font-bold text-charcoal">
+                <h3 className="text-lg font-heading font-bold text-charcoal dark:text-purewhite">
                   Have Questions or Feedback?
                 </h3>
-                <p className="text-xs text-secondary leading-relaxed">
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
                   Whether you wish to enquire about your car model’s CNG compatibility or provide feedback regarding a recent workshop visit, our direct enquiry desk is ready to assist.
                 </p>
 
@@ -170,14 +170,14 @@ export const Testimonials: React.FC = () => {
 
                   <Link
                     to="/book-appointment"
-                    className="w-full py-3 px-5 rounded-lg bg-purewhite hover:bg-lightgrey text-charcoal border border-bordergrey font-heading font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
+                    className="w-full py-3 px-5 rounded-lg bg-purewhite dark:bg-darkcard hover:bg-lightgrey dark:hover:bg-darkbg text-charcoal dark:text-purewhite border border-bordergrey dark:border-darkborder font-heading font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
                   >
                     <Calendar className="w-4 h-4 text-orange" />
                     <span>Book Workshop Inspection</span>
                   </Link>
                 </div>
 
-                <div className="pt-4 border-t border-lightgrey/80 text-[11px] text-secondary space-y-1">
+                <div className="pt-4 border-t border-lightgrey/80 dark:border-darkborder text-[11px] text-secondary dark:text-darkmuted space-y-1">
                   <p><strong>Primary Facility:</strong> Opp. Metro Pillar 536, Mundka, Delhi</p>
                   <p><strong>Express Center:</strong> Shop 21, DDA Market, Paschim Vihar, Delhi</p>
                   <p><strong>Hours:</strong> 10:30 AM - 07:00 PM (Wednesday Closed)</p>

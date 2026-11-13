@@ -218,13 +218,48 @@ app.post('/api/appointments', formLimiter, (req, res) => {
       });
     }
 
-    // 4. Generate Unique Official Reference ID
+    // 4. Idempotency Check & Duplicate Submission Prevention
+    const cleanIdempotencyKey = req.body.idempotencyKey ? sanitizeString(req.body.idempotencyKey) : null;
+    const cleanMobileNum = mobileNumber.replace(/[\s\-\+]/g, '');
+    const records = readDatabase();
+
+    const existingEnquiry = records.find(r => {
+      if (cleanIdempotencyKey && r.idempotencyKey && r.idempotencyKey === cleanIdempotencyKey) {
+        return true;
+      }
+      // Deduplicate if identical mobile number, vehicle model and workshop within the last 60 seconds
+      if (r.customer && r.customer.mobileNumber === cleanMobileNum &&
+          r.vehicle && r.vehicle.model === cleanModel &&
+          r.booking && r.booking.workshop === cleanWorkshop &&
+          (Date.now() - new Date(r.createdAt).getTime()) < 60000) {
+        return true;
+      }
+      return false;
+    });
+
+    if (existingEnquiry) {
+      const maskedPhone = cleanMobileNum.replace(/(\d{2})\d{6}(\d{2})/, '$1******$2');
+      console.log(`[APPOINTMENT_IDEMPOTENT] Duplicate submission caught for Ref: ${existingEnquiry.referenceNumber} (Phone: ${maskedPhone}).`);
+      return res.status(200).json({
+        success: true,
+        referenceNumber: existingEnquiry.referenceNumber,
+        status: 'ENQUIRY_RECEIVED',
+        isDuplicate: true,
+        message: 'Your appointment enquiry was already received and is registered.',
+        workshopContact: cleanWorkshop.includes('Paschim')
+          ? { name: 'Paschim Vihar Center', phone: '+91 92122 18180' }
+          : { name: 'Mundka Primary Center', phone: '+91 92122 18180', whatsapp: '+91 79828 24255' },
+      });
+    }
+
+    // 5. Generate Unique Official Reference ID
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
     const referenceNumber = `CE-${new Date().getFullYear()}-${randomSuffix}`;
 
-    // 5. Build Sanitized Record
+    // 6. Build Sanitized Record
     const newEnquiry = {
       referenceNumber,
+      idempotencyKey: cleanIdempotencyKey,
       status: 'ENQUIRY_RECEIVED', // Clearly distinct from confirmed
       statusNote: 'Pending phone/WhatsApp consultation with service advisor to confirm slot availability.',
       createdAt: new Date().toISOString(),
@@ -255,7 +290,6 @@ app.post('/api/appointments', formLimiter, (req, res) => {
     };
 
     // 6. Persist to Database
-    const records = readDatabase();
     records.unshift(newEnquiry);
     const saved = writeDatabase(records);
 

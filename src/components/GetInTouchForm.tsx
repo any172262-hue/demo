@@ -141,10 +141,10 @@ export const GetInTouchForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-purewhite p-6 sm:p-8 md:p-10 rounded-2xl border border-[#DFE3E8] shadow-premium max-w-2xl mx-auto">
+    <div className="bg-purewhite dark:bg-darksurface p-6 sm:p-8 md:p-10 rounded-2xl border border-[#DFE3E8] dark:border-darkborder shadow-premium max-w-2xl mx-auto">
       {/* Intro Header */}
       <div className="text-center space-y-2 mb-8">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-extrabold text-charcoal tracking-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-extrabold text-charcoal dark:text-purewhite tracking-tight">
           {t.title}
         </h2>
         <div className="w-12 h-1 bg-orange rounded mx-auto mt-2" />
@@ -152,18 +152,18 @@ export const GetInTouchForm: React.FC = () => {
 
       {/* Success Notification */}
       {result && result.success && (
-        <div className="mb-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 space-y-3 animate-fade-in">
+        <div className="mb-6 p-5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 space-y-3 animate-fade-in">
           <div className="flex items-center gap-2.5">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <h4 className="font-heading font-bold text-sm">
               {language === 'as' ? 'অনুৰোধ সফলভাৱে গৃহীত হৈছে!' : 'Enquiry Received Successfully!'}
             </h4>
           </div>
-          <p className="text-xs text-emerald-800 leading-relaxed">
+          <p className="text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed">
             {result.message}
           </p>
           {result.referenceNumber && (
-            <div className="text-xs font-mono font-bold bg-white/80 py-1.5 px-3 rounded-lg border border-emerald-300 inline-block">
+            <div className="text-xs font-mono font-bold bg-white/80 dark:bg-darkcard py-1.5 px-3 rounded-lg border border-emerald-300 dark:border-emerald-700 inline-block">
               {language === 'as' ? 'ৰেফাৰেন্স আইডি' : 'Reference ID'}: {result.referenceNumber}
             </div>
           )}
@@ -190,8 +190,8 @@ export const GetInTouchForm: React.FC = () => {
 
       {/* Error Notification */}
       {result && !result.success && (
-        <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-start gap-2.5 animate-fade-in">
-          <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+        <div className="mb-6 p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 text-xs flex items-start gap-2.5 animate-fade-in">
+          <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
           <p className="leading-relaxed">{result.error}</p>
         </div>
       )}
@@ -222,7 +222,7 @@ export const GetInTouchForm: React.FC = () => {
             value={formData.name}
             onChange={handleChange}
             placeholder={t.namePlaceholder}
-            className="w-full px-4 py-3.5 rounded-xl border border-bordergrey focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal placeholder:text-secondary/70 bg-purewhite outline-none transition-all shadow-subtle"
+            className="w-full px-4 py-3.5 rounded-xl border border-bordergrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal dark:text-purewhite placeholder:text-secondary/70 dark:placeholder:text-darkmuted bg-purewhite dark:bg-darkcard outline-none transition-all shadow-subtle"
           />
         </div>
 
@@ -240,9 +240,9 @@ export const GetInTouchForm: React.FC = () => {
               value={formData.carModel}
               onChange={handleChange}
               placeholder={t.carModelPlaceholder}
-              className="w-full px-4 py-3.5 pr-10 rounded-xl border border-bordergrey focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal placeholder:text-secondary/70 bg-purewhite outline-none transition-all shadow-subtle"
+              className="w-full px-4 py-3.5 pr-10 rounded-xl border border-bordergrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal dark:text-purewhite placeholder:text-secondary/70 dark:placeholder:text-darkmuted bg-purewhite dark:bg-darkcard outline-none transition-all shadow-subtle"
             />
-            <Car className="w-4 h-4 text-secondary/60 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Car className="w-4 h-4 text-secondary/60 dark:text-darkmuted absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
         </div>
 
@@ -260,7 +260,7 @@ export const GetInTouchForm: React.FC = () => {
             value={formData.mobile}
             onChange={handleChange}
             placeholder={t.mobilePlaceholder}
-            className="w-full px-4 py-3.5 rounded-xl border border-bordergrey focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal placeholder:text-secondary/70 bg-purewhite outline-none transition-all shadow-subtle"
+            className="w-full px-4 py-3.5 rounded-xl border border-bordergrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal dark:text-purewhite placeholder:text-secondary/70 dark:placeholder:text-darkmuted bg-purewhite dark:bg-darkcard outline-none transition-all shadow-subtle"
           />
         </div>
 
@@ -276,7 +276,7 @@ export const GetInTouchForm: React.FC = () => {
             value={formData.address}
             onChange={handleChange}
             placeholder={t.addressPlaceholder}
-            className="w-full px-4 py-3.5 rounded-xl border border-bordergrey focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal placeholder:text-secondary/70 bg-purewhite outline-none transition-all shadow-subtle"
+            className="w-full px-4 py-3.5 rounded-xl border border-bordergrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal dark:text-purewhite placeholder:text-secondary/70 dark:placeholder:text-darkmuted bg-purewhite dark:bg-darkcard outline-none transition-all shadow-subtle"
           />
         </div>
 
@@ -292,7 +292,7 @@ export const GetInTouchForm: React.FC = () => {
             value={formData.message}
             onChange={handleChange}
             placeholder={t.messagePlaceholder}
-            className="w-full px-4 py-3.5 rounded-xl border border-bordergrey focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal placeholder:text-secondary/70 bg-purewhite outline-none transition-all shadow-subtle resize-none"
+            className="w-full px-4 py-3.5 rounded-xl border border-bordergrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20 text-xs sm:text-sm text-charcoal dark:text-purewhite placeholder:text-secondary/70 dark:placeholder:text-darkmuted bg-purewhite dark:bg-darkcard outline-none transition-all shadow-subtle resize-none"
           />
         </div>
 
@@ -314,7 +314,7 @@ export const GetInTouchForm: React.FC = () => {
           )}
         </button>
 
-        <p className="text-[11px] text-center text-secondary/80 pt-1">
+        <p className="text-[11px] text-center text-secondary/80 dark:text-darkmuted pt-1">
           {language === 'as'
             ? 'চৰকাৰী অনুমোদিত RFC নং ২৬১ • কোনো লুকোৱা মাচুল নাই'
             : 'Govt. Approved Retrofitting Center (RFC Code No. 261) • Zero hidden consultation fees'}
