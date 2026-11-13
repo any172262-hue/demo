@@ -398,18 +398,6 @@ export const Header: React.FC = () => {
                   <Moon className="w-4 h-4 text-secondary" />
                 )}
               </button>
-
-              {/* Subtle Divider */}
-              <div className="h-5 w-px bg-lightgrey dark:bg-darkborder shrink-0 hidden xl:block mx-1" />
-
-              {/* Rectangular Button CTA */}
-              <Link
-                to="/book-appointment"
-                className="btn-primary text-xs uppercase tracking-wider whitespace-nowrap shrink-0"
-              >
-                <Calendar className="w-3.5 h-3.5 shrink-0" />
-                <span>Book Appointment</span>
-              </Link>
             </div>
 
             {/* Mobile Controls: Search + Theme + Hamburger */}
