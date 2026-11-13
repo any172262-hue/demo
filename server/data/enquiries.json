@@ -1,5 +1,28 @@
 [
   {
+    "referenceNumber": "CE-2026-7966",
+    "status": "ENQUIRY_RECEIVED",
+    "statusNote": "Pending phone/WhatsApp consultation with service advisor to confirm slot availability.",
+    "createdAt": "2026-11-13T08:50:35.269Z",
+    "customer": {
+      "fullName": "Vikram Baruah",
+      "mobileNumber": "9876543210",
+      "email": "vikram@example.com"
+    },
+    "vehicle": {
+      "make": "Maruti Suzuki",
+      "model": "Swift Dzire",
+      "year": 2021
+    },
+    "booking": {
+      "service": "CNG Kit Installation",
+      "workshop": "Mundka Facility (Opp. Metro Pillar 536)",
+      "date": "2026-11-20",
+      "time": "Morning (10:30 AM – 01:00 PM)",
+      "message": "Requesting Lovato sequential kit quote."
+    }
+  },
+  {
     "referenceNumber": "CE-2026-5025",
     "status": "ENQUIRY_RECEIVED",
     "statusNote": "Pending phone/WhatsApp consultation with service advisor to confirm slot availability.",

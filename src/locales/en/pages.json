@@ -57,9 +57,102 @@
   },
   "legal": {
     "privacyTitle": "Privacy Policy",
-    "privacyUpdated": "Last Updated: November 2026",
+    "privacyBadge": "DATA GOVERNANCE & COMPLIANCE",
+    "privacySubtitle": "Car's Energy Co. is committed to protecting your personal information and ensuring technical transparency across all automotive services.",
+    "privacyUpdated": "Last updated: November 2026",
+    "privacySections": [
+      {
+        "heading": "1. Information We Collect Through Enquiry Forms",
+        "content": "When you submit an appointment enquiry, technical consultation request, or contact form through our website, we collect your name, mobile phone number, vehicle model, address, and service requirements. We do not collect unnecessary private information, financial card credentials, or biometric data through this website.",
+        "list": []
+      },
+      {
+        "heading": "2. Purpose of Collecting Information",
+        "content": "The details you submit are utilized solely for technical and operational workshop purposes:",
+        "list": [
+          "Evaluating vehicle engine suitability and sequential kit compatibility for your specific car model.",
+          "Scheduling workshop bay availability and allocating certified technical staff at our Mundka or Paschim Vihar facilities.",
+          "Preparing statutory documentation and compliance certificates required under CMVR guidelines.",
+          "Facilitating customer communication regarding appointment status, parts availability, and technical advisories."
+        ]
+      },
+      {
+        "heading": "3. How Personal Information is Used",
+        "content": "Your contact details are used exclusively by our certified automotive advisors and workshop technicians to contact you via telephone or WhatsApp. We do not use your information for unsolicited commercial telemarketing or sell customer databases to third-party marketing brokers.",
+        "list": []
+      },
+      {
+        "heading": "4. No Customer Account or Password Storage",
+        "content": "In strict accordance with our engineering privacy principles, this website does not operate customer registration accounts, user profiles, or public customer logins. You do not need to create passwords or store sensitive account credentials with us online.",
+        "list": []
+      },
+      {
+        "heading": "5. Data Protection & Security Measures",
+        "content": "All data transmissions through our website forms are secured using industry-standard HTTPS encryption. Server endpoints apply rate limiting, parameter sanitization, and strict administrative access controls to prevent unauthorized access or interception.",
+        "list": []
+      },
+      {
+        "heading": "6. Data Retention & Third-Party Disclosure",
+        "content": "Customer enquiry records are retained only as long as necessary to complete your workshop service, issue statutory certification, and maintain warranty compliance records. We do not share your details with external third parties except authorized government transport authorities (RTO) when mandated by statutory vehicle endorsement regulations.",
+        "list": []
+      },
+      {
+        "heading": "7. User Rights & Contacting Our Data Officer",
+        "content": "You have the right to review, update, or request the deletion of your contact records from our active workshop scheduling database. For privacy questions, contact our compliance officer at carsenergyco@gmail.com or call our Mundka facility directly at +91 92122 18180.",
+        "list": []
+      }
+    ],
     "termsTitle": "Terms & Conditions",
-    "termsUpdated": "Last Updated: November 2026",
+    "termsBadge": "LEGAL DIRECTIVES & CMVR COMPLIANCE",
+    "termsSubtitle": "General commercial terms and engineering standards governing retrofitment, testing, and servicing contracts with Car's Energy Co.",
+    "termsUpdated": "Last updated: November 2026",
+    "termsSections": [
+      {
+        "heading": "1. Scope of Automotive Services & Regulatory Conformance",
+        "content": "Car's Energy Co. (Govt. Approved Retrofitting Center, RFC Code No. 261) operates certified automotive alternative fuel retrofitting, diagnostic calibration, scheduled maintenance, and cylinder testing facilities under the statutory framework of the Central Motor Vehicles Rules (CMVR) and Petroleum and Explosives Safety Organization (PESO). All recommendations are subject to physical vehicle inspection.",
+        "list": []
+      },
+      {
+        "heading": "2. Website Usage & Technical Information Accuracy",
+        "content": "The materials, guides, and technical specifications published on this website are provided for consumer guidance and educational reference. While we strive to maintain complete accuracy, automotive component availability and regulatory guidelines may vary depending on vehicle manufacturer specifications and transport department notifications.",
+        "list": []
+      },
+      {
+        "heading": "3. Appointment Enquiries vs Confirmed Bookings",
+        "content": "Submitting an appointment enquiry form on this website logs an official request for workshop service. An appointment is only confirmed once an authorized service advisor contacts you via telephone or WhatsApp, verifies vehicle suitability, and formally allocates a workshop bay slot.",
+        "list": []
+      },
+      {
+        "heading": "4. Vehicle Mechanical Condition & Pre-Inspection Requirements",
+        "content": "Vehicles presented for CNG sequential kit installation or diagnostic tuning must be in sound mechanical condition. Prior engine faults including ignition defects, valve leakage, blown head gaskets, or weak compression must be rectified before calibration. Our certified technicians reserve the right to advise against conversion if an engine fails baseline compression benchmarks.",
+        "list": []
+      },
+      {
+        "heading": "5. Pricing, Quotations & Hardware Authenticity",
+        "content": "Initial price estimates provided online or over the telephone are indicative and subject to final confirmation following physical engine inspection. All components, sequential kits, reducers, and cylinders installed by Car's Energy Co. are 100% genuine, backed by manufacturer warranties, verifiable serial numbers, and authorized distributor guarantees.",
+        "list": []
+      },
+      {
+        "heading": "6. Cylinder Hydrostatic Testing & Safety Condemnation Rules",
+        "content": "In strict compliance with PESO Gas Cylinder regulations, every cylinder subjected to hydrostatic pressure testing must meet statutory safety parameters. Any cylinder exhibiting permanent volumetric expansion exceeding permissible limits, severe internal corrosion, structural pitting, or heat damage will be officially condemned and cannot be recertified or reinstalled.",
+        "list": []
+      },
+      {
+        "heading": "7. Statutory RTO Endorsement Responsibilities",
+        "content": "Car's Energy Co. issues authentic government-approved compliance certificates (including Form 21, Form 22, and PESO hydro-test certificates). Final endorsement on the vehicle Registration Certificate (RC) remains subject to physical inspection and statutory approval by the respective Regional Transport Office (RTO) in accordance with state guidelines.",
+        "list": []
+      },
+      {
+        "heading": "8. Intellectual Property & Limitation of Liability",
+        "content": "All technical diagrams, articles, photographic documentation, and branding on this website are proprietary to Car's Energy Co. or licensed partners. Car's Energy Co. shall not be liable for damages resulting from improper third-party vehicle modifications or failure of vehicle owners to observe prescribed maintenance intervals.",
+        "list": []
+      },
+      {
+        "heading": "9. Governing Law, Dispute Resolution & Contact",
+        "content": "All commercial transactions, service contracts, and statutory compliance matters are governed by the laws of India and subject to the exclusive jurisdiction of the competent courts in New Delhi. For legal inquiries or terms clarification, contact us at carsenergyco@gmail.com or visit our Mundka facility.",
+        "list": []
+      }
+    ],
     "sitemapTitle": "Complete Website Sitemap",
     "sitemapSubtitle": "Direct index of all pages, technical service guides, and customer resources."
   },
