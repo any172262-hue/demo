@@ -292,3 +292,8 @@ If frontend and API are hosted separately, configure exact production origins an
 - Stored exclusively in `sessionStorage` with HTML tag removal and a 64-character limit.
 - Transmitted as an isolated `attribution` object to `/api/appointments` without third-party tracking libraries.
 
+### 14.5 Detailed Feature Specifications
+- Complete feature specifications: `docs/ADVANCED_FEATURES.md`
+- WhatsApp protocol and message contracts: `docs/WHATSAPP_INTEGRATION.md`
+- Privacy and attribution security: `docs/UTM_TRACKING.md`
+

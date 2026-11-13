@@ -157,6 +157,7 @@ app.post('/api/appointments', formLimiter, (req, res) => {
       additionalMessage,
       honeypot, // Spam trap
       submittedAt, // Timestamp for speed-bot detection
+      utm, // Privacy-conscious campaign attribution
     } = req.body;
 
     // 1. Spam Protection: Honeypot check
@@ -244,6 +245,13 @@ app.post('/api/appointments', formLimiter, (req, res) => {
         time: sanitizeString(preferredTime),
         message: sanitizeString(additionalMessage),
       },
+      attribution: utm && typeof utm === 'object' ? {
+        source: sanitizeString(utm.utm_source || ''),
+        medium: sanitizeString(utm.utm_medium || ''),
+        campaign: sanitizeString(utm.utm_campaign || ''),
+        term: sanitizeString(utm.utm_term || ''),
+        content: sanitizeString(utm.utm_content || ''),
+      } : null,
     };
 
     // 6. Persist to Database

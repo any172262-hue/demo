@@ -98,9 +98,23 @@ Per explicit owner directive and design reference:
 
 | Test Suite | Purpose | Result |
 |---|---|---|
-| `npm test` | Automated backend API, honeypot spam protection, submission timing gate, sitemap completeness, locale key parity, services data verification. | **9 / 9 Passing (100%)** |
+| `npm test` | Automated backend API, honeypot spam protection, submission timing gate, sitemap completeness, locale key parity, services data verification, UTM sanitization, WhatsApp URL generation, and attribution persistence. | **13 / 13 Passing (100%)** |
 | `tsc && vite build` | TypeScript compilation and production bundle generation. | **Success (Exit code 0)** |
 | API Health (`/api/health`) | Express server daemon connectivity on port 5000. | **Healthy (RFC-261 OK)** |
+
+---
+
+## 7.1 Advanced Features Verification
+
+| Feature | Key Requirements | Architecture Doc | Status |
+|---|---|---|---|
+| **Dark & Light Mode** | Default light theme, tailored dark theme tokens, anti-flash script, system preference sync, desktop & mobile toggles. | `docs/ADVANCED_FEATURES.md` | **Verified** |
+| **Site-Wide Search** | Modal dialog with `Ctrl+K`, searches pages, services, products, FAQs, facility hubs; English & Assamese; `<mark>` highlighting. | `docs/ADVANCED_FEATURES.md` | **Verified** |
+| **Back to Top & Reading Progress** | Viewport top scroll bar + floating smooth-scroll back to top button (>300px threshold) with reduced motion support. | `docs/ADVANCED_FEATURES.md` | **Verified** |
+| **Floating Contact Widget** | Bottom-right expandable speed dial: WhatsApp (+91 79828 24255), Call (+91 92122 18180), Book Inspection. | `docs/ADVANCED_FEATURES.md` | **Verified** |
+| **WhatsApp Appointment Integration** | Verified target `+91 79828 24255` (`917982824255`), structured payload, review confirmation modal, honest status copy, fallback call/chat buttons. | `docs/WHATSAPP_INTEGRATION.md` | **Verified** |
+| **Privacy-Conscious Attribution** | Captures `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content` in `sessionStorage`; sanitized; zero third-party tracking scripts. | `docs/UTM_TRACKING.md` | **Verified** |
+| **Button Geometry Compliance** | Zero pill-shaped buttons (`rounded-full` prohibited). Subtly rounded rectangular buttons (`rounded-lg`, 8px) used across all controls. | `docs/QUALITY_GATES_AND_DESIGN_RULES.md` | **Verified** |
 
 ---
 

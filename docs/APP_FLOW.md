@@ -172,3 +172,8 @@ Operational access to enquiry records is outside the public website scope. If a 
 - Clicking reveals 3 direct actions: WhatsApp (+91 79828 24255), Call (+91 92122 18180), and Book Inspection.
 - Collapses on selection, outside click, or Escape key.
 
+### 9.5 Detailed Flow Documentation
+- Advanced Feature Flow: `docs/ADVANCED_FEATURES.md`
+- WhatsApp Handoff Lifecycle: `docs/WHATSAPP_INTEGRATION.md`
+- Campaign Attribution Lifecycle: `docs/UTM_TRACKING.md`
+

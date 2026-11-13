@@ -266,3 +266,8 @@ A feature is complete only when:
 6. **Appointment State Machine & WhatsApp Handoff:** Added review modal (`AppointmentModal.tsx`), field-level validation, backend persistence, structured click-to-chat WhatsApp URL generator targeting `+91 79828 24255`, and fallback states.
 7. **Automated Testing:** Added `advanced_features.test.js` validating UTM sanitization, WhatsApp URL encoding, and API integration.
 
+### Phase 7 Architecture Documentation:
+- `docs/ADVANCED_FEATURES.md`: Full technical architecture for theme, search, scrolling, and action widgets.
+- `docs/WHATSAPP_INTEGRATION.md`: Click-to-chat integration contract, message formatting, and validation lifecycle.
+- `docs/UTM_TRACKING.md`: Privacy-conscious campaign attribution protocol, sanitization, and database mapping.
+

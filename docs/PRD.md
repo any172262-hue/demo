@@ -202,8 +202,13 @@ The release is acceptable when:
 2. **Site-Wide Search:** Full modal search over all static pages, 10 specialized services, hardware products, FAQs, and facility locations in English and Assamese.
 3. **Scroll Reading Progress:** Viewport top progress bar indicating document scroll percentage.
 4. **Accessible Back to Top:** Scroll-triggered floating button with reduced-motion support.
-5. **Sticky Navigation:** Header smoothly compacts while maintaining logo, links, search, theme switcher, language selector, and CTA.
+5. **Sticky Navigation:** Header smoothly compacts while maintaining logo, links, search, theme switcher, and language selector with optimal horizontal spacing.
 6. **Privacy-Conscious UTM Attribution:** Captures and sanitizes inbound campaign parameters into sessionStorage, passed cleanly to the backend and WhatsApp message summary without third-party tracking scripts.
 7. **Appointment Review Modal & WhatsApp Handoff:** Pre-submission confirmation modal showing full customer, vehicle, and scheduling data, followed by structured WhatsApp click-to-chat generation targeting verified number +91 79828 24255.
 8. **Floating Contact Widget:** Expandable bottom action menu providing direct WhatsApp, phone call (+91 92122 18180), and appointment booking access.
+
+### 13.1 Dedicated Technical Specifications:
+- Full Advanced Feature Architecture: `docs/ADVANCED_FEATURES.md`
+- WhatsApp Appointment Workflow: `docs/WHATSAPP_INTEGRATION.md`
+- Privacy-Conscious Attribution Tracking: `docs/UTM_TRACKING.md`
 

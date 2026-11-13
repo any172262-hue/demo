@@ -219,3 +219,8 @@ Avoid:
 - Floating back-to-top button with smooth scroll.
 - Expandable floating contact speed-dial.
 
+### 12.4 Dedicated Reference Documents
+- Advanced UI & Components Guide: `docs/ADVANCED_FEATURES.md`
+- WhatsApp Handoff & Modal Guidelines: `docs/WHATSAPP_INTEGRATION.md`
+- Privacy-Conscious Attribution Tracking: `docs/UTM_TRACKING.md`
+
