@@ -29,7 +29,12 @@ import { MapPage } from './pages/MapPage';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsConditions } from './pages/TermsConditions';
 import { SitemapPage } from './pages/SitemapPage';
-import { NotFound } from './pages/NotFound';
+
+const getBasename = () => {
+  return typeof window !== 'undefined' && window.location.pathname.startsWith('/demo')
+    ? '/demo'
+    : '';
+};
 
 export const App: React.FC = () => {
   useEffect(() => {
@@ -41,7 +46,7 @@ export const App: React.FC = () => {
     <HelmetProvider>
       <ThemeProvider>
         <LanguageProvider>
-          <Router>
+          <Router basename={getBasename()}>
             <ScrollToTop />
             <ScrollProgressBar />
             <div className="flex flex-col min-h-screen bg-offwhite dark:bg-darkbg text-charcoal dark:text-darktext transition-colors">
@@ -50,6 +55,8 @@ export const App: React.FC = () => {
                 <Routes>
                   {/* 1. Home */}
                   <Route path="/" element={<Home />} />
+                  <Route path="/demo" element={<Navigate to="/" replace />} />
+                  <Route path="/demo/*" element={<Navigate to="/" replace />} />
 
                   {/* 2. About */}
                   <Route path="/about" element={<About />} />
@@ -104,8 +111,8 @@ export const App: React.FC = () => {
                   {/* 23. Sitemap */}
                   <Route path="/sitemap" element={<SitemapPage />} />
 
-                  {/* 24. Custom 404 */}
-                  <Route path="*" element={<NotFound />} />
+                  {/* 24. Fallback: Always redirect to home without showing 404 */}
+                  <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </main>
               <Footer />

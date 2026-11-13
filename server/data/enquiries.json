@@ -1,5 +1,90 @@
 [
   {
+    "referenceNumber": "MK-2026-5928",
+    "idempotencyKey": "test_idemp_1794599159763",
+    "status": "ENQUIRY_RECEIVED",
+    "statusNote": "Pending phone/WhatsApp consultation with service advisor to confirm slot availability.",
+    "createdAt": "2026-11-13T19:45:59.769Z",
+    "customer": {
+      "fullName": "Aman Verma",
+      "mobileNumber": "9918061348",
+      "email": "aman@example.com"
+    },
+    "vehicle": {
+      "carName": "Tata Motors",
+      "carModel": "Tigor iCNG",
+      "carNumber": "",
+      "make": "Tata Motors",
+      "model": "Tigor iCNG",
+      "year": 2022
+    },
+    "booking": {
+      "service": "ECU Tuning  Diagnostics",
+      "workshop": "Garchuk Facility, Guwahati",
+      "date": "2026-11-28",
+      "time": "Morning (10:30 AM - 01:00 PM)",
+      "message": ""
+    },
+    "attribution": null
+  },
+  {
+    "referenceNumber": "MK-2026-6637",
+    "idempotencyKey": null,
+    "status": "ENQUIRY_RECEIVED",
+    "statusNote": "Pending phone/WhatsApp consultation with service advisor to confirm slot availability.",
+    "createdAt": "2026-11-13T19:45:59.753Z",
+    "customer": {
+      "fullName": "Vikram Batra",
+      "mobileNumber": "9811493724",
+      "email": "vikram@example.com"
+    },
+    "vehicle": {
+      "carName": "Hyundai",
+      "carModel": "Aura CNG",
+      "carNumber": "",
+      "make": "Hyundai",
+      "model": "Aura CNG",
+      "year": 2023
+    },
+    "booking": {
+      "service": "CNG Kit Servicing",
+      "workshop": "Garchuk Facility, Guwahati",
+      "date": "2026-11-25",
+      "time": "Morning (10:30 AM - 01:00 PM)",
+      "message": "Scheduled periodic 10,000 km checkup"
+    },
+    "attribution": {
+      "source": "delhi_transport_ad",
+      "medium": "organic_search",
+      "campaign": "winter_safety_2026",
+      "term": "",
+      "content": ""
+    }
+  },
+  {
+    "referenceNumber": "MK-2026-1123",
+    "status": "ENQUIRY_RECEIVED",
+    "statusNote": "Pending phone/WhatsApp consultation with service advisor to confirm slot availability.",
+    "createdAt": "2026-11-13T19:45:59.707Z",
+    "customer": {
+      "fullName": "Vikram Baruah",
+      "mobileNumber": "9876543210",
+      "email": "vikram@example.com"
+    },
+    "vehicle": {
+      "make": "Maruti Suzuki",
+      "model": "Swift Dzire",
+      "year": 2021
+    },
+    "booking": {
+      "service": "CNG Kit Installation",
+      "workshop": "Garchuk Facility, Guwahati",
+      "date": "2026-11-20",
+      "time": "Morning (10:30 AM – 01:00 PM)",
+      "message": "Requesting Lovato sequential kit quote."
+    }
+  },
+  {
     "referenceNumber": "MK-2026-8917",
     "idempotencyKey": "test_idemp_1794598483786",
     "status": "ENQUIRY_RECEIVED",

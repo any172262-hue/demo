@@ -548,6 +548,7 @@ app.post('/api/reviews', formLimiter, (req, res) => {
 const DIST_PATH = path.join(__dirname, '../dist');
 if (fs.existsSync(DIST_PATH)) {
   app.use(express.static(DIST_PATH));
+  app.use('/demo', express.static(DIST_PATH));
   app.get('*', (req, res) => {
     res.sendFile(path.join(DIST_PATH, 'index.html'));
   });
