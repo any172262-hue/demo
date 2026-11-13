@@ -14,7 +14,6 @@ import {
   ShieldCheck,
   Award,
   ChevronRight,
-  ChevronLeft,
   ArrowRight,
   CheckCircle2,
   Calendar,
@@ -84,14 +83,6 @@ export const Home: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  };
-
   const toggleFaq = (id: string) => {
     setActiveFaq(activeFaq === id ? null : id);
   };
@@ -134,163 +125,69 @@ export const Home: React.FC = () => {
         </div>
 
         <div className="section-container relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column: Business Clarity & Value (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              {/* Eyebrow Badge (Subtly Rounded, No Pills) */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-light dark:bg-orange/15 text-orange border border-orange/25 text-xs font-bold uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4 text-orange shrink-0" />
-                <span>RFC Code No. 261 • Govt. Certified Retrofitment Facility</span>
-              </div>
-
-              {/* Bold Editorial Headline in Charcoal with Orange Accent */}
-              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
-                Precision CNG Engineering &{' '}
-                <span className="text-orange block sm:inline">Certified Automotive Retrofitting</span>
-              </h1>
-
-              {/* Informative, authentic introduction */}
-              <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
-                {language === 'as'
-                  ? '১৯৯৮ চনৰ পৰা দিল্লী-এনচিআৰত অনুমোদিত ছিকুৱেনচিয়েল চিএনজি কিট সংস্থাপন, ডিজিটেল ইচিইউ কেলিব্ৰেচন, আৰু চৰকাৰী ৩৩০-বাৰ চিলিণ্ডাৰ হাইড্ৰ’-টেষ্টিং সেৱা।'
-                  : 'Established in 1998, Car’s Energy Co. provides certified sequential CNG system fitment, digital ECU tuning, statutory cylinder safety testing, and RTO endorsement across Delhi-NCR.'}
-              </p>
-
-              {/* Rectangular / Subtly Rounded Action Buttons (h-12, rounded-lg, No Pills) */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-1">
-                <Link
-                  to="/book-appointment"
-                  className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-md hover:shadow-orange/30 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
-                >
-                  <Calendar className="w-4 h-4" />
-                  <span>{home.hero.ctaAppointment}</span>
-                </Link>
-
-                <Link
-                  to="/services"
-                  className="bg-purewhite dark:bg-darkcard hover:bg-lightgrey dark:hover:bg-darksurface text-charcoal dark:text-darktext border border-bordergrey dark:border-darkborder font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-subtle hover:border-charcoal/20 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
-                >
-                  <span>{home.hero.ctaServices}</span>
-                  <ChevronRight className="w-4 h-4 text-orange" />
-                </Link>
-              </div>
-
-              {/* Direct Workshop Hotline & Addresses */}
-              <div className="pt-2 border-t border-lightgrey/80 dark:border-darkborder flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-secondary dark:text-darkmuted">
-                <a
-                  href="tel:+919212218180"
-                  className="inline-flex items-center gap-1.5 font-bold text-charcoal dark:text-darktext hover:text-orange transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5 text-orange" />
-                  <span>+91 92122 18180</span>
-                </a>
-
-                <a
-                  href="https://wa.me/917982824255"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 transition-colors"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                  <span>WhatsApp Direct</span>
-                </a>
-
-                <span className="hidden sm:inline-flex items-center gap-1 text-secondary dark:text-darkmuted font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-orange shrink-0" />
-                  <span>Mundka & Paschim Vihar</span>
-                </span>
-              </div>
+          <div className="max-w-3xl space-y-6">
+            {/* Eyebrow Badge (Subtly Rounded, No Pills) */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-light dark:bg-orange/15 text-orange border border-orange/25 text-xs font-bold uppercase tracking-wider">
+              <ShieldCheck className="w-4 h-4 text-orange shrink-0" />
+              <span>RFC Code No. 261 • Govt. Certified Retrofitment Facility</span>
             </div>
 
-            {/* Right Column: High-Res Automotive Engineering Showcase with 3s Smooth Crossfade (5 cols) */}
-            <div className="lg:col-span-5">
-              <div className="bg-purewhite/95 dark:bg-darksurface/95 backdrop-blur-md rounded-2xl border border-lightgrey/80 dark:border-darkborder p-3 sm:p-4 shadow-premium space-y-3 transition-colors">
-                {/* Visual Window */}
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-charcoaldark select-none">
-                  {heroSlides.map((slide, index) => (
-                    <div
-                      key={slide.id}
-                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                        index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                      }`}
-                    >
-                      <img
-                        src={slide.imageUrl}
-                        alt={slide.titleEn}
-                        className="w-full h-full object-cover"
-                        loading={index === 0 ? 'eager' : 'lazy'}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-charcoaldark/80 via-transparent to-transparent" />
-                    </div>
-                  ))}
+            {/* Bold Editorial Headline in Charcoal with Orange Accent */}
+            <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
+              Precision CNG Engineering &{' '}
+              <span className="text-orange block sm:inline">Certified Automotive Retrofitting</span>
+            </h1>
 
-                  {/* Active Capability Tag */}
-                  <div className="absolute top-3 left-3 z-20">
-                    <span className="bg-charcoaldark/90 text-purewhite text-[11px] font-bold px-3 py-1 rounded-md border border-white/20 backdrop-blur-sm">
-                      {heroSlides[currentSlide].tag}
-                    </span>
-                  </div>
+            {/* Informative, authentic introduction */}
+            <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
+              {language === 'as'
+                ? '১৯৯৮ চনৰ পৰা দিল্লী-এনচিআৰত অনুমোদিত ছিকুৱেনচিয়েল চিএনজি কিট সংস্থাপন, ডিজিটেল ইচিইউ কেলিব্ৰেচন, আৰু চৰকাৰী ৩৩০-বাৰ চিলিণ্ডাৰ হাইড্ৰ’-টেষ্টিং সেৱা।'
+                : 'Established in 1998, Car’s Energy Co. provides certified sequential CNG system fitment, digital ECU tuning, statutory cylinder safety testing, and RTO endorsement across Delhi-NCR.'}
+            </p>
 
-                  {/* Manual Arrow Controls */}
-                  <div className="absolute top-3 right-3 z-20 flex items-center gap-1">
-                    <button
-                      type="button"
-                      onClick={prevSlide}
-                      className="w-7 h-7 rounded-md bg-charcoaldark/80 hover:bg-orange text-purewhite flex items-center justify-center transition-colors border border-white/20 backdrop-blur-sm"
-                      aria-label="Previous slide"
-                    >
-                      <ChevronLeft className="w-3.5 h-3.5" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={nextSlide}
-                      className="w-7 h-7 rounded-md bg-charcoaldark/80 hover:bg-orange text-purewhite flex items-center justify-center transition-colors border border-white/20 backdrop-blur-sm"
-                      aria-label="Next slide"
-                    >
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
+            {/* Rectangular / Subtly Rounded Action Buttons (h-12, rounded-lg, No Pills) */}
+            <div className="flex flex-wrap items-center gap-3.5 pt-1">
+              <Link
+                to="/book-appointment"
+                className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-md hover:shadow-orange/30 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>{home.hero.ctaAppointment}</span>
+              </Link>
 
-                  {/* Caption Overlay */}
-                  <div className="absolute bottom-3 left-3 right-3 z-20 text-purewhite">
-                    <h3 className="font-heading font-bold text-xs sm:text-sm line-clamp-1">
-                      {language === 'as'
-                        ? heroSlides[currentSlide].titleAs
-                        : heroSlides[currentSlide].titleEn}
-                    </h3>
-                    <p className="text-[11px] text-white/80 line-clamp-1 mt-0.5">
-                      {language === 'as'
-                        ? heroSlides[currentSlide].descAs
-                        : heroSlides[currentSlide].descEn}
-                    </p>
-                  </div>
-                </div>
+              <Link
+                to="/services"
+                className="bg-purewhite dark:bg-darkcard hover:bg-lightgrey dark:hover:bg-darksurface text-charcoal dark:text-darktext border border-bordergrey dark:border-darkborder font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-subtle hover:border-charcoal/20 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
+              >
+                <span>{home.hero.ctaServices}</span>
+                <ChevronRight className="w-4 h-4 text-orange" />
+              </Link>
+            </div>
 
-                {/* Progress Indicators & Quick Jump Tabs (Rectangular / Subtly Rounded, No Pills) */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
-                  {heroSlides.map((slide, index) => (
-                    <button
-                      key={slide.id}
-                      type="button"
-                      onClick={() => setCurrentSlide(index)}
-                      className={`px-2.5 py-2 rounded-lg text-left transition-all duration-200 border focus:outline-none focus:ring-2 focus:ring-orange/40 ${
-                        index === currentSlide
-                          ? 'bg-orange text-purewhite border-orange shadow-md'
-                          : 'bg-lightgrey/60 dark:bg-darkcard text-charcoal dark:text-darktext border-bordergrey/80 dark:border-darkborder hover:border-orange/60 hover:bg-lightgrey dark:hover:bg-darksurface'
-                      }`}
-                    >
-                      <span className={`block text-[10px] font-extrabold uppercase tracking-wider ${
-                        index === currentSlide ? 'text-purewhite/90' : 'text-orange'
-                      }`}>
-                        0{slide.id}
-                      </span>
-                      <span className="block font-bold text-[11px] truncate mt-0.5">
-                        {slide.tag}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
+            {/* Direct Workshop Hotline & Addresses */}
+            <div className="pt-2 border-t border-lightgrey/80 dark:border-darkborder flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-secondary dark:text-darkmuted">
+              <a
+                href="tel:+919212218180"
+                className="inline-flex items-center gap-1.5 font-bold text-charcoal dark:text-darktext hover:text-orange transition-colors"
+              >
+                <Phone className="w-3.5 h-3.5 text-orange" />
+                <span>+91 92122 18180</span>
+              </a>
+
+              <a
+                href="https://wa.me/917982824255"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 transition-colors"
+              >
+                <MessageSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span>WhatsApp Direct</span>
+              </a>
+
+              <span className="hidden sm:inline-flex items-center gap-1 text-secondary dark:text-darkmuted font-medium">
+                <MapPin className="w-3.5 h-3.5 text-orange shrink-0" />
+                <span>Mundka & Paschim Vihar</span>
+              </span>
             </div>
           </div>
         </div>
