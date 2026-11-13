@@ -252,3 +252,17 @@ A feature is complete only when:
 - [ ] Backups and restore tested.
 - [ ] Production health check passed.
 - [ ] Rollback and support owner documented.
+
+---
+
+## 7. Phase 7 - Advanced Functionality Delivery
+
+### Tasks Executed:
+1. **Dark Mode Integration:** Created `ThemeContext.tsx`, enabled Tailwind `darkMode: 'class'`, added anti-flash script in `index.html`, calibrated dark tokens in `index.css`, and placed toggles in desktop and mobile navigation.
+2. **Site-Wide Search:** Built `searchIndex.ts` and `SearchModal.tsx` covering all pages, services, products, FAQs, and facilities in English and Assamese.
+3. **Viewport Progress Bar:** Built `ScrollProgressBar.tsx` for real-time scroll progress.
+4. **Floating Action Controls:** Implemented `BackToTop.tsx` and `FloatingContactWidget.tsx` with WhatsApp, phone, and appointment actions.
+5. **Campaign Attribution:** Built `utm.ts` for privacy-conscious UTM parameter capture and backend integration.
+6. **Appointment State Machine & WhatsApp Handoff:** Added review modal (`AppointmentModal.tsx`), field-level validation, backend persistence, structured click-to-chat WhatsApp URL generator targeting `+91 79828 24255`, and fallback states.
+7. **Automated Testing:** Added `advanced_features.test.js` validating UTM sanitization, WhatsApp URL encoding, and API integration.
+

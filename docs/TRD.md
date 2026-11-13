@@ -269,3 +269,26 @@ If frontend and API are hosted separately, configure exact production origins an
 - Restrict operational access to customer enquiries.
 - Define an incident response contact and process.
 - Re-test security headers and CORS after every hosting/domain change.
+
+## 14. Advanced Technical Specifications
+
+### 14.1 Theme Architecture
+- Class-based dark mode (`darkMode: 'class'`) driven by `ThemeContext.tsx` and synchronized with `document.documentElement`.
+- Anti-flash IIFE script in `index.html` `head` prevents FOUC.
+- Dark tokens: `--bg-offwhite: #121417`, `--bg-white: #181B1F`, `--text-charcoal: #E9EAEC`, `--border-light: #2A2F37`.
+
+### 14.2 Site-Wide Search Architecture
+- In-memory structured index in `searchIndex.ts` aggregating pages, 10 services, products, FAQs, and facility locations.
+- Real-time client-side cross-language matching algorithm supporting English and Assamese.
+- Term highlighting with `<mark>` tags and keyboard navigation (`↑`, `↓`, `Enter`, `Esc`).
+
+### 14.3 WhatsApp Appointment Protocol
+- URL Target: `https://wa.me/917982824255?text=${encodeURIComponent(msg)}`.
+- Pre-submission Review Modal (`AppointmentModal.tsx`) with focus trap and escape listener.
+- Structured message generator incorporating reference ID, customer data, vehicle details, schedule window, and attribution summary.
+
+### 14.4 Privacy-Conscious Campaign Attribution
+- Utility: `src/utils/utm.ts` capturing `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`.
+- Stored exclusively in `sessionStorage` with HTML tag removal and a 64-character limit.
+- Transmitted as an isolated `attribution` object to `/api/appointments` without third-party tracking libraries.
+

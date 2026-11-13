@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { servicesData } from '../data/servicesData';
+import { AppointmentModal, AppointmentSummaryData } from './AppointmentModal';
+import { getStoredUtm, captureUtmParameters, formatUtmSummary, UtmData } from '../utils/utm';
 import {
   Calendar,
   CheckCircle2,
@@ -8,8 +10,13 @@ import {
   Clock,
   Phone,
   MessageSquare,
-  ShieldAlert,
+  ShieldCheck,
   Loader2,
+  Car,
+  Wrench,
+  MapPin,
+  ExternalLink,
+  RefreshCw,
 } from 'lucide-react';
 
 interface AppointmentFormProps {
@@ -36,14 +43,31 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
   });
 
   const [formStartTime] = useState(Date.now());
-  const [submitting, setSubmitting] = useState(false);
-  const [submissionResult, setSubmissionResult] = useState<{
-    success: boolean;
+  const [utmData, setUtmData] = useState<UtmData | null>(null);
+
+  // Form State Machine
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [handoffState, setHandoffState] = useState<{
+    status: 'idle' | 'preparing' | 'opened' | 'failed' | 'submitted';
     referenceNumber?: string;
-    message?: string;
-    error?: string;
-    details?: string[];
-  } | null>(null);
+    whatsappUrl?: string;
+    errorMessage?: string;
+  }>({ status: 'idle' });
+
+  // Capture UTM parameters on load
+  useEffect(() => {
+    const utm = captureUtmParameters();
+    setUtmData(utm);
+  }, []);
+
+  // Update default service if changed by parent prop
+  useEffect(() => {
+    if (defaultService) {
+      setFormData((prev) => ({ ...prev, serviceRequired: defaultService }));
+    }
+  }, [defaultService]);
 
   const vehicleMakes = [
     'Maruti Suzuki',
@@ -83,438 +107,703 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
+
+    // Clear specific field error on edit
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const copy = { ...prev };
+        delete copy[name];
+        return copy;
+      });
+    }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmissionResult(null);
+  // Validate form inputs (Section 9B)
+  const validateForm = (): boolean => {
+    const errors: Record<string, string> = {};
 
-    // Basic frontend checks
-    if (!formData.fullName.trim()) {
-      setSubmissionResult({ success: false, error: 'Full name is required.' });
-      return;
+    if (!formData.fullName.trim() || formData.fullName.trim().length < 2) {
+      errors.fullName =
+        language === 'as'
+          ? 'অনুগ্ৰহ কৰি আপোনাৰ সম্পূৰ্ণ নাম উল্লেখ কৰক।'
+          : 'Please enter your full name (minimum 2 characters).';
     }
-    if (!formData.mobileNumber.trim() || formData.mobileNumber.replace(/\D/g, '').length < 10) {
-      setSubmissionResult({ success: false, error: 'A valid 10-digit mobile number is required.' });
-      return;
+
+    const cleanMobile = formData.mobileNumber.replace(/\D/g, '');
+    if (!cleanMobile || cleanMobile.length < 10) {
+      errors.mobileNumber =
+        language === 'as'
+          ? 'অনুগ্ৰহ কৰি ১০টা অংকৰ বৈধ মোবাইল নম্বৰ দিয়ক।'
+          : 'Please enter a valid 10-digit Indian mobile number.';
     }
-    if (!formData.vehicleMake || !formData.vehicleModel.trim()) {
-      setSubmissionResult({ success: false, error: 'Please specify vehicle make and model.' });
-      return;
+
+    if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      errors.email =
+        language === 'as' ? 'অনুগ্ৰহ কৰি বৈধ ইমেইল উল্লেখ কৰক।' : 'Please enter a valid email address.';
     }
+
+    if (!formData.vehicleMake) {
+      errors.vehicleMake =
+        language === 'as' ? 'বাহনৰ নিৰ্মাতা বাচনি কৰক।' : 'Please select your vehicle make.';
+    }
+
+    if (!formData.vehicleModel.trim()) {
+      errors.vehicleModel =
+        language === 'as' ? 'বাহনৰ মডেল উল্লেখ কৰক।' : 'Please enter your vehicle model.';
+    }
+
     if (!formData.serviceRequired) {
-      setSubmissionResult({ success: false, error: 'Please select required service.' });
-      return;
-    }
-    if (!formData.preferredDate) {
-      setSubmissionResult({ success: false, error: 'Please select a preferred date.' });
-      return;
-    }
-    if (!formData.privacyConsent) {
-      setSubmissionResult({
-        success: false,
-        error: 'Please accept the privacy consent to allow workshop contact.',
-      });
-      return;
+      errors.serviceRequired =
+        language === 'as' ? 'প্ৰয়োজনীয় সেৱা বাচনি কৰক।' : 'Please select the required service.';
     }
 
-    setSubmitting(true);
+    if (!formData.preferredDate) {
+      errors.preferredDate =
+        language === 'as' ? 'পৰিদৰ্শনৰ তাৰিখ নিৰ্বাচন কৰক।' : 'Please select a preferred date.';
+    }
+
+    if (!formData.privacyConsent) {
+      errors.privacyConsent =
+        language === 'as'
+          ? 'সেৱা নিশ্চিতকৰণৰ বাবে সন্মতি দিয়া বাধ্যতামূলক।'
+          : 'Privacy consent is required for service scheduling.';
+    }
+
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  // Initial Submit Trigger -> Opens Confirmation Review Modal
+  const handlePreSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setIsReviewOpen(true);
+    }
+  };
+
+  // Build Structured WhatsApp Message (Section 11)
+  const buildWhatsAppMessage = (refId: string): string => {
+    const utmSummary = formatUtmSummary(utmData);
+
+    const messageLines = [
+      "*CAR'S ENERGY CO. - SERVICE ENQUIRY*",
+      'RFC Code No. 261 (Govt. Approved Retrofitting Center)',
+      `Ref ID: ${refId}`,
+      '',
+      '*CUSTOMER INFORMATION:*',
+      `• Full Name: ${formData.fullName.trim()}`,
+      `• Mobile Number: ${formData.mobileNumber.trim()}`,
+      formData.email.trim() ? `• Email: ${formData.email.trim()}` : null,
+      '',
+      '*VEHICLE DETAILS:*',
+      `• Manufacturer: ${formData.vehicleMake}`,
+      `• Vehicle Model: ${formData.vehicleModel.trim()}`,
+      `• Manufacturing Year: ${formData.vehicleYear}`,
+      '',
+      '*APPOINTMENT DETAILS:*',
+      `• Requested Service: ${formData.serviceRequired}`,
+      `• Preferred Workshop: ${formData.preferredWorkshop}`,
+      `• Preferred Date: ${formData.preferredDate}`,
+      `• Preferred Time: ${formData.preferredTime}`,
+      formData.additionalMessage.trim() ? `• Notes/Symptoms: ${formData.additionalMessage.trim()}` : null,
+      '',
+      utmSummary ? `*ATTRIBUTION:* [${utmSummary}]` : null,
+      '',
+      '_Enquiry logged via carsenergy.co.in. Awaiting workshop confirmation._',
+    ].filter(Boolean);
+
+    return messageLines.join('\n');
+  };
+
+  // Confirm in Modal -> Submit to Backend API and Handoff to WhatsApp
+  const handleConfirmAndHandoff = async () => {
+    setIsSubmitting(true);
+    setHandoffState({ status: 'preparing' });
 
     try {
+      // 1. Submit to Backend API
       const payload = {
         ...formData,
         submittedAt: formStartTime,
+        utm: utmData,
       };
 
       const response = await fetch('/api/appointments', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setSubmissionResult({
-          success: true,
-          referenceNumber: data.referenceNumber,
-          message: data.message,
+        const refId = data.referenceNumber || `CE-${new Date().getFullYear()}-ENQ`;
+        const whatsappText = buildWhatsAppMessage(refId);
+        const encodedText = encodeURIComponent(whatsappText);
+        const whatsappUrl = `https://wa.me/917982824255?text=${encodedText}`;
+
+        setIsReviewOpen(false);
+        setIsSubmitting(false);
+
+        setHandoffState({
+          status: 'opened',
+          referenceNumber: refId,
+          whatsappUrl,
         });
-        // Clear form fields
-        setFormData({
-          fullName: '',
-          mobileNumber: '',
-          email: '',
-          vehicleMake: '',
-          vehicleModel: '',
-          vehicleYear: '2020',
-          serviceRequired: '',
-          preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
-          preferredDate: '',
-          preferredTime: 'Morning (10:30 AM - 01:00 PM)',
-          additionalMessage: '',
-          honeypot: '',
-          privacyConsent: true,
-        });
+
+        // 2. Open WhatsApp in new tab/window
+        const win = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+          // Popup blocked or mobile redirection
+          setHandoffState((prev) => ({
+            ...prev,
+            status: 'opened',
+          }));
+        }
       } else {
-        setSubmissionResult({
-          success: false,
-          error: data.error || 'Failed to submit enquiry.',
-          details: data.details,
+        setIsSubmitting(false);
+        setHandoffState({
+          status: 'failed',
+          errorMessage: data.error || (language === 'as' ? 'চাৰ্ভাৰত সমস্যা হৈছে।' : 'Failed to register appointment enquiry.'),
         });
       }
-    } catch (err) {
-      console.error('Submission error:', err);
-      setSubmissionResult({
-        success: false,
-        error: 'Unable to connect to the backend server. Please call or WhatsApp us directly.',
+    } catch {
+      setIsSubmitting(false);
+      setHandoffState({
+        status: 'failed',
+        errorMessage:
+          language === 'as'
+            ? 'চাৰ্ভাৰ সংযোগত সমস্যা হৈছে। অনুগ্ৰহ কৰি তলত দিয়া নম্বৰত পোনে পোনে যোগাযোগ কৰক।'
+            : 'Unable to connect to workshop server. Please call or WhatsApp our technical advisor directly.',
       });
-    } finally {
-      setSubmitting(false);
     }
   };
 
+  const handleResetForm = () => {
+    setFormData({
+      fullName: '',
+      mobileNumber: '',
+      email: '',
+      vehicleMake: '',
+      vehicleModel: '',
+      vehicleYear: '2020',
+      serviceRequired: '',
+      preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
+      preferredDate: '',
+      preferredTime: 'Morning (10:30 AM - 01:00 PM)',
+      additionalMessage: '',
+      honeypot: '',
+      privacyConsent: true,
+    });
+    setFieldErrors({});
+    setHandoffState({ status: 'idle' });
+  };
+
   return (
-    <div className="bg-purewhite rounded-2xl border border-lightgrey shadow-premium p-6 sm:p-8">
-      {/* Header of Form */}
-      <div className="mb-6 pb-6 border-b border-lightgrey">
+    <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder shadow-premium p-6 sm:p-8 transition-colors">
+      {/* Form Header */}
+      <div className="mb-6 pb-6 border-b border-lightgrey dark:border-darkborder">
         <div className="flex items-center gap-2 text-xs font-bold text-orange uppercase tracking-wider mb-1">
-          <Calendar className="w-4 h-4" />
+          <Calendar className="w-4 h-4 text-orange" />
           <span>{contact.appointmentTitle}</span>
         </div>
-        <p className="text-xs text-secondary leading-relaxed">
+        <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
           {contact.appointmentSubtitle}
         </p>
       </div>
 
-      {/* Success Notification Banner */}
-      {submissionResult && submissionResult.success && (
-        <div className="mb-8 p-6 bg-emerald-50 border border-emerald-200 rounded-xl animate-fade-in">
+      {/* WHATSAPP HANDOFF & SUCCESS STATE (Section 9E & 9G) */}
+      {handoffState.status === 'opened' && (
+        <div className="mb-8 p-6 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-xl space-y-4 animate-fade-in">
           <div className="flex items-start gap-3">
             <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" />
             <div className="space-y-2">
-              <h4 className="font-heading font-bold text-base text-emerald-900">
-                {contact.messages.successTitle}
+              <h4 className="font-heading font-bold text-base text-emerald-900 dark:text-emerald-200">
+                {language === 'as'
+                  ? 'অনুসন্ধান বাৰ্তা হোৱাটছএপত সাজু কৰা হৈছে'
+                  : 'Your enquiry message is ready in WhatsApp'}
               </h4>
-              <p className="text-xs text-emerald-800 leading-relaxed">
-                {contact.messages.successBody}
+              <p className="text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed">
+                {language === 'as'
+                  ? 'আপোনাৰ অনুৰোধ আমাৰ ডাটাবেচত সফলতাৰে সংৰক্ষণ কৰা হৈছে (Ref: ' +
+                    handoffState.referenceNumber +
+                    ')। অনুগ্ৰহ কৰি হোৱাটছএপত বাৰ্তাটো পৰীক্ষা কৰক আৰু "Send" টিপক।'
+                  : 'Your appointment enquiry is registered in our workshop database. Please review the pre-filled message in WhatsApp and press Send.'}
               </p>
-              <div className="inline-block bg-white border border-emerald-300 rounded px-3 py-1.5 text-xs font-mono font-bold text-emerald-900">
-                Reference ID: {submissionResult.referenceNumber}
+              <div className="inline-block bg-white dark:bg-darkcard border border-emerald-300 dark:border-emerald-800 rounded px-3 py-1.5 text-xs font-mono font-bold text-emerald-900 dark:text-emerald-300">
+                Reference ID: {handoffState.referenceNumber}
               </div>
-              <p className="text-[11px] text-emerald-700 font-medium">
-                Status: <span className="font-bold underline">ENQUIRY RECEIVED</span> (Our technical advisor will call to confirm slot availability).
-              </p>
             </div>
+          </div>
+
+          <div className="pt-2 flex flex-wrap items-center gap-3">
+            {handoffState.whatsappUrl && (
+              <a
+                href={handoffState.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-purewhite font-heading font-bold text-xs shadow-md transition-all inline-flex items-center gap-2"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>
+                  {language === 'as' ? 'হোৱাটছএপ পুনৰ খোলক' : 'Open WhatsApp Again'}
+                </span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
+
+            <button
+              type="button"
+              onClick={handleResetForm}
+              className="px-4 py-2.5 rounded-lg border border-bordergrey dark:border-darkborder text-charcoal dark:text-darktext hover:bg-lightgrey dark:hover:bg-darkcard text-xs font-bold transition-colors inline-flex items-center gap-1.5"
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+              <span>{language === 'as' ? 'নতুন বুকিং কৰক' : 'Submit Another Enquiry'}</span>
+            </button>
           </div>
         </div>
       )}
 
-      {/* Error Notification Banner */}
-      {submissionResult && !submissionResult.success && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-xs text-red-800 animate-fade-in">
-          <div className="flex items-start gap-2">
-            <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+      {/* ERROR / FALLBACK STATE (Section 9F & 9H) */}
+      {handoffState.status === 'failed' && (
+        <div className="mb-6 p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/40 rounded-xl text-xs text-red-800 dark:text-red-300 space-y-3 animate-fade-in">
+          <div className="flex items-start gap-2.5">
+            <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
             <div>
-              <span className="font-bold block mb-1">
-                {submissionResult.error || contact.messages.errorTitle}
-              </span>
-              {submissionResult.details && submissionResult.details.length > 0 && (
-                <ul className="list-disc list-inside space-y-0.5 text-[11px] text-red-700">
-                  {submissionResult.details.map((d, i) => (
-                    <li key={i}>{d}</li>
-                  ))}
-                </ul>
+              <h5 className="font-heading font-bold text-sm">
+                {language === 'as' ? 'অনুৰোধ প্ৰেৰণত সমস্যা' : 'Submission Issue'}
+              </h5>
+              <p className="mt-1 leading-relaxed">{handoffState.errorMessage}</p>
+            </div>
+          </div>
+          <div className="pt-2 flex flex-wrap gap-2">
+            <a
+              href="tel:+919212218180"
+              className="px-4 py-2 rounded-lg bg-charcoal text-purewhite font-bold inline-flex items-center gap-1.5"
+            >
+              <Phone className="w-3.5 h-3.5 text-orange" />
+              <span>Call +91 92122 18180</span>
+            </a>
+            <a
+              href="https://wa.me/917982824255"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-lg bg-emerald-600 text-purewhite font-bold inline-flex items-center gap-1.5"
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>WhatsApp Direct</span>
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* THE MAIN FORM (Sections 9A, 9B, 9C) */}
+      <form onSubmit={handlePreSubmit} className="space-y-6">
+        {/* Anti-spam honeypot */}
+        <div className="hidden" aria-hidden="true">
+          <input
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData.honeypot}
+            onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+          />
+        </div>
+
+        {/* 1. Customer Personal Information */}
+        <div className="space-y-4">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-darktext pb-2 border-b border-lightgrey dark:border-darkborder flex items-center gap-2">
+            <span className="w-5 h-5 rounded-md bg-orange-light text-orange flex items-center justify-center font-mono text-[10px] font-bold">
+              1
+            </span>
+            <span>{language === 'as' ? 'ব্যক্তিগত তথ্য' : 'Customer Information'}</span>
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                htmlFor="apt-fullName"
+                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+              >
+                {contact.form.fullName} <span className="text-orange">*</span>
+              </label>
+              <input
+                id="apt-fullName"
+                name="fullName"
+                type="text"
+                value={formData.fullName}
+                onChange={handleChange}
+                placeholder={contact.form.fullNamePlaceholder}
+                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
+                  fieldErrors.fullName
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20'
+                }`}
+              />
+              {fieldErrors.fullName && (
+                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  <span>{fieldErrors.fullName}</span>
+                </p>
+              )}
+            </div>
+
+            <div>
+              <label
+                htmlFor="apt-mobileNumber"
+                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+              >
+                {contact.form.mobileNumber} <span className="text-orange">*</span>
+              </label>
+              <input
+                id="apt-mobileNumber"
+                name="mobileNumber"
+                type="tel"
+                maxLength={14}
+                value={formData.mobileNumber}
+                onChange={handleChange}
+                placeholder={contact.form.mobilePlaceholder}
+                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
+                  fieldErrors.mobileNumber
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20'
+                }`}
+              />
+              {fieldErrors.mobileNumber && (
+                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  <span>{fieldErrors.mobileNumber}</span>
+                </p>
+              )}
+            </div>
+
+            <div className="sm:col-span-2">
+              <label
+                htmlFor="apt-email"
+                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+              >
+                {contact.form.email}{' '}
+                <span className="text-secondary dark:text-darkmuted text-[10px] font-normal">
+                  (Optional)
+                </span>
+              </label>
+              <input
+                id="apt-email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder={contact.form.emailPlaceholder}
+                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
+                  fieldErrors.email
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20'
+                }`}
+              />
+              {fieldErrors.email && (
+                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  <span>{fieldErrors.email}</span>
+                </p>
               )}
             </div>
           </div>
         </div>
-      )}
 
-      {/* The Enquiry Form */}
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {/* Honeypot Spam Trap (Hidden) */}
-        <div className="hidden" aria-hidden="true">
-          <input
-            type="text"
-            name="honeypot"
-            value={formData.honeypot}
-            onChange={handleChange}
-            tabIndex={-1}
-            autoComplete="off"
-          />
-        </div>
+        {/* 2. Vehicle Details */}
+        <div className="space-y-4">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-darktext pb-2 border-b border-lightgrey dark:border-darkborder flex items-center gap-2">
+            <span className="w-5 h-5 rounded-md bg-orange-light text-orange flex items-center justify-center font-mono text-[10px] font-bold">
+              2
+            </span>
+            <span>{language === 'as' ? 'বাহনৰ বিৱৰণ' : 'Vehicle Specifications'}</span>
+          </h3>
 
-        {/* Row 1: Contact Information */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-charcoal mb-1">
-              {contact.form.fullName} <span className="text-orange">*</span>
-            </label>
-            <input
-              type="text"
-              name="fullName"
-              required
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder={contact.form.fullNamePlaceholder}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey text-xs focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none transition-colors"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-charcoal mb-1">
-              {contact.form.mobileNumber} <span className="text-orange">*</span>
-            </label>
-            <input
-              type="tel"
-              name="mobileNumber"
-              required
-              maxLength={12}
-              value={formData.mobileNumber}
-              onChange={handleChange}
-              placeholder={contact.form.mobilePlaceholder}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey text-xs focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none transition-colors"
-            />
-          </div>
-        </div>
-
-        {/* Optional Email */}
-        <div>
-          <label className="block text-xs font-semibold text-charcoal mb-1">
-            {contact.form.email}
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder={contact.form.emailPlaceholder}
-            className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey text-xs focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none transition-colors"
-          />
-        </div>
-
-        {/* Row 2: Vehicle Information */}
-        <div className="p-4 bg-offwhite/60 rounded-xl border border-lightgrey/80 space-y-4">
-          <span className="block text-xs font-bold text-charcoal uppercase tracking-wider">
-            {language === 'as' ? 'বাহনৰ তথ্য' : 'Vehicle Specifications'}
-          </span>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-[11px] font-semibold text-secondary mb-1">
+              <label
+                htmlFor="apt-vehicleMake"
+                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+              >
                 {contact.form.vehicleMake} <span className="text-orange">*</span>
               </label>
               <select
+                id="apt-vehicleMake"
                 name="vehicleMake"
-                required
                 value={formData.vehicleMake}
                 onChange={handleChange}
-                className="w-full px-3 py-2 rounded-lg border border-lightgrey text-xs bg-purewhite focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none"
+                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
+                  fieldErrors.vehicleMake
+                    ? 'border-red-500'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange'
+                }`}
               >
-                <option value="">{contact.form.vehicleMakeSelect}</option>
+                <option value="">{language === 'as' ? 'বাচনি কৰক' : 'Select Make'}</option>
                 {vehicleMakes.map((m) => (
                   <option key={m} value={m}>
                     {m}
                   </option>
                 ))}
               </select>
+              {fieldErrors.vehicleMake && (
+                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  <span>{fieldErrors.vehicleMake}</span>
+                </p>
+              )}
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-secondary mb-1">
+              <label
+                htmlFor="apt-vehicleModel"
+                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+              >
                 {contact.form.vehicleModel} <span className="text-orange">*</span>
               </label>
               <input
-                type="text"
+                id="apt-vehicleModel"
                 name="vehicleModel"
-                required
+                type="text"
                 value={formData.vehicleModel}
                 onChange={handleChange}
                 placeholder={contact.form.vehicleModelPlaceholder}
-                className="w-full px-3 py-2 rounded-lg border border-lightgrey text-xs bg-purewhite focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none"
-              >
-              </input>
+                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
+                  fieldErrors.vehicleModel
+                    ? 'border-red-500'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange'
+                }`}
+              />
+              {fieldErrors.vehicleModel && (
+                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  <span>{fieldErrors.vehicleModel}</span>
+                </p>
+              )}
             </div>
 
             <div>
-              <label className="block text-[11px] font-semibold text-secondary mb-1">
-                {contact.form.vehicleYear} <span className="text-orange">*</span>
+              <label
+                htmlFor="apt-vehicleYear"
+                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+              >
+                {contact.form.vehicleYear}
               </label>
-              <input
-                type="number"
+              <select
+                id="apt-vehicleYear"
                 name="vehicleYear"
-                required
-                min={1998}
-                max={new Date().getFullYear() + 1}
                 value={formData.vehicleYear}
                 onChange={handleChange}
-                placeholder={contact.form.vehicleYearPlaceholder}
-                className="w-full px-3 py-2 rounded-lg border border-lightgrey text-xs bg-purewhite focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey dark:border-darkborder text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext focus:border-orange outline-none transition-all"
+              >
+                {Array.from({ length: 15 }, (_, i) => new Date().getFullYear() - i).map((yr) => (
+                  <option key={yr} value={yr}>
+                    {yr}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {/* 3. Service & Scheduling */}
+        <div className="space-y-4">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-darktext pb-2 border-b border-lightgrey dark:border-darkborder flex items-center gap-2">
+            <span className="w-5 h-5 rounded-md bg-orange-light text-orange flex items-center justify-center font-mono text-[10px] font-bold">
+              3
+            </span>
+            <span>{language === 'as' ? 'সেৱা আৰু কৰ্মশালা নিৰ্বাচন' : 'Service & Workshop Booking'}</span>
+          </h3>
+
+          <div className="space-y-4">
+            <div>
+              <label
+                htmlFor="apt-serviceRequired"
+                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+              >
+                {contact.form.serviceRequired} <span className="text-orange">*</span>
+              </label>
+              <select
+                id="apt-serviceRequired"
+                name="serviceRequired"
+                value={formData.serviceRequired}
+                onChange={handleChange}
+                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
+                  fieldErrors.serviceRequired
+                    ? 'border-red-500'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange'
+                }`}
+              >
+                <option value="">{language === 'as' ? 'সেৱা বাচনি কৰক' : 'Select Required Service'}</option>
+                {servicesData.map((s) => (
+                  <option key={s.slug} value={s.titleEn}>
+                    {language === 'as' ? s.titleAs : s.titleEn}
+                  </option>
+                ))}
+              </select>
+              {fieldErrors.serviceRequired && (
+                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  <span>{fieldErrors.serviceRequired}</span>
+                </p>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label
+                  htmlFor="apt-preferredWorkshop"
+                  className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+                >
+                  {contact.form.preferredWorkshop} <span className="text-orange">*</span>
+                </label>
+                <select
+                  id="apt-preferredWorkshop"
+                  name="preferredWorkshop"
+                  value={formData.preferredWorkshop}
+                  onChange={handleChange}
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey dark:border-darkborder text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext focus:border-orange outline-none transition-all"
+                >
+                  {workshopOptions.map((w) => (
+                    <option key={w} value={w}>
+                      {w}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="apt-preferredDate"
+                  className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+                >
+                  {contact.form.preferredDate} <span className="text-orange">*</span>
+                </label>
+                <input
+                  id="apt-preferredDate"
+                  name="preferredDate"
+                  type="date"
+                  min={new Date().toISOString().split('T')[0]}
+                  value={formData.preferredDate}
+                  onChange={handleChange}
+                  className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
+                    fieldErrors.preferredDate
+                      ? 'border-red-500'
+                      : 'border-lightgrey dark:border-darkborder focus:border-orange'
+                  }`}
+                />
+                {fieldErrors.preferredDate && (
+                  <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
+                    <AlertCircle className="w-3 h-3" />
+                    <span>{fieldErrors.preferredDate}</span>
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label
+                  htmlFor="apt-preferredTime"
+                  className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+                >
+                  {contact.form.preferredTime}
+                </label>
+                <select
+                  id="apt-preferredTime"
+                  name="preferredTime"
+                  value={formData.preferredTime}
+                  onChange={handleChange}
+                  className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey dark:border-darkborder text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext focus:border-orange outline-none transition-all"
+                >
+                  {timeOptions.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="apt-additionalMessage"
+                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
+              >
+                {contact.form.additionalMessage}{' '}
+                <span className="text-secondary dark:text-darkmuted text-[10px] font-normal">
+                  (Optional notes on mileage, RPM lag, or cylinder expiry)
+                </span>
+              </label>
+              <textarea
+                id="apt-additionalMessage"
+                name="additionalMessage"
+                rows={3}
+                value={formData.additionalMessage}
+                onChange={handleChange}
+                placeholder={contact.form.additionalMessagePlaceholder}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey dark:border-darkborder text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext focus:border-orange outline-none transition-all resize-none"
               />
             </div>
           </div>
         </div>
 
-        {/* Row 3: Service & Workshop Selection */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-charcoal mb-1">
-              {contact.form.serviceRequired} <span className="text-orange">*</span>
-            </label>
-            <select
-              name="serviceRequired"
-              required
-              value={formData.serviceRequired}
-              onChange={handleChange}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey text-xs bg-purewhite focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none"
-            >
-              <option value="">{contact.form.serviceRequiredSelect}</option>
-              {servicesData.map((s) => (
-                <option key={s.slug} value={s.titleEn}>
-                  {language === 'as' ? s.titleAs : s.titleEn}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-charcoal mb-1">
-              {contact.form.preferredWorkshop} <span className="text-orange">*</span>
-            </label>
-            <select
-              name="preferredWorkshop"
-              required
-              value={formData.preferredWorkshop}
-              onChange={handleChange}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey text-xs bg-purewhite focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none"
-            >
-              {workshopOptions.map((w) => (
-                <option key={w} value={w}>
-                  {w}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Row 4: Date & Time Slot */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-xs font-semibold text-charcoal mb-1">
-              {contact.form.preferredDate} <span className="text-orange">*</span>
-            </label>
+        {/* 4. Privacy Consent & Submit */}
+        <div className="space-y-4 pt-2">
+          <div className="flex items-start gap-2.5">
             <input
-              type="date"
-              name="preferredDate"
-              required
-              min={new Date().toISOString().split('T')[0]}
-              value={formData.preferredDate}
+              id="apt-privacyConsent"
+              name="privacyConsent"
+              type="checkbox"
+              checked={formData.privacyConsent}
               onChange={handleChange}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey text-xs focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none"
+              className="mt-1 w-4 h-4 rounded text-orange focus:ring-orange/30 border-lightgrey dark:border-darkborder"
             />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-charcoal mb-1">
-              {contact.form.preferredTime} <span className="text-orange">*</span>
-            </label>
-            <select
-              name="preferredTime"
-              required
-              value={formData.preferredTime}
-              onChange={handleChange}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey text-xs bg-purewhite focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none"
+            <label
+              htmlFor="apt-privacyConsent"
+              className="text-xs text-secondary dark:text-darkmuted leading-relaxed"
             >
-              {timeOptions.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
+              {contact.form.privacyConsent}
+            </label>
           </div>
-        </div>
+          {fieldErrors.privacyConsent && (
+            <p className="text-[11px] text-red-600 font-medium flex items-center gap-1">
+              <AlertCircle className="w-3 h-3" />
+              <span>{fieldErrors.privacyConsent}</span>
+            </p>
+          )}
 
-        {/* Message / Symptoms */}
-        <div>
-          <label className="block text-xs font-semibold text-charcoal mb-1">
-            {contact.form.additionalMessage}
-          </label>
-          <textarea
-            name="additionalMessage"
-            rows={3}
-            value={formData.additionalMessage}
-            onChange={handleChange}
-            placeholder={contact.form.additionalMessagePlaceholder}
-            className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey text-xs focus:ring-2 focus:ring-orange/30 focus:border-orange outline-none"
-          ></textarea>
-        </div>
+          <div className="pt-2">
+            <button
+              type="submit"
+              className="w-full py-3.5 px-6 rounded-lg bg-orange hover:bg-orange-hover active:scale-[0.99] text-purewhite font-heading font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-orange/30 flex items-center justify-center gap-2"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>
+                {language === 'as'
+                  ? 'তথ্য পৰীক্ষা কৰি হোৱাটছএপত বুক কৰক'
+                  : 'Review & Continue to WhatsApp Booking'}
+              </span>
+            </button>
+          </div>
 
-        {/* Privacy Consent Checkbox */}
-        <div className="flex items-start gap-2 pt-1">
-          <input
-            type="checkbox"
-            id="privacyConsent"
-            name="privacyConsent"
-            checked={formData.privacyConsent}
-            onChange={handleChange}
-            className="mt-1 h-4 w-4 rounded border-lightgrey text-orange focus:ring-orange"
-          />
-          <label htmlFor="privacyConsent" className="text-[11px] text-secondary leading-normal cursor-pointer">
-            {contact.form.privacyConsent}
-          </label>
-        </div>
-
-        {/* Clarifying Disclaimer */}
-        <p className="text-[11px] text-secondary/80 italic bg-lightgrey/40 p-3 rounded-lg border border-lightgrey/60">
-          {contact.form.disclaimerNotice}
-        </p>
-
-        {/* Submit Button */}
-        <div>
-          <button
-            type="submit"
-            disabled={submitting}
-            className="btn-primary w-full py-3.5 text-sm uppercase tracking-wider"
-          >
-            {submitting ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                <span>{contact.form.submitLoading}</span>
-              </>
-            ) : (
-              <span>{contact.form.submitButton}</span>
-            )}
-          </button>
+          <p className="text-[11px] text-center text-secondary dark:text-darkmuted">
+            {language === 'as'
+              ? 'চৰকাৰী অনুমোদিত RFC ক’ড নং ২৬১ • কোনো ভুৱা বুকিং নাই'
+              : 'Govt. Approved Retrofitting Center (RFC Code No. 261) • Official WhatsApp (+91 79828 24255)'}
+          </p>
         </div>
       </form>
 
-      {/* Alternative Instant Contact Options */}
-      <div className="mt-8 pt-6 border-t border-lightgrey flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-        <span className="text-secondary font-medium">
-          {language === 'as' ? 'তৎকালীন সাহায্যৰ প্ৰয়োজন নেকি?' : 'Prefer immediate communication?'}
-        </span>
-        <div className="flex items-center gap-3 w-full sm:w-auto">
-          <a
-            href="tel:+919212218180"
-            className="btn-secondary py-2 px-3 text-xs font-semibold flex-1 sm:flex-initial"
-          >
-            <Phone className="w-3.5 h-3.5 text-orange" />
-            <span>+91 92122 18180</span>
-          </a>
-          <a
-            href="https://wa.me/917982824255"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary py-2 px-3 text-xs font-semibold flex-1 sm:flex-initial text-emerald-700 hover:text-emerald-800"
-          >
-            <MessageSquare className="w-3.5 h-3.5 text-emerald-500" />
-            <span>WhatsApp</span>
-          </a>
-        </div>
-      </div>
+      {/* CONFIRMATION REVIEW MODAL (Section 10) */}
+      <AppointmentModal
+        isOpen={isReviewOpen}
+        data={{
+          ...formData,
+          utm: utmData,
+        }}
+        isSubmitting={isSubmitting}
+        onEdit={() => setIsReviewOpen(false)}
+        onConfirm={handleConfirmAndHandoff}
+        onClose={() => setIsReviewOpen(false)}
+      />
     </div>
   );
 };

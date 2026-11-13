@@ -75,16 +75,6 @@ export const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<string | null>('faq-1');
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
-
-  // Parallax Scroll Tracking
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Automatic Hero Carousel: super smooth background crossfade every 3 seconds (3000ms)
   useEffect(() => {
@@ -115,25 +105,25 @@ export const Home: React.FC = () => {
       />
 
       {/* SECTION B: Bright Premium Light-Themed Hero (Editorial Layout with 3s Smooth Crossfade Showcase) */}
-      <section className="relative bg-[#F5F5F2] text-charcoal pt-10 sm:pt-14 pb-14 sm:pb-18 border-b border-lightgrey overflow-hidden">
+      <section className="relative bg-[#F5F5F2] dark:bg-darkbg text-charcoal dark:text-darktext pt-10 sm:pt-14 pb-14 sm:pb-18 border-b border-lightgrey dark:border-darkborder overflow-hidden transition-colors">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Business Clarity & Value (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
               {/* Eyebrow Badge (Subtly Rounded, No Pills) */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-light text-orange border border-orange/25 text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-light dark:bg-orange/15 text-orange border border-orange/25 text-xs font-bold uppercase tracking-wider">
                 <ShieldCheck className="w-4 h-4 text-orange shrink-0" />
                 <span>RFC Code No. 261 • Govt. Certified Retrofitment Facility</span>
               </div>
 
               {/* Bold Editorial Headline in Charcoal with Orange Accent */}
-              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal leading-tight tracking-tight">
+              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
                 Precision CNG Engineering &{' '}
                 <span className="text-orange block sm:inline">Certified Automotive Retrofitting</span>
               </h1>
 
               {/* Informative, authentic introduction */}
-              <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-2xl">
+              <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
                 {language === 'as'
                   ? '১৯৯৮ চনৰ পৰা দিল্লী-এনচিআৰত অনুমোদিত ছিকুৱেনচিয়েল চিএনজি কিট সংস্থাপন, ডিজিটেল ইচিইউ কেলিব্ৰেচন, আৰু চৰকাৰী ৩৩০-বাৰ চিলিণ্ডাৰ হাইড্ৰ’-টেষ্টিং সেৱা।'
                   : 'Established in 1998, Car’s Energy Co. provides certified sequential CNG system fitment, digital ECU tuning, statutory cylinder safety testing, and RTO endorsement across Delhi-NCR.'}
@@ -151,7 +141,7 @@ export const Home: React.FC = () => {
 
                 <Link
                   to="/services"
-                  className="bg-purewhite hover:bg-lightgrey text-charcoal border border-bordergrey font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-subtle hover:border-charcoal/20 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
+                  className="bg-purewhite dark:bg-darkcard hover:bg-lightgrey dark:hover:bg-darksurface text-charcoal dark:text-darktext border border-bordergrey dark:border-darkborder font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-subtle hover:border-charcoal/20 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
                 >
                   <span>{home.hero.ctaServices}</span>
                   <ChevronRight className="w-4 h-4 text-orange" />
@@ -159,10 +149,10 @@ export const Home: React.FC = () => {
               </div>
 
               {/* Direct Workshop Hotline & Addresses */}
-              <div className="pt-2 border-t border-lightgrey/80 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-secondary">
+              <div className="pt-2 border-t border-lightgrey/80 dark:border-darkborder flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-secondary dark:text-darkmuted">
                 <a
                   href="tel:+919212218180"
-                  className="inline-flex items-center gap-1.5 font-bold text-charcoal hover:text-orange transition-colors"
+                  className="inline-flex items-center gap-1.5 font-bold text-charcoal dark:text-darktext hover:text-orange transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-orange" />
                   <span>+91 92122 18180</span>
@@ -172,13 +162,13 @@ export const Home: React.FC = () => {
                   href="https://wa.me/917982824255"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 font-bold text-emerald-700 hover:text-emerald-800 transition-colors"
+                  className="inline-flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 transition-colors"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                   <span>WhatsApp Direct</span>
                 </a>
 
-                <span className="hidden sm:inline-flex items-center gap-1 text-secondary font-medium">
+                <span className="hidden sm:inline-flex items-center gap-1 text-secondary dark:text-darkmuted font-medium">
                   <MapPin className="w-3.5 h-3.5 text-orange shrink-0" />
                   <span>Mundka & Paschim Vihar</span>
                 </span>
@@ -187,7 +177,7 @@ export const Home: React.FC = () => {
 
             {/* Right Column: High-Res Automotive Engineering Showcase with 3s Smooth Crossfade (5 cols) */}
             <div className="lg:col-span-5">
-              <div className="bg-purewhite rounded-2xl border border-lightgrey p-3 shadow-premium space-y-3">
+              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-3 shadow-premium space-y-3 transition-colors">
                 {/* Visual Window */}
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-charcoaldark select-none">
                   {heroSlides.map((slide, index) => (
@@ -249,20 +239,27 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Progress Indicators & Quick Jump Tabs */}
-                <div className="grid grid-cols-4 gap-1.5 pt-1">
+                {/* Progress Indicators & Quick Jump Tabs (Rectangular / Subtly Rounded, No Pills) */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
                   {heroSlides.map((slide, index) => (
                     <button
                       key={slide.id}
                       type="button"
                       onClick={() => setCurrentSlide(index)}
-                      className={`py-1.5 px-2 rounded-md text-[10px] font-bold text-center transition-all ${
+                      className={`px-2.5 py-2 rounded-lg text-left transition-all duration-200 border focus:outline-none focus:ring-2 focus:ring-orange/40 ${
                         index === currentSlide
-                          ? 'bg-orange text-purewhite shadow-sm'
-                          : 'bg-lightgrey/60 text-secondary hover:bg-lightgrey hover:text-charcoal'
+                          ? 'bg-orange text-purewhite border-orange shadow-md'
+                          : 'bg-lightgrey/60 dark:bg-darkcard text-charcoal dark:text-darktext border-bordergrey/80 dark:border-darkborder hover:border-orange/60 hover:bg-lightgrey dark:hover:bg-darksurface'
                       }`}
                     >
-                      0{slide.id} {slide.tag.split(' ')[0]}
+                      <span className={`block text-[10px] font-extrabold uppercase tracking-wider ${
+                        index === currentSlide ? 'text-purewhite/90' : 'text-orange'
+                      }`}>
+                        0{slide.id}
+                      </span>
+                      <span className="block font-bold text-[11px] truncate mt-0.5">
+                        {slide.tag}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -273,19 +270,19 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SECTION B2: 3 Core Engineering Pillars (Light Theme, Rectangular Buttons) */}
-      <section id="features-section" className="py-14 bg-purewhite border-b border-lightgrey">
+      <section id="features-section" className="py-14 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 1 */}
-            <div className="bg-purewhite rounded-xl shadow-subtle border border-lightgrey p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
+            <div className="bg-purewhite dark:bg-darksurface rounded-xl shadow-subtle border border-lightgrey dark:border-darkborder p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
               <div>
-                <div className="w-12 h-12 rounded-lg bg-orange-light text-orange mx-auto flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg bg-orange-light dark:bg-orange/15 text-orange mx-auto flex items-center justify-center mb-4">
                   <Wrench className="w-5 h-5 text-orange" />
                 </div>
-                <h3 className="font-heading font-bold text-base text-charcoal mb-2">
+                <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite mb-2">
                   Sequential CNG Systems
                 </h3>
-                <p className="text-xs text-secondary leading-relaxed mb-6">
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-6">
                   {language === 'as'
                     ? 'উচ্চ মানৰ ছিকুৱেনচিয়েল গেছ ইনজেকচন প্ৰযুক্তি সংস্থাপন আৰু ৬০-৭০% ইন্ধন সাশ্ৰয়।'
                     : 'High-precision multipoint gas injection with dedicated digital ECU for petrol-like acceleration and 60-70% fuel cost savings.'}
@@ -294,7 +291,7 @@ export const Home: React.FC = () => {
               <div>
                 <Link
                   to="/services/cng-kit-installation"
-                  className="inline-flex items-center gap-1.5 border border-bordergrey hover:border-orange text-charcoal hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 border border-bordergrey dark:border-darkborder hover:border-orange text-charcoal dark:text-darktext hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 >
                   <span>{common.buttons.learnMore}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-orange" />
@@ -303,15 +300,15 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-purewhite rounded-xl shadow-subtle border border-lightgrey p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
+            <div className="bg-purewhite dark:bg-darksurface rounded-xl shadow-subtle border border-lightgrey dark:border-darkborder p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
               <div>
-                <div className="w-12 h-12 rounded-lg bg-orange-light text-orange mx-auto flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg bg-orange-light dark:bg-orange/15 text-orange mx-auto flex items-center justify-center mb-4">
                   <Cpu className="w-5 h-5 text-orange" />
                 </div>
-                <h3 className="font-heading font-bold text-base text-charcoal mb-2">
+                <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite mb-2">
                   ECU Tuning & Calibration
                 </h3>
-                <p className="text-xs text-secondary leading-relaxed mb-6">
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-6">
                   {language === 'as'
                     ? 'OBD-II সংযোগৰ জৰিয়তে ডিজিটেল ফুৱেল মেপিং আৰু লেগ-মুক্ত স্মুথ পিক-আপ।'
                     : 'Computerized real-time fuel mapping and timing advancer tuning to eliminate engine knock, RPM lag, and check-engine warnings.'}
@@ -320,7 +317,7 @@ export const Home: React.FC = () => {
               <div>
                 <Link
                   to="/services/ecu-tuning-calibration"
-                  className="inline-flex items-center gap-1.5 border border-bordergrey hover:border-orange text-charcoal hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 border border-bordergrey dark:border-darkborder hover:border-orange text-charcoal dark:text-darktext hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 >
                   <span>{common.buttons.learnMore}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-orange" />
@@ -329,15 +326,15 @@ export const Home: React.FC = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-purewhite rounded-xl shadow-subtle border border-lightgrey p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
+            <div className="bg-purewhite dark:bg-darksurface rounded-xl shadow-subtle border border-lightgrey dark:border-darkborder p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
               <div>
-                <div className="w-12 h-12 rounded-lg bg-orange-light text-orange mx-auto flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-lg bg-orange-light dark:bg-orange/15 text-orange mx-auto flex items-center justify-center mb-4">
                   <ShieldCheck className="w-5 h-5 text-orange" />
                 </div>
-                <h3 className="font-heading font-bold text-base text-charcoal mb-2">
+                <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite mb-2">
                   Cylinder Hydro Testing
                 </h3>
-                <p className="text-xs text-secondary leading-relaxed mb-6">
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-6">
                   {language === 'as'
                     ? 'PESO অনুমোদিত ৩৩০ বাৰ হাইড্ৰ\'ষ্টেটিক চাপ পৰীক্ষা আৰু চৰকাৰী প্ৰমাণপত্ৰ।'
                     : 'Statutory 3-year 330-bar water jacket hydrostatic pressure inspection with authorized compliance certificate.'}
@@ -346,7 +343,7 @@ export const Home: React.FC = () => {
               <div>
                 <Link
                   to="/services/cylinder-hydro-testing"
-                  className="inline-flex items-center gap-1.5 border border-bordergrey hover:border-orange text-charcoal hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
+                  className="inline-flex items-center gap-1.5 border border-bordergrey dark:border-darkborder hover:border-orange text-charcoal dark:text-darktext hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
                 >
                   <span>{common.buttons.learnMore}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-orange" />

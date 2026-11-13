@@ -12,6 +12,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Anti-flash theme initializer: Light mode is default -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            // Default to approved light theme
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body class="bg-offwhite text-charcoal font-sans antialiased selection:bg-orange/20 selection:text-charcoal min-h-screen">
     <div id="root"></div>

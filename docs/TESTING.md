@@ -45,3 +45,24 @@ npm test
 - [x] **Forms:** Validates Indian 10-digit phone numbers, required fields, and displays distinct `ENQUIRY_RECEIVED` reference modal.
 - [x] **Spam Traps:** Hidden honeypot rejects bots with HTTP 400.
 - [x] **Performance & Accessibility:** Semantic tags (`<header>`, `<main>`, `<nav>`, `<section>`, `<footer>`), ARIA attributes, and `@media (prefers-reduced-motion)` respected.
+
+---
+
+## 4. Advanced Features Testing Suite
+
+Automated verification in `test/advanced_features.test.js`:
+1. **UTM Sanitization:** Validates HTML tag stripping and 64-character parameter length ceiling.
+2. **WhatsApp URL Protocol:** Validates international format (`917982824255`), character encoding, and data completeness.
+3. **Backend UTM Integration:** Validates that `/api/appointments` accepts, sanitizes, and records attribution logs alongside appointment requests.
+
+### Advanced Features Manual Verification Matrix:
+- [x] **Light & Dark Theme Toggle:** Verified on desktop and mobile viewports.
+- [x] **Theme Persistence:** Stored in `localStorage` without screen flashing on reload.
+- [x] **Site-Wide Search:** Verified in English and Assamese; highlights terms; keyboard operable with `Ctrl+K`, arrows, Enter, and Escape.
+- [x] **Back to Top Button:** Verified appear/disappear at 300px threshold; smooth scroll active.
+- [x] **Scroll Progress Bar:** Accurately reflects reading percentage without layout shifts.
+- [x] **Appointment Confirmation Modal:** Displays all entered customer, vehicle, and scheduling data before WhatsApp handoff.
+- [x] **WhatsApp Click-to-Chat:** Targets verified number `+91 79828 24255` with complete formatted details.
+- [x] **Floating Contact Widget:** Verified WhatsApp, Phone (+91 92122 18180), and Booking triggers on mobile and desktop.
+- [x] **Zero Em/En Dashes:** Scanned and verified across all source files and test suites.
+

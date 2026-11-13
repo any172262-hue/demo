@@ -199,3 +199,23 @@ Avoid:
 - [ ] Contrast and focus states are checked.
 - [ ] Images have alt text and stable dimensions.
 - [ ] No horizontal overflow.
+
+## 12. Advanced UI/UX Extensions
+
+### 12.1 Calibrated Dark Theme
+- Tailored palette: `#121417` (Canvas), `#181B1F` (Cards), `#2A2F37` (Borders), `#E9EAEC` (Text).
+- Maintains WCAG AA contrast ratio (> 4.5:1 for body copy, > 3:1 for large text).
+- Seamless transition on toggle without FOUC or screen flashing.
+
+### 12.2 Search Experience
+- Accessible search dialog with focus trap.
+- Keyboard navigation (Arrow keys + Enter).
+- Visual highlight `<mark>` tags for query terms.
+- Clear no-results and empty states with keyword pills.
+
+### 12.3 Interaction Feedback
+- Micro-interactions on buttons and navigation items (150-200ms).
+- Reading progress bar at viewport top.
+- Floating back-to-top button with smooth scroll.
+- Expandable floating contact speed-dial.
+

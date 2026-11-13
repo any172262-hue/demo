@@ -141,3 +141,34 @@ flowchart TD
 There is no customer login and no public customer account role.
 
 Operational access to enquiry records is outside the public website scope. If a staff dashboard is added in a future release, it must be a separate, access-controlled project with staff authentication, authorisation, audit logging and a privacy review.
+
+## 9. Advanced Feature Flows
+
+### 9.1 Theme Toggle Flow
+- Visitor clicks Sun/Moon icon in desktop navbar or mobile drawer.
+- Theme state toggles immediately between Light and Dark mode.
+- Preference saves to `localStorage` and persists across navigation and page reloads.
+
+### 9.2 Site-Wide Search Flow
+- Visitor clicks Search icon or presses `Ctrl+K` / `Cmd+K`.
+- Search modal opens with focus trapped in input.
+- Visitor types keyword (e.g. "ECU Tuning" or "হাইড্ৰ টেষ্টিং").
+- Live results appear categorized by type with matched terms highlighted.
+- Visitor navigates with Arrow keys and presses Enter or clicks result to jump directly to page.
+- Pressing Escape closes modal.
+
+### 9.3 Appointment Modal Review & WhatsApp Handoff Flow
+- Visitor completes appointment form and clicks "Review & Continue".
+- Confirmation modal opens displaying all entered customer, vehicle, and scheduling data.
+- Clicking "Edit Details" dismisses modal with all input data intact.
+- Clicking "Confirm & Continue":
+  1. Submits appointment enquiry and UTM attribution to `/api/appointments`.
+  2. Receives official Reference ID.
+  3. Pre-fills structured message targeting verified WhatsApp number +91 79828 24255.
+  4. Opens WhatsApp and updates webpage with handoff confirmation and fallback direct call hotline.
+
+### 9.4 Floating Contact Widget Flow
+- Fixed button anchored at bottom-right corner.
+- Clicking reveals 3 direct actions: WhatsApp (+91 79828 24255), Call (+91 92122 18180), and Book Inspection.
+- Collapses on selection, outside click, or Escape key.
+
