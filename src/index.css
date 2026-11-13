@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-offwhite: #F5F5F2;
+    --bg-white: #FFFFFF;
+    --text-charcoal: #292D33;
+    --accent-orange: #F47721;
+    --border-light: #E9EAEC;
+    --text-muted: #73777D;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--bg-offwhite);
+    color: var(--text-charcoal);
+    font-family: 'Inter', 'Noto Sans Assamese', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Headings typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', 'Noto Sans Assamese', sans-serif;
+    color: #292D33;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* Custom UI Utilities */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-orange text-purewhite font-semibold text-sm rounded-lg transition-all duration-200 hover:bg-orange-hover hover:shadow-subtle focus:outline-none focus:ring-2 focus:ring-orange/30 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-purewhite text-charcoal border border-bordergrey font-semibold text-sm rounded-lg transition-all duration-200 hover:bg-lightgrey hover:border-charcoal/20 focus:outline-none focus:ring-2 focus:ring-charcoal/10;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 border border-charcoal text-charcoal font-semibold text-sm rounded-lg transition-all duration-200 hover:bg-charcoal hover:text-purewhite focus:outline-none focus:ring-2 focus:ring-charcoal/20;
+  }
+
+  .card-premium {
+    @apply bg-purewhite rounded-xl border border-lightgrey shadow-subtle hover:shadow-hover transition-all duration-300;
+  }
+
+  .badge-tech {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold bg-lightgrey text-charcoal;
+  }
+
+  .badge-orange {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-semibold bg-orange-light text-orange;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Properly Managed Frosted Glass Navigation Styles */
+.nav-glass-dark {
+  background: rgba(18, 22, 28, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+}
+
+.nav-glass-scrolled {
+  background: rgba(14, 17, 22, 0.94) !important;
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 30px -2px rgba(0, 0, 0, 0.5);
+}
+
+.nav-glass-dropdown {
+  background: rgba(22, 26, 33, 0.98) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 45px -5px rgba(0, 0, 0, 0.6);
+}
+
+.nav-pill-active {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(244, 119, 33, 0.5) !important;
+  color: #F47721 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.nav-pill-inactive {
+  color: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid transparent !important;
+}
+
+.nav-pill-inactive:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F5F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4C8D0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A0A5AF;
+}

@@ -1,0 +1,59 @@
+export interface FAQItem {
+  id: string;
+  category: 'installation' | 'safety' | 'legal' | 'maintenance';
+  questionEn: string;
+  questionAs: string;
+  answerEn: string;
+  answerAs: string;
+}
+
+export const faqsData: FAQItem[] = [
+  {
+    id: 'faq-1',
+    category: 'installation',
+    questionEn: 'How much fuel expense can I save by switching my car to CNG?',
+    questionAs: 'চিএনজি ব্যৱহাৰ কৰিলে কিমান ইন্ধন খৰচ সাশ্ৰয় হ\'ব পাৰে?',
+    answerEn: 'Depending on prevailing petrol prices and vehicle engine capacity, converting to a sequential CNG system typically delivers a 60% to 70% reduction in per-kilometer running costs compared to petrol. A vehicle achieving 15 km/l on petrol usually yields approximately 22 to 26 km per kg of CNG.',
+    answerAs: 'পেট্ৰলৰ বৰ্তমান মূল্য আৰু গাড়ীৰ ইঞ্জিনৰ ওপৰত ভিত্তি কৰি চিএনজিত চলিলে প্ৰতি কিলোমিটাৰত ৬০% ৰ পৰা ৭০% লৈকে খৰচ হ্ৰাস হয়। পেট্ৰলত ১৫ কিমি মাইলেজ দিয়া বাহন এখনত সাধাৰণতে প্ৰতি কেজি চিএনজিত ২২ ৰ পৰা ২৬ কিমি পৰ্যন্ত মাইলেজ পোৱা যায়।'
+  },
+  {
+    id: 'faq-2',
+    category: 'installation',
+    questionEn: 'Will installing a sequential CNG kit reduce my car\'s acceleration or pickup?',
+    questionAs: 'চিএনজি কিট লগালে গাড়ীৰ পিক-আপ বা এক্সিলাৰেশ্যন কমি যাব নেকি?',
+    answerEn: 'With modern computerized sequential injection kits synchronized through OBD-II and paired with dynamic timing advancers (like STAG or Europegas), power loss is restricted to an imperceptible 3-5%, unlike older venturi/conventional kits where a 15-20% drop was common. Throttle response feels virtually identical to factory petrol.',
+    answerAs: 'আধুনিক ছিকুৱেনচিয়েল কিট আৰু ডিজিটেল টাইমিং এডভান্সাৰৰ ব্যৱহাৰৰ ফলত শক্তি হ্ৰাস কেৱল মাত্ৰ ৩-৫% লৈ সীমাবদ্ধ থাকে, যিটো চলোৱাৰ সময়ত অনুভৱেই নহয়। পুৰণি সাধাৰণ কিটৰ তুলনাত এই নতুন ছিকুৱেনচিয়েল কিটত পেট্ৰলৰ দৰেই মসৃণ গতি লাভ হয়।'
+  },
+  {
+    id: 'faq-3',
+    category: 'safety',
+    questionEn: 'How safe is an automotive CNG cylinder in a rear collision?',
+    questionAs: 'পিছফালৰ পৰা খুন্দা খালে চিএনজি চিলিণ্ডাৰ কিমান সুৰক্ষিত?',
+    answerEn: 'Automotive CNG cylinders are forged from high-strength seamless alloy steel with wall thicknesses exceeding 8-10 mm and are tested to withstand internal hydrostatic pressures of 330 bar (significantly tougher than a conventional sheet-metal petrol fuel tank). Additionally, the cylinder valve incorporates a thermal fusible plug and high-pressure burst disc to safely discharge gas in high-temperature emergencies without exploding.',
+    answerAs: 'চিএনজি চিলিণ্ডাৰ ৮-১০ মিলিমিটাৰ ডাঠ মজবুত চিমলেছ এলয় ষ্টীলেৰে নিৰ্মিত আৰু ৩৩০ বাৰ উচ্চ চাপত পৰীক্ষিত (যিটো সাধাৰণ পেট্ৰল টেংকীতকৈ বহুগুণে শক্তিশালী)। ইয়াৰ উপৰিও সুৰক্ষা ভাল্ভত থাৰ্মেল প্লাগ থাকে, যিয়ে অতিমাত্ৰা উত্তাপত গেছ বিস্ফোৰণ নোহোৱাকৈ নিয়ন্ত্ৰিতভাৱে বাহিৰ কৰি দিয়ে।'
+  },
+  {
+    id: 'faq-4',
+    category: 'safety',
+    questionEn: 'How frequently does a CNG cylinder need hydrostatic testing?',
+    questionAs: 'চিএনজি চিলিণ্ডাৰ কিমান দিনৰ মূৰে মূৰে হাইড্ৰ\'-টেষ্ট কৰাব লাগে?',
+    answerEn: 'Under the Gas Cylinders Rules prescribed by the Petroleum and Explosives Safety Organization (PESO), automotive CNG cylinders must undergo hydrostatic re-testing every 3 years from the date of manufacture or previous test. Carrying an un-tested or expired cylinder is illegal and violates fuel pump safety regulations.',
+    answerAs: 'চৰকাৰী PESO নিৰ্দেশনা অনুসৰি বাহনৰ চিএনজি চিলিণ্ডাৰ নিৰ্মাণ বা পূৰ্বৰ টেষ্টৰ পৰা প্ৰতি ৩ বছৰৰ মূৰে মূৰে হাইড্ৰ\'-টেষ্ট কৰোৱাটো আইনগতভাৱে বাধ্যতামূলক। মেয়াদ উকলি যোৱা চিলিণ্ডাৰেৰে গেছ ভৰোৱাটো নিষিদ্ধ আৰু আইনবিৰুদ্ধ।'
+  },
+  {
+    id: 'faq-5',
+    category: 'legal',
+    questionEn: 'What is the procedure for RTO endorsement after installation?',
+    questionAs: 'কিট লগোৱাৰ পিছত আৰটিঅ\'ত কেনেদৰে অনুমোদন (Endorsement) কৰোৱা হয়?',
+    answerEn: 'As an authorized Retrofitting Center (RFC Code No. 261), Car\'s Energy Co. issues Form 22 (manufacturer compliance), Form 21, and the valid PESO cylinder certificate. The vehicle is then scheduled for physical inspection at the local RTO where the motor vehicle inspector verifies engine/chassis numbers, issuing an updated RC with Dual Fuel (Petrol/CNG) endorsed.',
+    answerAs: 'স্বীকৃত RFC কেন্দ্ৰ (RFC ক\'ড ২৬১) হিচাপে কাৰ্ছ এনাৰ্জীয়ে ফৰ্ম ২২, ফৰ্ম ২১ আৰু PESO প্ৰমাণপত্ৰ প্ৰদান কৰে। তাৰ পিছত স্থানীয় আৰটিঅ\'ত বাহনখন পৰিদৰ্শন কৰাই পেট্ৰল/চিএনজি দ্বৈত ইন্ধন সম্বলিত নতুন আৰচি প্ৰাপ্ত কৰা হয়।'
+  },
+  {
+    id: 'faq-6',
+    category: 'maintenance',
+    questionEn: 'What routine maintenance is required for a sequential CNG system?',
+    questionAs: 'ছিকুৱেনচিয়েল চিএনজি কিটৰ বাবে কি কি নিয়মীয়া তত্বাৱধানৰ প্ৰয়োজন?',
+    answerEn: 'Routine maintenance is straightforward: replace the low-pressure vapor gas filter every 10,000 km, inspect spark plug electrode gaps every 15,000 km, clean the injector rail plungers annually, and conduct electronic leak sniffer checks during regular oil changes.',
+    answerAs: 'ইয়াৰ তত্বাৱধান অতি সহজ: প্ৰতি ১০,০০০ কিলোমিটাৰত গেছ ফিল্টাৰ সলনি কৰক, ১৫,০০০ কিলোমিটাৰত স্পাৰ্ক প্লাগ পৰীক্ষা কৰক, বছৰত এবাৰ ইনজেক্টৰ ৰেল পৰিষ্কাৰ কৰক আৰু নিয়মীয়া ছাৰ্ভিচিঙৰ সময়ত গেছ লিক পৰীক্ষা কৰক।'
+  }
+];

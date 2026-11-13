@@ -1,0 +1,72 @@
+{
+  "about": {
+    "title": "About Car's Energy Co.",
+    "subtitle": "Engineering integrity, certified conversions, and over 26 years of dedicated alternative fuel leadership in Delhi-NCR.",
+    "foundedLabel": "Founded in 1998",
+    "missionTitle": "Our Engineering Mission",
+    "missionText": "To deliver safe, reliable, and fuel-efficient alternative propulsion systems to vehicle owners while strictly conforming to national environmental and safety directives. We combine mechanical precision, computer diagnostics, and authenticated hardware.",
+    "valuesTitle": "Core Operating Principles",
+    "values": [
+      { "title": "Zero Compromise on Safety", "desc": "Every fitting undergoes high-pressure nitrogen/air leak checks and strict torque verification." },
+      { "title": "Technical Transparency", "desc": "We inspect before advising, clearly explain ECU fuel mapping, and never sell counterfeit parts." },
+      { "title": "Regulatory Conformance", "desc": "Authorized RFC Code 261 center with legitimate RTO registration support." },
+      { "title": "Long-Term Engine Health", "desc": "Calibrated to prevent cylinder head valve recession and preserve factory drivability." }
+    ],
+    "workshopsTitle": "Our Facilities & Infrastructure",
+    "workshopsIntro": "Operating two strategically located facilities in New Delhi equipped with multi-gas analysers, cylinder hydro-testing tanks, and OBD-II calibration rigs."
+  },
+  "products": {
+    "title": "Hardware & Partner Brands",
+    "subtitle": "Direct distributor and certified installer of world-class automotive alternative fuel systems.",
+    "filterAll": "All Brands",
+    "filterKits": "Sequential Kits",
+    "filterCylinders": "PESO Cylinders",
+    "filterComponents": "Components & Reducers",
+    "authenticityNotice": "All components sold or installed by Car's Energy Co. are 100% genuine with verifiable serial numbers, authorized distributor guarantees, and manufacturer compliance certificates."
+  },
+  "gallery": {
+    "title": "Workshop Photographic Documentation",
+    "subtitle": "Real work photographs showcasing fitment precision, engine bay layouts, testing rigs, and customer handovers.",
+    "all": "All",
+    "fitment": "Kit Fitment",
+    "testing": "Hydro-Testing",
+    "diagnostics": "Diagnostics & ECU",
+    "facility": "Workshop Bays"
+  },
+  "videos": {
+    "title": "Technical Video Demonstrations",
+    "subtitle": "In-depth demonstrations of sequential kit calibration, dyno performance, and safety practices from our Mundka workshop.",
+    "watchVideo": "Watch Demonstration",
+    "videoNote": "Our video library highlights real vehicle installations and technical tutorials on throttle response, gas filters, and leak safety."
+  },
+  "testimonials": {
+    "title": "Genuine Client Testimonials",
+    "subtitle": "Read verified accounts from daily vehicle owners, fleet operators, and long-term customers serviced at Car's Energy Co.",
+    "ratingLabel": "Verified Service Experience",
+    "verifiedVehicle": "Vehicle"
+  },
+  "faqs": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Expert answers to common queries regarding sequential CNG systems, fuel efficiency, engine durability, and statutory testing.",
+    "searchPlaceholder": "Search common questions...",
+    "categoryAll": "All Questions",
+    "categoryInstallation": "Installation & Mileage",
+    "categorySafety": "Safety & Testing",
+    "categoryLegal": "RTO & Legal Endorsement",
+    "categoryMaintenance": "Maintenance & Servicing"
+  },
+  "legal": {
+    "privacyTitle": "Privacy Policy",
+    "privacyUpdated": "Last Updated: November 2026",
+    "termsTitle": "Terms & Conditions",
+    "termsUpdated": "Last Updated: November 2026",
+    "sitemapTitle": "Complete Website Sitemap",
+    "sitemapSubtitle": "Direct index of all pages, technical service guides, and customer resources."
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "subtitle": "The page you are looking for does not exist or has been moved to a new route.",
+    "homeButton": "Return to Homepage",
+    "servicesButton": "Browse Our Services"
+  }
+}

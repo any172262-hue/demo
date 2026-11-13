@@ -1,0 +1,62 @@
+{
+  "companyName": "Demo Page",
+  "companyTagline": "Automotive Engineering & CNG Technology Center",
+  "rfcCode": "Govt. Approved Retrofitting Center (RFC Code No. 261)",
+  "estYear": "Established 1998",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "allServices": "All Services",
+    "products": "Products & Brands",
+    "gallery": "Gallery",
+    "workshopGallery": "Workshop Gallery",
+    "videoGallery": "Video Gallery",
+    "testimonials": "Testimonials",
+    "faqs": "FAQs",
+    "contact": "Contact",
+    "bookAppointment": "Book Appointment"
+  },
+  "buttons": {
+    "bookNow": "Book Appointment",
+    "exploreServices": "Explore Services",
+    "learnMore": "Learn More",
+    "viewDetails": "View Details",
+    "contactUs": "Contact Us",
+    "callNow": "Call Workshop",
+    "whatsAppUs": "Chat on WhatsApp",
+    "submitEnquiry": "Submit Appointment Enquiry",
+    "submitting": "Submitting Enquiry...",
+    "backToHome": "Return to Home",
+    "backToServices": "Back to Services",
+    "viewAll": "View All",
+    "viewGallery": "View Gallery",
+    "filterAll": "All",
+    "close": "Close"
+  },
+  "footer": {
+    "aboutText": "Car's Energy Co. is an authorized automotive CNG retrofitting and engineering center operating since 1998. Specialized in sequential gas injection, computerized ECU calibration, and certified cylinder hydro-testing.",
+    "quickLinks": "Quick Links",
+    "servicesTitle": "Specialized Services",
+    "contactInfo": "Workshop Locations",
+    "workingHours": "Working Hours",
+    "allRightsReserved": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "sitemap": "Sitemap",
+    "disclaimer": "Car's Energy Co. is a certified automotive retrofitment facility. All kit fits adhere to government AIS/RTO safety regulations."
+  },
+  "contactBar": {
+    "mundkaAddress": "215 & 216/5, Opp. Metro Pillar 536, Mundka, New Delhi",
+    "paschimViharAddress": "Shop 21, CSC A-4, Rohtak Road, Paschim Vihar, New Delhi",
+    "phone": "+91 92122 18180",
+    "whatsapp": "+91 79828 24255",
+    "email": "carsenergyco@gmail.com",
+    "timing": "10:30 AM – 7:00 PM (Wed Closed)"
+  },
+  "language": {
+    "en": "English",
+    "as": "অসমীয়া",
+    "switcherLabel": "Language"
+  }
+}

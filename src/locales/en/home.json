@@ -1,0 +1,121 @@
+{
+  "hero": {
+    "badge": "RFC Code No. 261 • Govt. Certified Retrofitment Facility",
+    "title": "Precision CNG Engineering & Certified Automotive Retrofitting",
+    "subtitle": "Established in 1998, Car's Energy Co. provides certified sequential CNG system fitment, digital ECU tuning, cylinder safety testing, and RTO endorsement for passenger and commercial vehicles.",
+    "ctaAppointment": "Book Technical Inspection",
+    "ctaServices": "Explore Our Services",
+    "stats": [
+      { "value": "26+", "label": "Years in Alternative Fuel Engineering" },
+      { "value": "2", "label": "Certified Delhi-NCR Workshops" },
+      { "value": "100%", "label": "RTO & PESO Safety Compliant" },
+      { "value": "10+", "label": "Approved Premium CNG Brands" }
+    ]
+  },
+  "overview": {
+    "sectionTag": "Automotive Engineering Profile",
+    "title": "Decades of Specialized CNG System Integration",
+    "lead": "Since 1998, Car's Energy Co. has operated at the forefront of clean automotive propulsion in North India.",
+    "p1": "As an authorized retrofitting center (RFC Code No. 261), we do not treat alternative fuel conversion as a generic mechanical swap. Every vehicle model possesses unique manifold geometries, ignition profiles, and intake parameters. Our workshop integrates calibrated sequential gas injection systems with precision ECU remapping, ensuring optimal engine response, zero check-engine warnings, and strict emission compliance.",
+    "p2": "From wholesale distribution of genuine Italian and Indian conversion kits to multi-point cylinder hydrostatic pressure certifications and RTO registration endorsements, we handle the entire vehicle lifecycle with engineering rigor.",
+    "highlights": [
+      "Government Authorized Workshop (RFC No. 261)",
+      "OBD-II Synchronized Digital Map Calibration",
+      "High-Pressure PESO Certified Storage Systems",
+      "Direct Authorized Brand Supply & Genuine Spares"
+    ]
+  },
+  "servicesSection": {
+    "sectionTag": "Our Core Capabilities",
+    "title": "Complete Automotive CNG Engineering Services",
+    "description": "Comprehensive alternative fuel solutions executed by certified technicians using computerized diagnostics and safety-tested hardware."
+  },
+  "whyChooseUs": {
+    "sectionTag": "Engineering Standards",
+    "title": "Why Car's Energy Co. Stands Apart",
+    "description": "We build trust through verifiable certifications, transparent workmanship, and rigorous automotive quality control.",
+    "cards": [
+      {
+        "title": "Official Government Authorization",
+        "description": "Licensed Retrofitting Center (RFC No. 261) accredited for compliant alternative fuel installations across passenger and commercial vehicle classes."
+      },
+      {
+        "title": "Computerized Engine Calibration",
+        "description": "Advanced ECU tuning using live diagnostic scanners to match fuel trim values, eliminate flat spots, and maintain factory-grade throttle response."
+      },
+      {
+        "title": "Certified Cylinder Hydro-Testing",
+        "description": "Complete testing to PESO standards with ultrasonic wall thickness verification and official safety compliance certificates."
+      },
+      {
+        "title": "Genuine Components & Hardware",
+        "description": "Direct distributor of Lovato, Motozen, Gastech Italy, Mijo, and STAG components with serial verification and warranty back-up."
+      },
+      {
+        "title": "Complete RTO Endorsement",
+        "description": "End-to-end paperwork handling for legal endorsement of your CNG kit onto the vehicle Registration Certificate (RC)."
+      },
+      {
+        "title": "Dedicated Post-Fitment Support",
+        "description": "Annual Maintenance Contracts (AMC), periodic filter swaps, and injector rail servicing to safeguard long-term engine health."
+      }
+    ]
+  },
+  "howItWorks": {
+    "sectionTag": "Process Workflow",
+    "title": "Structured 4-Stage Conversion Process",
+    "description": "Every vehicle undergoes a disciplined, step-by-step engineering cycle from first inspection to legal registration.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Pre-Fitment Assessment",
+        "description": "Diagnostic scan of ignition health, compression ratios, and electrical harness compatibility with the chosen kit."
+      },
+      {
+        "step": "02",
+        "title": "Precision Hardware Fitment",
+        "description": "Installation of high-pressure seamless cylinders, calibrated reducers, multi-point rail injectors, and rigid gas piping."
+      },
+      {
+        "step": "03",
+        "title": "Digital ECU Calibration",
+        "description": "Software-driven fuel mapping and road-load testing to calibrate air-fuel ratios seamlessly across RPM bands."
+      },
+      {
+        "step": "04",
+        "title": "Safety Audit & Handover",
+        "description": "Electronic sniff-testing for micro-leaks, compliance certificate issue, and guidance through final RTO RC endorsement."
+      }
+    ]
+  },
+  "brandsSection": {
+    "sectionTag": "Hardware & Component Partners",
+    "title": "Authorized Brands & Certified Systems",
+    "description": "We supply and calibrate leading domestic and international alternative fuel brands."
+  },
+  "galleryPreview": {
+    "sectionTag": "Workshop Documentation",
+    "title": "Inside Our Technical Facilities",
+    "description": "Take a look at our clean bays, diagnostic tools, and meticulous installation standards."
+  },
+  "videosPreview": {
+    "sectionTag": "Technical Demonstrations",
+    "title": "Video Documentation & Dyno Insights",
+    "description": "Watch our technicians explain sequential kit integration and real-world calibration workflows."
+  },
+  "testimonialsSection": {
+    "sectionTag": "Client Feedback",
+    "title": "Verified Vehicle Owner Reviews",
+    "description": "Honest experiences from daily commuters, fleet managers, and car enthusiasts who trust our workshops."
+  },
+  "faqsSection": {
+    "sectionTag": "Knowledge Base",
+    "title": "Frequently Asked Questions",
+    "description": "Clear answers to essential questions regarding mileage, safety, warranties, and RTO compliance."
+  },
+  "quickAppointment": {
+    "sectionTag": "Service Booking",
+    "title": "Schedule a Workshop Inspection",
+    "description": "Reserve a slot at our Mundka or Paschim Vihar center. Our service advisor will review your vehicle details and confirm your schedule."
+  }
+}
