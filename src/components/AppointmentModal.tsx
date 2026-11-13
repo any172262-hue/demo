@@ -21,14 +21,17 @@ import { UtmData, formatUtmSummary } from '../utils/utm';
 export interface AppointmentSummaryData {
   fullName: string;
   mobileNumber: string;
+  carName: string;
+  carModel: string;
+  carNumber: string;
   email?: string;
-  vehicleMake: string;
-  vehicleModel: string;
-  vehicleYear: string;
-  serviceRequired: string;
-  preferredWorkshop: string;
-  preferredDate: string;
-  preferredTime: string;
+  vehicleMake?: string;
+  vehicleModel?: string;
+  vehicleYear?: string;
+  serviceRequired?: string;
+  preferredWorkshop?: string;
+  preferredDate?: string;
+  preferredTime?: string;
   additionalMessage?: string;
   utm?: UtmData | null;
 }
@@ -135,12 +138,12 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
           <div className="bg-offwhite/60 dark:bg-darkbg/60 p-4 rounded-xl border border-lightgrey dark:border-darkborder space-y-2.5">
             <div className="flex items-center gap-1.5 text-orange font-bold uppercase tracking-wider text-[11px]">
               <User className="w-3.5 h-3.5" />
-              <span>{language === 'as' ? 'গ্ৰাহকৰ তথ্য' : 'Customer Information'}</span>
+              <span>{language === 'as' ? 'গ্ৰাহকৰ তথ্য' : 'Customer Details'}</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-charcoal dark:text-darktext">
               <div>
                 <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                  {language === 'as' ? 'নাম' : 'Full Name'}:
+                  {language === 'as' ? 'নাম' : 'Customer Name'}:
                 </span>
                 <span className="font-semibold">{data.fullName}</span>
               </div>
@@ -150,14 +153,6 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 </span>
                 <span className="font-semibold">{data.mobileNumber}</span>
               </div>
-              {data.email && (
-                <div className="sm:col-span-2">
-                  <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                    {language === 'as' ? 'ইমেইল' : 'Email'}:
-                  </span>
-                  <span className="font-semibold">{data.email}</span>
-                </div>
-              )}
             </div>
           </div>
 
@@ -165,77 +160,27 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
           <div className="bg-offwhite/60 dark:bg-darkbg/60 p-4 rounded-xl border border-lightgrey dark:border-darkborder space-y-2.5">
             <div className="flex items-center gap-1.5 text-orange font-bold uppercase tracking-wider text-[11px]">
               <Car className="w-3.5 h-3.5" />
-              <span>{language === 'as' ? 'বাহনৰ তথ্য' : 'Vehicle Information'}</span>
+              <span>{language === 'as' ? 'বাহনৰ তথ্য' : 'Vehicle Details'}</span>
             </div>
-            <div className="grid grid-cols-2 gap-2 text-charcoal dark:text-darktext">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-charcoal dark:text-darktext">
               <div>
                 <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                  {language === 'as' ? 'নিৰ্মাতা' : 'Make'}:
+                  {language === 'as' ? 'গাড়ীৰ নাম' : 'Car Name / Make'}:
                 </span>
-                <span className="font-semibold">{data.vehicleMake}</span>
-              </div>
-              <div>
-                <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                  {language === 'as' ? 'মডেল' : 'Model'}:
-                </span>
-                <span className="font-semibold">{data.vehicleModel}</span>
+                <span className="font-semibold">{data.carName || data.vehicleMake}</span>
               </div>
               <div>
                 <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                  {language === 'as' ? 'নিৰ্মাণ বৰ্ষ' : 'Manufacturing Year'}:
+                  {language === 'as' ? 'মডেল' : 'Car Model'}:
                 </span>
-                <span className="font-semibold">{data.vehicleYear}</span>
+                <span className="font-semibold">{data.carModel || data.vehicleModel}</span>
               </div>
-            </div>
-          </div>
-
-          {/* Appointment Schedule Box */}
-          <div className="bg-offwhite/60 dark:bg-darkbg/60 p-4 rounded-xl border border-lightgrey dark:border-darkborder space-y-2.5">
-            <div className="flex items-center gap-1.5 text-orange font-bold uppercase tracking-wider text-[11px]">
-              <Clock className="w-3.5 h-3.5" />
-              <span>{language === 'as' ? 'সেৱা আৰু সময়সূচী' : 'Service & Schedule'}</span>
-            </div>
-            <div className="space-y-2 text-charcoal dark:text-darktext">
               <div>
                 <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                  {language === 'as' ? 'প্ৰয়োজনীয় সেৱা' : 'Service Requested'}:
+                  {language === 'as' ? 'গাড়ীৰ নম্বৰ' : 'Car Number'}:
                 </span>
-                <span className="font-semibold text-orange">{data.serviceRequired}</span>
+                <span className="font-semibold uppercase">{data.carNumber || 'N/A'}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                <div>
-                  <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                    {language === 'as' ? 'কৰ্মশালা কেন্দ্ৰ' : 'Preferred Workshop'}:
-                  </span>
-                  <span className="font-semibold">{data.preferredWorkshop}</span>
-                </div>
-                <div>
-                  <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                    {language === 'as' ? 'নিৰ্ধাৰিত তাৰিখ আৰু সময়' : 'Date & Time'}:
-                  </span>
-                  <span className="font-semibold">
-                    {data.preferredDate} ({data.preferredTime})
-                  </span>
-                </div>
-              </div>
-
-              {data.additionalMessage && (
-                <div className="pt-1">
-                  <span className="text-secondary dark:text-darkmuted block text-[11px]">
-                    {language === 'as' ? 'অতিৰিক্ত বাৰ্তা' : 'Notes / Symptoms'}:
-                  </span>
-                  <p className="p-2 rounded bg-purewhite dark:bg-darksurface border border-lightgrey dark:border-darkborder text-[11px] leading-relaxed break-words">
-                    {data.additionalMessage}
-                  </p>
-                </div>
-              )}
-
-              {utmSummary && (
-                <div className="pt-1 flex items-center gap-1.5 text-[10px] text-secondary dark:text-darkmuted font-mono">
-                  <Tag className="w-3 h-3 text-secondary" />
-                  <span>Campaign: {utmSummary}</span>
-                </div>
-              )}
             </div>
           </div>
 

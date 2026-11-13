@@ -147,6 +147,9 @@ app.post('/api/appointments', formLimiter, (req, res) => {
       fullName,
       mobileNumber,
       email,
+      carName,
+      carModel,
+      carNumber,
       vehicleMake,
       vehicleModel,
       vehicleYear,
@@ -189,26 +192,21 @@ app.post('/api/appointments', formLimiter, (req, res) => {
       errors.push('The email address provided is invalid.');
     }
 
-    const cleanMake = sanitizeString(vehicleMake);
-    if (!cleanMake) errors.push('Vehicle manufacturer is required.');
+    const cleanMake = sanitizeString(carName || vehicleMake);
+    if (!cleanMake) errors.push('Car Name or manufacturer is required.');
 
-    const cleanModel = sanitizeString(vehicleModel);
-    if (!cleanModel) errors.push('Vehicle model is required.');
+    const cleanModel = sanitizeString(carModel || vehicleModel);
+    if (!cleanModel) errors.push('Car Model is required.');
 
-    const numYear = parseInt(vehicleYear, 10);
+    const cleanCarNum = sanitizeString(carNumber || '');
+
     const currentYear = new Date().getFullYear();
-    if (isNaN(numYear) || numYear < 1995 || numYear > currentYear + 1) {
-      errors.push(`Manufacturing year must be between 1995 and ${currentYear + 1}.`);
-    }
+    const numYear = vehicleYear ? parseInt(vehicleYear, 10) : currentYear;
 
-    const cleanService = sanitizeString(serviceRequired);
-    if (!cleanService) errors.push('Service required selection is mandatory.');
-
-    const cleanWorkshop = sanitizeString(preferredWorkshop);
-    if (!cleanWorkshop) errors.push('Preferred workshop location is required.');
-
-    if (!preferredDate) errors.push('Preferred date is required.');
-    if (!preferredTime) errors.push('Preferred time window is required.');
+    const cleanService = sanitizeString(serviceRequired) || 'CNG Technical Inspection & Service';
+    const cleanWorkshop = sanitizeString(preferredWorkshop) || 'Mundka Primary Center';
+    const cleanDate = preferredDate ? sanitizeString(preferredDate) : new Date().toISOString().split('T')[0];
+    const cleanTime = preferredTime ? sanitizeString(preferredTime) : 'General Working Hours (10:30 AM - 07:00 PM)';
 
     if (errors.length > 0) {
       return res.status(422).json({
@@ -269,6 +267,9 @@ app.post('/api/appointments', formLimiter, (req, res) => {
         email: cleanEmail || null,
       },
       vehicle: {
+        carName: cleanMake,
+        carModel: cleanModel,
+        carNumber: cleanCarNum,
         make: cleanMake,
         model: cleanModel,
         year: numYear,
@@ -276,8 +277,8 @@ app.post('/api/appointments', formLimiter, (req, res) => {
       booking: {
         service: cleanService,
         workshop: cleanWorkshop,
-        date: preferredDate,
-        time: sanitizeString(preferredTime),
+        date: cleanDate,
+        time: cleanTime,
         message: sanitizeString(additionalMessage),
       },
       attribution: utm && typeof utm === 'object' ? {

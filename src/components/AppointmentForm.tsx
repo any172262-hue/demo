@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { servicesData } from '../data/servicesData';
-import { AppointmentModal, AppointmentSummaryData } from './AppointmentModal';
-import { getStoredUtm, captureUtmParameters, formatUtmSummary, UtmData } from '../utils/utm';
+import { AppointmentModal } from './AppointmentModal';
+import { captureUtmParameters, formatUtmSummary, UtmData } from '../utils/utm';
 import {
   Calendar,
   CheckCircle2,
   AlertCircle,
-  Clock,
   Phone,
   MessageSquare,
   ShieldCheck,
   Loader2,
   Car,
-  Wrench,
-  MapPin,
+  User,
   ExternalLink,
   RefreshCw,
   Copy,
@@ -25,21 +22,15 @@ interface AppointmentFormProps {
   defaultService?: string;
 }
 
-export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService = '' }) => {
+export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
   const { language, contact } = useLanguage();
 
   const [formData, setFormData] = useState({
     fullName: '',
     mobileNumber: '',
-    email: '',
-    vehicleMake: '',
-    vehicleModel: '',
-    vehicleYear: '2020',
-    serviceRequired: defaultService,
-    preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
-    preferredDate: '',
-    preferredTime: 'Morning (10:30 AM - 01:00 PM)',
-    additionalMessage: '',
+    carName: '',
+    carModel: '',
+    carNumber: '',
     honeypot: '',
     privacyConsent: true,
   });
@@ -66,47 +57,12 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
     setUtmData(utm);
   }, []);
 
-  // Update default service if changed by parent prop
-  useEffect(() => {
-    if (defaultService) {
-      setFormData((prev) => ({ ...prev, serviceRequired: defaultService }));
-    }
-  }, [defaultService]);
-
-  const vehicleMakes = [
-    'Maruti Suzuki',
-    'Hyundai',
-    'Tata Motors',
-    'Honda',
-    'Toyota',
-    'Mahindra',
-    'Kia',
-    'Renault',
-    'Nissan',
-    'Volkswagen',
-    'Skoda',
-    'Ford',
-    'Chevrolet',
-    'Other Manufacturer',
-  ];
-
-  const workshopOptions = [
-    'Mundka Facility (Opp. Metro Pillar 536)',
-    'Paschim Vihar Center (Rohtak Road, CSC A-4)',
-  ];
-
-  const timeOptions = [
-    'Morning (10:30 AM - 01:00 PM)',
-    'Afternoon (01:00 PM - 04:00 PM)',
-    'Evening (04:00 PM - 07:00 PM)',
-  ];
-
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, value, type } = e.target;
     if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
+      const checked = e.target.checked;
       setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
@@ -122,7 +78,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
     }
   };
 
-  // Validate form inputs (Section 9B)
+  // Validate form inputs: ONLY customer name, mobile no, car name, car model, car no
   const validateForm = (): boolean => {
     const errors: Record<string, string> = {};
 
@@ -130,7 +86,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
       errors.fullName =
         language === 'as'
           ? 'অনুগ্ৰহ কৰি আপোনাৰ সম্পূৰ্ণ নাম উল্লেখ কৰক।'
-          : 'Please enter your full name (minimum 2 characters).';
+          : 'Please enter customer name (minimum 2 characters).';
     }
 
     const cleanMobile = formData.mobileNumber.replace(/\D/g, '');
@@ -141,29 +97,25 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
           : 'Please enter a valid 10-digit Indian mobile number.';
     }
 
-    if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errors.email =
-        language === 'as' ? 'অনুগ্ৰহ কৰি বৈধ ইমেইল উল্লেখ কৰক।' : 'Please enter a valid email address.';
+    if (!formData.carName.trim() || formData.carName.trim().length < 2) {
+      errors.carName =
+        language === 'as'
+          ? 'গাড়ীৰ নাম বা নিৰ্মাতা উল্লেখ কৰক (যেনেঃ মাৰুতি চুজুকি, হুন্দাই)।'
+          : 'Please enter car name / make (e.g. Maruti Suzuki, Hyundai, Honda).';
     }
 
-    if (!formData.vehicleMake) {
-      errors.vehicleMake =
-        language === 'as' ? 'বাহনৰ নিৰ্মাতা বাচনি কৰক।' : 'Please select your vehicle make.';
+    if (!formData.carModel.trim() || formData.carModel.trim().length < 2) {
+      errors.carModel =
+        language === 'as'
+          ? 'গাড়ীৰ মডেল উল্লেখ কৰক (যেনেঃ ৱেগনাৰ, চুইফট ডিজায়াৰ)।'
+          : 'Please enter car model (e.g. Swift Dzire, WagonR, i10, City).';
     }
 
-    if (!formData.vehicleModel.trim()) {
-      errors.vehicleModel =
-        language === 'as' ? 'বাহনৰ মডেল উল্লেখ কৰক।' : 'Please enter your vehicle model.';
-    }
-
-    if (!formData.serviceRequired) {
-      errors.serviceRequired =
-        language === 'as' ? 'প্ৰয়োজনীয় সেৱা বাচনি কৰক।' : 'Please select the required service.';
-    }
-
-    if (!formData.preferredDate) {
-      errors.preferredDate =
-        language === 'as' ? 'পৰিদৰ্শনৰ তাৰিখ নিৰ্বাচন কৰক।' : 'Please select a preferred date.';
+    if (!formData.carNumber.trim() || formData.carNumber.trim().length < 4) {
+      errors.carNumber =
+        language === 'as'
+          ? 'গাড়ীৰ পঞ্জীয়ন নম্বৰ দিয়ক (যেনেঃ DL 01 AB 1234)।'
+          : 'Please enter car registration number (e.g. DL 01 AB 1234).';
     }
 
     if (!formData.privacyConsent) {
@@ -185,7 +137,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
     }
   };
 
-  // Build Structured WhatsApp Message (Section 11)
+  // Build Structured WhatsApp Message with strictly 5 details
   const buildWhatsAppMessage = (refId: string): string => {
     const utmSummary = formatUtmSummary(utmData);
 
@@ -195,21 +147,13 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
       `Ref ID: ${refId}`,
       '',
       '*CUSTOMER INFORMATION:*',
-      `• Full Name: ${formData.fullName.trim()}`,
+      `• Customer Name: ${formData.fullName.trim()}`,
       `• Mobile Number: ${formData.mobileNumber.trim()}`,
-      formData.email.trim() ? `• Email: ${formData.email.trim()}` : null,
       '',
       '*VEHICLE DETAILS:*',
-      `• Manufacturer: ${formData.vehicleMake}`,
-      `• Vehicle Model: ${formData.vehicleModel.trim()}`,
-      `• Manufacturing Year: ${formData.vehicleYear}`,
-      '',
-      '*APPOINTMENT DETAILS:*',
-      `• Requested Service: ${formData.serviceRequired}`,
-      `• Preferred Workshop: ${formData.preferredWorkshop}`,
-      `• Preferred Date: ${formData.preferredDate}`,
-      `• Preferred Time: ${formData.preferredTime}`,
-      formData.additionalMessage.trim() ? `• Notes/Symptoms: ${formData.additionalMessage.trim()}` : null,
+      `• Car Name: ${formData.carName.trim()}`,
+      `• Car Model: ${formData.carModel.trim()}`,
+      `• Car Number: ${formData.carNumber.trim().toUpperCase()}`,
       '',
       utmSummary ? `*ATTRIBUTION:* [${utmSummary}]` : null,
       '',
@@ -237,7 +181,14 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
     try {
       // 1. Submit to Backend API with Idempotency Key
       const payload = {
-        ...formData,
+        fullName: formData.fullName.trim(),
+        mobileNumber: formData.mobileNumber.trim(),
+        carName: formData.carName.trim(),
+        carModel: formData.carModel.trim(),
+        carNumber: formData.carNumber.trim().toUpperCase(),
+        vehicleMake: formData.carName.trim(),
+        vehicleModel: formData.carModel.trim(),
+        honeypot: formData.honeypot,
         idempotencyKey,
         submittedAt: formStartTime,
         utm: utmData,
@@ -276,7 +227,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
           }));
         }
       } else {
-        // Backend returned error - do not pretend it succeeded
+        // Backend returned error
         setIsReviewOpen(false);
         setIsSubmitting(false);
         setHandoffState({
@@ -285,7 +236,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
         });
       }
     } catch {
-      // Server offline or network connection lost - do not pretend enquiry was recorded
+      // Server offline or network connection lost
       const offlineRef = `CE-OFFLINE-${Math.floor(1000 + Math.random() * 9000)}`;
       const whatsappText = buildWhatsAppMessage(offlineRef);
       const encodedText = encodeURIComponent(whatsappText);
@@ -309,15 +260,9 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
     setFormData({
       fullName: '',
       mobileNumber: '',
-      email: '',
-      vehicleMake: '',
-      vehicleModel: '',
-      vehicleYear: '2020',
-      serviceRequired: '',
-      preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
-      preferredDate: '',
-      preferredTime: 'Morning (10:30 AM - 01:00 PM)',
-      additionalMessage: '',
+      carName: '',
+      carModel: '',
+      carNumber: '',
       honeypot: '',
       privacyConsent: true,
     });
@@ -338,7 +283,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
         </p>
       </div>
 
-      {/* WHATSAPP HANDOFF & SUCCESS STATE (Section 9E & 9G) */}
+      {/* WHATSAPP HANDOFF & SUCCESS STATE */}
       {handoffState.status === 'opened' && (
         <div className="mb-8 p-6 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-xl space-y-4 animate-fade-in">
           <div className="flex items-start gap-3">
@@ -407,7 +352,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
         </div>
       )}
 
-      {/* BACKEND OFFLINE / STORAGE UNAVAILABLE STATE (Do not pretend recorded) */}
+      {/* BACKEND OFFLINE / STORAGE UNAVAILABLE STATE */}
       {handoffState.status === 'backend_offline' && (
         <div className="mb-6 p-5 bg-amber-50 dark:bg-amber-950/25 border border-amber-200 dark:border-amber-800/40 rounded-xl text-xs text-amber-900 dark:text-amber-200 space-y-3 animate-fade-in">
           <div className="flex items-start gap-2.5">
@@ -455,7 +400,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
         </div>
       )}
 
-      {/* ERROR / FALLBACK STATE (Section 9F & 9H) */}
+      {/* ERROR / FALLBACK STATE */}
       {handoffState.status === 'failed' && (
         <div className="mb-6 p-4 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800/40 rounded-xl text-xs text-red-800 dark:text-red-300 space-y-3 animate-fade-in">
           <div className="flex items-start gap-2.5">
@@ -488,7 +433,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
         </div>
       )}
 
-      {/* THE MAIN FORM (Sections 9A, 9B, 9C) */}
+      {/* THE MAIN FORM (Simplified to strictly Customer Name, Mobile No, Car Name, Car Model, Car No) */}
       <form onSubmit={handlePreSubmit} className="space-y-6">
         {/* Anti-spam honeypot */}
         <div className="hidden" aria-hidden="true">
@@ -501,13 +446,14 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
           />
         </div>
 
-        {/* 1. Customer Personal Information */}
+        {/* 1. Customer Details */}
         <div className="space-y-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-darktext pb-2 border-b border-lightgrey dark:border-darkborder flex items-center gap-2">
             <span className="w-5 h-5 rounded-md bg-orange-light text-orange flex items-center justify-center font-mono text-[10px] font-bold">
               1
             </span>
-            <span>{language === 'as' ? 'ব্যক্তিগত তথ্য' : 'Customer Information'}</span>
+            <User className="w-3.5 h-3.5 text-orange" />
+            <span>{language === 'as' ? 'গ্ৰাহকৰ তথ্য' : 'Customer Details'}</span>
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -516,7 +462,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
                 htmlFor="apt-fullName"
                 className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
               >
-                {contact.form.fullName} <span className="text-orange">*</span>
+                {language === 'as' ? 'গ্ৰাহকৰ সম্পূৰ্ণ নাম' : 'Customer Name'} <span className="text-orange">*</span>
               </label>
               <input
                 id="apt-fullName"
@@ -524,7 +470,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
                 type="text"
                 value={formData.fullName}
                 onChange={handleChange}
-                placeholder={contact.form.fullNamePlaceholder}
+                placeholder={contact.form.fullNamePlaceholder || 'e.g. Rajesh Sharma'}
                 className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
                   fieldErrors.fullName
                     ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
@@ -544,7 +490,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
                 htmlFor="apt-mobileNumber"
                 className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
               >
-                {contact.form.mobileNumber} <span className="text-orange">*</span>
+                {language === 'as' ? 'ম’বাইল নম্বৰ' : 'Mobile Number'} <span className="text-orange">*</span>
               </label>
               <input
                 id="apt-mobileNumber"
@@ -553,7 +499,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
                 maxLength={14}
                 value={formData.mobileNumber}
                 onChange={handleChange}
-                placeholder={contact.form.mobilePlaceholder}
+                placeholder={contact.form.mobilePlaceholder || '10-digit mobile number'}
                 className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
                   fieldErrors.mobileNumber
                     ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
@@ -567,37 +513,6 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
                 </p>
               )}
             </div>
-
-            <div className="sm:col-span-2">
-              <label
-                htmlFor="apt-email"
-                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
-              >
-                {contact.form.email}{' '}
-                <span className="text-secondary dark:text-darkmuted text-[10px] font-normal">
-                  (Optional)
-                </span>
-              </label>
-              <input
-                id="apt-email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder={contact.form.emailPlaceholder}
-                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
-                  fieldErrors.email
-                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
-                    : 'border-lightgrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20'
-                }`}
-              />
-              {fieldErrors.email && (
-                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
-                  <AlertCircle className="w-3 h-3" />
-                  <span>{fieldErrors.email}</span>
-                </p>
-              )}
-            </div>
           </div>
         </div>
 
@@ -607,236 +522,98 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
             <span className="w-5 h-5 rounded-md bg-orange-light text-orange flex items-center justify-center font-mono text-[10px] font-bold">
               2
             </span>
-            <span>{language === 'as' ? 'বাহনৰ বিৱৰণ' : 'Vehicle Specifications'}</span>
+            <Car className="w-3.5 h-3.5 text-orange" />
+            <span>{language === 'as' ? 'বাহনৰ তথ্য' : 'Vehicle Details'}</span>
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
               <label
-                htmlFor="apt-vehicleMake"
+                htmlFor="apt-carName"
                 className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
               >
-                {contact.form.vehicleMake} <span className="text-orange">*</span>
-              </label>
-              <select
-                id="apt-vehicleMake"
-                name="vehicleMake"
-                value={formData.vehicleMake}
-                onChange={handleChange}
-                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
-                  fieldErrors.vehicleMake
-                    ? 'border-red-500'
-                    : 'border-lightgrey dark:border-darkborder focus:border-orange'
-                }`}
-              >
-                <option value="">{language === 'as' ? 'বাচনি কৰক' : 'Select Make'}</option>
-                {vehicleMakes.map((m) => (
-                  <option key={m} value={m}>
-                    {m}
-                  </option>
-                ))}
-              </select>
-              {fieldErrors.vehicleMake && (
-                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
-                  <AlertCircle className="w-3 h-3" />
-                  <span>{fieldErrors.vehicleMake}</span>
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label
-                htmlFor="apt-vehicleModel"
-                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
-              >
-                {contact.form.vehicleModel} <span className="text-orange">*</span>
+                {language === 'as' ? 'গাড়ীৰ নাম / ব্ৰেণ্ড' : 'Car Name / Make'} <span className="text-orange">*</span>
               </label>
               <input
-                id="apt-vehicleModel"
-                name="vehicleModel"
+                id="apt-carName"
+                name="carName"
                 type="text"
-                value={formData.vehicleModel}
+                value={formData.carName}
                 onChange={handleChange}
-                placeholder={contact.form.vehicleModelPlaceholder}
+                placeholder="e.g. Maruti Suzuki, Hyundai"
                 className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
-                  fieldErrors.vehicleModel
-                    ? 'border-red-500'
-                    : 'border-lightgrey dark:border-darkborder focus:border-orange'
+                  fieldErrors.carName
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20'
                 }`}
               />
-              {fieldErrors.vehicleModel && (
+              {fieldErrors.carName && (
                 <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" />
-                  <span>{fieldErrors.vehicleModel}</span>
+                  <span>{fieldErrors.carName}</span>
                 </p>
               )}
             </div>
 
             <div>
               <label
-                htmlFor="apt-vehicleYear"
+                htmlFor="apt-carModel"
                 className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
               >
-                {contact.form.vehicleYear}
+                {language === 'as' ? 'গাড়ীৰ মডেল' : 'Car Model'} <span className="text-orange">*</span>
               </label>
-              <select
-                id="apt-vehicleYear"
-                name="vehicleYear"
-                value={formData.vehicleYear}
+              <input
+                id="apt-carModel"
+                name="carModel"
+                type="text"
+                value={formData.carModel}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey dark:border-darkborder text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext focus:border-orange outline-none transition-all"
-              >
-                {Array.from({ length: 15 }, (_, i) => new Date().getFullYear() - i).map((yr) => (
-                  <option key={yr} value={yr}>
-                    {yr}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* 3. Service & Scheduling */}
-        <div className="space-y-4">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-charcoal dark:text-darktext pb-2 border-b border-lightgrey dark:border-darkborder flex items-center gap-2">
-            <span className="w-5 h-5 rounded-md bg-orange-light text-orange flex items-center justify-center font-mono text-[10px] font-bold">
-              3
-            </span>
-            <span>{language === 'as' ? 'সেৱা আৰু কৰ্মশালা নিৰ্বাচন' : 'Service & Workshop Booking'}</span>
-          </h3>
-
-          <div className="space-y-4">
-            <div>
-              <label
-                htmlFor="apt-serviceRequired"
-                className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
-              >
-                {contact.form.serviceRequired} <span className="text-orange">*</span>
-              </label>
-              <select
-                id="apt-serviceRequired"
-                name="serviceRequired"
-                value={formData.serviceRequired}
-                onChange={handleChange}
+                placeholder="e.g. Swift Dzire, WagonR, i10"
                 className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
-                  fieldErrors.serviceRequired
-                    ? 'border-red-500'
-                    : 'border-lightgrey dark:border-darkborder focus:border-orange'
+                  fieldErrors.carModel
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20'
                 }`}
-              >
-                <option value="">{language === 'as' ? 'সেৱা বাচনি কৰক' : 'Select Required Service'}</option>
-                {servicesData.map((s) => (
-                  <option key={s.slug} value={s.titleEn}>
-                    {language === 'as' ? s.titleAs : s.titleEn}
-                  </option>
-                ))}
-              </select>
-              {fieldErrors.serviceRequired && (
+              />
+              {fieldErrors.carModel && (
                 <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
                   <AlertCircle className="w-3 h-3" />
-                  <span>{fieldErrors.serviceRequired}</span>
+                  <span>{fieldErrors.carModel}</span>
                 </p>
               )}
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div>
-                <label
-                  htmlFor="apt-preferredWorkshop"
-                  className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
-                >
-                  {contact.form.preferredWorkshop} <span className="text-orange">*</span>
-                </label>
-                <select
-                  id="apt-preferredWorkshop"
-                  name="preferredWorkshop"
-                  value={formData.preferredWorkshop}
-                  onChange={handleChange}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey dark:border-darkborder text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext focus:border-orange outline-none transition-all"
-                >
-                  {workshopOptions.map((w) => (
-                    <option key={w} value={w}>
-                      {w}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="apt-preferredDate"
-                  className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
-                >
-                  {contact.form.preferredDate} <span className="text-orange">*</span>
-                </label>
-                <input
-                  id="apt-preferredDate"
-                  name="preferredDate"
-                  type="date"
-                  min={new Date().toISOString().split('T')[0]}
-                  value={formData.preferredDate}
-                  onChange={handleChange}
-                  className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext outline-none transition-all ${
-                    fieldErrors.preferredDate
-                      ? 'border-red-500'
-                      : 'border-lightgrey dark:border-darkborder focus:border-orange'
-                  }`}
-                />
-                {fieldErrors.preferredDate && (
-                  <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
-                    <AlertCircle className="w-3 h-3" />
-                    <span>{fieldErrors.preferredDate}</span>
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor="apt-preferredTime"
-                  className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
-                >
-                  {contact.form.preferredTime}
-                </label>
-                <select
-                  id="apt-preferredTime"
-                  name="preferredTime"
-                  value={formData.preferredTime}
-                  onChange={handleChange}
-                  className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey dark:border-darkborder text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext focus:border-orange outline-none transition-all"
-                >
-                  {timeOptions.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
             <div>
               <label
-                htmlFor="apt-additionalMessage"
+                htmlFor="apt-carNumber"
                 className="block text-xs font-semibold text-charcoal dark:text-darktext mb-1"
               >
-                {contact.form.additionalMessage}{' '}
-                <span className="text-secondary dark:text-darkmuted text-[10px] font-normal">
-                  (Optional notes on mileage, RPM lag, or cylinder expiry)
-                </span>
+                {language === 'as' ? 'গাড়ীৰ নম্বৰ' : 'Car Number'} <span className="text-orange">*</span>
               </label>
-              <textarea
-                id="apt-additionalMessage"
-                name="additionalMessage"
-                rows={3}
-                value={formData.additionalMessage}
+              <input
+                id="apt-carNumber"
+                name="carNumber"
+                type="text"
+                value={formData.carNumber}
                 onChange={handleChange}
-                placeholder={contact.form.additionalMessagePlaceholder}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-lightgrey dark:border-darkborder text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext focus:border-orange outline-none transition-all resize-none"
+                placeholder="e.g. DL 01 AB 1234"
+                className={`w-full px-3.5 py-2.5 rounded-lg border text-xs bg-purewhite dark:bg-darkbg text-charcoal dark:text-darktext uppercase outline-none transition-all ${
+                  fieldErrors.carNumber
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20'
+                    : 'border-lightgrey dark:border-darkborder focus:border-orange focus:ring-2 focus:ring-orange/20'
+                }`}
               />
+              {fieldErrors.carNumber && (
+                <p className="text-[11px] text-red-600 mt-1 font-medium flex items-center gap-1">
+                  <AlertCircle className="w-3 h-3" />
+                  <span>{fieldErrors.carNumber}</span>
+                </p>
+              )}
             </div>
           </div>
         </div>
 
-        {/* 4. Privacy Consent & Submit */}
+        {/* 3. Privacy Consent & Submit */}
         <div className="space-y-4 pt-2">
           <div className="flex items-start gap-2.5">
             <input
@@ -912,11 +689,15 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = ({ defaultService
         </div>
       </form>
 
-      {/* CONFIRMATION REVIEW MODAL (Section 10) */}
+      {/* CONFIRMATION REVIEW MODAL */}
       <AppointmentModal
         isOpen={isReviewOpen}
         data={{
-          ...formData,
+          fullName: formData.fullName,
+          mobileNumber: formData.mobileNumber,
+          carName: formData.carName,
+          carModel: formData.carModel,
+          carNumber: formData.carNumber,
           utm: utmData,
         }}
         isSubmitting={isSubmitting}
