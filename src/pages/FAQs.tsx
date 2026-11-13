@@ -50,7 +50,7 @@ export const FAQs: React.FC = () => {
           <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <HelpCircle className="w-4 h-4 text-orange" />
-              <span>TRANSPARENT TECHNICAL ADVICE • RFC CODE NO. 261</span>
+              <span>TRANSPARENT TECHNICAL ADVICE • MAA KAMAKHYA AUTO GAS</span>
             </div>
 
             <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
@@ -223,7 +223,7 @@ export const FAQs: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-3 shrink-0">
-              <a href="tel:+919212218180" className="btn-primary text-xs">
+              <a href="tel:+919678******" className="btn-primary text-xs">
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call Workshop</span>
               </a>

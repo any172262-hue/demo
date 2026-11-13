@@ -42,7 +42,7 @@ export const FloatingContactWidget: React.FC = () => {
   return (
     <div
       ref={widgetRef}
-      className="floating-control fixed bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end"
+      className="floating-control fixed bottom-[max(1.5rem,calc(1rem+env(safe-area-inset-bottom,0px)))] right-4 sm:right-6 z-40 flex flex-col items-end"
       aria-label="Direct Workshop Contact Options"
     >
       {/* Expandable Menu Options */}
@@ -52,12 +52,12 @@ export const FloatingContactWidget: React.FC = () => {
             <span className="text-[11px] font-heading font-bold uppercase tracking-wider text-charcoal dark:text-darktext">
               {language === 'as' ? 'কাৰিকৰী সহায়তা' : 'Technical Support'}
             </span>
-            <span className="text-[10px] text-orange font-semibold">RFC #261</span>
+            <span className="text-[10px] text-orange font-semibold">Garchuk, Guwahati</span>
           </div>
 
           {/* Option 1: WhatsApp */}
           <a
-            href="https://wa.me/917982824255"
+            href="https://wa.me/919678******"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-950/30 text-charcoal dark:text-darktext group transition-colors"
@@ -70,14 +70,14 @@ export const FloatingContactWidget: React.FC = () => {
                 WhatsApp Direct
               </span>
               <span className="block text-[11px] text-secondary dark:text-darkmuted truncate">
-                +91 79828 24255
+                +91 9678******
               </span>
             </div>
           </a>
 
           {/* Option 2: Phone Hotline */}
           <a
-            href="tel:+919212218180"
+            href="tel:+919678******"
             className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-orange-subtle dark:hover:bg-orange/10 text-charcoal dark:text-darktext group transition-colors"
           >
             <div className="w-9 h-9 rounded-lg bg-charcoal dark:bg-darkcard text-purewhite flex items-center justify-center shrink-0 shadow-sm border border-charcoallight">
@@ -88,7 +88,7 @@ export const FloatingContactWidget: React.FC = () => {
                 {language === 'as' ? 'ফোন কৰক' : 'Call Workshop'}
               </span>
               <span className="block text-[11px] text-secondary dark:text-darkmuted truncate">
-                +91 92122 18180
+                +91 9678******
               </span>
             </div>
           </a>
@@ -107,7 +107,7 @@ export const FloatingContactWidget: React.FC = () => {
                 {language === 'as' ? 'বুকিং কৰক' : 'Book Inspection'}
               </span>
               <span className="block text-[11px] text-secondary dark:text-darkmuted truncate">
-                {language === 'as' ? 'মুণ্ডকা আৰু পশ্চিম বিহাৰ' : 'Mundka & Paschim Vihar'}
+                {language === 'as' ? 'গড়চুক, গুৱাহাটী' : 'Garchuk, Guwahati'}
               </span>
             </div>
           </Link>

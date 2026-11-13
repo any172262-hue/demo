@@ -33,7 +33,7 @@ export const BookAppointment: React.FC = () => {
           <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <Calendar className="w-4 h-4 text-orange" />
-              <span>OFFICIAL WORKSHOP BOOKING • RFC CODE NO. 261</span>
+              <span>OFFICIAL WORKSHOP BOOKING • MAA KAMAKHYA AUTO GAS</span>
             </div>
 
             <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
@@ -43,25 +43,6 @@ export const BookAppointment: React.FC = () => {
             <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
               {contact.appointmentSubtitle}
             </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
-            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Zero Fee</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Online Pre-Booking</span>
-            </div>
-            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">Fast Confirm</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Same-Day Tech Review</span>
-            </div>
-            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">OBD-II Scan</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Baseline Health Check</span>
-            </div>
-            <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">2 Workshops</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Mundka & Paschim Vihar</span>
-            </div>
           </div>
         </div>
       </section>
@@ -137,14 +118,14 @@ export const BookAppointment: React.FC = () => {
                 </p>
                 <div className="pt-2 flex flex-col sm:flex-row gap-3">
                   <a
-                    href="tel:+919212218180"
+                    href="tel:+919678******"
                     className="flex-1 py-2.5 px-4 rounded-lg bg-charcoal dark:bg-darksurface hover:bg-black dark:hover:bg-darkborder text-purewhite text-xs font-heading font-bold flex items-center justify-center gap-2 transition-colors border border-transparent dark:border-darkborder"
                   >
                     <Phone className="w-3.5 h-3.5 text-orange" />
-                    <span>+91 92122 18180</span>
+                    <span>+91 9678******</span>
                   </a>
                   <a
-                    href="https://wa.me/917982824255"
+                    href="https://wa.me/919678******"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-purewhite text-xs font-heading font-bold flex items-center justify-center gap-2 transition-colors"

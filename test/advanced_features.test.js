@@ -30,29 +30,30 @@ test('ADVANCED FEATURES SUITE: UTM, Search, and Integration', async (t) => {
   });
 
   await t.test('2. WHATSAPP CLICK-TO-CHAT SPECIFICATION: Verified Number and Encoding', () => {
-    const verifiedWhatsApp = '+91 79828 24255';
+    const verifiedWhatsApp = '+91 9678******';
     const cleanNumber = verifiedWhatsApp.replace(/[\s\+]/g, '');
-    assert.equal(cleanNumber, '917982824255', 'Correct international WhatsApp numeric format without symbols');
+    assert.equal(cleanNumber, '919678******', 'Correct international WhatsApp numeric format without symbols');
 
-    const sampleMessage = "*CAR'S ENERGY CO. - SERVICE ENQUIRY*\nRef ID: CE-2026-1234\nCustomer: Rajesh Sharma\nMake: Maruti Suzuki\nModel: Swift Dzire";
+    const sampleMessage = "*MAA KAMAKHYA AUTO GAS - SERVICE ENQUIRY*\nRef ID: MK-2026-1234\nCustomer: Rajesh Sharma\nMake: Maruti Suzuki\nModel: Swift Dzire";
     const encoded = encodeURIComponent(sampleMessage);
     const generatedUrl = `https://wa.me/${cleanNumber}?text=${encoded}`;
 
-    assert.ok(generatedUrl.startsWith('https://wa.me/917982824255?text='), 'Valid click-to-chat URL format');
+    assert.ok(generatedUrl.startsWith('https://wa.me/919678******?text='), 'Valid click-to-chat URL format');
     assert.ok(!generatedUrl.includes(' '), 'Zero raw unencoded spaces in URL');
     assert.ok(generatedUrl.includes('Rajesh'), 'Encoded message includes customer name');
   });
 
   await t.test('3. BACKEND API: Appointment with UTM Attribution', async () => {
+    const randomMobile = '981' + Math.floor(1000000 + Math.random() * 9000000);
     const payload = JSON.stringify({
       fullName: 'Vikram Batra',
-      mobileNumber: '9810198101',
+      mobileNumber: randomMobile,
       email: 'vikram@example.com',
       vehicleMake: 'Hyundai',
       vehicleModel: 'Aura CNG',
       vehicleYear: '2023',
       serviceRequired: 'CNG Kit Servicing',
-      preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
+      preferredWorkshop: 'Garchuk Facility, Guwahati',
       preferredDate: '2026-11-25',
       preferredTime: 'Morning (10:30 AM - 01:00 PM)',
       additionalMessage: 'Scheduled periodic 10,000 km checkup',
@@ -75,6 +76,7 @@ test('ADVANCED FEATURES SUITE: UTM, Search, and Integration', async (t) => {
           headers: {
             'Content-Type': 'application/json',
             'Content-Length': Buffer.byteLength(payload),
+            'x-test-mode': 'true',
           },
         },
         (res) => {
@@ -90,21 +92,22 @@ test('ADVANCED FEATURES SUITE: UTM, Search, and Integration', async (t) => {
 
     assert.equal(response.status, 201, 'Backend accepts valid submission with UTM data');
     assert.ok(response.body.success, 'Returns success: true');
-    assert.ok(response.body.referenceNumber.startsWith('CE-'), 'Returns valid reference number prefix');
+    assert.ok(response.body.referenceNumber.startsWith('MK-'), 'Returns valid reference number prefix');
   });
 
   await t.test('4. IDEMPOTENCY & DUPLICATE SUBMISSION PREVENTION', async () => {
     const testKey = 'test_idemp_' + Date.now();
+    const randomMobile = '991' + Math.floor(1000000 + Math.random() * 9000000);
     const payload = JSON.stringify({
       idempotencyKey: testKey,
       fullName: 'Aman Verma',
-      mobileNumber: '9910991099',
+      mobileNumber: randomMobile,
       email: 'aman@example.com',
       vehicleMake: 'Tata Motors',
       vehicleModel: 'Tigor iCNG',
       vehicleYear: '2022',
       serviceRequired: 'ECU Tuning & Diagnostics',
-      preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
+      preferredWorkshop: 'Garchuk Facility, Guwahati',
       preferredDate: '2026-11-28',
       preferredTime: 'Morning (10:30 AM - 01:00 PM)',
       honeypot: '',

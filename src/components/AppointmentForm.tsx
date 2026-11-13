@@ -142,8 +142,8 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
     const utmSummary = formatUtmSummary(utmData);
 
     const messageLines = [
-      "*CAR'S ENERGY CO. - SERVICE ENQUIRY*",
-      'RFC Code No. 261 (Govt. Approved Retrofitting Center)',
+      "*MAA KAMAKHYA AUTO GAS - SERVICE ENQUIRY*",
+      'Guwahati Retrofitting & Fitment Center (NH-37, Garchuk)',
       `Ref ID: ${refId}`,
       '',
       '*CUSTOMER INFORMATION:*',
@@ -157,7 +157,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
       '',
       utmSummary ? `*ATTRIBUTION:* [${utmSummary}]` : null,
       '',
-      '_Enquiry logged via carsenergy.co.in. Awaiting workshop confirmation._',
+      '_Enquiry logged via Maa Kamakhya Auto Gas website. Awaiting workshop confirmation._',
     ].filter(Boolean);
 
     return messageLines.join('\n');
@@ -165,7 +165,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
 
   // Helper to copy prepared message
   const handleCopyMessage = () => {
-    const refId = handoffState.referenceNumber || `CE-${new Date().getFullYear()}-ENQ`;
+    const refId = handoffState.referenceNumber || `MK-${new Date().getFullYear()}-ENQ`;
     const text = buildWhatsAppMessage(refId);
     navigator.clipboard.writeText(text);
     setCopiedMessage(true);
@@ -203,10 +203,10 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        const refId = data.referenceNumber || `CE-${new Date().getFullYear()}-ENQ`;
+        const refId = data.referenceNumber || `MK-${new Date().getFullYear()}-ENQ`;
         const whatsappText = buildWhatsAppMessage(refId);
         const encodedText = encodeURIComponent(whatsappText);
-        const whatsappUrl = `https://wa.me/917982824255?text=${encodedText}`;
+        const whatsappUrl = `https://wa.me/919678******?text=${encodedText}`;
 
         setIsReviewOpen(false);
         setIsSubmitting(false);
@@ -237,10 +237,10 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
       }
     } catch {
       // Server offline or network connection lost
-      const offlineRef = `CE-OFFLINE-${Math.floor(1000 + Math.random() * 9000)}`;
+      const offlineRef = `MK-OFFLINE-${Math.floor(1000 + Math.random() * 9000)}`;
       const whatsappText = buildWhatsAppMessage(offlineRef);
       const encodedText = encodeURIComponent(whatsappText);
-      const whatsappUrl = `https://wa.me/917982824255?text=${encodedText}`;
+      const whatsappUrl = `https://wa.me/919678******?text=${encodedText}`;
 
       setIsReviewOpen(false);
       setIsSubmitting(false);
@@ -363,8 +363,8 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
               </h5>
               <p className="leading-relaxed text-amber-800 dark:text-amber-300">
                 {language === 'as'
-                  ? 'কাৰিকৰী সংযোগৰ সমস্যাৰ বাবে আমি আপোনাৰ অনুসন্ধান কৰ্মশালাৰ ডাটাবেচত সংৰক্ষণ কৰিব নোৱাৰিলোঁ। আপোনাৰ অনুসন্ধান এতিয়াও ৰেকৰ্ড হোৱা নাই। আপুনি পোনে পোনে আমাৰ চৰকাৰী হোৱাটছএপ (+91 79828 24255) যোগে বাৰ্তা প্ৰেৰণ কৰিব পাৰে বা কৰ্মশালাত ফোন কৰিব পাৰে।'
-                  : 'Due to a temporary server connection issue, your enquiry could not be saved to our workshop database and has NOT been recorded yet. You can still send your details directly via official WhatsApp (+91 79828 24255), copy your prepared message, or call our workshop advisor directly.'}
+                  ? 'কাৰিকৰী সংযোগৰ সমস্যাৰ বাবে আমি আপোনাৰ অনুসন্ধান কৰ্মশালাৰ ডাটাবেচত সংৰক্ষণ কৰিব নোৱাৰিলোঁ। আপোনাৰ অনুসন্ধান এতিয়াও ৰেকৰ্ড হোৱা নাই। আপুনি পোনে পোনে আমাৰ চৰকাৰী হোৱাটছএপ (+91 9678******) যোগে বাৰ্তা প্ৰেৰণ কৰিব পাৰে বা কৰ্মশালাত ফোন কৰিব পাৰে।'
+                  : 'Due to a temporary server connection issue, your enquiry could not be saved to our workshop database and has NOT been recorded yet. You can still send your details directly via official WhatsApp (+91 9678******), copy your prepared message, or call our workshop advisor directly.'}
               </p>
             </div>
           </div>
@@ -377,7 +377,7 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
                 className="px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-purewhite font-bold inline-flex items-center gap-1.5 shadow-sm"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>{language === 'as' ? 'হোৱাটছএপত পোনপটীয়া প্ৰেৰণ' : 'Send via WhatsApp Direct (+91 79828 24255)'}</span>
+                <span>{language === 'as' ? 'হোৱাটছএপত পোনপটীয়া প্ৰেৰণ' : 'Send via WhatsApp Direct (+91 9678******)'}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}
@@ -390,11 +390,11 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
               <span>{copiedMessage ? (language === 'as' ? 'কপি কৰা হ’ল!' : 'Message Copied!') : (language === 'as' ? 'বাৰ্তা কপি কৰক' : 'Copy Prepared Message')}</span>
             </button>
             <a
-              href="tel:+919212218180"
+              href="tel:+919678******"
               className="px-4 py-2.5 rounded-lg bg-charcoal dark:bg-darkcard text-purewhite font-bold inline-flex items-center gap-1.5"
             >
               <Phone className="w-3.5 h-3.5 text-orange" />
-              <span>{language === 'as' ? 'ফোন কৰক (+91 92122 18180)' : 'Call Workshop Hotline (+91 92122 18180)'}</span>
+              <span>{language === 'as' ? 'ফোন কৰক (+91 9678******)' : 'Call Workshop Hotline (+91 9678******)'}</span>
             </a>
           </div>
         </div>
@@ -414,14 +414,14 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
           </div>
           <div className="pt-2 flex flex-wrap gap-2">
             <a
-              href="tel:+919212218180"
+              href="tel:+919678******"
               className="px-4 py-2 rounded-lg bg-charcoal text-purewhite font-bold inline-flex items-center gap-1.5"
             >
               <Phone className="w-3.5 h-3.5 text-orange" />
-              <span>Call +91 92122 18180</span>
+              <span>Call +91 9678******</span>
             </a>
             <a
-              href="https://wa.me/917982824255"
+              href="https://wa.me/919678******"
               target="_blank"
               rel="noopener noreferrer"
               className="px-4 py-2 rounded-lg bg-emerald-600 text-purewhite font-bold inline-flex items-center gap-1.5"
@@ -644,8 +644,8 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
               {language === 'as' ? 'গোপনীয়তা সুৰক্ষা:' : 'Privacy Protection:'}{' '}
             </span>
             {language === 'as'
-              ? 'পৰিবহণ বিভাগৰ RFC ক’ড নং ২৬১-ৰ অধীনত, কাৰ্ছ এনাৰ্জী কো.-এ কেৱল চিএনজি সংস্থাপনৰ যোগ্যতা নিৰ্ধাৰণ আৰু কৰ্মশালাৰ বে’ আবণ্টনৰ বাবেহে আপোনাৰ তথ্য সংগ্ৰহ কৰে। আমি কেতিয়াও আপোনাৰ ব্যক্তিগত তথ্য বিক্ৰী নকৰো বা ব্ৰাউজাৰ ষ্ট’ৰেজত সংৰক্ষণ নকৰো। অধিক তথ্যৰ বাবে আমাৰ '
-              : 'Under Transport Dept. RFC Code No. 261, we collect vehicle details and mobile number solely to assess CNG compatibility and allocate inspection slots. We never sell your data, use third-party ad tracking scripts, or store personal details in browser storage. Read our '}
+              ? 'মা কামাখ্যা অটো গেছ-এ কেৱল চিএনজি/এলপিজি সংস্থাপনৰ যোগ্যতা নিৰ্ধাৰণ আৰু কৰ্মশালাৰ বে’ আবণ্টনৰ বাবেহে আপোনাৰ তথ্য সংগ্ৰহ কৰা হয়। আমি কেতিয়াও আপোনাৰ ব্যক্তিগত তথ্য বিক্ৰী নকৰো বা অপ্ৰয়োজনীয় স্থানত সংৰক্ষণ নকৰো। অধিক তথ্যৰ বাবে আমাৰ '
+              : 'At Maa Kamakhya Auto Gas, we collect vehicle details and mobile number solely to assess CNG/LPG compatibility and allocate inspection slots. We never sell your data, use third-party ad tracking scripts, or store personal details in browser storage. Read our '}
             <a
               href="/privacy-policy"
               className="text-orange hover:underline font-semibold"
@@ -683,8 +683,8 @@ export const AppointmentForm: React.FC<AppointmentFormProps> = () => {
 
           <p className="text-[11px] text-center text-secondary dark:text-darkmuted">
             {language === 'as'
-              ? 'চৰকাৰী অনুমোদিত RFC ক’ড নং ২৬১ • কোনো ভুৱা বুকিং নাই • হোৱাটছএপ (+91 79828 24255)'
-              : 'Govt. Approved Retrofitting Center (RFC Code No. 261) • Official WhatsApp (+91 79828 24255)'}
+              ? 'মা কামাখ্যা অটো গেছ • কোনো ভুৱা বুকিং নাই • অফিচিয়েল হোৱাটছএপ (+91 9678******)'
+              : 'Maa Kamakhya Auto Gas • Direct Workshop Booking • Official WhatsApp (+91 9678******)'}
           </p>
         </div>
       </form>

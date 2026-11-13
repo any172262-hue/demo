@@ -11,7 +11,7 @@
     "postinstall": "node scripts/ensure-wasm-rollup.cjs",
     "server": "node server/index.js",
     "start": "node server/index.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --test --test-concurrency=1 test/*.test.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",

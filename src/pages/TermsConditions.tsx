@@ -11,7 +11,7 @@ export const TermsConditions: React.FC = () => {
     <>
       <SEO
         title={pages.legal.termsTitle}
-        description="Terms and conditions governing automotive retrofitting and engineering services at Car's Energy Co."
+        description="Terms and conditions governing automotive retrofitting and engineering services at Maa Kamakhya Auto Gas."
         canonicalPath="/terms-and-conditions"
       />
 

@@ -1,32 +1,228 @@
 {
   "about": {
-    "title": "About Car's Energy Co.",
-    "subtitle": "Engineering integrity, certified conversions, and over 26 years of dedicated alternative fuel leadership in Delhi-NCR.",
-    "foundedLabel": "Founded in 1998",
-    "missionTitle": "Our Engineering Mission",
-    "missionText": "To deliver safe, reliable, and fuel-efficient alternative propulsion systems to vehicle owners while strictly conforming to national environmental and safety directives. We combine mechanical precision, computer diagnostics, and authenticated hardware.",
-    "valuesTitle": "Core Operating Principles",
-    "values": [
-      { "title": "Zero Compromise on Safety", "desc": "Every fitting undergoes high-pressure nitrogen/air leak checks and strict torque verification." },
-      { "title": "Technical Transparency", "desc": "We inspect before advising, clearly explain ECU fuel mapping, and never sell counterfeit parts." },
-      { "title": "Regulatory Conformance", "desc": "Authorized RFC Code 261 center with legitimate RTO registration support." },
-      { "title": "Long-Term Engine Health", "desc": "Calibrated to prevent cylinder head valve recession and preserve factory drivability." }
-    ],
-    "workshopsTitle": "Our Facilities & Infrastructure",
-    "workshopsIntro": "Operating two strategically located facilities in New Delhi equipped with multi-gas analysers, cylinder hydro-testing tanks, and OBD-II calibration rigs."
+    "title": "About Maa Kamakhya Auto Gas",
+    "subtitle": "Engineering integrity, certified conversions, and dedicated automotive gas retrofitting leadership in Guwahati, Assam.",
+    "foundedLabel": "Founded in 2022",
+    "aboutSection": {
+      "badge": "Authorized Automotive Gas Retrofitment Center",
+      "heading": "About Maa Kamakhya Auto Gas",
+      "p1": "Established in 2022 in Garchuk, Guwahati, Maa Kamakhya Auto Gas is one of Assam's premier automotive gas retrofitment, cylinder testing, and advanced diagnostic facilities. Located strategically on National Highway 37 (NH-37) opposite Nezone Steel, near the Indian Oil Petrol Pump in Paschim Boragaon, our workshop provides state-of-the-art alternative fuel conversion solutions for passenger cars, commercial vehicles, and fleet operators throughout the Northeast.",
+      "p2": "With deep technical expertise in automotive combustion systems, electronic control units (ECU), and high-pressure fuel delivery, our certified technicians specialize in sequential CNG and LPG kit installations, dynamic fuel injection calibration, mandatory 330-bar hydrostatic cylinder testing, and preventive autogas maintenance. Every installation is engineered to deliver 60% to 70% reduction in running fuel costs while strictly conforming to national CMVR and AIS safety standards.",
+      "highlights": [
+        "Government Approved & CMVR/AIS-024 Compliant",
+        "In-House 330-Bar Hydrostatic Cylinder Testing Rig",
+        "Authorized Dealer for World-Class Sequential Kits",
+        "Computerized OBD-II Synchronized ECU Tuning"
+      ]
+    },
+    "missionSection": {
+      "badge": "Purpose & Direction",
+      "heading": "Our Mission",
+      "statement": "To empower vehicle owners and commercial transport operators across Guwahati, Assam, and the Northeast with safe, reliable, and cost-efficient automotive alternative fuel systems. We are dedicated to delivering precision mechanical fitment, computerized fuel calibration, and complete technical transparency—making green, economical automotive mobility accessible and dependable for every driver.",
+      "pillars": [
+        {
+          "title": "Environmental Sustainability",
+          "desc": "Actively reducing vehicular carbon footprints and harmful tailpipe emissions across Assam through clean-burning compressed natural gas."
+        },
+        {
+          "title": "Substantial Fuel Savings",
+          "desc": "Delivering 60% to 70% reduction in per-kilometer running costs with optimized sequential systems delivering 22 to 26 km per kg."
+        },
+        {
+          "title": "Uncompromising Safety",
+          "desc": "Ensuring every pipeline, valve, and high-pressure joint meets stringent AIS-024 / AIS-028 directives and PESO safety protocols."
+        }
+      ]
+    },
+    "visionSection": {
+      "badge": "Future Horizons",
+      "heading": "Our Vision",
+      "statement": "To be recognized as Northeast India's most trusted center of excellence for automotive alternative fuel propulsion, statutory cylinder safety testing, and sustainable mobility engineering. We envision a future where every converted vehicle operates with peak efficiency, factory-grade throttle response, and absolute safety, backed by continuous diagnostic innovation and lifelong customer trust.",
+      "goals": [
+        {
+          "title": "Regional Excellence in Clean Retrofitting",
+          "desc": "Leading Assam's mobility transition toward CNG and alternative fuels with authorized workshop standards and certified technicians."
+        },
+        {
+          "title": "Continuous Diagnostic Modernization",
+          "desc": "Deploying cutting-edge computerized OBD-II diagnostics, electronic leak sniffers, and digital pressure calibration rigs."
+        },
+        {
+          "title": "Lifelong Customer Confidence",
+          "desc": "Building lasting driver partnerships through transparent pricing, authentic components, and reliable after-sales care."
+        }
+      ]
+    },
+    "companyInfoSection": {
+      "badge": "Statutory & Workshop Profile",
+      "heading": "Company Information",
+      "subtitle": "Official administrative, legal, and operational credentials for Maa Kamakhya Auto Gas.",
+      "fields": [
+        { "label": "Legal Entity Name", "value": "Maa Kamakhya Auto Gas", "note": "Registered autogas fitment center" },
+        { "label": "Year of Establishment", "value": "2022", "note": "Serving Guwahati & Northeast India" },
+        { "label": "Registered Workshop Facility", "value": "Shop No. 7, Opp. Nezone Steel, Near Indian Oil Petrol Pump, NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035", "note": "Strategic NH-37 transport corridor" },
+        { "label": "Core Industry Classification", "value": "Automotive Gas Retrofitment, CNG & LPG Conversion, Diagnostic Tuning & Cylinder Testing", "note": "DTO & PESO compliant services" },
+        { "label": "Team Strength", "value": "Dedicated Technical Squad (< 10 Specialists)", "note": "Certified autogas engineers & mechanics" },
+        { "label": "Annual Business Turnover", "value": "₹51 Lakh - ₹1 Crore", "note": "Trade directory verified financial scale" },
+        { "label": "GSTIN Identification", "value": "18**********1ZS", "note": "Government registered (masked for privacy)" },
+        { "label": "Operating Hours & Hotline", "value": "09:00 AM - 07:30 PM (All 7 Days Open)", "note": "+91 9678******" }
+      ]
+    },
+    "highlightsSection": {
+      "badge": "Core Strengths",
+      "heading": "Key Highlights",
+      "subtitle": "Strategic operational capabilities, advanced technology infrastructure, and certified automotive gas excellence.",
+      "items": [
+        {
+          "title": "Pan-Assam & Regional Presence",
+          "desc": "Strategically positioned on NH-37 in Garchuk, Guwahati, delivering certified conversions and support across Guwahati, Kamrup, Lower Assam, and the Northeast corridor."
+        },
+        {
+          "title": "First-Mover Advantage",
+          "desc": "Industry pioneer and recognized early leader in authorized sequential CNG and LPG retrofitting in Guwahati, establishing benchmark safety and compliance standards."
+        },
+        {
+          "title": "Advanced & Scalable Technology Platform",
+          "desc": "Equipped with computerized OBD-II calibration systems, digital air-fuel ratio mapping, electronic leak sensors, and an in-house certified 330-bar hydro-testing bay."
+        },
+        {
+          "title": "Large Community of Engaged Customers",
+          "desc": "Backed by an exceptional 4.9★ rating with 97+ verified reviews, building enduring customer trust, word-of-mouth referrals, and recurring fleet partnerships."
+        },
+        {
+          "title": "Attractive Value Proposition for Local MSMEs",
+          "desc": "Delivering 60% to 70% direct fuel cost reductions, high-ROI commercial fleet packages, flexible warranties, and complete RTO endorsement assistance."
+        },
+        {
+          "title": "Deep Local Expertise",
+          "desc": "Decades of combined mechanical experience and in-depth understanding of Northeast terrain, elevation demands, temperature shifts, and multi-brand engine tuning."
+        },
+        {
+          "title": "Long Operating History & Proven Track Record",
+          "desc": "Established in 2022 in Guwahati, backed by hundreds of certified, accident-free CNG and LPG installations and verified annual business scale."
+        },
+        {
+          "title": "Experienced Management Team",
+          "desc": "Directed and managed by certified automotive gas engineers, technical advisors, and seasoned safety specialists committed to strict PESO guidelines and customer care."
+        }
+      ]
+    },
+    "servicesSection": {
+      "badge": "Specialized Capabilities",
+      "heading": "Our Services & Technical Expertise",
+      "subtitle": "Comprehensive automotive alternative fuel engineering delivered by certified mechanics under strict safety protocols.",
+      "services": [
+        {
+          "title": "Sequential CNG Kit Installation",
+          "desc": "Multi-point sequential gas injection synchronized with factory ECU for seamless power delivery and 60-70% fuel savings.",
+          "link": "/services/cng-kit-installation"
+        },
+        {
+          "title": "Auto LPG Conversion Systems",
+          "desc": "Advanced gaseous and liquid LPG conversion systems custom-engineered for smooth, economical passenger car performance.",
+          "link": "/services"
+        },
+        {
+          "title": "Computerized OBD-II Tuning & Calibration",
+          "desc": "Real-time air-fuel ratio mapping and sensor synchronization for crisp throttle response and valve protection.",
+          "link": "/services/ecu-tuning-calibration"
+        },
+        {
+          "title": "Hydrostatic Cylinder Testing (330 Bar)",
+          "desc": "Mandatory 3-year cylinder safety testing, ultrasonic wall thickness measurement, and PESO compliance certificates.",
+          "link": "/services/cylinder-hydro-testing"
+        },
+        {
+          "title": "Preventive Autogas Servicing",
+          "desc": "Ultrasonic injector cleaning, reducer pressure overhaul, and low/high pressure gas filter replacements.",
+          "link": "/services/cng-kit-servicing"
+        },
+        {
+          "title": "Electronic Gas Leak Detection & Safety Audit",
+          "desc": "Multi-gas sensor leak sniffing across high-pressure pipelines, valves, and injectors to guarantee total cabin and engine safety.",
+          "link": "/services"
+        },
+        {
+          "title": "RTO & DTO RC Endorsement Support",
+          "desc": "Complete preparation of statutory documentation, invoice records, and safety certificates for official vehicle RC endorsement.",
+          "link": "/services/rto-documentation-rc-endorsement"
+        },
+        {
+          "title": "Commercial Fleet Retrofitting Programs",
+          "desc": "High-volume conversion schedules, customized commercial fuel mapping, and priority turnaround for commercial fleet operators.",
+          "link": "/services"
+        }
+      ]
+    },
+    "whyChooseSection": {
+      "badge": "The Competitive Advantage",
+      "heading": "Why Choose Maa Kamakhya Auto Gas",
+      "subtitle": "Why vehicle owners across Guwahati and Assam trust us for their automotive alternative fuel conversions.",
+      "reasons": [
+        {
+          "title": "Government Approved & CMVR Compliant",
+          "desc": "Every installation strictly adheres to national AIS-024 / AIS-028 safety directives and official transport guidelines."
+        },
+        {
+          "title": "Substantial 60% - 70% Fuel Economy",
+          "desc": "Sequential CNG systems deliver 22 to 26 km per kg, enabling rapid financial payback on your retrofitment investment."
+        },
+        {
+          "title": "Preserved Factory Engine Longevity",
+          "desc": "Computerized dynamic calibration avoids valve recession, prevents overheating, and maintains smooth factory drivability."
+        },
+        {
+          "title": "Upfront Transparent Pricing",
+          "desc": "Clear itemized quotations with zero hidden costs, fake surcharges, or unapproved parts replacements."
+        },
+        {
+          "title": "Fast Same-Day Turnaround",
+          "desc": "Standard sequential kit fitments completed within 6 to 8 hours with thorough multi-stage safety inspections."
+        },
+        {
+          "title": "Dedicated Post-Installation Care",
+          "desc": "Free periodic diagnostic health scans, sensor leak checks, and a direct customer helpline open all 7 days."
+        }
+      ]
+    },
+    "commitmentSection": {
+      "badge": "Customer-First Ethos",
+      "heading": "Our Commitment to Customers",
+      "subtitle": "The foundational principles that guide every interaction and installation at our Guwahati facility.",
+      "commitments": [
+        {
+          "title": "Safety Over Everything",
+          "desc": "We never cut corners on high-pressure gas pipelines, safety shutoff valves, or cylinder mounting brackets. Every vehicle is double-checked before delivery."
+        },
+        {
+          "title": "100% Genuine, Authenticated Components",
+          "desc": "We strictly install verifiable, serialized conversion hardware from authorized manufacturers, backed by full warranty coverage."
+        },
+        {
+          "title": "Honest Technical Guidance",
+          "desc": "We thoroughly evaluate vehicle engine health prior to conversion and provide honest technical advice without pushy sales tactics."
+        },
+        {
+          "title": "Long-Term After-Sales Support",
+          "desc": "Our relationship begins after installation. We provide continuous tuning support, spare parts availability, and filter replacement schedules."
+        }
+      ],
+      "ctaHeading": "Schedule a Technical Pre-Inspection for Your Vehicle",
+      "ctaDesc": "Bring your vehicle to our authorized workshop on NH-37, Garchuk, Guwahati or book an appointment online for a comprehensive OBD-II diagnostic and engine compression check."
+    }
   },
   "products": {
     "title": "Hardware & Partner Brands",
-    "subtitle": "Direct distributor and certified installer of world-class automotive alternative fuel systems.",
+    "subtitle": "Authorized dealer and certified installer of world-class automotive alternative fuel systems.",
     "filterAll": "All Brands",
     "filterKits": "Sequential Kits",
     "filterCylinders": "PESO Cylinders",
     "filterComponents": "Components & Reducers",
-    "authenticityNotice": "All components sold or installed by Car's Energy Co. are 100% genuine with verifiable serial numbers, authorized distributor guarantees, and manufacturer compliance certificates."
+    "authenticityNotice": "All components sold or installed by Maa Kamakhya Auto Gas are 100% genuine with verifiable serial numbers, authorized distributor guarantees, and manufacturer compliance certificates."
   },
   "gallery": {
     "title": "Workshop Photographic Documentation",
-    "subtitle": "Real work photographs showcasing fitment precision, engine bay layouts, testing rigs, and customer handovers.",
+    "subtitle": "Real work photographs showcasing fitment precision, engine bay layouts, testing rigs, and customer handovers at our Guwahati facility.",
     "all": "All",
     "fitment": "Kit Fitment",
     "testing": "Hydro-Testing",
@@ -35,19 +231,19 @@
   },
   "videos": {
     "title": "Technical Video Demonstrations",
-    "subtitle": "In-depth demonstrations of sequential kit calibration, dyno performance, and safety practices from our Mundka workshop.",
+    "subtitle": "In-depth demonstrations of sequential kit calibration, performance tuning, and safety practices from our Guwahati workshop.",
     "watchVideo": "Watch Demonstration",
     "videoNote": "Our video library highlights real vehicle installations and technical tutorials on throttle response, gas filters, and leak safety."
   },
   "testimonials": {
-    "title": "Genuine Client Testimonials",
-    "subtitle": "Read verified accounts from daily vehicle owners, fleet operators, and long-term customers serviced at Car's Energy Co.",
-    "ratingLabel": "Verified Service Experience",
+    "title": "Customer Reviews & Ratings",
+    "subtitle": "Verified feedback and real ratings from vehicle owners, commercial drivers, and long-term customers serviced at Maa Kamakhya Auto Gas.",
+    "ratingLabel": "Verified Customer Satisfaction",
     "verifiedVehicle": "Vehicle"
   },
   "faqs": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Expert answers to common queries regarding sequential CNG systems, fuel efficiency, engine durability, and statutory testing.",
+    "subtitle": "Expert answers to common queries regarding sequential CNG/LPG systems, fuel efficiency, engine durability, and statutory testing in Assam.",
     "searchPlaceholder": "Search common questions...",
     "categoryAll": "All Questions",
     "categoryInstallation": "Installation & Mileage",
@@ -57,8 +253,8 @@
   },
   "legal": {
     "privacyTitle": "Privacy Policy",
-    "privacyBadge": "DATA GOVERNANCE & COMPLIANCE",
-    "privacySubtitle": "Car's Energy Co. is committed to protecting your personal information and ensuring technical transparency across all automotive services.",
+    "privacyBadge": "DATA GOVERNANCE & PRIVACY",
+    "privacySubtitle": "Maa Kamakhya Auto Gas is committed to protecting your personal information and ensuring technical transparency across all automotive services.",
     "privacyUpdated": "Last updated: November 2026",
     "privacySections": [
       {
@@ -71,8 +267,8 @@
         "content": "The details you submit are utilized solely for technical and operational workshop purposes:",
         "list": [
           "Evaluating vehicle engine suitability and sequential kit compatibility for your specific car model.",
-          "Scheduling workshop bay availability and allocating certified technical staff at our Mundka or Paschim Vihar facilities.",
-          "Preparing statutory documentation and compliance certificates required under CMVR guidelines.",
+          "Scheduling workshop bay availability and allocating certified technical staff at our Garchuk workshop in Guwahati.",
+          "Preparing statutory documentation and compliance certificates required under CMVR and DTO guidelines.",
           "Facilitating customer communication regarding appointment status, parts availability, and technical advisories."
         ]
       },
@@ -93,23 +289,23 @@
       },
       {
         "heading": "6. Data Retention & Third-Party Disclosure",
-        "content": "Customer enquiry records are retained only as long as necessary to complete your workshop service, issue statutory certification, and maintain warranty compliance records. We do not share your details with external third parties except authorized government transport authorities (RTO) when mandated by statutory vehicle endorsement regulations.",
+        "content": "Customer enquiry records are retained only as long as necessary to complete your workshop service, issue statutory certification, and maintain warranty compliance records. We do not share your details with external third parties except authorized government transport authorities (DTO/RTO) when mandated by statutory vehicle endorsement regulations.",
         "list": []
       },
       {
         "heading": "7. User Rights & Contacting Our Data Officer",
-        "content": "You have the right to review, update, or request the deletion of your contact records from our active workshop scheduling database. For privacy questions, contact our compliance officer at carsenergyco@gmail.com or call our Mundka facility directly at +91 92122 18180.",
+        "content": "You have the right to review, update, or request the deletion of your contact records from our active workshop scheduling database. For privacy questions, contact our desk at maakamakhyaautogas@gmail.com or call our Garchuk facility directly at +91 9678******.",
         "list": []
       }
     ],
     "termsTitle": "Terms & Conditions",
-    "termsBadge": "LEGAL DIRECTIVES & CMVR COMPLIANCE",
-    "termsSubtitle": "General commercial terms and engineering standards governing retrofitment, testing, and servicing contracts with Car's Energy Co.",
+    "termsBadge": "LEGAL DIRECTIVES & DTO COMPLIANCE",
+    "termsSubtitle": "General commercial terms and engineering standards governing retrofitment, testing, and servicing contracts with Maa Kamakhya Auto Gas.",
     "termsUpdated": "Last updated: November 2026",
     "termsSections": [
       {
         "heading": "1. Scope of Automotive Services & Regulatory Conformance",
-        "content": "Car's Energy Co. (Govt. Approved Retrofitting Center, RFC Code No. 261) operates certified automotive alternative fuel retrofitting, diagnostic calibration, scheduled maintenance, and cylinder testing facilities under the statutory framework of the Central Motor Vehicles Rules (CMVR) and Petroleum and Explosives Safety Organization (PESO). All recommendations are subject to physical vehicle inspection.",
+        "content": "Maa Kamakhya Auto Gas operates certified automotive alternative fuel retrofitting, diagnostic calibration, scheduled maintenance, and cylinder testing facilities in Guwahati, Assam under the statutory framework of the Central Motor Vehicles Rules (CMVR) and Petroleum and Explosives Safety Organization (PESO). All recommendations are subject to physical vehicle inspection.",
         "list": []
       },
       {
@@ -129,7 +325,7 @@
       },
       {
         "heading": "5. Pricing, Quotations & Hardware Authenticity",
-        "content": "Initial price estimates provided online or over the telephone are indicative and subject to final confirmation following physical engine inspection. All components, sequential kits, reducers, and cylinders installed by Car's Energy Co. are 100% genuine, backed by manufacturer warranties, verifiable serial numbers, and authorized distributor guarantees.",
+        "content": "Initial price estimates provided online or over the telephone are indicative and subject to final confirmation following physical engine inspection. All components, sequential kits, reducers, and cylinders installed by Maa Kamakhya Auto Gas are 100% genuine, backed by manufacturer warranties, verifiable serial numbers, and authorized distributor guarantees.",
         "list": []
       },
       {
@@ -138,18 +334,18 @@
         "list": []
       },
       {
-        "heading": "7. Statutory RTO Endorsement Responsibilities",
-        "content": "Car's Energy Co. issues authentic government-approved compliance certificates (including Form 21, Form 22, and PESO hydro-test certificates). Final endorsement on the vehicle Registration Certificate (RC) remains subject to physical inspection and statutory approval by the respective Regional Transport Office (RTO) in accordance with state guidelines.",
+        "heading": "7. Statutory DTO Endorsement Responsibilities",
+        "content": "Maa Kamakhya Auto Gas issues authentic compliance certificates and documentation for legal endorsement. Final endorsement on the vehicle Registration Certificate (RC) remains subject to physical inspection and statutory approval by the respective District Transport Office (DTO) in accordance with Assam state guidelines.",
         "list": []
       },
       {
         "heading": "8. Intellectual Property & Limitation of Liability",
-        "content": "All technical diagrams, articles, photographic documentation, and branding on this website are proprietary to Car's Energy Co. or licensed partners. Car's Energy Co. shall not be liable for damages resulting from improper third-party vehicle modifications or failure of vehicle owners to observe prescribed maintenance intervals.",
+        "content": "All technical diagrams, articles, photographic documentation, and branding on this website are proprietary to Maa Kamakhya Auto Gas or licensed partners. Maa Kamakhya Auto Gas shall not be liable for damages resulting from improper third-party vehicle modifications or failure of vehicle owners to observe prescribed maintenance intervals.",
         "list": []
       },
       {
         "heading": "9. Governing Law, Dispute Resolution & Contact",
-        "content": "All commercial transactions, service contracts, and statutory compliance matters are governed by the laws of India and subject to the exclusive jurisdiction of the competent courts in New Delhi. For legal inquiries or terms clarification, contact us at carsenergyco@gmail.com or visit our Mundka facility.",
+        "content": "All commercial transactions, service contracts, and statutory compliance matters are governed by the laws of India and subject to the exclusive jurisdiction of the competent courts in Guwahati, Assam. For inquiries or terms clarification, contact us at maakamakhyaautogas@gmail.com or visit our Garchuk facility.",
         "list": []
       }
     ],

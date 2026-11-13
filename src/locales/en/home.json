@@ -1,43 +1,43 @@
 {
   "hero": {
-    "badge": "RFC Code No. 261 • Govt. Certified Retrofitment Facility",
-    "title": "Precision CNG Engineering & Certified Automotive Retrofitting",
-    "subtitle": "Established in 1998, Car's Energy Co. provides certified sequential CNG system fitment, digital ECU tuning, cylinder safety testing, and RTO endorsement for passenger and commercial vehicles.",
+    "badge": "Guwahati's Trusted CNG & LPG Retrofitment Facility • DTO Compliant",
+    "title": "Precision Automotive Gas Engineering & Certified Retrofitting",
+    "subtitle": "Established in 2022 in Guwahati, Maa Kamakhya Auto Gas provides certified sequential CNG & LPG kit installations, computerized ECU tuning, cylinder safety testing, and comprehensive vehicle maintenance.",
     "ctaAppointment": "Book Technical Inspection",
     "ctaServices": "Explore Our Services",
     "stats": [
-      { "value": "26+", "label": "Years in Alternative Fuel Engineering" },
-      { "value": "2", "label": "Certified Delhi-NCR Workshops" },
-      { "value": "100%", "label": "RTO & PESO Safety Compliant" },
-      { "value": "10+", "label": "Approved Premium CNG Brands" }
+      { "value": "4.9★", "label": "Top Rated on Justdial (97+ Reviews)" },
+      { "value": "2022", "label": "Dedicated Automotive Service in Assam" },
+      { "value": "100%", "label": "RTO & Safety Compliant Workmanship" },
+      { "value": "10+", "label": "Approved Premium Gas Brands" }
     ]
   },
   "overview": {
     "sectionTag": "Automotive Engineering Profile",
-    "title": "Decades of Specialized CNG System Integration",
-    "lead": "Since 1998, Car's Energy Co. has operated at the forefront of clean automotive propulsion in North India.",
-    "p1": "As an authorized retrofitting center (RFC Code No. 261), we do not treat alternative fuel conversion as a generic mechanical swap. Every vehicle model possesses unique manifold geometries, ignition profiles, and intake parameters. Our workshop integrates calibrated sequential gas injection systems with precision ECU remapping, ensuring optimal engine response, zero check-engine warnings, and strict emission compliance.",
-    "p2": "From wholesale distribution of genuine Italian and Indian conversion kits to multi-point cylinder hydrostatic pressure certifications and RTO registration endorsements, we handle the entire vehicle lifecycle with engineering rigor.",
+    "title": "Leading Automotive Gas System Integration in Guwahati",
+    "lead": "Conveniently situated on NH-37, Paschim Boragaon, Garchuk, Maa Kamakhya Auto Gas operates at the forefront of clean automotive propulsion in Assam.",
+    "p1": "As an authorized conversion center, we do not treat alternative fuel conversion as a generic mechanical swap. Every vehicle model possesses unique manifold geometries, ignition profiles, and intake parameters. Our workshop integrates calibrated sequential gas injection systems with precision ECU remapping, ensuring optimal engine response, zero check-engine warnings, and substantial 60-70% monthly fuel savings.",
+    "p2": "From retail and wholesale fitment of certified Italian and Indian conversion kits to multi-point cylinder safety inspections, computer diagnostics, and DTO registration endorsement support, we handle every vehicle with engineering care.",
     "highlights": [
-      "Government Authorized Workshop (RFC No. 261)",
+      "Authorized Fitment Facility (NH-37, Garchuk, Guwahati)",
       "OBD-II Synchronized Digital Map Calibration",
-      "High-Pressure PESO Certified Storage Systems",
-      "Direct Authorized Brand Supply & Genuine Spares"
+      "PESO-Compliant High-Pressure Storage Systems",
+      "Direct Supply of Genuine Gas Kits & OEM Spares"
     ]
   },
   "servicesSection": {
     "sectionTag": "Our Core Capabilities",
-    "title": "Complete Automotive CNG Engineering Services",
+    "title": "Complete Automotive Gas Conversion & Servicing",
     "description": "Comprehensive alternative fuel solutions executed by certified technicians using computerized diagnostics and safety-tested hardware."
   },
   "whyChooseUs": {
     "sectionTag": "Engineering Standards",
-    "title": "Why Car's Energy Co. Stands Apart",
-    "description": "We build trust through verifiable certifications, transparent workmanship, and rigorous automotive quality control.",
+    "title": "Why Maa Kamakhya Auto Gas Stands Apart",
+    "description": "We build customer confidence through verifiable certifications, transparent workmanship, and authentic automotive quality control.",
     "cards": [
       {
-        "title": "Official Government Authorization",
-        "description": "Licensed Retrofitting Center (RFC No. 261) accredited for compliant alternative fuel installations across passenger and commercial vehicle classes."
+        "title": "Authorized Retrofitment Facility",
+        "description": "Accredited workshop on NH-37, Garchuk approved for compliant alternative fuel installations across private and commercial vehicles."
       },
       {
         "title": "Computerized Engine Calibration",
@@ -45,26 +45,26 @@
       },
       {
         "title": "Certified Cylinder Hydro-Testing",
-        "description": "Complete testing to PESO standards with ultrasonic wall thickness verification and official safety compliance certificates."
+        "description": "Comprehensive cylinder re-testing complying with statutory safety rules, ultrasonic inspection, and official test certification."
       },
       {
         "title": "Genuine Components & Hardware",
-        "description": "Direct distributor of Lovato, Motozen, Gastech Italy, Mijo, and STAG components with serial verification and warranty back-up."
+        "description": "Direct distributor of Lovato, Motozen, Tomasetto Achille, BRC, and STAG components with serial verification and warranty back-up."
       },
       {
-        "title": "Complete RTO Endorsement",
-        "description": "End-to-end paperwork handling for legal endorsement of your CNG kit onto the vehicle Registration Certificate (RC)."
+        "title": "DTO Endorsement Assistance",
+        "description": "End-to-end paperwork guidance for legal endorsement of your CNG/LPG kit onto your vehicle Registration Certificate (RC)."
       },
       {
         "title": "Dedicated Post-Fitment Support",
-        "description": "Annual Maintenance Contracts (AMC), periodic filter swaps, and injector rail servicing to safeguard long-term engine health."
+        "description": "Periodic maintenance, ultrasonic injector cleaning, filter swaps, and preventive servicing to safeguard long-term engine health."
       }
     ]
   },
   "howItWorks": {
     "sectionTag": "Process Workflow",
     "title": "Structured 4-Stage Conversion Process",
-    "description": "Every vehicle undergoes a disciplined, step-by-step engineering cycle from first inspection to legal registration.",
+    "description": "Every vehicle undergoes a disciplined, step-by-step engineering cycle from first inspection to legal handover.",
     "steps": [
       {
         "step": "01",
@@ -84,7 +84,7 @@
       {
         "step": "04",
         "title": "Safety Audit & Handover",
-        "description": "Electronic sniff-testing for micro-leaks, compliance certificate issue, and guidance through final RTO RC endorsement."
+        "description": "Electronic sniff-testing for micro-leaks, compliance certificate issue, and guidance through final DTO RC endorsement."
       }
     ]
   },
@@ -95,27 +95,27 @@
   },
   "galleryPreview": {
     "sectionTag": "Workshop Documentation",
-    "title": "Inside Our Technical Facilities",
-    "description": "Take a look at our clean bays, diagnostic tools, and meticulous installation standards."
+    "title": "Inside Our Guwahati Workshop",
+    "description": "Take a look at our clean bays, diagnostic tools, and meticulous installation standards on NH-37, Garchuk."
   },
   "videosPreview": {
     "sectionTag": "Technical Demonstrations",
-    "title": "Video Documentation & Dyno Insights",
-    "description": "Watch our technicians explain sequential kit integration and real-world calibration workflows."
+    "title": "Video Documentation & Insights",
+    "description": "Watch our technicians demonstrate sequential kit integration and real-world calibration workflows."
   },
   "testimonialsSection": {
     "sectionTag": "Client Feedback",
-    "title": "Verified Vehicle Owner Reviews",
-    "description": "Honest experiences from daily commuters, fleet managers, and car enthusiasts who trust our workshops."
+    "title": "Verified Customer Reviews & Ratings",
+    "description": "Authentic experiences from daily commuters, commercial cab drivers, and car owners who trust our Guwahati workshop."
   },
   "faqsSection": {
     "sectionTag": "Knowledge Base",
     "title": "Frequently Asked Questions",
-    "description": "Clear answers to essential questions regarding mileage, safety, warranties, and RTO compliance."
+    "description": "Clear answers to essential questions regarding mileage, safety, warranties, and DTO compliance."
   },
   "quickAppointment": {
     "sectionTag": "Service Booking",
     "title": "Schedule a Workshop Inspection",
-    "description": "Reserve a slot at our Mundka or Paschim Vihar center. Our service advisor will review your vehicle details and confirm your schedule."
+    "description": "Reserve a slot at our Garchuk workshop on NH-37, Guwahati. Our service advisor will review your vehicle details and confirm your schedule."
   }
 }

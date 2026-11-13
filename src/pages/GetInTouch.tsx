@@ -21,8 +21,8 @@ export const GetInTouch: React.FC = () => {
   return (
     <>
       <SEO
-        title="Get In Touch | Car's Energy Co."
-        description="Contact our authorized engineering team for CNG retrofitment, ECU tuning, and cylinder hydro testing. Provide your car model and mobile number for prompt consultation."
+        title="Get In Touch | Maa Kamakhya Auto Gas"
+        description="Contact our experienced technicians in Guwahati for CNG and LPG conversion kit fitment, computerized tuning, and genuine gas servicing. Provide your car details for quick consultation."
         canonicalPath="/get-in-touch"
       />
 
@@ -34,7 +34,7 @@ export const GetInTouch: React.FC = () => {
           <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange" />
-              <span>DIRECT ENQUIRY DESK • RFC CODE NO. 261</span>
+              <span>DIRECT ENQUIRY DESK • GARCHUK, NH-37</span>
             </div>
 
             <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
@@ -44,14 +44,14 @@ export const GetInTouch: React.FC = () => {
             <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
               {language === 'as'
                 ? 'আমাৰ নিৰ্ভৰযোগ্য সেৱা লাভ কৰিবলৈ যোগাযোগ কৰক। আমাৰ সেৱাই নিশ্চিতভাৱে আপোনাৰ প্ৰত্যাশা পূৰণ কৰিব।'
-                : 'Contact us to avail our trusted services. Our services will certainly meet your expectations.'}
+                : 'Contact us to avail our trusted automotive gas conversion and repair services in Guwahati.'}
             </p>
           </div>
 
           {/* 4 Quick Verification Chips */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">No Email</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">No Email Required</span>
               <span className="text-[11px] text-secondary dark:text-darkmuted">Phone & Car Model Only</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
@@ -59,12 +59,12 @@ export const GetInTouch: React.FC = () => {
               <span className="text-[11px] text-secondary dark:text-darkmuted">Same-Day Review</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">RFC #261</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Govt. Certified Center</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">4.9 ★ Rating</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">97+ Justdial Reviews</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Est. 1998</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">26+ Years Experience</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Est. 2022</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Guwahati Gas Specialists</span>
             </div>
           </div>
         </div>
@@ -90,19 +90,19 @@ export const GetInTouch: React.FC = () => {
                   Prefer Direct Phone or WhatsApp?
                 </h3>
                 <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
-                  Call our technical advisors directly or start a quick WhatsApp consultation to discuss your vehicle's CNG fitment, hydro testing, or calibration:
+                  Call our technical workshop team directly or start a quick WhatsApp consultation to discuss your vehicle's CNG/LPG kit fitment, computerized calibration, or diagnostic check:
                 </p>
 
                 <div className="pt-2 flex flex-col sm:flex-row gap-3">
                   <a
-                    href="tel:+919212218180"
+                    href="tel:+919678******"
                     className="flex-1 py-3 px-4 rounded-lg bg-charcoal dark:bg-darkcard hover:bg-black dark:hover:bg-darkcard/80 text-purewhite text-xs font-heading font-bold flex items-center justify-center gap-2 transition-colors shadow-subtle border border-transparent dark:border-darkborder"
                   >
                     <Phone className="w-4 h-4 text-orange" />
-                    <span>+91 92122 18180</span>
+                    <span>+91 9678******</span>
                   </a>
                   <a
-                    href="https://wa.me/917982824255"
+                    href="https://wa.me/919678******"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 py-3 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-purewhite text-xs font-heading font-bold flex items-center justify-center gap-2 transition-colors shadow-subtle"
@@ -113,46 +113,43 @@ export const GetInTouch: React.FC = () => {
                 </div>
               </div>
 
-              {/* Mundka Hub Card */}
+              {/* Guwahati Workshop Card */}
               <div className="p-6 bg-[#EEF1F6] dark:bg-darkcard rounded-2xl border border-[#DFE3E8] dark:border-darkborder space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="badge-orange text-[10px] font-bold">Primary Facility</span>
-                  <span className="text-xs font-bold text-secondary dark:text-darkmuted uppercase">Mundka</span>
+                  <span className="badge-orange text-[10px] font-bold">Main Facility</span>
+                  <span className="text-xs font-bold text-secondary dark:text-darkmuted uppercase">Guwahati</span>
                 </div>
                 <h4 className="font-heading font-bold text-sm text-charcoal dark:text-purewhite">
-                  Mundka Retrofitment & Hydro-Testing Hub
+                  Maa Kamakhya Auto Gas Workshop
                 </h4>
                 <div className="space-y-1.5 text-xs text-secondary dark:text-darkmuted">
                   <div className="flex items-start gap-2">
                     <MapPin className="w-3.5 h-3.5 text-orange shrink-0 mt-0.5" />
-                    <span>215 & 216/5, Opp. Metro Pillar 536, Rohtak Road, Mundka, New Delhi - 110041</span>
+                    <span>Shop No. 7, Opposite Nezone Steel, Near Kumar Resorts, NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="w-3.5 h-3.5 text-secondary dark:text-darkmuted shrink-0" />
-                    <span>10:30 AM - 07:00 PM (Wednesday Closed)</span>
+                    <span>09:00 AM - 07:30 PM (Open All 7 Days)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-3.5 h-3.5 text-secondary dark:text-darkmuted shrink-0" />
+                    <span>+91 9678******</span>
                   </div>
                 </div>
               </div>
 
-              {/* Paschim Vihar Center Card */}
+              {/* Verified Payment & Services Feature */}
               <div className="p-6 bg-[#EEF1F6] dark:bg-darkcard rounded-2xl border border-[#DFE3E8] dark:border-darkborder space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="badge-tech text-[10px] font-bold">Express Bay</span>
-                  <span className="text-xs font-bold text-secondary dark:text-darkmuted uppercase">Paschim Vihar</span>
+                  <span className="badge-tech text-[10px] font-bold">Convenience</span>
+                  <span className="text-xs font-bold text-secondary dark:text-darkmuted uppercase">Flexible Payment</span>
                 </div>
                 <h4 className="font-heading font-bold text-sm text-charcoal dark:text-purewhite">
-                  Paschim Vihar Express Diagnostics Center
+                  Easy EMI & Digital Payment Available
                 </h4>
-                <div className="space-y-1.5 text-xs text-secondary dark:text-darkmuted">
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-orange shrink-0 mt-0.5" />
-                    <span>Shop No. 21, C.S.C. A-4, Gole DDA Market, Paschim Vihar, New Delhi - 110063</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-3.5 h-3.5 text-secondary dark:text-darkmuted shrink-0" />
-                    <span>10:30 AM - 02:00 PM (Wednesday Closed)</span>
-                  </div>
-                </div>
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
+                  We accept UPI (Google Pay, PhonePe, Paytm), Cash, Debit/Credit Cards, Net Banking, and convenient EMI financing options for complete kit installations.
+                </p>
               </div>
             </div>
           </div>

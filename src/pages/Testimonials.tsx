@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { aggregateRatingData, testimonialsData } from '../data/testimonialsData';
 import {
   ShieldCheck,
   CheckCircle2,
@@ -12,21 +13,24 @@ import {
   FileCheck,
   ArrowRight,
   Phone,
-  HelpCircle,
+  Star,
+  ExternalLink,
+  MapPin,
+  Clock,
 } from 'lucide-react';
 
 export const Testimonials: React.FC = () => {
-  const { language, pages, common } = useLanguage();
+  const { language } = useLanguage();
 
   return (
     <>
       <SEO
-        title="Customer Feedback & Quality Assurance | Car's Energy Co."
-        description="Review our genuine customer feedback policy and technical quality assurance standards. Transport Dept. Approved RFC Code No. 261."
+        title="Customer Feedback & Ratings | Maa Kamakhya Auto Gas"
+        description="Read genuine customer reviews and ratings for Maa Kamakhya Auto Gas in Guwahati. 4.9/5 stars based on 97+ verified reviews on Justdial for CNG kit fitment and servicing."
         canonicalPath="/testimonials"
       />
 
-      {/* Hero / Header Section (Approved Light & Dark Theme) */}
+      {/* Hero / Header Section */}
       <section className="relative bg-[#F5F5F2] dark:bg-darkbg text-charcoal dark:text-darktext pt-8 pb-14 sm:pb-16 border-b border-lightgrey dark:border-darkborder overflow-hidden">
         <div className="section-container relative z-10 space-y-6">
           <Breadcrumbs items={[{ label: language === 'as' ? 'গ্ৰাহকৰ মতামত' : 'Customer Feedback' }]} />
@@ -34,134 +38,175 @@ export const Testimonials: React.FC = () => {
           <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange" />
-              <span>QUALITY ASSURANCE • RFC CODE NO. 261</span>
+              <span>VERIFIED REVIEWS • 4.9 / 5.0 JUSTDIAL RATING</span>
             </div>
 
             <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
-              {language === 'as' ? 'গ্ৰাহকৰ মতামত আৰু কাৰিকৰী মানদণ্ড' : 'Customer Feedback & Technical Standards'}
+              {language === 'as' ? 'গ্ৰাহকৰ প্ৰকৃত মতামত আৰু পৰ্যালোচনা' : 'Customer Feedback & Verified Ratings'}
             </h1>
 
             <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
               {language === 'as'
-                ? 'কাৰ্ছ এনাৰ্জীয়ে কোনো কৃত্ৰিম পৰ্যালোচনা প্ৰকাশ নকৰে। আমাৰ প্ৰতিটো সেৱা চৰকাৰী PESO আৰু CMVR মানদণ্ড অনুসৰি পৰীক্ষা কৰা হয়।'
-                : 'At Car’s Energy Co., we publish only genuine, verified feedback. Learn how we maintain engineering integrity and how vehicle owners can submit authentic reviews.'}
+                ? 'গুৱাহাটীৰ মা কামাখ্যা অটো গেছত চিএনজি আৰু এলপিজি কিট সংস্থাপন কৰোৱা বাহন মালিকসকলৰ প্ৰকৃত মতামত আৰু অভিজ্ঞতা।'
+                : 'Read verified experiences from vehicle owners across Guwahati who chose Maa Kamakhya Auto Gas for sequential kit installation, tuning, and gas maintenance.'}
             </p>
           </div>
 
           {/* 4 Verified Credential Chips */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">26+ Years</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Established 1998</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">4.9 / 5.0 ★</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">97+ Justdial Reviews</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">RFC #261</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Transport Dept. Approved</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Est. 2022</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Guwahati Workshop</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">2 Centers</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Mundka & Paschim Vihar</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Open 7 Days</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">09:00 AM - 07:30 PM</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">PESO Bay</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">330-Bar Hydro Testing</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">100% Genuine</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Verified Customer Words</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Feedback Policy Section */}
-      <section className="py-16 bg-offwhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder">
+      {/* Aggregate Rating Banner */}
+      <section className="py-8 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* Left 7 Columns: Our Authenticity Commitment */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-7 sm:p-9 shadow-subtle space-y-5">
-                <span className="badge-orange text-xs">Our Authenticity Commitment</span>
-                <h2 className="text-2xl font-heading font-extrabold text-charcoal dark:text-purewhite">
-                  Zero Fake Reviews. 100% Technical Evidence.
-                </h2>
-                <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
-                  In compliance with our strict corporate quality guidelines, Car’s Energy Co. does not invent testimonials, customer review counts, or star ratings. Instead, every vehicle conversion or service performed at our Mundka and Paschim Vihar workshops is documented through physical inspection records and statutory certificates.
-                </p>
-
-                <div className="space-y-3 pt-2">
-                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite dark:bg-darkcard border border-lightgrey/80 dark:border-darkborder">
-                    <FileCheck className="w-5 h-5 text-orange shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Diagnostic Verification</h4>
-                      <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
-                        Every sequential kit installation receives a computerized OBD-II sensor health check and digital fuel mapping test before handover.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite dark:bg-darkcard border border-lightgrey/80 dark:border-darkborder">
-                    <ShieldCheck className="w-5 h-5 text-orange shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Statutory PESO Compliance</h4>
-                      <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
-                        Hydro-testing is conducted using high-precision water jacket displacement rigs and stamped with authorized inspector credentials.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-3.5 rounded-lg bg-offwhite dark:bg-darkcard border border-lightgrey/80 dark:border-darkborder">
-                    <Award className="w-5 h-5 text-orange shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Direct Manufacturer Backing</h4>
-                      <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
-                        Authorized distributor support for Lovato, Motozen, Gastech Italy, Mijo, and STAG genuine spare parts and warranty.
-                      </p>
-                    </div>
-                  </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-offwhite dark:bg-darkcard border border-lightgrey dark:border-darkborder">
+            <div className="flex items-center gap-5">
+              <div className="w-16 h-16 rounded-xl bg-orange flex flex-col items-center justify-center text-purewhite shadow-md">
+                <span className="text-xl font-heading font-extrabold leading-none">4.9</span>
+                <div className="flex gap-0.5 mt-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-2.5 h-2.5 fill-purewhite text-purewhite" />
+                  ))}
                 </div>
               </div>
-
-              {/* How to Leave Genuine Google Feedback */}
-              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-7 sm:p-9 shadow-subtle space-y-4">
-                <span className="badge-tech text-xs">Public Feedback</span>
-                <h3 className="text-lg font-heading font-bold text-charcoal dark:text-purewhite">
-                  How Customers Share Real Feedback
-                </h3>
-                <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
-                  We encourage all vehicle owners who have availed CNG kit installation, cylinder testing, or ECU tuning to share their honest feedback on our official Google Business Profile or submit direct feedback to our technical desk.
+              <div>
+                <h2 className="text-base sm:text-lg font-heading font-bold text-charcoal dark:text-purewhite">
+                  {aggregateRatingData.platform}
+                </h2>
+                <p className="text-xs text-secondary dark:text-darkmuted">
+                  Overall score based on {aggregateRatingData.totalReviews}+ verified local customer ratings
                 </p>
-                <div className="pt-2 flex flex-wrap gap-3">
-                  <a
-                    href="https://wa.me/917982824255"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-purewhite font-heading font-bold text-xs uppercase tracking-wider transition-all"
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    <span>WhatsApp Service Review</span>
-                  </a>
-                  <a
-                    href="tel:+919212218180"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-bordergrey dark:border-darkborder hover:border-orange text-charcoal dark:text-darktext hover:text-orange font-heading font-bold text-xs uppercase tracking-wider transition-all"
-                  >
-                    <Phone className="w-4 h-4 text-orange" />
-                    <span>Call Desk (+91 92122 18180)</span>
-                  </a>
-                </div>
               </div>
             </div>
 
-            {/* Right 5 Columns: Submit Service Feedback Card */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full md:w-auto">
+              {aggregateRatingData.highlights.map((h, idx) => (
+                <div key={idx} className="text-center md:text-left">
+                  <span className="block font-heading font-bold text-sm text-orange">{h.score}</span>
+                  <span className="text-[10px] text-secondary dark:text-darkmuted">
+                    {language === 'as' ? h.labelAs : h.labelEn}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <a
+              href={aggregateRatingData.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-purewhite dark:bg-darkbg border border-lightgrey dark:border-darkborder hover:border-orange text-charcoal dark:text-purewhite hover:text-orange text-xs font-heading font-bold transition-colors whitespace-nowrap"
+            >
+              <span>View On Justdial</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Feedback & Reviews Section */}
+      <section className="py-16 bg-offwhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            {/* Left 7 Columns: Verified Customer Review Cards */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="badge-orange text-xs">Customer Experiences</span>
+                  <h2 className="text-2xl font-heading font-extrabold text-charcoal dark:text-purewhite mt-1">
+                    What Our Customers Say
+                  </h2>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                {testimonialsData.map((item) => (
+                  <div
+                    key={item.id}
+                    className="p-6 bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder shadow-subtle space-y-3"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h4 className="font-heading font-bold text-sm text-charcoal dark:text-purewhite">
+                            {item.name}
+                          </h4>
+                          <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                            Verified Customer
+                          </span>
+                        </div>
+                        <p className="text-xs text-secondary dark:text-darkmuted">
+                          {item.vehicle} • {item.location}
+                        </p>
+                      </div>
+
+                      <div className="flex gap-0.5 text-amber-400 shrink-0">
+                        {[...Array(item.rating)].map((_, i) => (
+                          <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="text-xs font-semibold text-orange bg-orange-light/50 dark:bg-orange/10 px-2.5 py-1 rounded inline-block">
+                      {language === 'as' ? item.serviceReceivedAs : item.serviceReceivedEn}
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed italic">
+                      "{language === 'as' ? item.quoteAs : item.quoteEn}"
+                    </p>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-lightgrey/60 dark:border-darkborder text-[11px] text-secondary dark:text-darkmuted">
+                      <span>Source: {item.source || 'Justdial Review'}</span>
+                      <span className="text-orange font-bold">Maa Kamakhya Auto Gas, Garchuk</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Quality Commitment Notice */}
+              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-6 shadow-subtle space-y-3">
+                <span className="badge-tech text-xs">Authenticity Policy</span>
+                <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite">
+                  Zero Fake Reviews. Genuine Craftsmanship.
+                </h3>
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
+                  We take pride in transparent automotive gas engineering. Every vehicle entrusted to us undergoes computerized calibration and safe leakage inspection before customer delivery.
+                </p>
+              </div>
+            </div>
+
+            {/* Right 5 Columns: Submit Review / Contact Card */}
             <div className="lg:col-span-5 space-y-6">
+              {/* Direct Technical Desk & Appointment */}
               <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-7 shadow-premium space-y-5">
-                <span className="badge-orange text-xs">Direct Technical Desk</span>
+                <span className="badge-orange text-xs">Workshop Assistance</span>
                 <h3 className="text-lg font-heading font-bold text-charcoal dark:text-purewhite">
                   Have Questions or Feedback?
                 </h3>
                 <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
-                  Whether you wish to enquire about your car model’s CNG compatibility or provide feedback regarding a recent workshop visit, our direct enquiry desk is ready to assist.
+                  Whether you wish to enquire about your car model’s CNG compatibility, check EMI financing options, or leave feedback for a recent service, our team is ready to assist.
                 </p>
 
                 <div className="space-y-3 pt-2">
                   <Link
-                    to="/get-in-touch"
+                    to="/contact"
                     className="w-full py-3 px-5 rounded-lg bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all active:scale-[0.99]"
                   >
                     <MessageSquare className="w-4 h-4" />
@@ -177,10 +222,48 @@ export const Testimonials: React.FC = () => {
                   </Link>
                 </div>
 
-                <div className="pt-4 border-t border-lightgrey/80 dark:border-darkborder text-[11px] text-secondary dark:text-darkmuted space-y-1">
-                  <p><strong>Primary Facility:</strong> Opp. Metro Pillar 536, Mundka, Delhi</p>
-                  <p><strong>Express Center:</strong> Shop 21, DDA Market, Paschim Vihar, Delhi</p>
-                  <p><strong>Hours:</strong> 10:30 AM - 07:00 PM (Wednesday Closed)</p>
+                <div className="pt-4 border-t border-lightgrey/80 dark:border-darkborder text-[11px] text-secondary dark:text-darkmuted space-y-2">
+                  <div className="flex items-start gap-2">
+                    <MapPin className="w-3.5 h-3.5 text-orange shrink-0 mt-0.5" />
+                    <span>Shop No. 7, Opposite Nezone Steel, Near Kumar Resorts, NH-37, Garchuk, Guwahati - 781035</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-3.5 h-3.5 text-secondary dark:text-darkmuted shrink-0" />
+                    <span>09:00 AM - 07:30 PM (Open All 7 Days)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-3.5 h-3.5 text-secondary dark:text-darkmuted shrink-0" />
+                    <span>+91 9678******</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Direct WhatsApp Review Submission */}
+              <div className="bg-purewhite dark:bg-darksurface rounded-2xl border border-lightgrey dark:border-darkborder p-7 shadow-subtle space-y-4">
+                <span className="badge-tech text-xs">Share Your Experience</span>
+                <h4 className="font-heading font-bold text-base text-charcoal dark:text-purewhite">
+                  Got Your Car Serviced With Us?
+                </h4>
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
+                  Send your feedback directly to our workshop manager via WhatsApp or leave a review on Justdial:
+                </p>
+                <div className="pt-2 flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="https://wa.me/919678******"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-purewhite text-xs font-heading font-bold flex items-center justify-center gap-2 transition-colors shadow-subtle"
+                  >
+                    <MessageSquare className="w-4 h-4 text-purewhite" />
+                    <span>Send on WhatsApp</span>
+                  </a>
+                  <a
+                    href="tel:+919678******"
+                    className="flex-1 py-3 px-4 rounded-lg bg-charcoal dark:bg-darkcard hover:bg-black text-purewhite text-xs font-heading font-bold flex items-center justify-center gap-2 transition-colors shadow-subtle border border-transparent dark:border-darkborder"
+                  >
+                    <Phone className="w-4 h-4 text-orange" />
+                    <span>Call Direct</span>
+                  </a>
                 </div>
               </div>
             </div>

@@ -18,46 +18,49 @@ export const SEO: React.FC<SEOProps> = ({
   schema,
 }) => {
   const { language } = useLanguage();
-  const siteUrl = 'https://carsenergy.co.in';
+  const siteUrl = 'https://any172262-hue.github.io/demo';
   const fullCanonical = `${siteUrl}${canonicalPath}`;
-  const fullTitle = `${title} | Car's Energy Co.`;
+  const fullTitle = `${title} | Maa Kamakhya Auto Gas`;
 
   // Default LocalBusiness Schema
   const defaultSchema = {
     '@context': 'https://schema.org',
     '@type': 'AutomotiveBusiness',
-    name: "Car's Energy Co.",
-    image: 'https://carsenergy.co.in/images/workshop-main.jpg',
+    name: 'Maa Kamakhya Auto Gas',
+    image: 'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1200&q=80',
     url: siteUrl,
-    telephone: '+919212218180',
+    telephone: '+919678******',
     priceRange: '₹₹',
-    address: [
-      {
-        '@type': 'PostalAddress',
-        streetAddress: '215 & 216/5, Ground Floor, Opp. Metro Pillar 536, Mundka, Udyog Nagar',
-        addressLocality: 'New Delhi',
-        addressRegion: 'Delhi',
-        postalCode: '110041',
-        addressCountry: 'IN',
-      },
-      {
-        '@type': 'PostalAddress',
-        streetAddress: 'Shop No. 21, C.S.C. A-4, Gole D.D.A. Market, Rohtak Road, Paschim Vihar',
-        addressLocality: 'New Delhi',
-        addressRegion: 'Delhi',
-        postalCode: '110063',
-        addressCountry: 'IN',
-      },
-    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Shop No. 7, Opposite Nezone Steel, Near Indian Oil Petrol Pump, NH-37, Paschim Boragaon, Garchuk',
+      addressLocality: 'Guwahati',
+      addressRegion: 'Assam',
+      postalCode: '781035',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '26.1200128',
+      longitude: '91.6965264',
+    },
+    hasMap: 'https://www.google.com/maps/place/26%C2%B007\'12.1%22N+91%C2%B041\'47.5%22E/@26.1200128,91.6965264,17z',
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        opens: '10:30',
-        closes: '19:00',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '09:00',
+        closes: '19:30',
       },
     ],
-    areaServed: ['Delhi', 'New Delhi', 'Delhi-NCR', 'Gurugram', 'Noida'],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '97',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    areaServed: ['Guwahati', 'Kamrup Metropolitan', 'Assam', 'North East India'],
   };
 
   const finalSchema = schema || defaultSchema;
@@ -74,7 +77,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:type" content={ogType} />
-      <meta property="og:site_name" content="Car's Energy Co." />
+      <meta property="og:site_name" content="Maa Kamakhya Auto Gas" />
 
       {/* Structured Data */}
       <script type="application/ld+json">{JSON.stringify(finalSchema)}</script>

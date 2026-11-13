@@ -38,7 +38,7 @@ export const Gallery: React.FC = () => {
           <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <Camera className="w-4 h-4 text-orange" />
-              <span>AUTHENTIC WORKSHOP DOCUMENTATION • RFC CODE NO. 261</span>
+              <span>AUTHENTIC WORKSHOP DOCUMENTATION • MAA KAMAKHYA AUTO GAS</span>
             </div>
 
             <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
@@ -60,12 +60,12 @@ export const Gallery: React.FC = () => {
               <span className="text-[11px] text-secondary dark:text-darkmuted">Interactive Inspection</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">2 Facilities</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Mundka & Paschim Vihar</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Guwahati Hub</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Garchuk, NH-37 (Open 7 Days)</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">PESO Bay</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Testing Rig Records</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Diagnostic Bay</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">OBD-II & Sensor Calibration</span>
             </div>
           </div>
         </div>

@@ -185,11 +185,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
               </div>
               <p className="text-xs text-secondary dark:text-darkmuted max-w-sm mx-auto">
                 {language === 'as'
-                  ? 'কাৰ্ছ এনাৰ্জী কো.-ৰ সেৱা, ছিকুৱেনচিয়েল কিট, চিলিণ্ডাৰ টেষ্টিং বা কৰ্মশালাৰ ঠিকনা বিচাৰিবলৈ ওপৰত টাইপ কৰক।'
-                  : "Type to search Car's Energy Co. specialized services, sequential kits, hydro testing, partner brands, or workshop locations."}
+                  ? 'মা কামাখ্যা অটো গেছৰ সেৱা, ছিকুৱেনচিয়েল কিট, টিউনিং বা কৰ্মশালাৰ তথ্য বিচাৰিবলৈ ওপৰত টাইপ কৰক।'
+                  : "Type to search Maa Kamakhya Auto Gas specialized services, sequential kits, tuning, partner brands, or workshop location."}
               </p>
               <div className="flex flex-wrap justify-center gap-1.5 pt-2">
-                {['ECU Tuning', 'Lovato', 'Hydro-Testing', 'Mundka', 'Mileage', 'RC Endorsement'].map(
+                {['ECU Tuning', 'Lovato', 'Garchuk', 'Guwahati', 'Mileage', 'DTO Endorsement'].map(
                   (sug) => (
                     <button
                       key={sug}
@@ -214,7 +214,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
               <p className="text-xs text-secondary dark:text-darkmuted max-w-sm mx-auto">
                 {language === 'as'
                   ? `"${query}" ৰ বাবে কোনো মিল বিচাৰি পোৱা নগ’ল। অনুগ্ৰহ কৰি অন্য শব্দৰে চেষ্টা কৰক।`
-                  : `No matching records found for "${query}". Try searching for terms like "tuning", "hydro", "kit", or "Mundka".`}
+                  : `No matching records found for "${query}". Try searching for terms like "tuning", "kit", or "Garchuk".`}
               </p>
             </div>
           )}

@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.join(__dirname, '..');
 
-test('1. SITEMAP & ROBOTS: Verify all 24 required pages are mapped and accessible', () => {
+test('1. SITEMAP & ROBOTS: Verify all 20 required pages are mapped and accessible', () => {
   const sitemapPath = path.join(ROOT, 'public', 'sitemap.xml');
   assert.ok(fs.existsSync(sitemapPath), 'sitemap.xml must exist in public/');
   const sitemapContent = fs.readFileSync(sitemapPath, 'utf-8');
@@ -18,18 +18,15 @@ test('1. SITEMAP & ROBOTS: Verify all 24 required pages are mapped and accessibl
     '/about',
     '/services',
     '/services/cng-kit-installation',
-    '/services/cng-kit-distribution',
     '/services/ecu-tuning-calibration',
     '/services/rto-documentation-rc-endorsement',
     '/services/cng-kit-servicing',
     '/services/cylinder-hydro-testing',
-    '/services/annual-maintenance-contract',
     '/services/filter-replacement',
     '/services/reducer-servicing',
     '/services/cylinder-replacement',
     '/products',
     '/gallery',
-    '/videos',
     '/testimonials',
     '/faqs',
     '/contact',
@@ -40,7 +37,7 @@ test('1. SITEMAP & ROBOTS: Verify all 24 required pages are mapped and accessibl
   ];
 
   for (const route of requiredRoutes) {
-    const loc = `https://carsenergy.co.in${route === '/' ? '/' : route}`;
+    const loc = `https://any172262-hue.github.io/demo${route === '/' ? '/' : route}`;
     assert.ok(
       sitemapContent.includes(loc),
       `sitemap.xml must contain canonical URL: ${loc}`
@@ -76,19 +73,17 @@ test('2. BILINGUAL ARCHITECTURE: Verify completeness of English and Assamese loc
   }
 });
 
-test('3. SERVICES DATA: Verify complete technical data for all 10 specialized services', async () => {
+test('3. SERVICES DATA: Verify complete technical data for all 8 specialized services', async () => {
   const servicesPath = path.join(ROOT, 'src', 'data', 'servicesData.ts');
   assert.ok(fs.existsSync(servicesPath), 'servicesData.ts must exist');
   const content = fs.readFileSync(servicesPath, 'utf-8');
 
   const expectedSlugs = [
     'cng-kit-installation',
-    'cng-kit-distribution',
     'ecu-tuning-calibration',
     'rto-documentation-rc-endorsement',
     'cng-kit-servicing',
     'cylinder-hydro-testing',
-    'annual-maintenance-contract',
     'filter-replacement',
     'reducer-servicing',
     'cylinder-replacement',
@@ -120,6 +115,6 @@ test('5. PRODUCTION BUILD VERIFICATION: Dist artifacts check', () => {
   const distHtml = path.join(ROOT, 'dist', 'index.html');
   assert.ok(fs.existsSync(distHtml), 'dist/index.html must exist from build');
   const html = fs.readFileSync(distHtml, 'utf-8');
-  assert.ok(html.includes("Car's Energy Co.") || html.includes("Demo Page"), 'dist/index.html must have company title');
+  assert.ok(html.includes("Maa Kamakhya Auto Gas") || html.includes("Auto Gas") || html.includes("Demo Page"), 'dist/index.html must have company title');
   assert.ok(html.includes('assets/'), 'dist/index.html must include compiled bundles');
 });

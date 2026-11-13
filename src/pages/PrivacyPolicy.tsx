@@ -11,7 +11,7 @@ export const PrivacyPolicy: React.FC = () => {
     <>
       <SEO
         title={pages.legal.privacyTitle}
-        description="Privacy policy and data governance practices of Car's Energy Co."
+        description="Privacy policy and data governance practices of Maa Kamakhya Auto Gas."
         canonicalPath="/privacy-policy"
       />
 

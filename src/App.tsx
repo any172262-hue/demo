@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './context/LanguageContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -9,6 +9,7 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { BackToTop } from './components/BackToTop';
 import { FloatingContactWidget } from './components/FloatingContactWidget';
+import { DemoNoticeModal } from './components/DemoNoticeModal';
 import { captureUtmParameters } from './utils/utm';
 
 // Pages
@@ -24,6 +25,7 @@ import { FAQs } from './pages/FAQs';
 import { Contact } from './pages/Contact';
 import { GetInTouch } from './pages/GetInTouch';
 import { BookAppointment } from './pages/BookAppointment';
+import { MapPage } from './pages/MapPage';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsConditions } from './pages/TermsConditions';
 import { SitemapPage } from './pages/SitemapPage';
@@ -55,48 +57,49 @@ export const App: React.FC = () => {
                   {/* 3. Services Overview */}
                   <Route path="/services" element={<ServicesOverview />} />
 
-                  {/* 4 to 13. All 10 Individual Specialized Service Pages */}
+                  {/* 4 to 11. All 8 Individual Specialized Service Pages */}
                   <Route path="/services/cng-kit-installation" element={<ServiceDetailPage />} />
-                  <Route path="/services/cng-kit-distribution" element={<ServiceDetailPage />} />
                   <Route path="/services/ecu-tuning-calibration" element={<ServiceDetailPage />} />
                   <Route path="/services/rto-documentation-rc-endorsement" element={<ServiceDetailPage />} />
                   <Route path="/services/cng-kit-servicing" element={<ServiceDetailPage />} />
                   <Route path="/services/cylinder-hydro-testing" element={<ServiceDetailPage />} />
-                  <Route path="/services/annual-maintenance-contract" element={<ServiceDetailPage />} />
                   <Route path="/services/filter-replacement" element={<ServiceDetailPage />} />
                   <Route path="/services/reducer-servicing" element={<ServiceDetailPage />} />
                   <Route path="/services/cylinder-replacement" element={<ServiceDetailPage />} />
+                  <Route path="/services/cng-kit-distribution" element={<Navigate to="/services" replace />} />
+                  <Route path="/services/annual-maintenance-contract" element={<Navigate to="/services" replace />} />
                   <Route path="/services/:slug" element={<ServiceDetailPage />} />
 
-                  {/* 14. Products & Brands */}
+                  {/* 12. Products & Brands */}
                   <Route path="/products" element={<Products />} />
 
-                  {/* 15. Workshop Gallery */}
+                  {/* 13. Workshop Photographic Gallery */}
                   <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/videos" element={<Navigate to="/gallery" replace />} />
 
-                  {/* 16. Video Gallery */}
-                  <Route path="/videos" element={<VideoGallery />} />
-
-                  {/* 17. Customer Testimonials */}
+                  {/* 14. Customer Testimonials */}
                   <Route path="/testimonials" element={<Testimonials />} />
 
-                  {/* 18. FAQs */}
+                  {/* 15. FAQs */}
                   <Route path="/faqs" element={<FAQs />} />
 
-                  {/* 19. Contact Us */}
+                  {/* 16. Contact Us */}
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/get-in-touch" element={<Navigate to="/contact" replace />} />
 
-                  {/* 19b. Get In Touch (Direct Car Model Enquiry Form) */}
-                  <Route path="/get-in-touch" element={<GetInTouch />} />
-
-                  {/* 20. Book an Appointment */}
+                  {/* 17. Book an Appointment */}
                   <Route path="/book-appointment" element={<BookAppointment />} />
+
+                  {/* 18. Workshop Location & Live Map */}
+                  <Route path="/map" element={<MapPage />} />
+                  <Route path="/workshop-location" element={<Navigate to="/map" replace />} />
 
                   {/* 21. Privacy Policy */}
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
                   {/* 22. Terms & Conditions */}
                   <Route path="/terms-and-conditions" element={<TermsConditions />} />
+                  <Route path="/terms-conditions" element={<Navigate to="/terms-and-conditions" replace />} />
 
                   {/* 23. Sitemap */}
                   <Route path="/sitemap" element={<SitemapPage />} />
@@ -108,6 +111,7 @@ export const App: React.FC = () => {
               <Footer />
               <BackToTop />
               <FloatingContactWidget />
+              <DemoNoticeModal />
             </div>
           </Router>
         </LanguageProvider>

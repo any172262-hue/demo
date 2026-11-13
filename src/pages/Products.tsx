@@ -216,7 +216,7 @@ export const Products: React.FC = () => {
                 Looking for Wholesale B2B Distribution?
               </h3>
               <p className="text-xs sm:text-sm text-white/80 max-w-xl">
-                We supply authorized regional workshops and dealers with genuine conversion hardware, ECU harnesses, and factory warranty backing across North India.
+                We supply authorized regional workshops and dealers with genuine conversion hardware, ECU harnesses, and factory warranty backing across Assam & North-East India.
               </p>
             </div>
             <Link

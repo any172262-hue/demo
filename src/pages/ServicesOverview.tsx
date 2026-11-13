@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ServiceCard } from '../components/ServiceCard';
+import { BusinessStatutorySection } from '../components/BusinessStatutorySection';
 import { servicesData } from '../data/servicesData';
 import {
   ShieldCheck,
@@ -50,7 +51,7 @@ export const ServicesOverview: React.FC = () => {
           <div className="max-w-3xl space-y-4 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange" />
-              <span>CERTIFIED CNG PROPULSION • 10 SPECIALIZED SERVICES</span>
+              <span>CERTIFIED AUTO GAS SPECIALISTS • 8 SPECIALIZED SERVICES</span>
             </div>
 
             <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
@@ -65,24 +66,27 @@ export const ServicesOverview: React.FC = () => {
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">10 Services</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">8 Services</span>
               <span className="text-[11px] text-secondary dark:text-darkmuted">End-to-End Solutions</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">RFC #261</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Govt. Approved</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-orange">4.9 ★ Rating</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">97+ Justdial Reviews</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
               <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">OBD-II Sync</span>
               <span className="text-[11px] text-secondary dark:text-darkmuted">Digital Tuning</span>
             </div>
             <div className="bg-purewhite dark:bg-darkcard border border-lightgrey dark:border-darkborder rounded-xl p-3.5 shadow-subtle">
-              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">330 Bar</span>
-              <span className="text-[11px] text-secondary dark:text-darkmuted">Hydro-Testing Bay</span>
+              <span className="block font-heading font-extrabold text-lg sm:text-xl text-charcoal dark:text-purewhite">Open 7 Days</span>
+              <span className="text-[11px] text-secondary dark:text-darkmuted">Garchuk, Guwahati</span>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Official Registered Services & Specialisations from Justdial Trade Registry */}
+      <BusinessStatutorySection />
 
       {/* Filter / Search Bar */}
       <section className="py-6 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
@@ -160,11 +164,11 @@ export const ServicesOverview: React.FC = () => {
                 <span>{services.ctaBox.button}</span>
               </Link>
               <a
-                href="tel:+919212218180"
+                href="tel:+919678******"
                 className="bg-purewhite hover:bg-lightgrey text-charcoal font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-lg shadow-lg active:scale-[0.99] transition-all flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-orange" />
-                <span>+91 92122 18180</span>
+                <span>+91 9678******</span>
               </a>
             </div>
           </div>

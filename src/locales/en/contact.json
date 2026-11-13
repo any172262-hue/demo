@@ -1,38 +1,39 @@
 {
-  "title": "Contact & Workshop Locations",
-  "subtitle": "Reach our engineering team directly via phone, WhatsApp, or visit either of our two certified Delhi facilities.",
+  "title": "Contact & Workshop Location",
+  "subtitle": "Connect with our certified technicians via phone, WhatsApp, or visit our full-fledged workshop facility on NH-37, Garchuk, Guwahati.",
   "appointmentTitle": "Book a Service Appointment",
-  "appointmentSubtitle": "Submit your vehicle details to schedule an inspection, installation, or hydro-test at Car's Energy Co.",
+  "appointmentSubtitle": "Submit your vehicle details to schedule an inspection, sequential kit fitment, or cylinder hydro-test at Maa Kamakhya Auto Gas.",
   "workshops": {
-    "title": "Our Certified Facilities",
-    "mundka": {
-      "name": "Mundka Primary Retrofitment Facility",
-      "address": "215 & 216/5, Ground Floor, Opposite Metro Pillar Number 536, Mundka, Udyog Nagar (Kaleva Sweets Wali Gali), New Delhi, Delhi - 110041",
-      "hours": "10:30 AM - 07:00 PM (Wednesday Closed)",
-      "phone": "+91 92122 18180",
-      "badge": "Full Installation, Hydro-Testing & Distribution Hub"
+    "title": "Our Workshop Facility",
+    "guwahati": {
+      "name": "Guwahati Main Retrofitment Center",
+      "address": "Shop No. 7, Opposite Nezone Steel, Near Indian Oil Petrol Pump & Kumar Resorts, NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035",
+      "hours": "9:00 AM - 07:30 PM (Monday to Sunday - Open All 7 Days)",
+      "phone": "+91 9678******",
+      "altPhone": "+91 9678******",
+      "badge": "Full Installation, Hydro-Testing & Gas Servicing Hub"
     },
-    "paschimVihar": {
-      "name": "Paschim Vihar Express Service Center",
-      "address": "Shop No. 21, C.S.C. A-4, Gole D.D.A. Market, Rohtak Road, Paschim Vihar, New Delhi, Delhi - 110063",
-      "hours": "10:30 AM - 02:00 PM (Wednesday Closed)",
-      "phone": "+91 92122 18180",
-      "badge": "Diagnostics, Minor Servicing & Consultation"
+    "garchuk": {
+      "name": "Maa Kamakhya Express Service Desk",
+      "address": "Shop No. 7, NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035",
+      "hours": "9:00 AM - 07:30 PM (All 7 Days Open)",
+      "phone": "+91 9678******",
+      "badge": "Direct Consultation & Immediate Diagnostics"
     }
   },
   "form": {
     "fullName": "Full Name",
-    "fullNamePlaceholder": "e.g. Rajesh Sharma",
+    "fullNamePlaceholder": "e.g. Vikram Sharma",
     "mobileNumber": "Mobile Number",
     "mobilePlaceholder": "10-digit mobile number",
     "email": "Email Address (Optional)",
-    "emailPlaceholder": "e.g. rajesh@example.com",
+    "emailPlaceholder": "e.g. vikram@example.com",
     "vehicleMake": "Vehicle Manufacturer",
     "vehicleMakeSelect": "Select manufacturer...",
     "vehicleModel": "Vehicle Model",
     "vehicleModelPlaceholder": "e.g. WagonR, i10, Swift Dzire, City",
     "vehicleYear": "Manufacturing Year",
-    "vehicleYearPlaceholder": "e.g. 2019",
+    "vehicleYearPlaceholder": "e.g. 2021",
     "serviceRequired": "Service Required",
     "serviceRequiredSelect": "Select service...",
     "preferredWorkshop": "Preferred Workshop Facility",
@@ -41,8 +42,8 @@
     "preferredTime": "Preferred Time Window",
     "preferredTimeSelect": "Select preferred slot...",
     "additionalMessage": "Vehicle Notes / Symptoms / Questions",
-    "additionalMessagePlaceholder": "Mention specific symptoms (e.g. jerking, low pickup), existing kit brand, or any questions...",
-    "privacyConsent": "I agree that Car's Energy Co. may contact me regarding this appointment enquiry. My data is handled according to the privacy policy.",
+    "additionalMessagePlaceholder": "Mention vehicle model, existing fuel type, symptoms, or preferred kit brand...",
+    "privacyConsent": "I agree that Maa Kamakhya Auto Gas may contact me regarding this appointment enquiry. My data is handled according to the privacy policy.",
     "submitButton": "Submit Appointment Enquiry",
     "submitLoading": "Submitting Enquiry...",
     "disclaimerNotice": "Please Note: Submitting this form sends an official enquiry to our workshop team. An appointment is confirmed only after our technical advisor contacts you by phone/WhatsApp to verify vehicle suitability and time slot availability."
@@ -51,24 +52,24 @@
     "successTitle": "Enquiry Received Successfully!",
     "successBody": "Thank you for reaching out. Your enquiry reference has been recorded in our workshop system. Our technical coordinator will call or WhatsApp you shortly on your provided phone number to confirm your schedule.",
     "errorTitle": "Submission Encountered An Error",
-    "errorBody": "Unable to transmit your enquiry at this moment. Please call us directly at +91 92122 18180 or chat via WhatsApp for instant booking.",
+    "errorBody": "Unable to transmit your enquiry at this moment. Please call us directly at +91 9678****** or chat via WhatsApp for instant booking.",
     "validationError": "Please correct the highlighted fields before submitting."
   },
   "directContact": {
     "callDirect": "Call Our Workshop",
     "whatsAppDirect": "Chat via WhatsApp",
-    "emailDirect": "Email Technical Desk",
-    "emergencyNotice": "For urgent cylinder compliance or road breakdown assistance, calling our Mundka facility directly is recommended."
+    "emailDirect": "Email Workshop Desk",
+    "emergencyNotice": "For urgent cylinder compliance, hydro-testing, or gas system troubleshooting, calling our Garchuk workshop directly is recommended."
   },
   "getInTouch": {
     "title": "Get In Touch",
-    "subtitle": "Contact us to avail our trusted services. Our services will certainly meet your expectations.",
+    "subtitle": "Contact us to avail our trusted CNG & LPG services. Our expert workmanship will certainly meet your expectations.",
     "namePlaceholder": "Name*",
     "carModelPlaceholder": "Which Car Model*",
     "mobilePlaceholder": "Enter Mobile*",
-    "addressPlaceholder": "Address",
-    "messagePlaceholder": "Message",
-    "submitButton": "Submit",
+    "addressPlaceholder": "Address / Location in Assam",
+    "messagePlaceholder": "Message / Requirements",
+    "submitButton": "Submit Enquiry",
     "submitting": "Submitting..."
   }
 }

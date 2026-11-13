@@ -81,63 +81,6 @@ export const servicesData: ServiceDetail[] = [
     ]
   },
   {
-    slug: "cng-kit-distribution",
-    iconName: "PackageCheck",
-    imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80",
-    titleEn: "CNG Kit Distribution",
-    titleAs: "চিএনজি কিট বিতৰণ",
-    shortDescEn: "Authorized wholesale and retail distribution of authentic conversion kits, cylinders, and certified OEM spare parts.",
-    shortDescAs: "প্ৰকৃত চিএনজি কিট, চিলিণ্ডাৰ আৰু স্পেয়াৰ পাৰ্টছৰ অনুমোদিত পাইকাৰী আৰু খুচুৰা বিতৰণ।",
-    badgeEn: "Wholesale & Retail Network",
-    badgeAs: "পাইকাৰী আৰু খুচুৰা নেটৱৰ্ক",
-    whatItIsEn: "As an authorized distributor operating since 1998, Car's Energy Co. supplies automotive retrofitting workshops, authorized car dealerships, fleet workshops, and retailers with genuine conversion kits, gas injectors, electronic timing advancers, reducers, and high-pressure valves from reputable international and domestic manufacturers.",
-    whatItIsAs: "১৯৯৮ চনৰ পৰা এক অনুমোদিত বিতৰক হিচাপে কাৰ্ছ এনাৰ্জী কো.-এ বিভিন্ন অটোমোবাইল ৱৰ্কশ্বপ, ডিলাৰ আৰু খুচুৰা বিক্ৰেতাসকলক বিশ্বস্ত ব্ৰেণ্ডৰ প্ৰকৃত চিএনজি কিট, গেছ ইনজেক্টৰ, টাইমিং এডভান্সাৰ, ৰিডিউচাৰ আৰু সুৰক্ষা ভাল্ভ যোগান ধৰি আহিছে।",
-    whoNeedsItEn: [
-      "Regional CNG fitment centers looking for bulk wholesale supply of certified kits.",
-      "Automotive repair workshops requiring original replacement spare parts and repair kits.",
-      "Fleet logistics managers seeking bulk maintenance components for commercial fleets."
-    ],
-    whoNeedsItAs: [
-      "প্ৰমাণিত কিটৰ পাইকাৰী যোগান বিচৰা আঞ্চলিক চিএনজি সংস্থাপন কেন্দ্ৰসমূহ।",
-      "প্ৰকৃত স্পেয়াৰ পাৰ্টছ আৰু মেৰামতি সামগ্ৰী বিচৰা অটোমোবাইল মেৰামতি কেন্দ্ৰসমূহ।",
-      "বাণিজ্যিক বাহনসমূহৰ বাবে নিয়মিত সামগ্ৰী বিচৰা পৰিবহণ সংস্থা আৰু ফ্লিট পৰিচালকসকল।"
-    ],
-    processStepsEn: [
-      { step: "01", title: "B2B Technical Requirement Evaluation", description: "Reviewing workshop volume, vehicle models handled, and desired brand ecosystem." },
-      { step: "02", title: "Batch Verification & Serial Allocation", description: "Matching barcoded kits with manufacturer warranty records and batch test reports." },
-      { step: "03", title: "Packaging & Logistics Dispatch", description: "Damage-resistant transit packaging and nationwide expedited courier dispatch." },
-      { step: "04", title: "Dealer Technical Support", description: "Providing wiring diagrams, calibration software files, and troubleshooting manuals." }
-    ],
-    processStepsAs: [
-      { step: "০১", title: "কাৰিকৰী প্ৰয়োজনীয়তা নিৰূপণ", description: "কৰ্মশালাৰ প্ৰয়োজনীয়তা, বাহনৰ মডেল আৰু বিচৰা ব্ৰেণ্ডসমূহৰ পৰ্যালোচনা।" },
-      { step: "০২", title: "চিৰিয়েল পৰীক্ষা আৰু আবণ্টন", description: "নিৰ্মাতাৰ ৱাৰেণ্টি আৰু টেষ্ট ৰিপৰ্টৰ সৈতে বাৰক'ড যুক্ত কিট মিলোৱা।" },
-      { step: "০৩", title: "সুৰক্ষিত পেকিং আৰু প্ৰেৰণ", description: "পৰিবহণত ক্ষতি নোহোৱাকৈ সুৰক্ষিত পেকিং আৰু দ্ৰুত কুৰিয়াৰ প্ৰেৰণ।" },
-      { step: "০৪", title: "ডিলাৰ কাৰিকৰী সাহায্য", description: "ৱায়াৰিং ডায়েগ্ৰাম, কেলিব্ৰেশ্যন ছফ্টৱেৰ আৰু মেৰামতি নিৰ্দেশনা প্ৰদান।" }
-    ],
-    considerationsEn: [
-      "Minimum Order Quantities (MOQ) apply for wholesale distributor tier pricing.",
-      "Distributor warranty requires fitment by certified technicians following manufacturer guidelines.",
-      "All kits include official hologram stamps preventing counterfeit substitutions."
-    ],
-    considerationsAs: [
-      "পাইকাৰী মূল্যৰ বাবে নিম্নতম অৰ্ডাৰৰ সীমা (MOQ) প্ৰযোজ্য হয়।",
-      "ৱাৰেণ্টি বাহাল ৰাখিবলৈ নিৰ্মাতাৰ নিৰ্দেশনা অনুসৰি প্ৰশিক্ষিত কাৰিকৰৰ দ্বাৰা ফিটিং কৰাব লাগিব।",
-      "সকলো সামগ্ৰীত নকল প্ৰতিৰোধক অফিচিয়েল হল'গ্ৰাম উপলব্ধ।"
-    ],
-    technicalHighlightsEn: [
-      { label: "Authorized Brands", value: "Lovato, Motozen, Gastech Italy, Mijo, STAG" },
-      { label: "Inventory Categories", value: "ECUs, Reducers, Injector Rails, Advancers, Harnesses" },
-      { label: "Warranty Support", value: "Official Manufacturer Backed Guarantee" },
-      { label: "Distribution Hub", value: "Mundka Central Warehouse, New Delhi" }
-    ],
-    technicalHighlightsAs: [
-      { label: "অনুমোদিত ব্ৰেণ্ডসমূহ", value: "Lovato, Motozen, Gastech Italy, Mijo, STAG" },
-      { label: "উপলব্ধ সামগ্ৰী", value: "ECU, ৰিডিউচাৰ, ইনজেক্টৰ ৰেল, এডভান্সাৰ, ৱায়াৰিং হাৰ্নেছ" },
-      { label: "ৱাৰেণ্টি সাহায্য", value: "নিৰ্মাতা কোম্পানীৰ অফিচিয়েল নিশ্চয়তা" },
-      { label: "বিতৰণ কেন্দ্ৰ", value: "মুণ্ডকা কেন্দ্ৰীয় গুদাম, নতুন দিল্লী" }
-    ]
-  },
-  {
     slug: "ecu-tuning-calibration",
     iconName: "Cpu",
     imageUrl: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1000&q=80",
@@ -204,8 +147,8 @@ export const servicesData: ServiceDetail[] = [
     shortDescAs: "বাহনৰ পঞ্জীয়ন প্ৰমাণপত্ৰত (RC) চিএনজি বৈধভাৱে অনুমোদন কৰাৰ বাবে প্ৰয়োজনীয় নথি সাহায্য।",
     badgeEn: "Legal Compliance Support",
     badgeAs: "আইনী স্বীকৃতি সাহায্য",
-    whatItIsEn: "Converting a motor vehicle to CNG legally mandates updating the registration record with the Regional Transport Office (RTO) under the Central Motor Vehicles Rules (CMVR). As an authorized RFC (RFC Code No. 261), Car's Energy Co. provides authentic fitment certificates, emission test reports, and complete file processing support to have the CNG fuel type successfully endorsed on your official Registration Certificate (RC).",
-    whatItIsAs: "ভাৰতীয় মটৰ বাহন আইন (CMVR) অনুসৰি চিএনজি কিট লগোৱাৰ পিছত আঞ্চলিক পৰিবহণ কাৰ্যালয়ত (RTO) পঞ্জীয়ন নথিপত্ৰ উন্নীত কৰাটো বাধ্যতামূলক। কাৰ্ছ এনাৰ্জী কো.-এ (RFC ক'ড নং ২৬১) প্ৰকৃত ফিটমেণ্ট প্ৰমাণপত্ৰ, প্ৰদূষণ প্ৰতিবেদন আৰু সম্পূৰ্ণ নথিপত্ৰ সাহায্য আগবঢ়ায় যাতে আপোনাৰ RC-ত চিএনজি আইনীভাৱে নথিবদ্ধ হয়।",
+    whatItIsEn: "Converting a motor vehicle to CNG or LPG legally mandates updating the registration record with the District Transport Office (DTO) under the Central Motor Vehicles Rules (CMVR). As an authorized retrofitment center in Guwahati, Maa Kamakhya Auto Gas provides authentic fitment certificates, emission test reports, and complete file processing support to have the alternative fuel type successfully endorsed on your official Registration Certificate (RC).",
+    whatItIsAs: "ভাৰতীয় মটৰ বাহন আইন (CMVR) অনুসৰি গেছ কিট লগোৱাৰ পিছত জিলা পৰিবহণ কাৰ্যালয়ত (DTO) পঞ্জীয়ন নথিপত্ৰ উন্নীত কৰাটো বাধ্যতামূলক। মা কামাখ্যা অটো গেছে প্ৰকৃত ফিটমেণ্ট প্ৰমাণপত্ৰ, প্ৰদূষণ প্ৰতিবেদন আৰু যাৱতীয় নথিপত্ৰ সাহায্য আগবঢ়ায় যাতে আপোনাৰ RC-ত গেছ কিট আইনীভাৱে নথিবদ্ধ হয়।",
     whoNeedsItEn: [
       "Car owners who have recently installed an authorized retrofitting kit.",
       "Used car buyers wishing to legalize unendorsed retrofits.",
@@ -241,16 +184,16 @@ export const servicesData: ServiceDetail[] = [
       "অনুমোদন নোহোৱাকৈ গাড়ী চলালে দুৰ্ঘটনাৰ সময়ত বীমাৰ সুবিধা নাপাব পাৰে।"
     ],
     technicalHighlightsEn: [
-      { label: "Workshop License", value: "Authorized RFC Code No. 261" },
+      { label: "Workshop Accreditation", value: "Govt. Approved Retrofitment Facility" },
       { label: "Statutory Framework", value: "Central Motor Vehicles Rules (CMVR) Rule 115" },
       { label: "Documentation Included", value: "Type Approval, Form 22, Cylinder Safety Certificate" },
-      { label: "Fuel Category Endorsed", value: "Bi-Fuel (Petrol / CNG)" }
+      { label: "Fuel Category Endorsed", value: "Bi-Fuel (Petrol / CNG / LPG)" }
     ],
     technicalHighlightsAs: [
-      { label: "কৰ্মশালাৰ অনুজ্ঞাপত্ৰ", value: "স্বীকৃত RFC ক'ড নং ২৬১" },
+      { label: "কৰ্মশালাৰ স্বীকৃতি", value: "চৰকাৰী অনুমোদিত ৰেট্ৰ'ফিটমেণ্ট কেন্দ্ৰ" },
       { label: "আইনী ব্যৱস্থা", value: "কেন্দ্ৰীয় মটৰ বাহন নিয়ম (CMVR) ৰুল ১১৫" },
       { label: "প্ৰদান কৰা নথি", value: "টাইপ এপ্ৰুভেল, ফৰ্ম ২২, চিলিণ্ডাৰ সুৰক্ষা প্ৰমাণপত্ৰ" },
-      { label: "ইন্ধন শ্ৰেণী", value: "দ্বৈত ইন্ধন (পেট্ৰল / চিএনজি)" }
+      { label: "ইন্ধন শ্ৰেণী", value: "দ্বৈত ইন্ধন (পেট্ৰল / গেছ)" }
     ]
   },
   {
@@ -369,63 +312,6 @@ export const servicesData: ServiceDetail[] = [
       { label: "পৰীক্ষাৰ চাপ", value: "৩৩০ বাৰ (২০০ বাৰ কাৰ্যক্ষম চাপৰ ১.৫ গুণ)" },
       { label: "বৈধতাৰ সময়সীমা", value: "পৰীক্ষাৰ তাৰিখৰ পৰা ৩ বছৰ" },
       { label: "পৰীক্ষাৰ পদ্ধতি", value: "পানীৰ জেকেট পদ্ধতি আৰু আল্ট্ৰাছনিক নিৰীক্ষণ" }
-    ]
-  },
-  {
-    slug: "annual-maintenance-contract",
-    iconName: "CalendarCheck",
-    imageUrl: "https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=1000&q=80",
-    titleEn: "Annual Maintenance Contract (AMC)",
-    titleAs: "বাৰ্ষিক তত্বাৱধান চুক্তি (AMC)",
-    shortDescEn: "Year-round proactive service packages, emergency roadside assistance, and discounted genuine parts.",
-    shortDescAs: "বছৰজোৰা নিয়মিত চাৰ্ভিচিং পেকেজ, জৰুৰী সাহায্য আৰু স্পেয়াৰ পাৰ্টছত ৰেহাই।",
-    badgeEn: "Year-Round Peace of Mind",
-    badgeAs: "বছৰজোৰা সুৰক্ষা নিশ্চয়তা",
-    whatItIsEn: "Our Annual Maintenance Contract (AMC) is a comprehensive ownership plan engineered to give private vehicle owners and fleet managers predictable operating costs and flawless reliability. The plan covers scheduled filter changes, tuning checkups, leak audits, priority workshop lane access, and round-the-clock telephone breakdown support.",
-    whatItIsAs: "আমাৰ বাৰ্ষিক তত্বাৱধান চুক্তি (AMC) হৈছে ব্যক্তিগত আৰু বাণিজ্যিক বাহন চালকসকলৰ বাবে এক সুচল বাৰ্ষিক পৰিকল্পনা। ইয়াৰ অধীনত নিয়মীয়া ফিল্টাৰ সলনি, টিউনিং, লিক পৰীক্ষা, অগ্ৰাধিকাৰ ভিত্তিত সেৱা আৰু জৰুৰী কাৰিকৰী সহায় প্ৰদান কৰা হয়।",
-    whoNeedsItEn: [
-      "High-mileage commuters traveling 50+ km daily wanting total reliability.",
-      "Commercial taxi, delivery, and corporate fleet operators.",
-      "Car owners who prefer budgeted maintenance over sudden unforeseen repairs."
-    ],
-    whoNeedsItAs: [
-      "প্ৰতিদিনে ৫০ কিমিৰ অধিক গাড়ী চলোৱা নিয়মীয়া যাত্ৰীসকল।",
-      "বাণিজ্যিক টেক্সি, ডেলিভাৰী আৰু কৰ্পোৰেট বাহন পৰিচালকসকল।",
-      "হঠাৎ হোৱা খৰচৰ পৰা হাত সাৰি সুপৰিকল্পিত বাজেটত গাড়ীৰ যত্ন বিচৰা লোকসকল।"
-    ],
-    processStepsEn: [
-      { step: "01", title: "Initial Vehicle Health Inspection", description: "Complete 30-point evaluation before enrolling the vehicle in the AMC program." },
-      { step: "02", title: "Scheduled Periodic Services", description: "Up to 3 free routine checkups per year including computerized calibration." },
-      { step: "03", title: "Complimentary Filter Replacements", description: "Scheduled replacement of low-pressure gas filters during the contract period." },
-      { step: "04", title: "Priority Lane Access", description: "Zero waiting queue at our Mundka and Paschim Vihar workshops." }
-    ],
-    processStepsAs: [
-      { step: "০১", title: "প্ৰাৰম্ভিক বাহন নিৰীক্ষণ", description: "এএমচি চুক্তিৰ পূৰ্বে গাড়ীখনৰ ৩০টা গুৰুত্বপূৰ্ণ পইণ্ট পৰীক্ষা কৰা।" },
-      { step: "০২", title: "নিয়মীয়া সাময়িক সেৱা", description: "বছৰত ৩ বাৰ পৰ্যন্ত বিনামূলীয়া কম্পিউটাৰাইজড টিউনিং আৰু পৰীক্ষণ।" },
-      { step: "০৩", title: "বিনামূলীয়া ফিল্টাৰ সলনি", description: "চুক্তিৰ সময়ছোৱাত নিৰ্ধাৰিত ফিল্টাৰ বিনামূলীয়াকৈ সলনি কৰা।" },
-      { step: "০৪", title: "অগ্ৰাধিকাৰ সেৱা", description: "আমাৰ মুণ্ডকা আৰু পশ্চিম বিহাৰ কৰ্মশালাত দীঘলীয়া লাইন নোহোৱাকৈ দ্ৰুত সেৱা।" }
-    ],
-    considerationsEn: [
-      "Contracts run for 12 months from the date of agreement.",
-      "AMC covers labor and routine consumables; accidental damage is excluded.",
-      "Transferable if vehicle ownership changes during the contract validity."
-    ],
-    considerationsAs: [
-      "চুক্তিৰ সময়সীমা স্বাক্ষৰ কৰা তাৰিখৰ পৰা ১২ মাহৰ বাবে বাহাল থাকে।",
-      "ইয়াত সাধাৰণ মেইণ্টেনেন্স অন্তৰ্ভুক্ত; দুৰ্ঘটনাজনিত ক্ষতি অন্তৰ্ভুক্ত নহয়।",
-      "চুক্তিৰ সময়ত বাহনখন বিক্ৰী কৰিলে নতুন গৰাকীলৈ চুক্তি স্থানান্তৰ কৰিব পাৰি।"
-    ],
-    technicalHighlightsEn: [
-      { label: "Validity Period", value: "1 Year (Renewable)" },
-      { label: "Included Services", value: "3 Routine Tune-ups & 1 Complimentary Filter Set" },
-      { label: "Discount on Parts", value: "15% Off on replacement injectors & reducers" },
-      { label: "Emergency Support", value: "Direct technician hotline assistance" }
-    ],
-    technicalHighlightsAs: [
-      { label: "বৈধতাৰ সময়", value: "১ বছৰ (নবীকৰণযোগ্য)" },
-      { label: "অন্তৰ্ভুক্ত সেৱা", value: "৩ বাৰ ৰুটিন টিউনিং আৰু ১ ছেট বিনামূলীয়া ফিল্টাৰ" },
-      { label: "সামগ্ৰীত ৰেহাই", value: "ইনজেক্টৰ আৰু ৰিডিউচাৰত ১৫% ৰেহাই" },
-      { label: "জৰুৰী সহায়", value: "পোনপটীয়া মেকানিক হটলাইন সুবিধা" }
     ]
   },
   {

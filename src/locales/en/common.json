@@ -1,18 +1,18 @@
 {
-  "companyName": "Demo Page",
-  "companyTagline": "Automotive Engineering & CNG Technology Center",
-  "rfcCode": "Govt. Approved Retrofitting Center (RFC Code No. 261)",
-  "estYear": "Established 1998",
+  "companyName": "Maa Kamakhya Auto Gas",
+  "companyTagline": "Authorized CNG & LPG Conversion Kit Dealer, Fitment & Service Center",
+  "rfcCode": "Govt. Approved Retrofitment & Conversion Center",
+  "estYear": "Established 2022",
   "nav": {
     "home": "Home",
     "about": "About",
     "services": "Services",
     "allServices": "All Services",
-    "products": "Products & Brands",
+    "products": "Products",
     "gallery": "Gallery",
     "workshopGallery": "Workshop Gallery",
     "videoGallery": "Video Gallery",
-    "testimonials": "Testimonials",
+    "testimonials": "Reviews",
     "faqs": "FAQs",
     "contact": "Contact",
     "bookAppointment": "Book Appointment"
@@ -35,24 +35,27 @@
     "close": "Close"
   },
   "footer": {
-    "aboutText": "Car's Energy Co. is an authorized automotive CNG retrofitting and engineering center operating since 1998. Specialized in sequential gas injection, computerized ECU calibration, and certified cylinder hydro-testing.",
+    "aboutText": "Maa Kamakhya Auto Gas is a premier authorized automotive CNG & LPG retrofitting and servicing center located in Garchuk, Guwahati. Specialized in sequential gas injection, computerized ECU calibration, and certified cylinder hydro-testing.",
     "quickLinks": "Quick Links",
     "servicesTitle": "Specialized Services",
-    "contactInfo": "Workshop Locations",
+    "contactInfo": "Workshop Location",
     "workingHours": "Working Hours",
     "allRightsReserved": "All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
     "sitemap": "Sitemap",
-    "disclaimer": "Car's Energy Co. is a certified automotive retrofitment facility. All kit fits adhere to government AIS/RTO safety regulations."
+    "disclaimer": "Maa Kamakhya Auto Gas is an authorized automotive gas retrofitment facility in Guwahati, Assam. All kit installations strictly adhere to AIS/RTO safety regulations."
   },
   "contactBar": {
-    "mundkaAddress": "215 & 216/5, Opp. Metro Pillar 536, Mundka, New Delhi",
-    "paschimViharAddress": "Shop 21, CSC A-4, Rohtak Road, Paschim Vihar, New Delhi",
-    "phone": "+91 92122 18180",
-    "whatsapp": "+91 79828 24255",
-    "email": "carsenergyco@gmail.com",
-    "timing": "10:30 AM - 7:00 PM (Wed Closed)"
+    "address": "Shop No. 7, Opp. Nezone Steel, Near Indian Oil Petrol Pump, NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035",
+    "workshopAddress": "Shop No. 7, Opp. Nezone Steel, Near Indian Oil Petrol Pump, NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035",
+    "guwahatiAddress": "Shop No. 7, Opp. Nezone Steel, Near Indian Oil Petrol Pump, NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035",
+    "garchukAddress": "NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035",
+    "phone": "+91 9678******",
+    "altPhone": "+91 9678******",
+    "whatsapp": "+91 9678******",
+    "email": "maakamakhyaautogas@gmail.com",
+    "timing": "9:00 AM - 7:30 PM (All 7 Days Open)"
   },
   "language": {
     "en": "English",

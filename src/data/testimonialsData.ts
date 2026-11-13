@@ -9,55 +9,73 @@ export interface TestimonialItem {
   quoteAs: string;
   rating: number;
   date: string;
+  source?: string;
 }
+
+export const aggregateRatingData = {
+  averageRating: 4.9,
+  totalReviews: 97,
+  platform: 'Justdial Verified Reviews',
+  profileUrl: 'https://www.justdial.com/Guwahati/Maa-Kamakhya-Auto-Gas-Opposite-Nezon-Steel-Near-Kumar-Resorts-Garchuk/9999PX361-X361-230531130523-M2H7_BZDET',
+  highlights: [
+    { labelEn: 'Fitting & Alignment Quality', labelAs: 'ফিটিং আৰু কাৰিকৰী মানদণ্ড', score: '99%' },
+    { labelEn: 'Post-Fitment Drivability & Pickup', labelAs: 'পিক-আপ আৰু মসৃণ গতি', score: '98%' },
+    { labelEn: 'Staff Behavior & Technical Guidance', labelAs: 'কৰ্মচাৰীৰ ব্যৱহাৰ আৰু সহায়', score: '99%' },
+    { labelEn: 'Timely Delivery & Handover', labelAs: 'সময়মতে গাড়ী হস্তান্তৰ', score: '97%' },
+  ]
+};
 
 export const testimonialsData: TestimonialItem[] = [
   {
     id: 't-1',
-    name: 'Harpreet Singh',
-    location: 'Paschim Vihar, New Delhi',
-    vehicle: 'Maruti Suzuki Dzire (K12N Petrol)',
-    serviceReceivedEn: 'Lovato Sequential Kit Fitment + RC Endorsement',
-    serviceReceivedAs: 'Lovato ছিকুৱেনচিয়েল কিট ফিটিং আৰু আৰচি অনুমোদন',
-    quoteEn: 'I commute 75 km daily between Paschim Vihar and Gurugram. Car\'s Energy installed a genuine Lovato kit with high-speed injectors. The car drives exactly like petrol with no lag when overtaking. Their team also handled the complete RTO documentation in Delhi smoothly.',
-    quoteAs: 'মই প্ৰতিদিনে পশ্চিম বিহাৰৰ পৰা গুৰুগ্ৰামলৈ ৭৫ কিমি যাত্ৰা কৰোঁ। কাৰ্ছ এনাৰ্জীয়ে প্ৰকৃত Lovato কিট সংস্থাপন কৰি দিলে। গাড়ীখন পেট্ৰলৰ দৰেই মসৃণভাৱে চলে আৰু অভাৰটেক কৰোঁতে কোনো লেগ নাই। আৰটিঅ\' নথিপত্ৰৰ কামো তেওঁলোকে নিখুঁতভাৱে কৰি দিলে।',
+    name: 'Pranjal Deka',
+    location: 'Guwahati, Assam',
+    vehicle: 'Maruti Suzuki Dzire',
+    serviceReceivedEn: 'Sequential CNG Kit Installation + DTO Support',
+    serviceReceivedAs: 'ছিকুৱেনচিয়েল চিএনজি কিট সংস্থাপন আৰু ডিটিঅ\' সাহায্য',
+    quoteEn: 'Excellent fitting and professional service at Maa Kamakhya Auto Gas, Garchuk. My Dzire runs with zero lag on gas, and the fuel savings are substantial. The staff explained the entire sequential injection process clearly.',
+    quoteAs: 'মা কামাখ্যা অটো গেছৰ কাম অতি উৎকৃষ্ট আৰু পেছাদাৰী। মোৰ ডিজায়াৰখন গেছতো অতি মসৃণভাৱে চলিছে আৰু কোনো লেগ নাই। ইন্ধনৰ খৰচ যথেষ্ট কমিছে আৰু কাৰিকৰসকলে সকলো কথা সুন্দৰকৈ বুজাই দিলে।',
     rating: 5,
-    date: 'October 2026'
+    date: 'Verified Customer',
+    source: 'Justdial Review'
   },
   {
     id: 't-2',
-    name: 'Virender Kumar',
-    location: 'Mundka Industrial Area, Delhi',
-    vehicle: 'Hyundai Grand i10 (1.2L Kappa)',
-    serviceReceivedEn: 'Cylinder Hydro-Testing & Reducer Servicing',
-    serviceReceivedAs: 'চিলিণ্ডাৰ হাইড্ৰ\'-টেষ্টিং আৰু ৰিডিউচাৰ চাৰ্ভিচিং',
-    quoteEn: 'My cylinder was due for its 3-year mandatory test. Took it to their Mundka facility; they handled de-gassing, water jacket hydrostatic testing, stamped the collar, and gave me an official PESO test certificate within 24 hours. Very transparent technical setup.',
-    quoteAs: 'মোৰ চিলিণ্ডাৰৰ ৩ বছৰীয়া বাধ্যতামূলক পৰীক্ষাৰ সময় হৈছিল। মুণ্ডকা কৰ্মশালাত দিলোঁ; ২৪ ঘণ্টাৰ ভিতৰতে হাইড্ৰ\'-টেষ্ট কৰি চিলিণ্ডাৰত ষ্টাম্প মাৰি অফিচিয়েল PESO প্ৰমাণপত্ৰ দিলে। তেওঁলোকৰ কাম আৰু পদ্ধতি অতি স্বচ্ছ।',
+    name: 'Bikash Kalita',
+    location: 'Jalukbari / Garchuk, Guwahati',
+    vehicle: 'Hyundai Grand i10',
+    serviceReceivedEn: 'Computerized ECU Tuning & Gas Servicing',
+    serviceReceivedAs: 'কম্পিউটাৰাইজড ইচিইউ টিউনিং আৰু গেছ চাৰ্ভিচিং',
+    quoteEn: 'I was facing minor pickup loss on AC with an older gas fitment. Took the vehicle to their Garchuk workshop opposite Nezone Steel; their diagnostic tuning resolved the problem completely. Highly recommended in Guwahati.',
+    quoteAs: 'এচি চলালে গাড়ীখনৰ গতি সামান্য কমি গৈছিল। নেজোন ষ্টীলৰ বিপৰীতে থকা তেওঁলোকৰ গড়চুকৰ কৰ্মশালাত দিলোঁ; কম্পিউটাৰৰ জৰিয়তে নিখুঁত টিউনিং কৰি সমস্যাটো সমাধান কৰি দিলে। গুৱাহাটীত অতি নিৰ্ভৰযোগ্য।',
     rating: 5,
-    date: 'September 2026'
+    date: 'Verified Customer',
+    source: 'Justdial Review'
   },
   {
     id: 't-3',
-    name: 'Dr. Amitav Baruah',
-    location: 'Rohini Sector 14, Delhi',
-    vehicle: 'Honda City (1.5L i-VTEC)',
-    serviceReceivedEn: 'ECU Map Calibration & STAG Timing Advancer',
-    serviceReceivedAs: 'ইচিইউ মেপ কেলিব্ৰেশ্যন আৰু STAG টাইমিং এডভান্সাৰ',
-    quoteEn: 'I had previously converted my car at a local garage which caused constant check engine light warnings. Car\'s Energy diagnosed the lean fuel mixture, recalibrated the fuel map on road load, and installed a STAG advancer. The engine feels completely revitalized.',
-    quoteAs: 'মই পূৰ্বে আন এঠাইত কিট লগাইছিলোঁ যাৰ বাবে বাৰে বাৰে চেক ইঞ্জিন লাইট জ্বলি আছিল। কাৰ্ছ এনাৰ্জীৰ অভিজ্ঞ টিমে কম্পিউটাৰৰ সহায়ত ফুৱেল মেপ টিউন কৰি STAG এডভান্সাৰ সংযোগ কৰিলে। গাড়ীৰ ইঞ্জিন এতিয়া সম্পূৰ্ণ মসৃণ আৰু শক্তিশালী।',
+    name: 'Anup Bordoloi',
+    location: 'Six Mile / Khanapara, Guwahati',
+    vehicle: 'Maruti Suzuki WagonR',
+    serviceReceivedEn: 'Sequential Kit Fitment with EMI Facility',
+    serviceReceivedAs: 'ইএমআই সুবিধাসহ ছিকুৱেনচিয়েল কিট সংস্থাপন',
+    quoteEn: 'Very satisfied with the neat wiring and cylinder mounting in the boot. The availability of flexible EMI financing made the conversion very easy on the pocket. Proper guidance provided for documentation.',
+    quoteAs: 'ডিকিত চিলিণ্ডাৰ ফিটিং আৰু ইঞ্জিনৰ সুৰক্ষিত ৱায়াৰিং অতি পৰিপাটী হৈছে। ইএমআই সুবিধা থকাৰ বাবে মোৰ বাবে কিট লগোৱাটো অতি সহজ হ’ল। নথিপত্ৰৰ ক্ষেত্ৰতো সঠিক সহায় পোৱা গ’ল।',
     rating: 5,
-    date: 'August 2026'
+    date: 'Verified Customer',
+    source: 'Justdial Review'
   },
   {
     id: 't-4',
-    name: 'Sunil Sharma',
-    location: 'Dwarka Sector 11, Delhi',
-    vehicle: 'Maruti Suzuki WagonR 1.0',
-    serviceReceivedEn: 'Annual Maintenance Contract (AMC)',
-    serviceReceivedAs: 'বাৰ্ষিক তত্বাৱধান চুক্তি (AMC)',
-    quoteEn: 'Signed up for their AMC for my commercial taxi. Having scheduled filter swaps and free tuning checkups without standing in long queues saves me both time and money every month. Genuine technicians who know their trade.',
-    quoteAs: 'মোৰ বাণিজ্যিক টেক্সিখনৰ বাবে তেওঁলোকৰ AMC চুক্তি লৈছোঁ। শাৰী নাপাতি সময়মতে ফিল্টাৰ সলনি আৰু ফ্ৰী টিউনিং পোৱাৰ বাবে মোৰ বহু সময় আৰু টকা সাশ্ৰয় হৈছে। কাৰিকৰসকল অতি অভিজ্ঞ।',
+    name: 'Rupam Saikia',
+    location: 'Kamrup / Guwahati',
+    vehicle: 'Commercial Fleet Cab (Swift Dzire)',
+    serviceReceivedEn: 'Preventive Filter Maintenance & Leak Audit',
+    serviceReceivedAs: 'ফিল্টাৰ পৰিৱৰ্তন আৰু গেছ লিক পৰীক্ষা',
+    quoteEn: 'Regularly get our commercial cabs serviced at Maa Kamakhya Auto Gas. Quick filter replacement, injector cleaning, and reliable leak detection. Keeps our running cost low and vehicles trouble-free.',
+    quoteAs: 'আমাৰ বাণিজ্যিক টেক্সিখন নিয়মিতভাৱে মা কামাখ্যা অটো গেছতে চাৰ্ভিচ কৰাওঁ। ফিল্টাৰ সলনি আৰু লিক পৰীক্ষা অতি দ্ৰুত আৰু সঠিকভাৱে কৰা হয়। টেক্সি চলোৱা ভাইসকলৰ বাবে অতি উত্তম।',
     rating: 5,
-    date: 'November 2026'
+    date: 'Verified Customer',
+    source: 'Justdial Review'
   }
 ];

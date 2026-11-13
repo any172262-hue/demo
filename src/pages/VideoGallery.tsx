@@ -87,7 +87,7 @@ export const VideoGallery: React.FC = () => {
                     <Clock className="w-3.5 h-3.5" />
                     {selectedVideo.duration}
                   </span>
-                  <span className="badge-tech text-[10px]">Mundka Technical Bay</span>
+                  <span className="badge-tech text-[10px]">Guwahati Technical Bay</span>
                 </div>
                 <h2 className="font-heading font-bold text-lg text-charcoal dark:text-purewhite">
                   {language === 'as' ? selectedVideo.titleAs : selectedVideo.titleEn}

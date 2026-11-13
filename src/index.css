@@ -25,14 +25,14 @@
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--bg-offwhite);
     color: var(--text-charcoal);
     font-family: 'Inter', 'Noto Sans Assamese', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
     transition: background-color 0.25s ease, color 0.25s ease;
   }
 
@@ -93,21 +93,93 @@
   }
 }
 
-/* Approved Light Theme Navigation Styles */
+/* ==========================================================================
+   ADVANCED TWO-STATE STICKY GLASS NAVBAR SPECIFICATION
+   - STATE 1: Normal full-size navbar at page top (solid, full-width, full logo)
+   - STATE 2: Compact floating glass navbar on scroll (~60% opacity, 14px blur, rounded-2xl, floating island)
+   - 350ms smooth ease-in-out transition with dark theme, browser fallbacks & reduced-motion
+   ========================================================================== */
+
+/* State 1: Top of Page Normal Full-Size Navbar */
+.navbar,
 .nav-light {
-  background: rgba(255, 255, 255, 0.95) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid #E9EAEC;
-  box-shadow: 0 1px 3px rgba(41, 45, 51, 0.05);
+  background: #FFFFFF !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid #E5E7EB !important;
+  border-top: 1px solid transparent !important;
+  border-left: 1px solid transparent !important;
+  border-right: 1px solid transparent !important;
+  box-shadow: 0 2px 8px rgba(41, 45, 51, 0.05) !important;
+  border-radius: 0px !important;
+  transition:
+    background-color 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    -webkit-backdrop-filter 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    padding 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* State 2: Compact Floating Translucent Glass Navbar on Scroll */
+.navbar.scrolled,
 .nav-light-scrolled {
-  background: rgba(255, 255, 255, 0.98) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid #DFE1E5;
-  box-shadow: 0 4px 16px -2px rgba(41, 45, 51, 0.08);
+  background: rgba(255, 255, 255, 0.60) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04) !important;
+  border-radius: 1rem !important; /* rounded-2xl floating island */
+}
+
+/* Dark Mode: State 1 Top of Page */
+.dark .navbar,
+.dark .nav-light {
+  background: #181B1F !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid #2A2F37 !important;
+  border-top: 1px solid transparent !important;
+  border-left: 1px solid transparent !important;
+  border-right: 1px solid transparent !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 0px !important;
+}
+
+/* Dark Mode: State 2 Compact Floating Glass on Scroll */
+.dark .navbar.scrolled,
+.dark .nav-light-scrolled {
+  background: rgba(24, 27, 31, 0.65) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.50), 0 4px 12px -2px rgba(0, 0, 0, 0.30) !important;
+  border-radius: 1rem !important; /* rounded-2xl floating island */
+}
+
+/* Fallback for browsers not supporting backdrop-filter */
+@supports not ((-webkit-backdrop-filter: blur(14px)) or (backdrop-filter: blur(14px))) {
+  .navbar.scrolled,
+  .nav-light-scrolled {
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+  .dark .navbar.scrolled,
+  .dark .nav-light-scrolled {
+    background: rgba(24, 27, 31, 0.96) !important;
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar.scrolled,
+  .nav-light,
+  .nav-light-scrolled {
+    transition: none !important;
+  }
 }
 
 .nav-dropdown-light {
@@ -118,37 +190,22 @@
 
 .nav-link-active {
   background-color: #FDEEE4 !important;
-  border: 1px solid rgba(244, 119, 33, 0.25) !important;
+  border: 1px solid rgba(244, 119, 33, 0.35) !important;
   color: #F47721 !important;
-  border-radius: 0.5rem !important; /* rounded-lg (No pills) */
+  font-weight: 700 !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 1px 2px rgba(244, 119, 33, 0.08) !important;
 }
 
 .nav-link-inactive {
   color: #292D33 !important;
   border: 1px solid transparent !important;
-  border-radius: 0.5rem !important; /* rounded-lg (No pills) */
+  border-radius: 0.5rem !important;
 }
 
 .nav-link-inactive:hover {
-  background-color: #E9EAEC !important;
+  background-color: #F3F4F6 !important;
   color: #F47721 !important;
-}
-
-/* Dark Mode Navigation & Component Styles */
-.dark .nav-light {
-  background: rgba(24, 27, 31, 0.95) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid #2A2F37 !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
-}
-
-.dark .nav-light-scrolled {
-  background: rgba(24, 27, 31, 0.98) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid #374151 !important;
-  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4) !important;
 }
 
 .dark .nav-dropdown-light {

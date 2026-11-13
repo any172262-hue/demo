@@ -16,11 +16,9 @@ export const SitemapPage: React.FC = () => {
     { name: common.nav.services, path: '/services' },
     { name: common.nav.products, path: '/products' },
     { name: common.nav.gallery, path: '/gallery' },
-    { name: common.nav.videoGallery, path: '/videos' },
     { name: common.nav.testimonials, path: '/testimonials' },
     { name: common.nav.faqs, path: '/faqs' },
     { name: common.nav.contact, path: '/contact' },
-    { name: 'Get In Touch', path: '/get-in-touch' },
     { name: common.nav.bookAppointment, path: '/book-appointment' },
     { name: pages.legal.privacyTitle, path: '/privacy-policy' },
     { name: pages.legal.termsTitle, path: '/terms-and-conditions' },
@@ -84,7 +82,7 @@ export const SitemapPage: React.FC = () => {
           {/* Specialized Services */}
           <div className="space-y-4">
             <h2 className="text-lg font-heading font-bold text-charcoal dark:text-purewhite border-b border-lightgrey dark:border-darkborder pb-2">
-              All 10 Specialized Engineering Services
+              All 8 Specialized Engineering Services
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {servicesData.map((s) => (

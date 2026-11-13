@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { SEO } from '../components/SEO';
-import { ServiceCard } from '../components/ServiceCard';
 import { AppointmentForm } from '../components/AppointmentForm';
 import { Lightbox } from '../components/Lightbox';
-import { servicesData } from '../data/servicesData';
+import { BusinessStatutorySection } from '../components/BusinessStatutorySection';
+import { CustomerReviewsSection } from '../components/CustomerReviewsSection';
 import { productsData } from '../data/productsData';
-import { galleryData, videoGalleryData } from '../data/galleryData';
-import { testimonialsData } from '../data/testimonialsData';
-import { faqsData } from '../data/faqsData';
+import { galleryData } from '../data/galleryData';
 import {
   ShieldCheck,
   Award,
@@ -27,7 +25,9 @@ import {
   Star,
   MapPin,
   Clock,
-  Play,
+  Navigation,
+  ExternalLink,
+  Compass,
 } from 'lucide-react';
 
 const heroSlides = [
@@ -61,17 +61,16 @@ const heroSlides = [
   {
     id: 4,
     imageUrl: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=2000&q=85',
-    tag: 'RFC Bay #261',
-    titleEn: 'Transport Dept. Authorized RFC Code No. 261',
-    titleAs: 'পৰিবহণ বিভাগৰ অনুমোদিত আৰএফচি কেন্দ্ৰ নং ২৬১',
-    descEn: 'Transport Department authorized retrofitment center RFC No. 261 operating since 1998 across Delhi-NCR with certified technicians.',
-    descAs: '১৯৯৮ চনৰ পৰা পৰিবহণ বিভাগৰ অনুমোদিত আৰএফচি কেন্দ্ৰ নং ২৬১ হিচাপে দিল্লী-এনচিআৰত নিৰ্ভৰযোগ্য কাৰিকৰী সেৱা।',
+    tag: 'Guwahati Workshop',
+    titleEn: 'Govt. Approved Retrofitment & Conversion Center',
+    titleAs: 'চৰকাৰী অনুমোদিত ৰেট্ৰ’ফিটিং আৰু ৰূপান্তৰ কেন্দ্ৰ',
+    descEn: 'Accredited automotive gas retrofitment facility located on NH-37, Garchuk, Guwahati with certified technicians and diagnostic testing.',
+    descAs: 'গুৱাহাটীৰ গড়চুকৰ এনএইচ-৩৭ স্থিত অনুমোদিত কাৰিকৰী কৰ্মশালাত প্ৰশিক্ষিত মেকানিকৰ দ্বাৰা নিৰ্ভৰযোগ্য সেৱা।',
   },
 ];
 
 export const Home: React.FC = () => {
   const { language, home, common } = useLanguage();
-  const [activeFaq, setActiveFaq] = useState<string | null>('faq-1');
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -82,10 +81,6 @@ export const Home: React.FC = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
-  const toggleFaq = (id: string) => {
-    setActiveFaq(activeFaq === id ? null : id);
-  };
 
   return (
     <>
@@ -129,20 +124,17 @@ export const Home: React.FC = () => {
             {/* Eyebrow Badge (Subtly Rounded, No Pills) */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-orange-light dark:bg-orange/15 text-orange border border-orange/25 text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange shrink-0" />
-              <span>RFC Code No. 261 • Govt. Certified Retrofitment Facility</span>
+              <span>{home.hero.badge}</span>
             </div>
 
             {/* Bold Editorial Headline in Charcoal with Orange Accent */}
             <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-charcoal dark:text-purewhite leading-tight tracking-tight">
-              Precision CNG Engineering &{' '}
-              <span className="text-orange block sm:inline">Certified Automotive Retrofitting</span>
+              {home.hero.title}
             </h1>
 
             {/* Informative, authentic introduction */}
             <p className="text-secondary dark:text-darkmuted text-sm sm:text-base leading-relaxed max-w-2xl">
-              {language === 'as'
-                ? '১৯৯৮ চনৰ পৰা দিল্লী-এনচিআৰত অনুমোদিত ছিকুৱেনচিয়েল চিএনজি কিট সংস্থাপন, ডিজিটেল ইচিইউ কেলিব্ৰেচন, আৰু চৰকাৰী ৩৩০-বাৰ চিলিণ্ডাৰ হাইড্ৰ’-টেষ্টিং সেৱা।'
-                : 'Established in 1998, Car’s Energy Co. provides certified sequential CNG system fitment, digital ECU tuning, statutory cylinder safety testing, and RTO endorsement across Delhi-NCR.'}
+              {home.hero.subtitle}
             </p>
 
             {/* Rectangular / Subtly Rounded Action Buttons (h-12, rounded-lg, No Pills) */}
@@ -155,27 +147,35 @@ export const Home: React.FC = () => {
                 <span>{home.hero.ctaAppointment}</span>
               </Link>
 
-              <Link
-                to="/services"
-                className="bg-purewhite dark:bg-darkcard hover:bg-lightgrey dark:hover:bg-darksurface text-charcoal dark:text-darktext border border-bordergrey dark:border-darkborder font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-subtle hover:border-charcoal/20 transition-all duration-200 flex items-center gap-2 active:scale-[0.99]"
+              <a
+                href="#services-specialisations"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('services-specialisations') || document.getElementById('statutory-details');
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                    window.history.pushState(null, '', '#services-specialisations');
+                  }
+                }}
+                className="bg-purewhite dark:bg-darkcard hover:bg-lightgrey dark:hover:bg-darksurface text-charcoal dark:text-darktext border border-bordergrey dark:border-darkborder font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-subtle hover:border-charcoal/20 transition-all duration-200 flex items-center gap-2 active:scale-[0.99] cursor-pointer"
               >
                 <span>{home.hero.ctaServices}</span>
                 <ChevronRight className="w-4 h-4 text-orange" />
-              </Link>
+              </a>
             </div>
 
-            {/* Direct Workshop Hotline & Addresses */}
+            {/* Direct Workshop Hotline & Address */}
             <div className="pt-2 border-t border-lightgrey/80 dark:border-darkborder flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-secondary dark:text-darkmuted">
               <a
-                href="tel:+919212218180"
+                href="tel:+919678******"
                 className="inline-flex items-center gap-1.5 font-bold text-charcoal dark:text-darktext hover:text-orange transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-orange" />
-                <span>+91 92122 18180</span>
+                <span>+91 9678******</span>
               </a>
 
               <a
-                href="https://wa.me/917982824255"
+                href="https://wa.me/919678******"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 transition-colors"
@@ -183,207 +183,7 @@ export const Home: React.FC = () => {
                 <MessageSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span>WhatsApp Direct</span>
               </a>
-
-              <span className="hidden sm:inline-flex items-center gap-1 text-secondary dark:text-darkmuted font-medium">
-                <MapPin className="w-3.5 h-3.5 text-orange shrink-0" />
-                <span>Mundka & Paschim Vihar</span>
-              </span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION B2: 3 Core Engineering Pillars (Light Theme, Rectangular Buttons) */}
-      <section id="features-section" className="py-14 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <div className="bg-purewhite dark:bg-darksurface rounded-xl shadow-subtle border border-lightgrey dark:border-darkborder p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-orange-light dark:bg-orange/15 text-orange mx-auto flex items-center justify-center mb-4">
-                  <Wrench className="w-5 h-5 text-orange" />
-                </div>
-                <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite mb-2">
-                  Sequential CNG Systems
-                </h3>
-                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-6">
-                  {language === 'as'
-                    ? 'উচ্চ মানৰ ছিকুৱেনচিয়েল গেছ ইনজেকচন প্ৰযুক্তি সংস্থাপন আৰু ৬০-৭০% ইন্ধন সাশ্ৰয়।'
-                    : 'High-precision multipoint gas injection with dedicated digital ECU for petrol-like acceleration and 60-70% fuel cost savings.'}
-                </p>
-              </div>
-              <div>
-                <Link
-                  to="/services/cng-kit-installation"
-                  className="inline-flex items-center gap-1.5 border border-bordergrey dark:border-darkborder hover:border-orange text-charcoal dark:text-darktext hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
-                >
-                  <span>{common.buttons.learnMore}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-purewhite dark:bg-darksurface rounded-xl shadow-subtle border border-lightgrey dark:border-darkborder p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-orange-light dark:bg-orange/15 text-orange mx-auto flex items-center justify-center mb-4">
-                  <Cpu className="w-5 h-5 text-orange" />
-                </div>
-                <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite mb-2">
-                  ECU Tuning & Calibration
-                </h3>
-                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-6">
-                  {language === 'as'
-                    ? 'OBD-II সংযোগৰ জৰিয়তে ডিজিটেল ফুৱেল মেপিং আৰু লেগ-মুক্ত স্মুথ পিক-আপ।'
-                    : 'Computerized real-time fuel mapping and timing advancer tuning to eliminate engine knock, RPM lag, and check-engine warnings.'}
-                </p>
-              </div>
-              <div>
-                <Link
-                  to="/services/ecu-tuning-calibration"
-                  className="inline-flex items-center gap-1.5 border border-bordergrey dark:border-darkborder hover:border-orange text-charcoal dark:text-darktext hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
-                >
-                  <span>{common.buttons.learnMore}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-purewhite dark:bg-darksurface rounded-xl shadow-subtle border border-lightgrey dark:border-darkborder p-7 text-center flex flex-col justify-between hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200">
-              <div>
-                <div className="w-12 h-12 rounded-lg bg-orange-light dark:bg-orange/15 text-orange mx-auto flex items-center justify-center mb-4">
-                  <ShieldCheck className="w-5 h-5 text-orange" />
-                </div>
-                <h3 className="font-heading font-bold text-base text-charcoal dark:text-purewhite mb-2">
-                  Cylinder Hydro Testing
-                </h3>
-                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed mb-6">
-                  {language === 'as'
-                    ? 'PESO অনুমোদিত ৩৩০ বাৰ হাইড্ৰ\'ষ্টেটিক চাপ পৰীক্ষা আৰু চৰকাৰী প্ৰমাণপত্ৰ।'
-                    : 'Statutory 3-year 330-bar water jacket hydrostatic pressure inspection with authorized compliance certificate.'}
-                </p>
-              </div>
-              <div>
-                <Link
-                  to="/services/cylinder-hydro-testing"
-                  className="inline-flex items-center gap-1.5 border border-bordergrey dark:border-darkborder hover:border-orange text-charcoal dark:text-darktext hover:text-orange px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-200"
-                >
-                  <span>{common.buttons.learnMore}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION B3: Thrifty Business Statistics Slate Cards */}
-      <section className="py-12 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container text-center">
-          <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
-            Business Statistics -
-          </span>
-          <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-charcoal dark:text-purewhite mb-8">
-            Grow with <span className="text-orange">Certified Fuel Engineering</span>
-          </h2>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {home.hero.stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className="bg-[#EEF1F6] dark:bg-darkcard border border-[#DFE3E8] dark:border-darkborder rounded-2xl p-6 text-center hover:border-orange/50 transition-colors shadow-subtle"
-              >
-                <span className="block font-heading font-black text-3xl sm:text-4xl text-charcoal dark:text-purewhite mb-1">
-                  {stat.value}
-                </span>
-                <span className="block text-xs font-semibold text-secondary dark:text-darkmuted">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION C: Company Overview */}
-      <section className="py-16 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-5">
-              <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs">
-                {home.overview.sectionTag}
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
-                {home.overview.title}
-              </h2>
-              <p className="text-sm font-semibold text-charcoal dark:text-darktext leading-relaxed">
-                {home.overview.lead}
-              </p>
-              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
-                {home.overview.p1}
-              </p>
-              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
-                {home.overview.p2}
-              </p>
-
-              <div className="pt-2">
-                <Link to="/about" className="btn-secondary text-xs">
-                  <span>{common.buttons.learnMore}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {home.overview.highlights.map((h, i) => (
-                <div
-                  key={i}
-                  className="p-5 rounded-xl border border-lightgrey dark:border-darkborder bg-offwhite/50 dark:bg-darkcard space-y-2 hover:border-orange/30 transition-colors"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-orange-light dark:bg-orange/20 flex items-center justify-center text-orange">
-                    <CheckCircle2 className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-darktext leading-snug">
-                    {h}
-                  </h4>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION D: Thrifty Theme Services Showcase */}
-      <section className="py-16 bg-offwhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
-              Automotive Engineering -
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
-              Our <span className="text-orange">Specialized Services</span>
-            </h2>
-            <div className="w-12 h-1 bg-orange rounded mx-auto my-3" />
-            <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-2">
-              {home.servicesSection.description}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {servicesData.slice(0, 6).map((service) => (
-              <ServiceCard key={service.slug} service={service} />
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-lg shadow-md hover:shadow-orange/20 transition-all active:scale-[0.99]"
-            >
-              <span>{common.buttons.exploreServices}</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </section>
@@ -577,232 +377,8 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION I: Video Gallery Preview */}
-      <section className="py-16 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-            <div>
-              <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs mb-2">
-                {home.videosPreview.sectionTag}
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
-                {home.videosPreview.title}
-              </h2>
-              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
-                {home.videosPreview.description}
-              </p>
-            </div>
-            <Link to="/videos" className="btn-outline text-xs self-start md:self-auto">
-              <span>{common.buttons.viewAll}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {videoGalleryData.map((vid) => (
-              <div
-                key={vid.id}
-                className="card-premium dark:bg-darkcard dark:border-darkborder overflow-hidden flex flex-col justify-between"
-              >
-                <div>
-                  <div className="relative aspect-video bg-charcoaldark overflow-hidden">
-                    <img
-                      src={vid.thumbnailUrl}
-                      alt={vid.titleEn}
-                      className="w-full h-full object-cover opacity-80"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-xl bg-orange text-purewhite flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-                        <Play className="w-5 h-5 fill-current ml-0.5" />
-                      </div>
-                    </div>
-                    <span className="absolute bottom-2 right-2 bg-charcoaldark/90 text-purewhite text-[10px] font-mono px-2 py-0.5 rounded">
-                      {vid.duration}
-                    </span>
-                  </div>
-
-                  <div className="p-4">
-                    <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite mb-2">
-                      {language === 'as' ? vid.titleAs : vid.titleEn}
-                    </h4>
-                    <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
-                      {language === 'as' ? vid.descriptionAs : vid.descriptionEn}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-4 pt-0">
-                  <Link
-                    to="/videos"
-                    className="text-xs font-semibold text-orange hover:underline inline-flex items-center gap-1"
-                  >
-                    <span>Watch Demonstration</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION J: Authentic Customer Feedback & Technical Assurance (Light Theme, Zero Fake Claims) */}
-      <section className="py-16 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container">
-          <div className="bg-[#F5F5F2] dark:bg-darkcard rounded-2xl border border-lightgrey dark:border-darkborder p-8 sm:p-12">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
-              <span className="text-orange text-xs font-bold uppercase tracking-wider block">
-                Customer Feedback & Technical Standards -
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
-                Transparent Engineering, <span className="text-orange">Zero Compromise</span>
-              </h2>
-              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed max-w-2xl mx-auto">
-                {language === 'as'
-                  ? 'কাৰ্ছ এনাৰ্জীয়ে কোনো কৃত্ৰিম পৰ্যালোচনা প্ৰকাশ নকৰে। আমাৰ প্ৰতিটো সেৱা চৰকাৰী PESO আৰু CMVR মানদণ্ড অনুসৰি পৰীক্ষা কৰা হয়।'
-                  : 'We publish only authentic, verified customer experiences. Every installation is backed by official RTO documentation, PESO hydrostatic compliance certificates, and real-time computerized diagnostic sheets.'}
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-left">
-                <div className="bg-purewhite dark:bg-darksurface p-5 rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
-                  <div className="w-8 h-8 rounded-lg bg-orange-light dark:bg-orange/20 text-orange flex items-center justify-center font-bold text-xs">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Government RFC #261</h4>
-                  <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
-                    Official Transport Department license for passenger and commercial vehicle conversions.
-                  </p>
-                </div>
-
-                <div className="bg-purewhite dark:bg-darksurface p-5 rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
-                  <div className="w-8 h-8 rounded-lg bg-orange-light dark:bg-orange/20 text-orange flex items-center justify-center font-bold text-xs">
-                    <CheckCircle2 className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">PESO Hydro Testing</h4>
-                  <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
-                    In-house 330-bar pressure testing facility with statutory test certificates.
-                  </p>
-                </div>
-
-                <div className="bg-purewhite dark:bg-darksurface p-5 rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
-                  <div className="w-8 h-8 rounded-lg bg-orange-light dark:bg-orange/20 text-orange flex items-center justify-center font-bold text-xs">
-                    <Award className="w-4 h-4" />
-                  </div>
-                  <h4 className="font-heading font-bold text-xs text-charcoal dark:text-purewhite">Direct Brand Spares</h4>
-                  <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
-                    Genuine Italian and Indian sequential kits with manufacturer warranty backing.
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  to="/testimonials"
-                  className="bg-purewhite dark:bg-darksurface hover:bg-lightgrey dark:hover:bg-darkborder text-charcoal dark:text-darktext border border-bordergrey dark:border-darkborder px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow-subtle inline-flex items-center gap-2"
-                >
-                  <span>Customer Feedback Policy</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-orange" />
-                </Link>
-
-                <Link
-                  to="/get-in-touch"
-                  className="bg-orange hover:bg-orange-hover text-purewhite px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all shadow-md inline-flex items-center gap-2"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" />
-                  <span>Submit Service Feedback</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION K: Frequently Asked Questions (Accordion) */}
-      <section className="py-16 bg-offwhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <span className="text-orange text-xs font-bold uppercase tracking-wider block mb-1">
-                {home.faqsSection.sectionTag} -
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
-                Frequently Asked <span className="text-orange">Questions</span>
-              </h2>
-              <div className="w-10 h-1 bg-orange rounded mx-auto my-3" />
-              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
-                {home.faqsSection.description}
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              {faqsData.map((faq) => {
-                const isOpen = activeFaq === faq.id;
-                return (
-                  <div
-                    key={faq.id}
-                    className="rounded-2xl border border-lightgrey dark:border-darkborder overflow-hidden bg-purewhite dark:bg-darkcard shadow-subtle transition-colors"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => toggleFaq(faq.id)}
-                      className="w-full py-4 px-5 text-left flex items-center justify-between gap-4 font-heading font-bold text-xs sm:text-sm text-charcoal dark:text-darktext hover:text-orange transition-colors"
-                    >
-                      <span>{language === 'as' ? faq.questionAs : faq.questionEn}</span>
-                      <ChevronDown
-                        className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180 text-orange' : 'text-secondary dark:text-darkmuted'
-                        }`}
-                      />
-                    </button>
-
-                    {isOpen && (
-                      <div className="px-5 pb-5 pt-1 text-xs text-secondary dark:text-darkmuted leading-relaxed border-t border-lightgrey/40 dark:border-darkborder animate-slide-up">
-                        {language === 'as' ? faq.answerAs : faq.answerEn}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="text-center mt-8">
-              <Link to="/faqs" className="btn-secondary text-xs">
-                <span>View All FAQs</span>
-                <ChevronRight className="w-3.5 h-3.5 text-orange" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION K2: Verification Callout Banner */}
-      <section className="py-14 bg-purewhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container">
-          <div className="bg-[#1E2126] rounded-2xl p-8 sm:p-12 text-purewhite flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl relative overflow-hidden">
-            <div className="space-y-3 max-w-xl">
-              <span className="text-orange text-xs font-bold uppercase tracking-wider block">
-                Why Choose Car's Energy Co. -
-              </span>
-              <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-purewhite">
-                Government Certified RFC Retrofitting Since 1998
-              </h3>
-              <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
-                Take advantage of verified sequential gas propulsion technology, computerized ECU calibration, and authentic RTO endorsement backed by 26+ years of specialized engineering.
-              </p>
-            </div>
-            <div className="shrink-0">
-              <Link
-                to="/book-appointment"
-                className="bg-orange hover:bg-orange-hover text-purewhite font-heading font-bold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-lg shadow-xl hover:shadow-orange/30 active:scale-[0.99] transition-all flex items-center gap-2"
-              >
-                <Calendar className="w-4 h-4" />
-                <span>Book Technical Inspection</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* SECTION K3: Business Statutory Details & Specialisations */}
+      <BusinessStatutorySection />
 
       {/* SECTION L: Appointment Enquiry */}
       <section id="appointment-section" className="py-16 bg-offwhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
@@ -823,10 +399,10 @@ export const Home: React.FC = () => {
                 <div className="p-4 bg-purewhite dark:bg-darkcard rounded-xl border border-lightgrey dark:border-darkborder space-y-2">
                   <span className="font-heading font-bold text-xs text-charcoal dark:text-purewhite flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-orange" />
-                    Government Certified Fitment (RFC 261)
+                    Government Approved Fitment Facility
                   </span>
                   <p className="text-[11px] text-secondary dark:text-darkmuted leading-relaxed">
-                    All installations comply with CMVR guidelines and include legitimate RTO documentation support.
+                    All installations comply with CMVR guidelines and include legitimate DTO documentation support.
                   </p>
                 </div>
 
@@ -849,66 +425,210 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION M: Contact & Map Section */}
-      <section className="py-16 bg-purewhite dark:bg-darksurface transition-colors">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Mundka Facility Box */}
-            <div className="p-6 sm:p-8 rounded-2xl border border-lightgrey dark:border-darkborder bg-offwhite/50 dark:bg-darkcard space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="badge-orange text-[10px]">Primary Installation Hub</span>
-                <span className="text-xs font-semibold text-secondary dark:text-darkmuted">Mundka, Delhi</span>
+      {/* SECTION M: Interactive Animated Location & Workshop Section */}
+      <section id="workshop-location" className="py-16 sm:py-20 bg-purewhite dark:bg-darksurface border-t border-lightgrey dark:border-darkborder transition-colors">
+        <div className="section-container space-y-10">
+          {/* Section Heading with Animated Radar Beacon */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="max-w-2xl space-y-3">
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-lg bg-orange-light dark:bg-orange/20 text-orange border border-orange/30 text-xs font-bold uppercase tracking-wider shadow-subtle">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange"></span>
+                </span>
+                <span>{language === 'as' ? 'লাইভ কৰ্মশালাৰ অৱস্থান • ৰাষ্ট্ৰীয় ঘাইপথ ৩৭' : 'Live Workshop GPS Location • NH-37 Garchuk'}</span>
               </div>
-              <h3 className="font-heading font-bold text-lg text-charcoal dark:text-purewhite">
-                Mundka Primary Retrofitment Facility
-              </h3>
-              <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
-                <span>215 & 216/5, Ground Floor, Opposite Metro Pillar Number 536, Mundka, Udyog Nagar (Kaleva Sweets Wali Gali), New Delhi - 110041</span>
+
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-charcoal dark:text-purewhite tracking-tight">
+                {language === 'as' ? 'গুৱাহাটীৰ আমাৰ প্ৰধান কৰ্মশালা দৰ্শন কৰক' : 'Visit Our Main Installation & Retrofitment Hub'}
+              </h2>
+
+              <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted leading-relaxed">
+                {language === 'as'
+                  ? 'নেজোন ষ্টীলৰ বিপৰীতে, ইণ্ডিয়ান অইল পেট্ৰ’ল পাম্প আৰু কুমাৰ ৰিজৰ্টৰ কাষতে অৱস্থিত। তলৰ লাইভ মেপ ব্যৱহাৰ কৰি পোনপটীয়াকৈ আহক।'
+                  : 'Conveniently situated right on the NH-37 bypass at Paschim Boragaon, opposite Nezone Steel and near Indian Oil Petrol Pump & Kumar Resorts. Smooth highway access for all private cars, commercial fleets, and taxis.'}
               </p>
-              <div className="flex flex-wrap items-center gap-4 text-xs pt-2">
-                <a href="tel:+919212218180" className="inline-flex items-center gap-1.5 font-bold text-charcoal dark:text-darktext hover:text-orange">
-                  <Phone className="w-3.5 h-3.5 text-orange" />
-                  <span>+91 92122 18180</span>
-                </a>
-                <a href="https://wa.me/917982824255" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800">
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                  <span>+91 79828 24255</span>
+            </div>
+
+            <div className="flex items-center gap-3 shrink-0">
+              <a
+                href="https://www.google.com/maps/place/26%C2%B007'12.1%22N+91%C2%B041'47.5%22E/@26.1200128,91.6965264,17z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 rounded-lg border border-bordergrey dark:border-darkborder bg-offwhite/80 dark:bg-darkcard hover:border-orange text-charcoal dark:text-darktext hover:text-orange text-xs font-heading font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-subtle hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Google Maps Pin</span>
+                <ExternalLink className="w-3.5 h-3.5 text-orange" />
+              </a>
+
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=26.1200128,91.6965264"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-lg bg-orange hover:bg-orange-hover text-purewhite text-xs font-heading font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md hover:shadow-orange/30 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Navigation className="w-3.5 h-3.5" />
+                <span>Get Directions</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Left Column: Workshop Facility Showcase Card (5 cols) */}
+            <div className="lg:col-span-5 p-7 sm:p-8 rounded-2xl border border-lightgrey dark:border-darkborder bg-offwhite/60 dark:bg-darkcard space-y-6 flex flex-col justify-between shadow-subtle hover:shadow-hover transition-all duration-300">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="badge-orange text-[10px] font-bold">
+                    {language === 'as' ? 'মুখ্য সংস্থাপন হাব' : 'Primary Installation Facility'}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Open 7 Days
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="font-heading font-bold text-2xl text-charcoal dark:text-purewhite">
+                    Maa Kamakhya Auto Gas
+                  </h3>
+                  <div className="inline-flex items-center gap-1.5 mt-1 text-[11px] font-mono text-orange font-bold bg-orange/10 px-2 py-0.5 rounded">
+                    <Compass className="w-3 h-3 text-orange" />
+                    <span>26°07'12.1"N 91°41'47.5"E</span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
+                  <span>Shop No. 7, Opposite Nezone Steel, Near Indian Oil Petrol Pump & Kumar Resorts, NH-37, Paschim Boragaon, Garchuk, Guwahati, Assam - 781035</span>
+                </p>
+
+                <div className="space-y-2.5 text-xs text-secondary dark:text-darkmuted pt-2 border-t border-lightgrey/80 dark:border-darkborder">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-orange shrink-0" />
+                    <span className="font-medium">09:00 AM - 07:30 PM (Monday to Sunday - All 7 Days Open)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>Government Endorsement Support • Computerized Tuning Bay</span>
+                  </div>
+                </div>
+
+                {/* 3 Landmark Accessibility Badges */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-[11px]">
+                  <div className="p-2.5 rounded-lg bg-purewhite dark:bg-darkbg border border-lightgrey/80 dark:border-darkborder flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-orange shrink-0" />
+                    <span className="text-charcoal dark:text-purewhite font-medium">Opp. Nezone Steel</span>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-purewhite dark:bg-darkbg border border-lightgrey/80 dark:border-darkborder flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-orange shrink-0" />
+                    <span className="text-charcoal dark:text-purewhite font-medium">Near Indian Oil Pump</span>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-purewhite dark:bg-darkbg border border-lightgrey/80 dark:border-darkborder flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-orange shrink-0" />
+                    <span className="text-charcoal dark:text-purewhite font-medium">Near Kumar Resorts</span>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-purewhite dark:bg-darkbg border border-lightgrey/80 dark:border-darkborder flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-orange shrink-0" />
+                    <span className="text-charcoal dark:text-purewhite font-medium">NH-37 Highway Frontage</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Direct Workshop Contact Actions */}
+              <div className="space-y-3 pt-4 border-t border-lightgrey/80 dark:border-darkborder">
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <a
+                    href="tel:+919678******"
+                    className="py-2.5 px-3 rounded-lg bg-purewhite dark:bg-darkbg border border-lightgrey dark:border-darkborder hover:border-orange text-charcoal dark:text-purewhite hover:text-orange font-bold flex items-center justify-center gap-2 transition-all shadow-subtle active:scale-[0.98]"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-orange" />
+                    <span className="truncate">+91 9678******</span>
+                  </a>
+                  <a
+                    href="https://wa.me/919678******"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-2.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-purewhite font-bold flex items-center justify-center gap-2 transition-all shadow-subtle active:scale-[0.98]"
+                  >
+                    <MessageSquare className="w-3.5 h-3.5 text-purewhite" />
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
+
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=26.1200128,91.6965264"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 px-4 rounded-lg bg-orange hover:bg-orange-hover text-purewhite text-xs font-heading font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:shadow-orange/30 transition-all active:scale-[0.99]"
+                >
+                  <Navigation className="w-4 h-4" />
+                  <span>Start Turn-By-Turn Navigation</span>
                 </a>
               </div>
             </div>
 
-            {/* Paschim Vihar Facility Box */}
-            <div className="p-6 sm:p-8 rounded-2xl border border-lightgrey dark:border-darkborder bg-offwhite/50 dark:bg-darkcard space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="badge-tech text-[10px]">Express Service Center</span>
-                <span className="text-xs font-semibold text-secondary dark:text-darkmuted">Paschim Vihar, Delhi</span>
-              </div>
-              <h3 className="font-heading font-bold text-lg text-charcoal dark:text-purewhite">
-                Paschim Vihar Express Center
-              </h3>
-              <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-orange shrink-0 mt-0.5" />
-                <span>Shop No. 21, C.S.C. A-4, Gole D.D.A. Market, Rohtak Road, Paschim Vihar, New Delhi - 110063</span>
-              </p>
-              <div className="flex flex-wrap items-center gap-4 text-xs pt-2">
-                <a href="tel:+919212218180" className="inline-flex items-center gap-1.5 font-bold text-charcoal dark:text-darktext hover:text-orange">
-                  <Phone className="w-3.5 h-3.5 text-orange" />
-                  <span>+91 92122 18180</span>
-                </a>
-                <a href="https://wa.me/917982824255" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-bold text-emerald-700 dark:text-emerald-400 hover:text-emerald-800">
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                  <span>+91 79828 24255</span>
-                </a>
-                <span className="text-secondary dark:text-darkmuted text-xs flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-orange" />
-                  <span>10:30 AM - 02:00 PM (Wed Closed)</span>
+            {/* Right Column: Animated Interactive Map Embed with HUD Overlay (7 cols) */}
+            <div className="lg:col-span-7 rounded-2xl border border-lightgrey dark:border-darkborder overflow-hidden bg-offwhite dark:bg-darkcard min-h-[420px] shadow-premium relative group">
+              {/* Animated Floating Top HUD Pill */}
+              <div className="absolute top-4 left-4 z-10 bg-charcoal/90 dark:bg-darkbg/95 backdrop-blur-md text-purewhite px-4 py-2.5 rounded-xl border border-white/20 shadow-2xl flex items-center gap-3 pointer-events-none transition-transform duration-300 group-hover:scale-[1.02]">
+                <span className="relative flex h-3 w-3 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange opacity-80"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-orange"></span>
                 </span>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <p className="font-heading font-extrabold text-xs text-purewhite leading-none">
+                      Maa Kamakhya Auto Gas
+                    </p>
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                      Live Pin
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-offwhite/75 font-mono mt-0.5">
+                    26°07'12.1"N 91°41'47.5"E • Paschim Boragaon, NH-37
+                  </p>
+                </div>
               </div>
+
+              {/* Floating Bottom Quick-Action Buttons */}
+              <div className="absolute bottom-4 right-4 z-10 flex flex-wrap items-center gap-2">
+                <a
+                  href="https://www.google.com/maps/place/26%C2%B007'12.1%22N+91%C2%B041'47.5%22E/@26.1200128,91.6965264,17z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2 rounded-lg bg-purewhite/95 dark:bg-darkcard/95 backdrop-blur-md hover:bg-purewhite text-charcoal dark:text-purewhite text-xs font-heading font-bold shadow-xl border border-lightgrey/80 dark:border-darkborder flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
+                >
+                  <span>Open in Maps</span>
+                  <ExternalLink className="w-3 h-3 text-orange" />
+                </a>
+
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=26.1200128,91.6965264"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-lg bg-orange hover:bg-orange-hover text-purewhite text-xs font-heading font-bold uppercase tracking-wider shadow-xl flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
+                >
+                  <Navigation className="w-3.5 h-3.5" />
+                  <span>Get Route</span>
+                </a>
+              </div>
+
+              {/* High-Precision Google Maps Embed Pinpointing 26.1200128, 91.6965264 */}
+              <iframe
+                title="Maa Kamakhya Auto Gas Exact GPS Location"
+                src="https://maps.google.com/maps?q=26.1200128,91.6965264&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                className="w-full h-full min-h-[420px] border-0"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
       </section>
+
+      {/* SECTION J: Verified Customer Reviews & Live Feedback Desk (Transferred to Bottom) */}
+      <CustomerReviewsSection />
 
       {/* Lightbox Modal */}
       {activeLightboxIndex !== null && (

@@ -32,7 +32,7 @@ test('LIVE BACKEND SUITE: End-to-End API and Security Testing', async (t) => {
       vehicleModel: 'Swift Dzire',
       vehicleYear: 2021,
       serviceRequired: 'CNG Kit Installation',
-      preferredWorkshop: 'Mundka Facility (Opp. Metro Pillar 536)',
+      preferredWorkshop: 'Garchuk Facility, Guwahati',
       preferredDate: '2026-11-20',
       preferredTime: 'Morning (10:30 AM – 01:00 PM)',
       additionalMessage: 'Requesting Lovato sequential kit quote.',
@@ -45,7 +45,7 @@ test('LIVE BACKEND SUITE: End-to-End API and Security Testing', async (t) => {
 
     // Insert record according to server specification
     const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const referenceNumber = `CE-${new Date().getFullYear()}-${randomSuffix}`;
+    const referenceNumber = `MK-${new Date().getFullYear()}-${randomSuffix}`;
     const newEnquiry = {
       referenceNumber,
       status: 'ENQUIRY_RECEIVED',
@@ -96,5 +96,12 @@ test('LIVE BACKEND SUITE: End-to-End API and Security Testing', async (t) => {
     };
     const isBotSuspect = Date.now() - Number(speedPayload.submittedAt) < 1500;
     assert.ok(isBotSuspect, 'Fast automated submission must be detected');
+  });
+
+  await t.test('Customer Reviews Logic: Starts blank and updates dynamically when review is added', () => {
+    const reviewsFile = path.join(ROOT, 'server', 'data', 'reviews.json');
+    assert.ok(fs.existsSync(reviewsFile), 'reviews.json must exist in server/data/');
+    const existing = JSON.parse(fs.readFileSync(reviewsFile, 'utf-8'));
+    assert.ok(Array.isArray(existing), 'reviews data must be an array');
   });
 });

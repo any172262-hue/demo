@@ -1,117 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://carsenergy.co.in/</loc>
+    <loc>https://any172262-hue.github.io/demo/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/about</loc>
+    <loc>https://any172262-hue.github.io/demo/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services</loc>
+    <loc>https://any172262-hue.github.io/demo/services</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/cng-kit-installation</loc>
+    <loc>https://any172262-hue.github.io/demo/services/cng-kit-installation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/cng-kit-distribution</loc>
+    <loc>https://any172262-hue.github.io/demo/services/ecu-tuning-calibration</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/ecu-tuning-calibration</loc>
+    <loc>https://any172262-hue.github.io/demo/services/rto-documentation-rc-endorsement</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/rto-documentation-rc-endorsement</loc>
+    <loc>https://any172262-hue.github.io/demo/services/cng-kit-servicing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/cng-kit-servicing</loc>
+    <loc>https://any172262-hue.github.io/demo/services/cylinder-hydro-testing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/cylinder-hydro-testing</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://carsenergy.co.in/services/annual-maintenance-contract</loc>
+    <loc>https://any172262-hue.github.io/demo/services/filter-replacement</loc>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/filter-replacement</loc>
+    <loc>https://any172262-hue.github.io/demo/services/reducer-servicing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/reducer-servicing</loc>
+    <loc>https://any172262-hue.github.io/demo/services/cylinder-replacement</loc>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/services/cylinder-replacement</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://carsenergy.co.in/products</loc>
+    <loc>https://any172262-hue.github.io/demo/products</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/gallery</loc>
+    <loc>https://any172262-hue.github.io/demo/gallery</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/videos</loc>
+    <loc>https://any172262-hue.github.io/demo/testimonials</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/testimonials</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://carsenergy.co.in/faqs</loc>
+    <loc>https://any172262-hue.github.io/demo/faqs</loc>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/contact</loc>
+    <loc>https://any172262-hue.github.io/demo/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/book-appointment</loc>
+    <loc>https://any172262-hue.github.io/demo/book-appointment</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/privacy-policy</loc>
+    <loc>https://any172262-hue.github.io/demo/map</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://any172262-hue.github.io/demo/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/terms-and-conditions</loc>
+    <loc>https://any172262-hue.github.io/demo/terms-and-conditions</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://carsenergy.co.in/sitemap</loc>
+    <loc>https://any172262-hue.github.io/demo/sitemap</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>

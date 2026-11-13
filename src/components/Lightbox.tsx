@@ -44,18 +44,19 @@ export const Lightbox: React.FC<LightboxProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center bg-charcoaldark/90 backdrop-blur-sm p-4 sm:p-6 animate-fade-in"
+      aria-label="Image preview viewer"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-charcoaldark/90 backdrop-blur-sm p-3 sm:p-6 animate-fade-in"
       onClick={onClose}
     >
       <div
-        className="relative max-w-4xl w-full bg-purewhite rounded-2xl overflow-hidden shadow-2xl border border-charcoallight"
+        className="relative max-w-4xl w-full max-h-[90vh] flex flex-col bg-purewhite dark:bg-darksurface rounded-2xl overflow-hidden shadow-2xl border border-lightgrey dark:border-darkborder transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button */}
+        {/* Close Button - 44x44px touch target */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-lg bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
+          className="absolute top-3 right-3 z-20 w-11 h-11 flex items-center justify-center rounded-xl bg-charcoaldark/80 dark:bg-black/80 text-purewhite hover:bg-orange transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-orange/50"
           aria-label="Close image preview"
         >
           <X className="w-5 h-5" />
@@ -66,7 +67,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
           <button
             type="button"
             onClick={onPrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-lg bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 flex items-center justify-center rounded-xl bg-charcoaldark/80 dark:bg-black/80 text-purewhite hover:bg-orange transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-orange/50"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -77,7 +78,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
           <button
             type="button"
             onClick={onNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-lg bg-charcoal/70 text-purewhite hover:bg-orange transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 flex items-center justify-center rounded-xl bg-charcoaldark/80 dark:bg-black/80 text-purewhite hover:bg-orange transition-colors shadow-md focus:outline-none focus:ring-2 focus:ring-orange/50"
             aria-label="Next image"
           >
             <ChevronRight className="w-6 h-6" />
@@ -85,21 +86,21 @@ export const Lightbox: React.FC<LightboxProps> = ({
         )}
 
         {/* Image Display */}
-        <div className="relative aspect-[16/10] bg-charcoaldark w-full flex items-center justify-center overflow-hidden">
+        <div className="relative flex-1 min-h-[220px] max-h-[60vh] bg-charcoaldark dark:bg-black w-full flex items-center justify-center overflow-hidden">
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover select-none"
+            className="w-full h-full object-contain select-none"
             loading="lazy"
           />
         </div>
 
         {/* Details Footer */}
-        <div className="p-6 bg-purewhite border-t border-lightgrey">
-          <h3 className="font-heading font-bold text-base text-charcoal mb-1">
+        <div className="p-4 sm:p-6 bg-purewhite dark:bg-darksurface border-t border-lightgrey dark:border-darkborder shrink-0">
+          <h3 className="font-heading font-bold text-sm sm:text-base text-charcoal dark:text-purewhite mb-1">
             {title}
           </h3>
-          <p className="text-xs text-secondary leading-relaxed">
+          <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
             {description}
           </p>
         </div>

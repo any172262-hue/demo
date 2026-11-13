@@ -64,11 +64,11 @@ export const ServiceDetailPage: React.FC = () => {
     serviceType: service.titleEn,
     provider: {
       '@type': 'AutomotiveBusiness',
-      name: "Car's Energy Co.",
-      telephone: '+919212218180',
+      name: 'Maa Kamakhya Auto Gas',
+      telephone: '+919678******',
     },
     description: service.shortDescEn,
-    areaServed: 'Delhi-NCR, India',
+    areaServed: 'Guwahati, Assam, India',
   };
 
   return (
@@ -93,7 +93,7 @@ export const ServiceDetailPage: React.FC = () => {
           <div className="max-w-3xl space-y-3 pt-1">
             <div className="inline-flex items-center gap-2 text-orange text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-orange" />
-              <span>{badge} • RFC CODE NO. 261</span>
+              <span>{badge} • MAA KAMAKHYA AUTO GAS</span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-charcoal dark:text-purewhite tracking-tight">
@@ -124,7 +124,7 @@ export const ServiceDetailPage: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoaldark/70 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-purewhite text-xs">
                   <span className="font-bold tracking-wide">{title}</span>
-                  <span className="text-[11px] opacity-80 font-medium">Car's Energy Co. Workshop Documentation</span>
+                  <span className="text-[11px] opacity-80 font-medium">Maa Kamakhya Auto Gas Technical Documentation</span>
                 </div>
               </div>
 

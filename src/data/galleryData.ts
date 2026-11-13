@@ -43,12 +43,12 @@ export const galleryData: GalleryItem[] = [
   {
     id: 'gal-4',
     category: 'facility',
-    titleEn: 'Mundka Primary Workshop Installation Bays',
-    titleAs: 'মুণ্ডকা প্ৰধান কৰ্মশালাৰ ইনষ্টলেচন বে\'',
-    descEn: 'Clean, hydraulic lift equipped multi-bay facility located opposite Metro Pillar 536 in New Delhi.',
-    descAs: 'মেট্ৰ\' স্তম্ভ ৫৩৬ৰ বিপৰীতে নতুন দিল্লীত অৱস্থিত অত্যাধুনিক কাৰিকৰী কৰ্মশালা চৌহদ।',
+    titleEn: 'Guwahati Workshop Installation Bays',
+    titleAs: 'গুৱাহাটী কৰ্মশালাৰ ইনষ্টলেচন বে\'',
+    descEn: 'Spacious, well-equipped multi-bay gas retrofitting facility located opposite Nezone Steel on NH-37, Garchuk, Guwahati.',
+    descAs: 'গুৱাহাটীৰ গড়চুকৰ এনএইচ-৩৭, নেজোন ষ্টীলৰ বিপৰীতে অৱস্থিত সুসজ্জিত কাৰিকৰী কৰ্মশালা চৌহদ।',
     imageUrl: 'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1000&q=80',
-    tag: 'Delhi-NCR Facility'
+    tag: 'Guwahati Facility'
   },
   {
     id: 'gal-5',

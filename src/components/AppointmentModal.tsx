@@ -195,8 +195,8 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             </div>
             <p className="leading-relaxed">
               {language === 'as'
-                ? 'ওপৰত প্ৰদৰ্শিত সকলো তথ্য কাৰ্ছ এনাৰ্জী কো.-ৰ চৰকাৰী হোৱাটছএপ নম্বৰলৈ (+91 79828 24255) প্ৰেৰণ কৰা বাৰ্তাত অন্তৰ্ভুক্ত হ’ব। "নিশ্চিত কৰি হোৱাটছএপলৈ যাওক"ত ক্লিক কৰি আপুনি এই তথ্যসমূহ হোৱাটছএপৰ জৰিয়তে আমালৈ প্ৰেৰণ কৰিবলৈ স্পষ্ট সন্মতি প্ৰদান কৰিছে। বাৰ্তাখন হোৱাটছএপত খোল খাব য’ত আপুনি নিজহাতে বাৰ্তাটো পৰীক্ষা কৰি "Send" টিপিব লাগিব। আমি কেতিয়াও আপোনাৰ অনুমতি অবিহনে স্বয়ংক্ৰিয়ভাৱে বাৰ্তা প্ৰেৰণ নকৰো।'
-                : 'All information displayed above will be included in your WhatsApp enquiry message to official workshop number +91 79828 24255. By clicking "Confirm & Continue to WhatsApp", you explicitly consent to sharing these details. The message will open in WhatsApp where you must manually review and press Send. We never send messages automatically.'}
+                ? 'ওপৰত প্ৰদৰ্শিত সকলো তথ্য মা কামাখ্যা অটো গেছৰ চৰকাৰী হোৱাটছএপ নম্বৰলৈ (+91 9678******) প্ৰেৰণ কৰা বাৰ্তাত অন্তৰ্ভুক্ত হ’ব। "নিশ্চিত কৰি হোৱাটছএপলৈ যাওক"ত ক্লিক কৰি আপুনি এই তথ্যসমূহ হোৱাটছএপৰ জৰিয়তে আমালৈ প্ৰেৰণ কৰিবলৈ স্পষ্ট সন্মতি প্ৰদান কৰিছে। বাৰ্তাখন হোৱাটছএপত খোল খাব য’ত আপুনি নিজহাতে বাৰ্তাটো পৰীক্ষা কৰি "Send" টিপিব লাগিব। আমি কেতিয়াও আপোনাৰ অনুমতি অবিহনে স্বয়ংক্ৰিয়ভাৱে বাৰ্তা প্ৰেৰণ নকৰো।'
+                : 'All information displayed above will be included in your WhatsApp enquiry message to official workshop number +91 9678******. By clicking "Confirm & Continue to WhatsApp", you explicitly consent to sharing these details. The message will open in WhatsApp where you must manually review and press Send. We never send messages automatically.'}
             </p>
           </div>
         </div>

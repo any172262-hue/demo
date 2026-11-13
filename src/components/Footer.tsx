@@ -12,6 +12,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
+import { headerServiceOptions } from '../data/statutoryData';
 
 export const Footer: React.FC = () => {
   const { language, common } = useLanguage();
@@ -25,55 +26,43 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-lg bg-charcoal flex items-center justify-center text-orange border border-charcoallight">
-                <span className="font-heading font-black text-lg text-orange">C</span>
-                <span className="font-heading font-bold text-xs text-purewhite -ml-0.5">E</span>
+                <span className="font-heading font-black text-lg text-orange">M</span>
+                <span className="font-heading font-bold text-xs text-purewhite -ml-0.5">K</span>
               </div>
               <span className="font-heading font-extrabold text-lg text-purewhite tracking-tight">
-                CAR'S ENERGY <span className="text-orange">CO.</span>
+                MAA KAMAKHYA <span className="text-orange">AUTO GAS</span>
               </span>
             </div>
 
             <p className="text-xs text-secondary leading-relaxed">
               {common.footer.aboutText}
             </p>
-
-            <div className="p-3 bg-charcoal rounded-lg border border-charcoallight/50 space-y-2">
-              <div className="flex items-center gap-2 text-xs text-orange font-semibold">
-                <ShieldCheck className="w-4 h-4 shrink-0" />
-                <span>{common.rfcCode}</span>
-              </div>
-              <p className="text-[11px] text-offwhite/70">
-                {language === 'as'
-                  ? 'কেন্দ্ৰীয় মটৰ বাহন নিয়ম (CMVR) আৰু PESO নীতিৰ অধীনত স্বীকৃতিপ্ৰাপ্ত।'
-                  : 'Certified under CMVR Rule 115 & Petroleum & Explosives Safety Organization.'}
-              </p>
-            </div>
           </div>
 
-          {/* Col 2: Specialized Services */}
+          {/* Col 2: Specialized Services & Trade Options */}
           <div>
             <h3 className="font-heading font-bold text-sm text-purewhite uppercase tracking-wider mb-4 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-sm bg-orange"></span>
               {common.footer.servicesTitle}
             </h3>
             <ul className="space-y-2 text-xs">
-              {servicesData.slice(0, 7).map((s) => (
-                <li key={s.slug}>
+              {headerServiceOptions.map((s) => (
+                <li key={s.id}>
                   <Link
-                    to={`/services/${s.slug}`}
+                    to="/#services-specialisations"
                     className="text-secondary hover:text-orange hover:translate-x-1 inline-flex items-center gap-1.5 transition-all duration-200"
                   >
                     <ChevronRight className="w-3 h-3 text-orange/60" />
-                    <span>{language === 'as' ? s.titleAs : s.titleEn}</span>
+                    <span>{language === 'as' ? s.nameAs : s.nameEn}</span>
                   </Link>
                 </li>
               ))}
               <li>
                 <Link
-                  to="/services"
+                  to="/#services-specialisations"
                   className="text-orange font-semibold hover:underline inline-flex items-center gap-1 text-xs pt-1"
                 >
-                  {common.buttons.viewAll} ({servicesData.length}) →
+                  {common.buttons.viewAll} ({headerServiceOptions.length}) →
                 </Link>
               </li>
             </ul>
@@ -98,12 +87,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/gallery" className="text-secondary hover:text-orange transition-colors">
-                  {common.nav.workshopGallery}
-                </Link>
-              </li>
-              <li>
-                <Link to="/videos" className="text-secondary hover:text-orange transition-colors">
-                  {common.nav.videoGallery}
+                  {common.nav.gallery}
                 </Link>
               </li>
               <li>
@@ -126,66 +110,54 @@ export const Footer: React.FC = () => {
                   {common.nav.contact}
                 </Link>
               </li>
-              <li>
-                <Link to="/get-in-touch" className="text-secondary hover:text-orange transition-colors">
-                  {language === 'as' ? 'যোগাযোগ (Get In Touch)' : 'Get In Touch'}
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* Col 4: Facility Locations & Contacts */}
+          {/* Col 4: Facility Location & Contacts */}
           <div className="space-y-4 text-xs">
             <h3 className="font-heading font-bold text-sm text-purewhite uppercase tracking-wider mb-4 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-sm bg-orange"></span>
               {common.footer.contactInfo}
             </h3>
 
-            {/* Mundka Facility */}
-            <div className="p-3 bg-charcoal/60 rounded-lg border border-charcoallight/40 space-y-1">
-              <span className="font-semibold text-purewhite text-xs block">
-                {language === 'as' ? '১. মুণ্ডকা প্ৰধান কৰ্মশালা' : '1. Mundka Main Facility'}
-              </span>
+            {/* Guwahati Facility */}
+            <div className="p-3 bg-charcoal/60 rounded-lg border border-charcoallight/40 space-y-2">
+              <Link to="/map" className="font-semibold text-purewhite text-xs block hover:text-orange transition-colors">
+                {language === 'as' ? 'গুৱাহাটী মুখ্য কৰ্মশালা (মানচিত্ৰ চাওক →)' : 'Guwahati Main Workshop (View Map →)'}
+              </Link>
               <p className="text-secondary text-[11px] leading-relaxed flex items-start gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-orange shrink-0 mt-0.5" />
-                <span>{common.contactBar.mundkaAddress}</span>
+                <span>{common.contactBar.address}</span>
               </p>
-            </div>
-
-            {/* Paschim Vihar Facility */}
-            <div className="p-3 bg-charcoal/60 rounded-lg border border-charcoallight/40 space-y-1">
-              <span className="font-semibold text-purewhite text-xs block">
-                {language === 'as' ? '২. পশ্চিম বিহাৰ এক্সপ্ৰেছ কেন্দ্ৰ' : '2. Paschim Vihar Express Center'}
-              </span>
-              <p className="text-secondary text-[11px] leading-relaxed flex items-start gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-orange shrink-0 mt-0.5" />
-                <span>{common.contactBar.paschimViharAddress}</span>
-              </p>
+              <div className="flex items-center gap-1.5 text-[11px] text-offwhite/80 pt-1 border-t border-charcoallight/40">
+                <Clock className="w-3.5 h-3.5 text-orange shrink-0" />
+                <span>{common.contactBar.timing}</span>
+              </div>
             </div>
 
             <div className="pt-2 flex flex-col gap-2">
               <a
-                href="tel:+919212218180"
+                href="tel:+919678******"
                 className="inline-flex items-center gap-2 text-purewhite hover:text-orange transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-orange" />
-                <span className="font-bold">+91 92122 18180</span>
+                <span className="font-bold">+91 9678******</span>
               </a>
               <a
-                href="https://wa.me/917982824255"
+                href="https://wa.me/919678******"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-purewhite hover:text-emerald-400 transition-colors"
               >
                 <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="font-semibold">+91 79828 24255 (WhatsApp)</span>
+                <span className="font-semibold">+91 9678****** (WhatsApp)</span>
               </a>
               <a
-                href="mailto:carsenergyco@gmail.com"
+                href="mailto:maakamakhyaautogas@gmail.com"
                 className="inline-flex items-center gap-2 text-secondary hover:text-purewhite transition-colors"
               >
                 <Mail className="w-3.5 h-3.5 text-secondary" />
-                <span>carsenergyco@gmail.com</span>
+                <span>maakamakhyaautogas@gmail.com</span>
               </a>
             </div>
           </div>
@@ -194,7 +166,7 @@ export const Footer: React.FC = () => {
         {/* Lower Legal Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-secondary">
           <p>
-            © {new Date().getFullYear()} Car's Energy Co. {common.footer.allRightsReserved}
+            © {new Date().getFullYear()} Maa Kamakhya Auto Gas. {common.footer.allRightsReserved}
           </p>
           <div className="flex items-center gap-4 flex-wrap">
             <Link to="/privacy-policy" className="hover:text-purewhite transition-colors">

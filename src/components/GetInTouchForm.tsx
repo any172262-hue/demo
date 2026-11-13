@@ -133,7 +133,7 @@ export const GetInTouchForm: React.FC = () => {
         error:
           language === 'as'
             ? 'নেটৱৰ্ক সংযোগত সমস্যা হৈছে। অনুগ্ৰহ কৰি পোনপটীয়াকৈ ফোন কৰক।'
-            : 'Connection error. Please call our workshop directly at +91 92122 18180.',
+            : 'Connection error. Please call our workshop directly at +91 9678******.',
       });
     } finally {
       setSubmitting(false);
@@ -169,14 +169,14 @@ export const GetInTouchForm: React.FC = () => {
           )}
           <div className="pt-2 flex flex-wrap gap-2 text-xs">
             <a
-              href="tel:+919212218180"
+              href="tel:+919678******"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-700 text-purewhite font-bold hover:bg-emerald-800 transition-colors"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span>+91 92122 18180</span>
+              <span>+91 9678******</span>
             </a>
             <a
-              href="https://wa.me/917982824255"
+              href="https://wa.me/919678******"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 text-purewhite font-bold hover:bg-emerald-700 transition-colors"
@@ -316,8 +316,8 @@ export const GetInTouchForm: React.FC = () => {
 
         <p className="text-[11px] text-center text-secondary/80 dark:text-darkmuted pt-1">
           {language === 'as'
-            ? 'চৰকাৰী অনুমোদিত RFC নং ২৬১ • কোনো লুকোৱা মাচুল নাই'
-            : 'Govt. Approved Retrofitting Center (RFC Code No. 261) • Zero hidden consultation fees'}
+            ? 'চৰকাৰী অনুমোদিত গেছ ৰূপান্তৰ কেন্দ্ৰ • গড়চুক, গুৱাহাটী'
+            : 'Govt. Approved Retrofitment Facility • Garchuk, Guwahati'}
         </p>
       </form>
     </div>

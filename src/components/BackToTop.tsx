@@ -32,7 +32,7 @@ export const BackToTop: React.FC = () => {
       type="button"
       onClick={scrollToTop}
       aria-label="Back to top"
-      className="floating-control fixed bottom-20 right-4 sm:right-6 z-40 w-10 h-10 rounded-lg bg-purewhite dark:bg-darksurface text-charcoal dark:text-darktext border border-lightgrey dark:border-darkborder shadow-premium hover:border-orange hover:text-orange focus:outline-none focus:ring-2 focus:ring-orange/40 active:scale-95 transition-all duration-200 flex items-center justify-center animate-fade-in"
+      className="floating-control fixed bottom-[max(5rem,calc(4.5rem+env(safe-area-inset-bottom,0px)))] right-4 sm:right-6 z-40 w-10 h-10 rounded-lg bg-purewhite dark:bg-darksurface text-charcoal dark:text-darktext border border-lightgrey dark:border-darkborder shadow-premium hover:border-orange hover:text-orange focus:outline-none focus:ring-2 focus:ring-orange/40 active:scale-95 transition-all duration-200 flex items-center justify-center animate-fade-in"
     >
       <ArrowUp className="w-4 h-4 text-orange" />
     </button>
