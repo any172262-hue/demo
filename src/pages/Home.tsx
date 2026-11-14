@@ -224,42 +224,6 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION F: How It Works */}
-      <section className="py-16 bg-offwhite dark:bg-darksurface border-b border-lightgrey dark:border-darkborder transition-colors">
-        <div className="section-container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="badge-tech text-secondary dark:text-darkmuted uppercase tracking-wider text-xs mb-2">
-              {home.howItWorks.sectionTag}
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-charcoal dark:text-purewhite">
-              {home.howItWorks.title}
-            </h2>
-            <p className="text-xs sm:text-sm text-secondary dark:text-darkmuted mt-1">
-              {home.howItWorks.description}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {home.howItWorks.steps.map((st, idx) => (
-              <div
-                key={idx}
-                className="bg-purewhite dark:bg-darkcard p-6 rounded-xl border border-lightgrey dark:border-darkborder relative overflow-hidden shadow-subtle"
-              >
-                <span className="font-heading font-black text-3xl text-orange/20 block mb-2">
-                  {st.step}
-                </span>
-                <h3 className="font-heading font-bold text-sm text-charcoal dark:text-purewhite mb-2">
-                  {st.title}
-                </h3>
-                <p className="text-xs text-secondary dark:text-darkmuted leading-relaxed">
-                  {st.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* SECTION G: Partner Brands & Products */}
       <section className="py-16 bg-purewhite dark:bg-darkbg border-b border-lightgrey dark:border-darkborder transition-colors">
         <div className="section-container">
